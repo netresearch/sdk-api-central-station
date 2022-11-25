@@ -148,4 +148,23 @@ class People extends AbstractApiEndpoint
 
         return $this->httpPut($request)->getStatusCode() === 200;
     }
+
+    /**
+     * This method is used to delete an element. Returns TRUE on success, FALSE otherwise.
+     *
+     * @param int $personId A valid person ID
+     *
+     * @return bool
+     *
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    public function delete(int $personId): bool
+    {
+        $this->urlBuilder
+            ->addPath('/' . $personId)
+            ->addPath('.json');
+
+        return $this->httpDelete()->getStatusCode() === 200;
+    }
 }
