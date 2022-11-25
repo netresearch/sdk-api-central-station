@@ -13,7 +13,7 @@ namespace Netresearch\Test\Request\People;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Request\People\Common\Person;
-use Netresearch\Sdk\CentralStation\Request\People\Create;
+use Netresearch\Sdk\CentralStation\Request\People\Update;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class CreateTest extends TestCase
+class UpdateTest extends TestCase
 {
     /**
      * Tests creating a valid serialized request structure.
@@ -39,8 +39,10 @@ class CreateTest extends TestCase
             ->setGender(Constants::GENDER_MALE)
             ->setTitle('Dr. Dr.');
 
-        $request = new Create($person);
+        $request = new Update(123456);
+        $request->setPerson($person);
 
+        self::assertSame(123456, $request->getPersonId());
         self::assertSame(
             [
                 'person' => [

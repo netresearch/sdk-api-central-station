@@ -43,13 +43,14 @@ class Person implements JsonSerializable
     private $title;
 
     /**
-     * Constructor.
-     *
      * @param string $lastName
+     *
+     * @return Person
      */
-    public function __construct(string $lastName)
+    public function setLastName(string $lastName): Person
     {
         $this->lastName = $lastName;
+        return $this;
     }
 
     /**
@@ -90,9 +91,11 @@ class Person implements JsonSerializable
      */
     public function jsonSerialize(): array
     {
-        $data = [
-            'name' => $this->lastName,
-        ];
+        $data = [];
+
+        if ($this->lastName) {
+            $data['name'] = $this->lastName;
+        }
 
         if ($this->firstName) {
             $data['first_name'] = $this->firstName;

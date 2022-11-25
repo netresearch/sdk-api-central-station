@@ -17,6 +17,7 @@ use Netresearch\Sdk\CentralStation\Model\People\Person;
 use Netresearch\Sdk\CentralStation\Request\People\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
 use Netresearch\Sdk\CentralStation\Request\People\Show;
+use Netresearch\Sdk\CentralStation\Request\People\Update;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\CreateProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\IndexProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\ShowProvider;
@@ -192,5 +193,24 @@ class PeopleTest extends TestCase
         self::assertNull($person->userId);
         self::assertSame('20.07.2015', $person->createdAt->format('d.m.Y'));
         self::assertSame('20.07.2015 13:26:42', $person->updatedAt->format('d.m.Y H:i:s'));
+    }
+
+    /**
+     * Tests "update" method.
+     *
+     * @test
+     */
+    public function update(): void
+    {
+        $serviceFactoryMock = $this->getServiceFactoryMock();
+
+        $result = $serviceFactoryMock
+            ->api()
+            ->people()
+            ->update(
+                new Update(123456)
+            );
+
+        self::assertTrue($result);
     }
 }

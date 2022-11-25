@@ -20,6 +20,7 @@ use Netresearch\Sdk\CentralStation\Model\People\Person;
 use Netresearch\Sdk\CentralStation\Request\People\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Show as ShowRequest;
+use Netresearch\Sdk\CentralStation\Request\People\Update as UpdateRequest;
 
 /**
  * The /people endpoint.
@@ -125,5 +126,26 @@ class People extends AbstractApiEndpoint
         );
 
         return $result->person ?? null;
+    }
+
+    /**
+     * The update works in the same way as the "create" action. The route must contain the ID of the
+     * element to be processed. Returns TRUE on success, FALSE otherwise.
+     *
+     * @param UpdateRequest $request
+     *
+     * @return bool
+     *
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     * @throws JsonException
+     */
+    public function update(UpdateRequest $request): bool
+    {
+        $this->urlBuilder
+            ->addPath('/' . $request->getPersonId())
+            ->addPath('.json');
+
+        return $this->httpPut($request)->getStatusCode() === 200;
     }
 }

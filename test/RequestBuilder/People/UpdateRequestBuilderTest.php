@@ -11,46 +11,46 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
-use Netresearch\Sdk\CentralStation\RequestBuilder\People\CreateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\CreateProvider;
+use Netresearch\Sdk\CentralStation\RequestBuilder\People\UpdateRequestBuilder;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\UpdateProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class CreateRequestBuilderTest
+ * Class UpdateRequestBuilderTest
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class CreateRequestBuilderTest extends RequestBuilderTestCase
+class UpdateRequestBuilderTest extends RequestBuilderTestCase
 {
     /**
      * @return string[][]
      */
-    public function createRequestDataProvider(): array
+    public function updateRequestDataProvider(): array
     {
         return [
             'Request' => [
-                file_get_contents(CreateProvider::createRequest()) ?: '',
+                file_get_contents(UpdateProvider::updateRequest()) ?: '',
             ],
         ];
     }
 
     /**
-     * Tests creating a new person.
+     * Tests updating an existing person.
      *
-     * @dataProvider createRequestDataProvider
+     * @dataProvider updateRequestDataProvider
      * @test
      *
      * @param string $expectedJson
      */
-    public function create(string $expectedJson): void
+    public function update(string $expectedJson): void
     {
-        $requestBuilder = new CreateRequestBuilder();
+        $requestBuilder = new UpdateRequestBuilder();
         $requestBuilder
+            ->setPersonId(1545412)
             ->setPerson(
-                'Miller',
-                'Marian'
+                'Miller Nr 2'
             );
 
         $request     = $requestBuilder->create();
