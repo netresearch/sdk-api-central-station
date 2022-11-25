@@ -15,7 +15,9 @@ use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
 use Netresearch\Sdk\CentralStation\Model\People;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
+use Netresearch\Sdk\CentralStation\Request\People\Show;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\IndexProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\ShowProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
@@ -35,7 +37,7 @@ class PeopleTest extends TestCase
     public function indexResponseDataProvider(): array
     {
         return [
-            'index' => [
+            'Response' => [
                 IndexProvider::indexResponseSuccess(),
             ],
         ];
@@ -100,5 +102,38 @@ class PeopleTest extends TestCase
         self::assertSame(64, $person->userId);
         self::assertSame('27.06.2013', $person->createdAt->format('d.m.Y'));
         self::assertSame('27.04.2015 09:17:00', $person->updatedAt->format('d.m.Y H:i:s'));
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function showResponseDataProvider(): array
+    {
+        return [
+            'Response' => [
+                ShowProvider::showResponseSuccess(),
+            ],
+        ];
+    }
+
+    /**
+     * Tests "show" method.
+     *
+     * @dataProvider showResponseDataProvider
+     * @test
+     *
+     * @param string $responseJsonFile
+     */
+    public function show(string $responseJsonFile): void
+    {
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+
+        $result = $serviceFactoryMock
+            ->api()
+            ->people()
+            ->show(new Show(123456));
+
+        self::assertInstanceOf(People\Person::class, $result);
+        $this->assertFirstPerson($result);
     }
 }

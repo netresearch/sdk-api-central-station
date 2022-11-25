@@ -14,7 +14,7 @@ namespace Netresearch\Sdk\CentralStation\Request\People;
 use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 
 /**
- * A index request.
+ * A "index" request.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de

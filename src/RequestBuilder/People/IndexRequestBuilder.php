@@ -15,6 +15,7 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
 use Netresearch\Sdk\CentralStation\Validator\People\IndexValidator;
 
 /**
@@ -26,6 +27,8 @@ use Netresearch\Sdk\CentralStation\Validator\People\IndexValidator;
  */
 class IndexRequestBuilder extends AbstractRequestBuilder
 {
+    use IncludesTrait;
+
     /**
      * Sets the limitations of the response.
      *
@@ -89,28 +92,6 @@ class IndexRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * Adds an include.
-     *
-     * @param string $include The name of an additional data to include in the response (either "positions",
-     *                        "companies", "tags", "avatar", "tels", "emails", "homepages", "addrs", "custom_fields",
-     *                        "connections" or "all"). Use "all" to return all at once.
-     *
-     * @return IndexRequestBuilder
-     */
-    public function addInclude(string $include): IndexRequestBuilder
-    {
-        if (!isset($this->data['includes'])) {
-            $this->data['includes'] = [];
-        }
-
-        if (!in_array($include, $this->data['includes'], true)) {
-            $this->data['includes'][] = $include;
-        }
-
-        return $this;
-    }
-
-    /**
      * @return IndexRequest|RequestInterface
      *
      * @throws RequestValidatorException
@@ -120,9 +101,9 @@ class IndexRequestBuilder extends AbstractRequestBuilder
         // Validate the input
         IndexValidator::validate($this->data);
 
+        // Assign values to request
         $request = new IndexRequest();
 
-        // Assign values to request
         if (isset($this->data['limit'])) {
             if (($this->data['limit']['perPage'] !== null) && ($this->data['limit']['perPage'] > 0)) {
                 $request->setPerPage($this->data['limit']['perPage']);

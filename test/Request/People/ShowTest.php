@@ -11,17 +11,17 @@ declare(strict_types=1);
 
 namespace Netresearch\Test\Request\People;
 
-use Netresearch\Sdk\CentralStation\Request\People\Index;
+use Netresearch\Sdk\CentralStation\Request\People\Show;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Unit test class for the "index" request.
+ * Unit test class for the "show" request.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class IndexTest extends TestCase
+class ShowTest extends TestCase
 {
     /**
      * Tests creating a valid serialized request structure.
@@ -30,18 +30,12 @@ class IndexTest extends TestCase
      */
     public function jsonSerialize(): void
     {
-        $request = new Index();
-        $request->setPage(2)
-            ->setPerPage(10)
-            ->setOrderBy('name')
-            ->setOrderDirection('desc')
-            ->setIncludes('addrs', 'tags');
+        $request = new Show(123456);
+        $request->setIncludes('addrs', 'tags');
 
+        self::assertSame(123456, $request->getPersonId());
         self::assertSame(
             [
-                'perpage'  => 10,
-                'page'     => 2,
-                'order'    => 'name-desc',
                 'includes' => 'addrs tags',
             ],
             $request->jsonSerialize()

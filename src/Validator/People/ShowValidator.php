@@ -15,13 +15,13 @@ use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Validator\Traits\IncludesTrait;
 
 /**
- * Class IndexValidator.
+ * Class ShowValidator.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class IndexValidator
+class ShowValidator
 {
     use IncludesTrait;
 
@@ -34,6 +34,12 @@ class IndexValidator
      */
     public static function validate(array $data): void
     {
+        if (!isset($data['personId'])) {
+            throw new RequestValidatorException(
+                'Please provide a valid person ID'
+            );
+        }
+
         if (isset($data['includes'])) {
             self::validateIncludes($data['includes']);
         }
