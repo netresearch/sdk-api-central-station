@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Test\Request\People;
 
+use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
 use PHPUnit\Framework\TestCase;
 
@@ -35,6 +36,14 @@ class IndexTest extends TestCase
             ->setPerPage(10)
             ->setOrderBy('name')
             ->setOrderDirection('desc')
+            ->setFilter([
+                'first_name' => [
+                    Constants::FILTER_EQUAL => 'Daniel'
+                ],
+                'created_at' => [
+                    Constants::FILTER_SMALLER_THAN => '2022-10-25'
+                ]
+            ])
             ->setIncludes('addrs', 'tags');
 
         self::assertSame(
@@ -42,6 +51,14 @@ class IndexTest extends TestCase
                 'perpage'  => 10,
                 'page'     => 2,
                 'order'    => 'name-desc',
+                'filter'   => [
+                    'first_name' => [
+                        Constants::FILTER_EQUAL => 'Daniel'
+                    ],
+                    'created_at' => [
+                        Constants::FILTER_SMALLER_THAN => '2022-10-25'
+                    ],
+                ],
                 'includes' => 'addrs tags',
             ],
             $request->jsonSerialize()

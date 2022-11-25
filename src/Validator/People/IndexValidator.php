@@ -37,5 +37,7 @@ class IndexValidator
         if (isset($data['includes'])) {
             self::validateIncludes($data['includes']);
         }
+
+        // TODO Validate filter format
     }
 }

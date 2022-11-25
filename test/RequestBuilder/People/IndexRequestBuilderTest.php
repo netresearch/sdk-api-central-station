@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
+use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\IndexRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
@@ -40,15 +41,25 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
                 'name',
                 'desc'
             )
-//            ->addFilter(
-//                ...
-//            )
+            ->addFilter(
+                'first_name',
+                Constants::FILTER_EQUAL,
+                'Daniel'
+            )
+            ->addFilter(
+                'created_at',
+                Constants::FILTER_SMALLER_THAN,
+                '2022-10-25'
+            )
             ->addInclude('tags')
             ->addInclude('addrs');
 
         $request    = $requestBuilder->create();
         $requestUrl = http_build_query($request->jsonSerialize());
 
-        self::assertSame('perpage=10&page=2&order=name-desc&includes=tags+addrs', $requestUrl);
+        self::assertSame(
+            'perpage=10&page=2&order=name-desc&filter[first_name][equal]=Daniel&filter[created_at][smaller_than]=2022-10-25&includes=tags addrs',
+            urldecode($requestUrl)
+        );
     }
 }

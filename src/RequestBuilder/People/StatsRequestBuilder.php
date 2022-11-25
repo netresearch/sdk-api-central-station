@@ -15,6 +15,7 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\FilterTrait;
 use Netresearch\Sdk\CentralStation\Validator\People\StatsValidator;
 
 /**
@@ -26,28 +27,7 @@ use Netresearch\Sdk\CentralStation\Validator\People\StatsValidator;
  */
 class StatsRequestBuilder extends AbstractRequestBuilder
 {
-    /**
-     * Adds a filter.
-     *
-     * @param string $field      The name of the field to filter
-     * @param string $comparison The comparison type (use one of Constants::FILTER_*)
-     * @param string $value      The value used to filter the field by
-     *
-     * @return StatsRequestBuilder
-     */
-    public function addFilter(
-        string $field,
-        string $comparison,
-        string $value
-    ): StatsRequestBuilder {
-        if (!isset($this->data['filter'])) {
-            $this->data['filter'] = [];
-        }
-
-        $this->data['filter'][$field][$comparison] = $value;
-
-        return $this;
-    }
+    use FilterTrait;
 
     /**
      * @return StatsRequest|RequestInterface

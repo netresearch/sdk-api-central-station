@@ -97,7 +97,18 @@ class Index implements RequestInterface
     }
 
     /**
-     * @param array $filter
+     * Sets a list of filters:
+     *
+     * [
+     *     <field1> => [
+     *         <comparison-method1> => <value1>
+     *     ],
+     *     <field2> => [
+     *         <comparison-method2> => <value2>
+     *     ],
+     * ]
+     *
+     * @param array $filter The list of filters
      *
      * @return Index
      */
@@ -132,10 +143,9 @@ class Index implements RequestInterface
             $data['order'] = $this->orderBy . '-' . $this->orderDirection;
         }
 
-        // TODO
-//        if (!empty($this->filter)) {
-//            $data['filter'] = implode(' ', $this->filter);
-//        }
+        if (!empty($this->filter)) {
+            $data['filter'] = $this->filter;
+        }
 
         if (!empty($this->includes)) {
             $data['includes'] = implode(' ', $this->includes);

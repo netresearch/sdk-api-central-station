@@ -20,7 +20,20 @@ namespace Netresearch\Sdk\CentralStation;
  */
 class Constants
 {
+    /**
+     * Valid gender options.
+     */
     public const GENDER_MALE    = 'male_user';
     public const GENDER_FEMALE  = 'female_user';
     public const GENDER_UNKNOWN = 'gender_unknown';
+
+    /**
+     * Filter comparison methods.
+     */
+    public const FILTER_LARGER_THAN = 'larger_than';
+    public const FILTER_SMALLER_THAN = 'smaller_than';
+    public const FILTER_EQUAL = 'equal';
+    public const FILTER_IN = 'in';
+    public const FILTER_BETWEEN = 'between';
+    public const FILTER_LIKE = 'like';
 }

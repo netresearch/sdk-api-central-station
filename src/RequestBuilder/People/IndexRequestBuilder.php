@@ -15,6 +15,7 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\FilterTrait;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
 use Netresearch\Sdk\CentralStation\Validator\People\IndexValidator;
 
@@ -28,6 +29,7 @@ use Netresearch\Sdk\CentralStation\Validator\People\IndexValidator;
 class IndexRequestBuilder extends AbstractRequestBuilder
 {
     use IncludesTrait;
+    use FilterTrait;
 
     /**
      * Sets the limitations of the response.
@@ -59,34 +61,12 @@ class IndexRequestBuilder extends AbstractRequestBuilder
      */
     public function setOrder(
         string $orderBy = null,
-        string $orderDirection = null
+        string $orderDirection = 'asc'
     ): IndexRequestBuilder {
         $this->data['order'] = [
             'orderBy'   => $orderBy,
             'direction' => $orderDirection,
         ];
-
-        return $this;
-    }
-
-    /**
-     * Adds a filter.
-     *
-     * @param string $filter A filter to apply to the result
-     *
-     * @return IndexRequestBuilder
-     */
-    public function addFilter(string $filter): IndexRequestBuilder
-    {
-        // TODO
-
-//        if (!isset($this->data['filter'])) {
-//            $this->data['filter'] = [];
-//        }
-//
-//        if (!in_array($filter, $this->data['filter'], true)) {
-//            $this->data['filter'][] = $filter;
-//        }
 
         return $this;
     }
