@@ -21,6 +21,7 @@ use Netresearch\Sdk\CentralStation\Model\Stats;
 use Netresearch\Sdk\CentralStation\Request\People\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Merge as MergeRequest;
+use Netresearch\Sdk\CentralStation\Request\People\Search as SearchRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Show as ShowRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Update as UpdateRequest;
@@ -107,7 +108,7 @@ class People extends AbstractApiEndpoint
      * could not be created because the account no longer has sufficient storage space for contacts,
      * we return a 507 Insufficient Storage.
      *
-     * @param CreateRequest $request
+     * @param CreateRequest $request The create request instance
      *
      * @return null|Person
      *
@@ -135,7 +136,7 @@ class People extends AbstractApiEndpoint
      * The update works in the same way as the "create" action. The route must contain the ID of the
      * element to be processed. Returns TRUE on success, FALSE otherwise.
      *
-     * @param UpdateRequest $request
+     * @param UpdateRequest $request The update request instance
      *
      * @return bool
      *
@@ -172,6 +173,36 @@ class People extends AbstractApiEndpoint
     }
 
     /**
+     * To search for one or more people, the parameters name, first_name, phone or email can be passed.
+     * If one or more hits are found, the return is in the same form as with the index function. If no matches
+     * are found we return an empty array.
+     *
+     * @param SearchRequest $request The search request instance
+     *
+     * @return PeopleCollection
+     *
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    public function search(SearchRequest $request): PeopleCollection
+    {
+        $this->urlBuilder
+            ->addPath('/search.json')
+            ->setParams($request->jsonSerialize());
+
+        $response = $this->httpGet();
+
+        /** @var PeopleCollection $result */
+        $result = $this->serializer->decode(
+            (string) $response->getBody(),
+            \Netresearch\Sdk\CentralStation\Model\People::class,
+            PeopleCollection::class
+        );
+
+        return $result;
+    }
+
+    /**
      * The stats can be used to query pure count or sum calculations for all or filtered persons. The people
      * can be filtered like the index action, i.e. by tags or any fields.
      *
@@ -202,7 +233,7 @@ class People extends AbstractApiEndpoint
      * Several people can be brought together using the merge function. The person IDs passed as looser_ids
      * are merged with the person passed as id. The logic is similar to a merger via the CentralStationCRM interface.
      *
-     * @param MergeRequest $request The merge request
+     * @param MergeRequest $request The merge request instance
      *
      * @return bool
      *

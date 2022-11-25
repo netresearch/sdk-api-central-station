@@ -17,11 +17,13 @@ use Netresearch\Sdk\CentralStation\Model\People\Person;
 use Netresearch\Sdk\CentralStation\Request\People\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
 use Netresearch\Sdk\CentralStation\Request\People\Merge;
+use Netresearch\Sdk\CentralStation\Request\People\Search;
 use Netresearch\Sdk\CentralStation\Request\People\Show;
 use Netresearch\Sdk\CentralStation\Request\People\Stats;
 use Netresearch\Sdk\CentralStation\Request\People\Update;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\CreateProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\IndexProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\SearchProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\ShowProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\StatsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
@@ -267,5 +269,61 @@ class PeopleTest extends TestCase
             );
 
         self::assertTrue($result);
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function searchResponseDataProvider(): array
+    {
+        return [
+            'Response' => [
+                SearchProvider::searchResponseSuccess(),
+            ],
+        ];
+    }
+
+    /**
+     * Tests "search" method.
+     *
+     * @dataProvider searchResponseDataProvider
+     * @test
+     *
+     * @param string $responseJsonFile
+     */
+    public function search(string $responseJsonFile): void
+    {
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+
+        $result = $serviceFactoryMock
+            ->api()
+            ->people()
+            ->search(new Search());
+
+        self::assertInstanceOf(PeopleCollection::class, $result);
+        self::assertContainsOnlyInstancesOf(People::class, $result);
+
+        foreach ($result as $people) {
+            self::assertInstanceOf(People::class, $people);
+            self::assertInstanceOf(People\Person::class, $people->person);
+        }
+
+        $this->assertSearchedPerson($result[0]->person);
+    }
+
+    private function assertSearchedPerson(Person $person)
+    {
+        self::assertSame(235321, $person->id);
+        self::assertSame(21, $person->accountId);
+        self::assertNull($person->salutation);
+        self::assertSame('', $person->title);
+        self::assertNull($person->gender);
+        self::assertNull($person->countryCode);
+        self::assertSame('Jolly', $person->firstName);
+        self::assertSame('Mäh', $person->name);
+        self::assertSame('', $person->background);
+        self::assertSame(1781, $person->userId);
+        self::assertSame('12.07.2012', $person->createdAt->format('d.m.Y'));
+        self::assertSame('13.01.2015 11:08:08', $person->updatedAt->format('d.m.Y H:i:s'));
     }
 }

@@ -1,0 +1,18 @@
+[
+    {
+        "person": {
+            "id": 235321,
+            "account_id": 21,
+            "user_id": 1781,
+            "title": "",
+            "gender": null,
+            "first_name": "Jolly",
+            "name": "Mäh",
+            "background": "",
+            "created_by_user_id": null,
+            "updated_by_user_id": 2797,
+            "created_at": "2012-07-12T11:13:19.000Z",
+            "updated_at": "2015-01-13T11:08:08.000Z"
+        }
+    }
+]
