@@ -17,10 +17,12 @@ use Netresearch\Sdk\CentralStation\Model\People\Person;
 use Netresearch\Sdk\CentralStation\Request\People\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
 use Netresearch\Sdk\CentralStation\Request\People\Show;
+use Netresearch\Sdk\CentralStation\Request\People\Stats;
 use Netresearch\Sdk\CentralStation\Request\People\Update;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\CreateProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\IndexProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\ShowProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\StatsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
@@ -212,5 +214,37 @@ class PeopleTest extends TestCase
             );
 
         self::assertTrue($result);
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function statsResponseDataProvider(): array
+    {
+        return [
+            'Response' => [
+                StatsProvider::statsResponseSuccess(),
+            ],
+        ];
+    }
+
+    /**
+     * Tests "stats" method.
+     *
+     * @dataProvider statsResponseDataProvider
+     * @test
+     *
+     * @param string $responseJsonFile
+     */
+    public function stats(string $responseJsonFile): void
+    {
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+
+        $result = $serviceFactoryMock
+            ->api()
+            ->people()
+            ->stats(new Stats());
+
+        self::assertSame(40, $result);
     }
 }

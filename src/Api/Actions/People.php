@@ -17,9 +17,11 @@ use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
+use Netresearch\Sdk\CentralStation\Model\Stats;
 use Netresearch\Sdk\CentralStation\Request\People\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Show as ShowRequest;
+use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Update as UpdateRequest;
 
 /**
@@ -166,5 +168,32 @@ class People extends AbstractApiEndpoint
             ->addPath('.json');
 
         return $this->httpDelete()->getStatusCode() === 200;
+    }
+
+    /**
+     * The stats can be used to query pure count or sum calculations for all or filtered persons. The people
+     * can be filtered like the index action, i.e. by tags or any fields.
+     *
+     * @param StatsRequest $request The stats request instance
+     *
+     * @return int
+     *
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     * @throws JsonException
+     */
+    public function stats(StatsRequest $request): int
+    {
+        $this->urlBuilder
+            ->addPath('/stats.json')
+            ->setParams($request->jsonSerialize());
+
+        /** @var Stats $result */
+        $result = $this->serializer->decode(
+            (string) $this->httpGet()->getBody(),
+            Stats::class
+        );
+
+        return $result->totalEntries;
     }
 }
