@@ -16,6 +16,7 @@ use Netresearch\Sdk\CentralStation\Model\People;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
 use Netresearch\Sdk\CentralStation\Request\People\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
+use Netresearch\Sdk\CentralStation\Request\People\Merge;
 use Netresearch\Sdk\CentralStation\Request\People\Show;
 use Netresearch\Sdk\CentralStation\Request\People\Stats;
 use Netresearch\Sdk\CentralStation\Request\People\Update;
@@ -246,5 +247,25 @@ class PeopleTest extends TestCase
             ->stats(new Stats());
 
         self::assertSame(40, $result);
+    }
+
+    /**
+     * Tests "merge" method.
+     *
+     * @test
+     */
+    public function merge(): void
+    {
+        $serviceFactoryMock = $this->getServiceFactoryMock();
+
+        $result = $serviceFactoryMock
+            ->api()
+            ->people()
+            ->merge(
+                (new Merge(1))
+                    ->setMergeIds(5, 10, 100)
+            );
+
+        self::assertTrue($result);
     }
 }

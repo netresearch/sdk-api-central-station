@@ -20,6 +20,7 @@ use Netresearch\Sdk\CentralStation\Model\People\Person;
 use Netresearch\Sdk\CentralStation\Model\Stats;
 use Netresearch\Sdk\CentralStation\Request\People\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
+use Netresearch\Sdk\CentralStation\Request\People\Merge as MergeRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Show as ShowRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Update as UpdateRequest;
@@ -195,5 +196,26 @@ class People extends AbstractApiEndpoint
         );
 
         return $result->totalEntries;
+    }
+
+    /**
+     * Several people can be brought together using the merge function. The person IDs passed as looser_ids
+     * are merged with the person passed as id. The logic is similar to a merger via the CentralStationCRM interface.
+     *
+     * @param MergeRequest $request The merge request
+     *
+     * @return bool
+     *
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     * @throws JsonException
+     */
+    public function merge(MergeRequest $request): bool
+    {
+        $this->urlBuilder
+            ->addPath('/' . $request->getPersonId())
+            ->addPath('/merge.json');
+
+        return $this->httpPost($request)->getStatusCode() === 200;
     }
 }
