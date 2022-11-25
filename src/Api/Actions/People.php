@@ -17,6 +17,7 @@ use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
+use Netresearch\Sdk\CentralStation\Request\People\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Show as ShowRequest;
 
@@ -81,10 +82,41 @@ class People extends AbstractApiEndpoint
         ShowRequest $request
     ): ?Person {
         $this->urlBuilder
-            ->addPath('/' . $request->getPersonId() . '.json')
+            ->addPath('/' . $request->getPersonId())
+            ->addPath('.json')
             ->setParams($request->jsonSerialize());
 
         $response = $this->httpGet();
+
+        /** @var null|\Netresearch\Sdk\CentralStation\Model\People $result */
+        $result = $this->serializer->decode(
+            (string) $response->getBody(),
+            \Netresearch\Sdk\CentralStation\Model\People::class
+        );
+
+        return $result->person ?? null;
+    }
+
+    /**
+     * This method creates a new person. In the positive case, the system returns
+     * the new person. To create a new person, the transfer of the surname is mandatory. If the entry
+     * could not be created because the account no longer has sufficient storage space for contacts,
+     * we return a 507 Insufficient Storage.
+     *
+     * @param CreateRequest $request
+     *
+     * @return null|Person
+     *
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     * @throws JsonException
+     */
+    public function create(CreateRequest $request): ?Person
+    {
+        $this->urlBuilder
+            ->addPath('.json');
+
+        $response = $this->httpPost($request);
 
         /** @var null|\Netresearch\Sdk\CentralStation\Model\People $result */
         $result = $this->serializer->decode(

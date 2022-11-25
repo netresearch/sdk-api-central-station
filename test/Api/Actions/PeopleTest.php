@@ -14,8 +14,10 @@ namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
 use Netresearch\Sdk\CentralStation\Model\People;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
+use Netresearch\Sdk\CentralStation\Request\People\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
 use Netresearch\Sdk\CentralStation\Request\People\Show;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\CreateProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\IndexProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\ShowProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
@@ -134,6 +136,61 @@ class PeopleTest extends TestCase
             ->show(new Show(123456));
 
         self::assertInstanceOf(People\Person::class, $result);
+
         $this->assertFirstPerson($result);
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function createResponseDataProvider(): array
+    {
+        return [
+            'Response' => [
+                CreateProvider::createResponseSuccess(),
+            ],
+        ];
+    }
+
+    /**
+     * Tests "create" method.
+     *
+     * @dataProvider createResponseDataProvider
+     * @test
+     *
+     * @param string $responseJsonFile
+     */
+    public function create(string $responseJsonFile): void
+    {
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+
+        $result = $serviceFactoryMock
+            ->api()
+            ->people()
+            ->create(
+                new Create(
+                    new \Netresearch\Sdk\CentralStation\Request\People\Common\Person('')
+                )
+            );
+
+        self::assertInstanceOf(People\Person::class, $result);
+
+        $this->assertCreatedPerson($result);
+    }
+
+    private function assertCreatedPerson(Person $person)
+    {
+        self::assertSame(1545412, $person->id);
+        self::assertSame(21, $person->accountId);
+        self::assertNull($person->salutation);
+        self::assertNull($person->title);
+        self::assertSame('male_user', $person->gender);
+        self::assertNull($person->countryCode);
+        self::assertSame('Marian', $person->firstName);
+        self::assertSame('Miller', $person->name);
+        self::assertNull($person->background);
+        self::assertNull($person->userId);
+        self::assertSame('20.07.2015', $person->createdAt->format('d.m.Y'));
+        self::assertSame('20.07.2015 13:26:42', $person->updatedAt->format('d.m.Y H:i:s'));
     }
 }
