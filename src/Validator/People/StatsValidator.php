@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Validator\People;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Validator\Traits\IncludesTrait;
+use Netresearch\Sdk\CentralStation\Validator\Traits\FilterTrait;
 
 /**
  * Class StatsValidator.
@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Validator\Traits\IncludesTrait;
  */
 class StatsValidator
 {
-    use IncludesTrait;
+    use FilterTrait;
 
     /**
      * Validate request data before sending it to the web service.
@@ -34,6 +34,8 @@ class StatsValidator
      */
     public static function validate(array $data): void
     {
-        // TODO Validate filter format
+        if (isset($data['filter'])) {
+            self::validateFilters($data['filter']);
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace Netresearch\Sdk\CentralStation\Validator\People;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Validator\Traits\IncludesTrait;
+use Netresearch\Sdk\CentralStation\Validator\Traits\FilterTrait;
 
 /**
  * Class IndexValidator.
@@ -24,6 +25,7 @@ use Netresearch\Sdk\CentralStation\Validator\Traits\IncludesTrait;
 class IndexValidator
 {
     use IncludesTrait;
+    use FilterTrait;
 
     /**
      * Validate request data before sending it to the web service.
@@ -38,6 +40,8 @@ class IndexValidator
             self::validateIncludes($data['includes']);
         }
 
-        // TODO Validate filter format
+        if (isset($data['filter'])) {
+            self::validateFilters($data['filter']);
+        }
     }
 }

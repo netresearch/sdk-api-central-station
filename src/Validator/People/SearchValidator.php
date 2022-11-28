@@ -23,6 +23,18 @@ use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 class SearchValidator
 {
     /**
+     * List of allowed "search" fields.
+     *
+     * @var string[]
+     */
+    private static $allowedSearchFields = [
+        'name',
+        'first_name',
+        'phone',
+        'email',
+    ];
+
+    /**
      * Validate request data before sending it to the web service.
      *
      * @param array<string, mixed> $data The data collected by the request builder
@@ -31,9 +43,12 @@ class SearchValidator
      */
     public static function validate(array $data): void
     {
-        // TODO Validate search format
-
-
-//        name, first_name, phone oder email
+        foreach ($data['search'] as $search => $value) {
+            if (!in_array($search, self::$allowedSearchFields, true)) {
+                throw new RequestValidatorException(
+                    'The provided search parameter "' . $search . '" is not allowed'
+                );
+            }
+        }
     }
 }
