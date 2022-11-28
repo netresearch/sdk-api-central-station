@@ -66,14 +66,10 @@ class CreateRequestBuilder extends AbstractRequestBuilder
         CreateValidator::validate($this->data);
 
         $person = new Person();
-        $person->setLastName($this->data['person']['lastName']);
-
-        if (isset($this->data['person'])) {
-            $person
-                ->setFirstName($this->data['person']['firstName'])
-                ->setGender($this->data['person']['gender'])
-                ->setTitle($this->data['person']['title']);
-        }
+        $person->setLastName($this->data['person']['lastName'])
+            ->setFirstName($this->data['person']['firstName'])
+            ->setGender($this->data['person']['gender'])
+            ->setTitle($this->data['person']['title']);
 
         // Assign values to request
         $request = new CreateRequest($person);

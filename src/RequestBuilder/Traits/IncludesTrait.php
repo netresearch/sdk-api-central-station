@@ -29,9 +29,9 @@ trait IncludesTrait
      *                        "companies", "tags", "avatar", "tels", "emails", "homepages", "addrs", "custom_fields",
      *                        "connections" or "all"). Use "all" to return all at once.
      *
-     * @return AbstractRequestBuilder
+     * @return self
      */
-    public function addInclude(string $include): AbstractRequestBuilder
+    public function addInclude(string $include): self
     {
         if (!isset($this->data['includes'])) {
             $this->data['includes'] = [];
