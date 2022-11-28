@@ -23,9 +23,15 @@ class Constants
     /**
      * Valid gender options.
      */
-    public const GENDER_MALE    = 'male_user';
-    public const GENDER_FEMALE  = 'female_user';
+    public const GENDER_MALE = 'male_user';
+    public const GENDER_FEMALE = 'female_user';
     public const GENDER_UNKNOWN = 'gender_unknown';
+
+    /**
+     * Order types.
+     */
+    public const ORDER_DIRECTION_ASC = 'asc';
+    public const ORDER_DIRECTION_DESC = 'desc';
 
     /**
      * Filter comparison methods.
@@ -36,4 +42,19 @@ class Constants
     public const FILTER_IN = 'in';
     public const FILTER_BETWEEN = 'between';
     public const FILTER_LIKE = 'like';
+
+    /**
+     * Include types
+     */
+    public const INCLUDE_POSITIONS = 'positions';
+    public const INCLUDE_COMPANIES = 'companies';
+    public const INCLUDE_TAGS = 'tags';
+    public const INCLUDE_AVATAR = 'avatar';
+    public const INCLUDE_PHONE_NUMBERS = 'tels';
+    public const INCLUDE_EMAILS = 'emails';
+    public const INCLUDE_HOMEPAGES = 'homepages';
+    public const INCLUDE_ADDRESSES = 'addrs';
+    public const INCLUDE_CUSTOM_FIELDS = 'custom_fields';
+    public const INCLUDE_CONNECTIONS = 'connections';
+    public const INCLUDE_ALL = 'all';
 }

@@ -39,7 +39,7 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
             )
             ->setOrder(
                 'name',
-                'desc'
+                Constants::ORDER_DIRECTION_DESC
             )
             ->addFilter(
                 'first_name',
@@ -51,8 +51,8 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
                 Constants::FILTER_SMALLER_THAN,
                 '2022-10-25'
             )
-            ->addInclude('tags')
-            ->addInclude('addrs');
+            ->addInclude(Constants::INCLUDE_TAGS)
+            ->addInclude(Constants::INCLUDE_ADDRESSES);
 
         $request    = $requestBuilder->create();
         $requestUrl = http_build_query($request->jsonSerialize());

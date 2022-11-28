@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\People;
 
 use Netresearch\Sdk\CentralStation\Api\RequestInterface;
+use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
@@ -55,13 +56,13 @@ class IndexRequestBuilder extends AbstractRequestBuilder
      * Sets the sort order of the response.
      *
      * @param string $orderBy        The order type (either "created_at", "updated_at", "activity" or "name" (default))
-     * @param string $orderDirection The order direction (either "asc" (Default) or "desc")
+     * @param string $orderDirection The order direction (use one of Constants::ORDER_*)
      *
      * @return IndexRequestBuilder
      */
     public function setOrder(
         string $orderBy = 'name',
-        string $orderDirection = 'asc'
+        string $orderDirection = Constants::ORDER_DIRECTION_ASC
     ): IndexRequestBuilder {
         $this->data['order'] = [
             'orderBy'   => $orderBy,
@@ -111,7 +112,10 @@ class IndexRequestBuilder extends AbstractRequestBuilder
         }
 
         if (isset($this->data['includes'])) {
-            $request->setIncludes(...$this->data['includes']);
+            $request->setIncludes(
+                ...
+                $this->data['includes']
+            );
         }
 
         $this->data = [];

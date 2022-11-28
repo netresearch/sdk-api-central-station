@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Validator\Traits;
 
+use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 
 /**
@@ -28,17 +29,17 @@ trait IncludesTrait
      * @var string[]
      */
     private static $allowedIncludes = [
-        'positions',
-        'companies',
-        'tags',
-        'avatar',
-        'tels',
-        'emails',
-        'homepages',
-        'addrs',
-        'custom_fields',
-        'connections',
-        'all',
+        Constants::INCLUDE_POSITIONS,
+        CONSTANTS::INCLUDE_COMPANIES,
+        CONSTANTS::INCLUDE_TAGS,
+        CONSTANTS::INCLUDE_AVATAR,
+        CONSTANTS::INCLUDE_PHONE_NUMBERS,
+        CONSTANTS::INCLUDE_EMAILS,
+        CONSTANTS::INCLUDE_HOMEPAGES,
+        CONSTANTS::INCLUDE_ADDRESSES,
+        CONSTANTS::INCLUDE_CUSTOM_FIELDS,
+        CONSTANTS::INCLUDE_CONNECTIONS,
+        CONSTANTS::INCLUDE_ALL,
     ];
 
     /**

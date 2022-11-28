@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
+use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\ShowRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
@@ -33,8 +34,8 @@ class ShowRequestBuilderTest extends RequestBuilderTestCase
         $requestBuilder = new ShowRequestBuilder();
         $requestBuilder
             ->setPersonId(123456)
-            ->addInclude('tags')
-            ->addInclude('addrs');
+            ->addInclude(Constants::INCLUDE_TAGS)
+            ->addInclude(Constants::INCLUDE_ADDRESSES);
 
         $request    = $requestBuilder->create();
         $requestUrl = http_build_query($request->jsonSerialize());

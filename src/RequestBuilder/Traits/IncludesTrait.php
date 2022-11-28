@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\Traits;
 
-use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
-
 /**
  * Trait providing method to add includes to request builder.
  *
@@ -25,9 +23,9 @@ trait IncludesTrait
     /**
      * Adds an include.
      *
-     * @param string $include The name of an additional data to include in the response (either "positions",
-     *                        "companies", "tags", "avatar", "tels", "emails", "homepages", "addrs", "custom_fields",
-     *                        "connections" or "all"). Use "all" to return all at once.
+     * @param string $include The name of an additional data to include in the
+     *                        response (use one of Constants::INCLUDE_*). Use Constants::INCLUDE_ALL to return
+     *                        all at once.
      *
      * @return self
      */
