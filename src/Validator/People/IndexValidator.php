@@ -28,7 +28,7 @@ class IndexValidator
     /**
      * Validate request data before sending it to the web service.
      *
-     * @param array<string, mixed> $data
+     * @param array<string, mixed> $data The data collected by the request builder
      *
      * @throws RequestValidatorException
      */

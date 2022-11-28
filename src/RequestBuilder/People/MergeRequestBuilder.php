@@ -26,9 +26,9 @@ use Netresearch\Sdk\CentralStation\Validator\People\MergeValidator;
 class MergeRequestBuilder extends AbstractRequestBuilder
 {
     /**
-     * Adds the ID of the person to merge.
+     * Adds the ID of the person to merge to.
      *
-     * @param int $personId
+     * @param int $personId The ID of the person to merge to
      *
      * @return MergeRequestBuilder
      */
@@ -41,9 +41,9 @@ class MergeRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * Adds the ID of the person to merge.
+     * Adds the ID of a person to be merged.
      *
-     * @param int $id
+     * @param int $id The ID of the person to be merged
      *
      * @return MergeRequestBuilder
      */
@@ -56,7 +56,11 @@ class MergeRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
+     * This method creates the actual request object and fills it with the data set in the request builder.
+     *
      * @return MergeRequest|RequestInterface
+     *
+     * @throws RequestValidatorException
      */
     public function create(): RequestInterface
     {

@@ -43,12 +43,12 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * Sets the person.
+     * Sets the person's data.
      *
-     * @param null|string $lastName
-     * @param null|string $firstName
-     * @param null|string $gender
-     * @param null|string $title
+     * @param null|string $lastName  The last name
+     * @param null|string $firstName The first name
+     * @param null|string $gender    The gender
+     * @param null|string $title     The title
      *
      * @return UpdateRequestBuilder
      */
@@ -69,6 +69,8 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
+     * This method creates the actual request object and fills it with the data set in the request builder.
+     *
      * @return UpdateRequest|RequestInterface
      *
      * @throws RequestValidatorException

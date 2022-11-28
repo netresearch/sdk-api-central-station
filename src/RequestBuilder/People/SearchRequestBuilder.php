@@ -27,8 +27,10 @@ use Netresearch\Sdk\CentralStation\Validator\People\SearchValidator;
 class SearchRequestBuilder extends AbstractRequestBuilder
 {
     /**
-     * @param string $field
-     * @param string $value
+     * Adds a search query.
+     *
+     * @param string $field The field to search for
+     * @param string $value The value of the field to search for
      *
      * @return SearchRequestBuilder
      */
@@ -42,6 +44,8 @@ class SearchRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
+     * This method creates the actual request object and fills it with the data set in the request builder.
+     *
      * @return SearchRequest|RequestInterface
      *
      * @throws RequestValidatorException

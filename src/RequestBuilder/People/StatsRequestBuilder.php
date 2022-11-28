@@ -30,6 +30,8 @@ class StatsRequestBuilder extends AbstractRequestBuilder
     use FilterTrait;
 
     /**
+     * This method creates the actual request object and fills it with the data set in the request builder.
+     *
      * @return StatsRequest|RequestInterface
      *
      * @throws RequestValidatorException

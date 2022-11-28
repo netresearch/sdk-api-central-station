@@ -44,7 +44,7 @@ trait IncludesTrait
     /**
      * Validate request data before sending it to the web service.
      *
-     * @param string[] $includes
+     * @param string[] $includes The "includes" data collected by the request builder
      *
      * @throws RequestValidatorException
      */

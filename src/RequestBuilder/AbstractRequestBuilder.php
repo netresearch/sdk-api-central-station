@@ -14,7 +14,7 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder;
 use Netresearch\Sdk\CentralStation\Api\RequestBuilderInterface;
 
 /**
- * An abstract request builder.
+ * An abstract request builder providing common methods for all request builders.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
