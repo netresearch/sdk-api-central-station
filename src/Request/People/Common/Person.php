@@ -23,7 +23,7 @@ use JsonSerializable;
 class Person implements JsonSerializable
 {
     /**
-     * @var string
+     * @var null|string
      */
     private $lastName;
 
@@ -43,11 +43,11 @@ class Person implements JsonSerializable
     private $title;
 
     /**
-     * @param string $lastName
+     * @param null|string $lastName
      *
      * @return Person
      */
-    public function setLastName(string $lastName): Person
+    public function setLastName(?string $lastName): Person
     {
         $this->lastName = $lastName;
         return $this;
@@ -93,19 +93,19 @@ class Person implements JsonSerializable
     {
         $data = [];
 
-        if ($this->lastName) {
+        if ($this->lastName !== null) {
             $data['name'] = $this->lastName;
         }
 
-        if ($this->firstName) {
+        if ($this->firstName !== null) {
             $data['first_name'] = $this->firstName;
         }
 
-        if ($this->gender) {
+        if ($this->gender !== null) {
             $data['gender'] = $this->gender;
         }
 
-        if ($this->title) {
+        if ($this->title !== null) {
             $data['title'] = $this->title;
         }
 

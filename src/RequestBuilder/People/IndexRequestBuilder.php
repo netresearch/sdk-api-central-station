@@ -34,13 +34,13 @@ class IndexRequestBuilder extends AbstractRequestBuilder
     /**
      * Sets the limitations of the response.
      *
-     * @param null|int $perPage The number of elements to return (default: 25)
+     * @param int      $perPage The number of elements to return (default: 25)
      * @param null|int $page    The page number for which to return the results
      *
      * @return IndexRequestBuilder
      */
     public function setLimit(
-        int $perPage = null,
+        int $perPage = 25,
         int $page = null
     ): IndexRequestBuilder {
         $this->data['limit'] = [
@@ -54,13 +54,13 @@ class IndexRequestBuilder extends AbstractRequestBuilder
     /**
      * Sets the sort order of the response.
      *
-     * @param null|string $orderBy        The order type (either "created_at", "updated_at", "activity" or "name" (default))
-     * @param null|string $orderDirection The order direction (either "asc" (Default) or "desc")
+     * @param string $orderBy        The order type (either "created_at", "updated_at", "activity" or "name" (default))
+     * @param string $orderDirection The order direction (either "asc" (Default) or "desc")
      *
      * @return IndexRequestBuilder
      */
     public function setOrder(
-        string $orderBy = null,
+        string $orderBy = 'name',
         string $orderDirection = 'asc'
     ): IndexRequestBuilder {
         $this->data['order'] = [
@@ -95,11 +95,11 @@ class IndexRequestBuilder extends AbstractRequestBuilder
         }
 
         if (isset($this->data['order'])) {
-            if (($this->data['order']['orderBy'] !== null) && ($this->data['order']['orderBy'] > 0)) {
+            if ($this->data['order']['orderBy'] !== '') {
                 $request->setOrderBy($this->data['order']['orderBy']);
             }
 
-            if (($this->data['order']['direction'] !== null) && ($this->data['order']['direction'] > 0)) {
+            if ($this->data['order']['direction'] !== '') {
                 $request->setOrderDirection($this->data['order']['direction']);
             }
         }
