@@ -24,7 +24,7 @@ use JsonSerializable;
 interface RequestInterface extends JsonSerializable
 {
     /**
-     * @return array<string, array>
+     * @return array<string, mixed>
      */
     public function jsonSerialize(): array;
 }

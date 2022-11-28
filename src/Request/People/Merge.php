@@ -53,18 +53,18 @@ class Merge implements RequestInterface
     }
 
     /**
-     * @param int[] $mergeIds
+     * @param int ...$mergeIds
      *
      * @return Merge
      */
-    public function setMergeIds(...$mergeIds): Merge
+    public function setMergeIds(int ...$mergeIds): Merge
     {
         $this->mergeIds = $mergeIds;
         return $this;
     }
 
     /**
-     * @return array<string, array<int, array<string, int|string>>>
+     * @return array<string, int|array<int>>
      */
     public function jsonSerialize(): array
     {

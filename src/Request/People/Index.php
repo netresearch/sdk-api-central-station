@@ -43,7 +43,7 @@ class Index implements RequestInterface
     private $orderDirection = 'asc';
 
     /**
-     * @var array
+     * @var string[][]
      */
     private $filter;
 
@@ -108,7 +108,7 @@ class Index implements RequestInterface
      *     ],
      * ]
      *
-     * @param array $filter The list of filters
+     * @param string[][] $filter The list of filters
      *
      * @return Index
      */
@@ -119,18 +119,18 @@ class Index implements RequestInterface
     }
 
     /**
-     * @param string[] $includes
+     * @param string ...$includes
      *
      * @return Index
      */
-    public function setIncludes(...$includes): Index
+    public function setIncludes(string ...$includes): Index
     {
         $this->includes = $includes;
         return $this;
     }
 
     /**
-     * @return array<string, int|string>
+     * @return array<string, int|string|array<string>|array<array<string>>>
      */
     public function jsonSerialize(): array
     {

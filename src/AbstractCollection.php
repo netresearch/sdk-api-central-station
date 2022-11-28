@@ -202,7 +202,7 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
      *
      * @param callable $callback The callback function to use
      *
-     * @return self
+     * @return self<TKey, TValue>
      */
     public function sort(callable $callback): self
     {
@@ -215,7 +215,7 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
      *
      * @param callable $callback The callback function to use
      *
-     * @return self
+     * @return self<TKey, TValue>
      */
     public function filter(callable $callback): self
     {
@@ -233,7 +233,7 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
      *                         elements from the end of the array. If it is omitted, then the sequence will have
      *                         everything from offset up until the end of the array.
      *
-     * @return self
+     * @return self<TKey, TValue>
      */
     public function slice(int $offset, int $length = null): self
     {

@@ -29,7 +29,7 @@ class Update implements RequestInterface
     private $personId;
 
     /**
-     * @var Person
+     * @var null|Person
      */
     private $person;
 

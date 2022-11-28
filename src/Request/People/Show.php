@@ -51,18 +51,18 @@ class Show implements RequestInterface
     }
 
     /**
-     * @param string[] $includes
+     * @param string ...$includes
      *
      * @return Show
      */
-    public function setIncludes(...$includes): Show
+    public function setIncludes(string ...$includes): Show
     {
         $this->includes = $includes;
         return $this;
     }
 
     /**
-     * @return array<string, int|string>
+     * @return array<string, string>
      */
     public function jsonSerialize(): array
     {

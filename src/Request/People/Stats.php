@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 class Stats implements RequestInterface
 {
     /**
-     * @var array
+     * @var string[][]
      */
     private $filter;
 
@@ -39,7 +39,7 @@ class Stats implements RequestInterface
      *     ],
      * ]
      *
-     * @param array $filter The list of filters
+     * @param string[][] $filter The list of filters
      *
      * @return Stats
      */
@@ -50,7 +50,7 @@ class Stats implements RequestInterface
     }
 
     /**
-     * @return array<string, int|string>
+     * @return array<string, array<array<string>>>
      */
     public function jsonSerialize(): array
     {
