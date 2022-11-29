@@ -34,9 +34,13 @@ final class ErrorPlugin implements Plugin
     /**
      * HTTP response codes.
      */
-    private const HTTP_BAD_REQUEST           = 400;
-    private const HTTP_UNAUTHORIZED          = 401;
-    private const HTTP_INTERNAL_SERVER_ERROR = 500;
+    private const HTTP_BAD_REQUEST            = 400;
+    private const HTTP_UNAUTHORIZED           = 401;
+    private const HTTP_FORBIDDEN              = 403;
+    private const HTTP_CONFLICT               = 409;
+    private const HTTP_UNSUPPORTED_MEDIA_TYPE = 415;
+    private const HTTP_INTERNAL_SERVER_ERROR  = 500;
+    private const HTTP_INSUFFICIENT_STORAGE   = 507;
 
     /**
      * Handles all client/server errors.
@@ -53,6 +57,17 @@ final class ErrorPlugin implements Plugin
     {
         // Status code >= 500
         if ($response->getStatusCode() >= self::HTTP_INTERNAL_SERVER_ERROR) {
+            // Insufficient storage
+            if ($response->getStatusCode() === self::HTTP_INSUFFICIENT_STORAGE) {
+                throw new ServerErrorException(
+                    'The request could not be processed because the account does not have enough storage '
+                    . 'space (e.g. contacts, offers & projects or storage space).',
+                    $request,
+                    $response
+                );
+            }
+
+            // Every other 5xx error
             throw new ServerErrorException($response->getReasonPhrase(), $request, $response);
         }
 
@@ -60,6 +75,35 @@ final class ErrorPlugin implements Plugin
         if ($response->getStatusCode() === self::HTTP_UNAUTHORIZED) {
             throw new AuthenticationErrorException(
                 'Authentication failed. Please check your API key.',
+                $request,
+                $response
+            );
+        }
+
+        // Forbidden
+        if ($response->getStatusCode() === self::HTTP_FORBIDDEN) {
+            throw new DetailedErrorException(
+                'The specified user does not have sufficient rights for the action.',
+                $request,
+                $response
+            );
+        }
+
+        // Conflict
+        if ($response->getStatusCode() === self::HTTP_CONFLICT) {
+            throw new DetailedErrorException(
+                'The request was made under false assumptions. For example, if the resource has '
+                . 'been changed in the meantime.',
+                $request,
+                $response
+            );
+        }
+
+        // Unsupported media type
+        if ($response->getStatusCode() === self::HTTP_UNSUPPORTED_MEDIA_TYPE) {
+            throw new DetailedErrorException(
+                'The content of the request was submitted with an invalid or not allowed media type. '
+                . 'Only .json is supported.',
                 $request,
                 $response
             );
