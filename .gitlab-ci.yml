@@ -1,0 +1,79 @@
+image: php:7.3
+
+before_script:
+  - apt-get update -yqq
+  - apt-get install -yqq git libxml2-dev libzip-dev zip unzip
+
+  # Install PHP extensions
+  - docker-php-ext-install xml zip
+
+  # Install & enable Xdebug for code coverage reports
+  - pecl install xdebug
+  - docker-php-ext-enable xdebug
+
+
+stages:
+  - preparation
+  - testing
+
+
+composer:
+  stage: preparation
+  script:
+    - php --version
+    # Install composer
+    - curl -sS https://getcomposer.org/installer | php
+    # Install all project dependencies
+    - php composer.phar install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+  artifacts:
+    paths:
+      - vendor/
+    expire_in: 1 days
+    when: always
+  cache:
+    paths:
+      - vendor/
+
+
+# Run code sniffer
+phpcs:
+  stage: testing
+  script:
+    - php --version
+    - vendor/bin/phpcs src/ --standard=PSR12 --extensions=php --report=junit > phpcs-report.xml
+  artifacts:
+    reports:
+      junit:
+        - phpcs-report.xml
+
+# Run static analysis
+phpstan:
+  stage: testing
+  script:
+    - php --version
+    - vendor/bin/phpstan analyse --error-format=junit --no-progress -c ./phpstan.neon > phpstan-report.xml
+  artifacts:
+    reports:
+      junit:
+        - phpstan-report.xml
+
+# Run tests
+phpunit:
+  # Set any variables we need
+  variables:
+    XDEBUG_MODE: coverage
+  stage: testing
+  dependencies:
+    - composer
+  # If Xdebug was installed you can generate a coverage report and see code coverage metrics.
+  script:
+    - php --version
+    - vendor/bin/phpunit --configuration phpunit.xml --log-junit phpunit-report.xml --coverage-text --colors=never --coverage-html=coverage/
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+  artifacts:
+    reports:
+      junit: phpunit-report.xml
+    when: always
+    paths:
+      - coverage
+    expire_in: 30 days
