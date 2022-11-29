@@ -326,4 +326,21 @@ class PeopleTest extends TestCase
         self::assertSame('12.07.2012', $person->createdAt->format('d.m.Y'));
         self::assertSame('13.01.2015 11:08:08', $person->updatedAt->format('d.m.Y H:i:s'));
     }
+
+    /**
+     * Tests "delete" method.
+     *
+     * @test
+     */
+    public function delete(): void
+    {
+        $serviceFactoryMock = $this->getServiceFactoryMock();
+
+        $result = $serviceFactoryMock
+            ->api()
+            ->people()
+            ->delete(12345);
+
+        self::assertTrue($result);
+    }
 }

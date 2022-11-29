@@ -57,7 +57,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                 ->createStreamFromFile($responseData);
         } else {
             $stream = Psr17FactoryDiscovery::findStreamFactory()
-                ->createStream($responseData);
+                ->createStream('');
         }
 
         $response = (new Response())
