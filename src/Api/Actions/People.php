@@ -14,6 +14,7 @@ namespace Netresearch\Sdk\CentralStation\Api\Actions;
 use JsonException;
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
+use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
@@ -49,9 +50,10 @@ class People extends AbstractApiEndpoint
      *
      * @return PeopleCollection
      *
+     * @throws AuthenticationException
      * @throws DetailedServiceException
-     * @throws JsonException
      * @throws ServiceException
+     * @throws JsonException
      */
     public function index(IndexRequest $request): PeopleCollection
     {
@@ -79,6 +81,7 @@ class People extends AbstractApiEndpoint
      *
      * @return null|Person
      *
+     * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      * @throws JsonException
@@ -112,6 +115,7 @@ class People extends AbstractApiEndpoint
      *
      * @return null|Person
      *
+     * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      * @throws JsonException
@@ -140,6 +144,7 @@ class People extends AbstractApiEndpoint
      *
      * @return bool
      *
+     * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      * @throws JsonException
@@ -160,6 +165,7 @@ class People extends AbstractApiEndpoint
      *
      * @return bool
      *
+     * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
@@ -181,8 +187,10 @@ class People extends AbstractApiEndpoint
      *
      * @return PeopleCollection
      *
+     * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
+     * @throws JsonException
      */
     public function search(SearchRequest $request): PeopleCollection
     {
@@ -210,6 +218,7 @@ class People extends AbstractApiEndpoint
      *
      * @return int
      *
+     * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      * @throws JsonException
@@ -237,6 +246,7 @@ class People extends AbstractApiEndpoint
      *
      * @return bool
      *
+     * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      * @throws JsonException
