@@ -112,9 +112,8 @@ class ApiTest extends TestCase
      */
     public function people(): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock();
-
-        $peopleApi = $serviceFactoryMock
+        $peopleApi = $this
+            ->getServiceFactoryMock()
             ->api()
             ->people();
 

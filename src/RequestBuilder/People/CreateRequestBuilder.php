@@ -30,10 +30,11 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     /**
      * Sets the person's data.
      *
-     * @param string      $lastName  The last name
-     * @param null|string $firstName The first name
-     * @param null|string $gender    The gender
-     * @param null|string $title     The title
+     * @param string      $lastName   The last name
+     * @param null|string $firstName  The first name
+     * @param null|string $gender     The gender
+     * @param null|string $title      The title
+     * @param null|string $salutation The salutation
      *
      * @return CreateRequestBuilder
      */
@@ -41,13 +42,15 @@ class CreateRequestBuilder extends AbstractRequestBuilder
         string $lastName,
         string $firstName = null,
         string $gender = null,
-        string $title = null
+        string $title = null,
+        string $salutation = null
     ): CreateRequestBuilder {
         $this->data['person'] = [
-            'lastName'  => $lastName,
-            'firstName' => $firstName,
-            'gender'    => $gender,
-            'title'     => $title,
+            'lastName'   => $lastName,
+            'firstName'  => $firstName,
+            'gender'     => $gender,
+            'title'      => $title,
+            'salutation' => $salutation,
         ];
 
         return $this;
@@ -69,7 +72,8 @@ class CreateRequestBuilder extends AbstractRequestBuilder
         $person->setLastName($this->data['person']['lastName'])
             ->setFirstName($this->data['person']['firstName'])
             ->setGender($this->data['person']['gender'])
-            ->setTitle($this->data['person']['title']);
+            ->setTitle($this->data['person']['title'])
+            ->setSalutation($this->data['person']['salutation']);
 
         // Assign values to request
         $request = new CreateRequest($person);

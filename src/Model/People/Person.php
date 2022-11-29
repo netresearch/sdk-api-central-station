@@ -95,14 +95,14 @@ class Person
     /**
      * Time of creation.
      *
-     * @var null|DateTime
+     * @var DateTime
      */
     public $createdAt;
 
     /**
      * Time of last update.
      *
-     * @var null|DateTime
+     * @var DateTime
      */
     public $updatedAt;
 }

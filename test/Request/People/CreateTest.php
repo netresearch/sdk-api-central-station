@@ -48,6 +48,7 @@ class CreateTest extends TestCase
                     'first_name' => 'Max',
                     'gender'     => Constants::GENDER_MALE,
                     'title'      => 'Dr. Dr.',
+                    'salutation' => null,
                 ],
             ],
             $request->jsonSerialize()

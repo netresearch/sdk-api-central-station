@@ -43,6 +43,11 @@ class Person implements JsonSerializable
     private $title;
 
     /**
+     * @var null|string
+     */
+    private $salutation;
+
+    /**
      * @param null|string $lastName
      *
      * @return Person
@@ -87,28 +92,27 @@ class Person implements JsonSerializable
     }
 
     /**
+     * @param null|string $salutation
+     *
+     * @return Person
+     */
+    public function setSalutation(?string $salutation): Person
+    {
+        $this->salutation = $salutation;
+        return $this;
+    }
+
+    /**
      * @return array<string, string>
      */
     public function jsonSerialize(): array
     {
-        $data = [];
-
-        if ($this->lastName !== null) {
-            $data['name'] = $this->lastName;
-        }
-
-        if ($this->firstName !== null) {
-            $data['first_name'] = $this->firstName;
-        }
-
-        if ($this->gender !== null) {
-            $data['gender'] = $this->gender;
-        }
-
-        if ($this->title !== null) {
-            $data['title'] = $this->title;
-        }
-
-        return $data;
+        return [
+            'name'       => $this->lastName,
+            'first_name' => $this->firstName,
+            'gender'     => $this->gender,
+            'title'      => $this->title,
+            'salutation' => $this->salutation,
+        ];
     }
 }
