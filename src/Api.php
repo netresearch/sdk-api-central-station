@@ -37,7 +37,7 @@ class Api
     /**
      * Instance of the "tags" API for implementing lazy loading.
      *
-     * @var null|Tag
+     * @var null|Tags
      */
     private $tagsApi;
 
