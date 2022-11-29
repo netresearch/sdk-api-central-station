@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation;
 
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
+use Netresearch\Sdk\CentralStation\Api\Actions\Tags;
 use Netresearch\Sdk\CentralStation\Serializer\JsonSerializer;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -27,11 +28,18 @@ use Psr\Http\Message\StreamFactoryInterface;
 class Api
 {
     /**
-     * Instance of the people API for implementing lazy loading.
+     * Instance of the "people" API for implementing lazy loading.
      *
      * @var null|People
      */
     private $peopleApi;
+
+    /**
+     * Instance of the "tags" API for implementing lazy loading.
+     *
+     * @var null|Tag
+     */
+    private $tagsApi;
 
     /**
      * @var ClientInterface
@@ -82,7 +90,7 @@ class Api
     }
 
     /**
-     * Returns the people API by lazy loading.
+     * Returns the "people" API by lazy loading.
      *
      * @return People
      */
@@ -103,5 +111,29 @@ class Api
         }
 
         return $this->peopleApi;
+    }
+
+    /**
+     * Returns the "tags" API by lazy loading.
+     *
+     * @return Tags
+     */
+    public function tags(): Tags
+    {
+        $this->urlBuilder
+            ->reset()
+            ->addPath('/' . Tags::PATH);
+
+        if (!$this->tagsApi) {
+            $this->tagsApi = new Tags(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->tagsApi;
     }
 }
