@@ -15,7 +15,7 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
 
 /**
- * A batch request used to send multiple hits in a single request.
+ * A "create" request.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de

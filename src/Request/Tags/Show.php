@@ -38,6 +38,8 @@ class Show implements RequestInterface
     }
 
     /**
+     * Returns the tag ID.
+     *
      * @return int
      */
     public function getTagId(): int

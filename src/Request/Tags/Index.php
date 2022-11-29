@@ -14,7 +14,7 @@ namespace Netresearch\Sdk\CentralStation\Request\Tags;
 use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 
 /**
- * A "index" request.
+ * An "index" request to return all tags.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de

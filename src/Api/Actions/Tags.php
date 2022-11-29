@@ -43,6 +43,8 @@ class Tags extends AbstractApiEndpoint
     /**
      * The index action can be used to query a list of all tags in an account.
      *
+     * https://<BASE-URL>/api/tags.json
+     *
      * @param IndexRequest $request The index request instance
      *
      * @return TagsCollection
@@ -73,6 +75,8 @@ class Tags extends AbstractApiEndpoint
     /**
      * A single tag can be loaded with the show action. The prerequisite for this is
      * a valid tag ID for the account.
+     *
+     * https://<BASE-URL>/api/tags/<TAG-ID>.json
      *
      * @param ShowRequest $request The show request instance
      *
@@ -106,6 +110,8 @@ class Tags extends AbstractApiEndpoint
      * the new tag. To create a new tag, the transfer of the name is mandatory. If the entry
      * could not be created because the account no longer has sufficient storage space for tags,
      * we return a 507 Insufficient Storage.
+     *
+     * @notice Creating an already existing tag results in a 422 (Unprocessable Entity) error exception.
      *
      * @param CreateRequest $request The create request instance
      *
