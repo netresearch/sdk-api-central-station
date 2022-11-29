@@ -46,6 +46,8 @@ class People extends AbstractApiEndpoint
     /**
      * The index action can be used to query a list of all people in an account.
      *
+     * https://<BASE-URL>/api/people.json
+     *
      * @param IndexRequest $request The index request instance
      *
      * @return PeopleCollection
@@ -76,6 +78,8 @@ class People extends AbstractApiEndpoint
     /**
      * A single person can be loaded with the show action. The prerequisite for this is
      * a valid personal ID for the account.
+     *
+     * https://<BASE-URL>/api/people/<PERSON-ID>.json
      *
      * @param ShowRequest $request The show request instance
      *
@@ -183,6 +187,8 @@ class People extends AbstractApiEndpoint
      * If one or more hits are found, the return is in the same form as with the index function. If no matches
      * are found we return an empty array.
      *
+     * https://<BASE-URL>/api/people/search.json
+     *
      * @param SearchRequest $request The search request instance
      *
      * @return PeopleCollection
@@ -213,6 +219,8 @@ class People extends AbstractApiEndpoint
     /**
      * The stats can be used to query pure count or sum calculations for all or filtered persons. The people
      * can be filtered like the index action, i.e. by tags or any fields.
+     *
+     * https://<BASE-URL>/api/people/stats.json
      *
      * @param StatsRequest $request The stats request instance
      *

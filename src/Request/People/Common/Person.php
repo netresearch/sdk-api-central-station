@@ -14,7 +14,7 @@ namespace Netresearch\Sdk\CentralStation\Request\People\Common;
 use JsonSerializable;
 
 /**
- * A person object used to create/update a record
+ * A person object used to create/update a record.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
