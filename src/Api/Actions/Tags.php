@@ -21,6 +21,7 @@ use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\Request\Tags\Show as ShowRequest;
+use Netresearch\Sdk\CentralStation\Request\Tags\TagList as ListRequest;
 use Netresearch\Sdk\CentralStation\Request\Tags\Update as UpdateRequest;
 
 /**
@@ -172,5 +173,30 @@ class Tags extends AbstractApiEndpoint
             ->addPath('.json');
 
         return $this->httpDelete()->getStatusCode() === 200;
+    }
+
+    /**
+     * Returns a list of all tag names in the account.
+     *
+     * @param ListRequest $request The list request instance
+     *
+     * @return string[]
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     * @throws JsonException
+     */
+    public function list(ListRequest $request): array
+    {
+        $this->urlBuilder
+            ->addPath('/list.json')
+            ->setParams($request->jsonSerialize());
+
+        $response = $this->httpGet();
+
+        return $this->serializer->decode(
+            (string) $response->getBody()
+        );
     }
 }
