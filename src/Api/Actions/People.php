@@ -44,6 +44,36 @@ class People extends AbstractApiEndpoint
     public const PATH = 'people';
 
     /**
+     * Instance of the "tags" API for implementing lazy loading.
+     *
+     * @var null|Tags
+     */
+    private $tagsApi;
+
+    /**
+     * Returns the "tags" API used to process tags related to a specific person.
+     *
+     * @return Tags
+     */
+    public function tags(): Tags
+    {
+        $this->urlBuilder
+            ->addPath('/' . Tags::PATH);
+
+        if (!$this->tagsApi) {
+            $this->tagsApi = new Tags(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->tagsApi;
+    }
+
+    /**
      * Returns a list of all people in an account.
      *
      * GET https://<BASE-URL>/api/people

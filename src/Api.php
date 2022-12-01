@@ -92,13 +92,21 @@ class Api
     /**
      * Returns the "people" API by lazy loading.
      *
+     * @param null|int $personId A valid person ID
+     *
      * @return People
      */
-    public function people(): People
+    public function people(int $personId = null): People
     {
         $this->urlBuilder
             ->reset()
             ->addPath('/' . People::PATH);
+
+        // Add person ID if available
+        if ($personId) {
+            $this->urlBuilder
+                ->addPath('/' . $personId);
+        }
 
         if (!$this->peopleApi) {
             $this->peopleApi = new People(

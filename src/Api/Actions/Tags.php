@@ -62,14 +62,11 @@ class Tags extends AbstractApiEndpoint
 
         $response = $this->httpGet();
 
-        /** @var TagsCollection $result */
-        $result = $this->serializer->decode(
+        return $this->serializer->decode(
             (string) $response->getBody(),
             \Netresearch\Sdk\CentralStation\Model\Tags::class,
             TagsCollection::class
         );
-
-        return $result;
     }
 
     /**
