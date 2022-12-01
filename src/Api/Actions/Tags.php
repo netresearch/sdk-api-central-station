@@ -57,7 +57,6 @@ class Tags extends AbstractApiEndpoint
     public function index(IndexRequest $request): TagsCollection
     {
         $this->urlBuilder
-            ->addPath('.json')
             ->setParams($request->jsonSerialize());
 
         $response = $this->httpGet();
@@ -87,8 +86,6 @@ class Tags extends AbstractApiEndpoint
     public function show(ShowRequest $request): ?Tag
     {
         $this->urlBuilder
-            ->addPath('/' . $request->getTagId())
-            ->addPath('.json')
             ->setParams($request->jsonSerialize());
 
         $response = $this->httpGet();
@@ -121,9 +118,6 @@ class Tags extends AbstractApiEndpoint
      */
     public function create(CreateRequest $request): ?Tag
     {
-        $this->urlBuilder
-            ->addPath('.json');
-
         $response = $this->httpPost($request);
 
         /** @var null|\Netresearch\Sdk\CentralStation\Model\Tags $result */
@@ -150,17 +144,11 @@ class Tags extends AbstractApiEndpoint
      */
     public function update(UpdateRequest $request): bool
     {
-        $this->urlBuilder
-            ->addPath('/' . $request->getTagId())
-            ->addPath('.json');
-
         return $this->httpPut($request)->getStatusCode() === 200;
     }
 
     /**
      * This method is used to delete an element. Returns TRUE on success, FALSE otherwise.
-     *
-     * @param int $tagId A valid tag ID
      *
      * @return bool
      *
@@ -168,12 +156,8 @@ class Tags extends AbstractApiEndpoint
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function delete(int $tagId): bool
+    public function delete(): bool
     {
-        $this->urlBuilder
-            ->addPath('/' . $tagId)
-            ->addPath('.json');
-
         return $this->httpDelete()->getStatusCode() === 200;
     }
 
@@ -192,7 +176,7 @@ class Tags extends AbstractApiEndpoint
     public function list(ListRequest $request): array
     {
         $this->urlBuilder
-            ->addPath('/list.json')
+            ->addPath('/list')
             ->setParams($request->jsonSerialize());
 
         $response = $this->httpGet();

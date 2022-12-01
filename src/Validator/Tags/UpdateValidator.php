@@ -31,10 +31,6 @@ class UpdateValidator
      */
     public static function validate(array $data): void
     {
-        if (!isset($data['tagId'])) {
-            throw new RequestValidatorException(
-                'Please provide a valid tag ID'
-            );
-        }
+        // TODO Implement validations
     }
 }

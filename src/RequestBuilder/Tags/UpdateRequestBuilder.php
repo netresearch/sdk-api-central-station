@@ -28,21 +28,6 @@ use Netresearch\Sdk\CentralStation\Validator\Tags\UpdateValidator;
 class UpdateRequestBuilder extends AbstractRequestBuilder
 {
     /**
-     * Sets the tag ID.
-     *
-     * @param int $tagId A valid tag ID
-     *
-     * @return UpdateRequestBuilder
-     */
-    public function setTagId(
-        int $tagId
-    ): UpdateRequestBuilder {
-        $this->data['tagId'] = $tagId;
-
-        return $this;
-    }
-
-    /**
      * Sets the tag's data.
      *
      * @param string      $name           The name of the tag
@@ -78,7 +63,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
         UpdateValidator::validate($this->data);
 
         // Assign values to request
-        $request = new UpdateRequest($this->data['tagId']);
+        $request = new UpdateRequest();
 
         $tag = new Tag($this->data['tag']['name']);
         $tag->setAttachableId($this->data['tag']['attachableId'])

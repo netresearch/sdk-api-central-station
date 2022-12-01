@@ -124,13 +124,21 @@ class Api
     /**
      * Returns the "tags" API by lazy loading.
      *
+     * @param null|int $tagId A valid tag ID
+     *
      * @return Tags
      */
-    public function tags(): Tags
+    public function tags(int $tagId = null): Tags
     {
         $this->urlBuilder
             ->reset()
             ->addPath('/' . Tags::PATH);
+
+        // Add tag ID if available
+        if ($tagId) {
+            $this->urlBuilder
+                ->addPath('/' . $tagId);
+        }
 
         if (!$this->tagsApi) {
             $this->tagsApi = new Tags(

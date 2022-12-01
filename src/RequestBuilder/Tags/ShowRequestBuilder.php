@@ -27,21 +27,6 @@ use Netresearch\Sdk\CentralStation\Validator\Tags\ShowValidator;
 class ShowRequestBuilder extends AbstractRequestBuilder
 {
     /**
-     * Sets the tag ID.
-     *
-     * @param int $tagId A valid tag ID
-     *
-     * @return ShowRequestBuilder
-     */
-    public function setTagId(
-        int $tagId
-    ): ShowRequestBuilder {
-        $this->data['tagId'] = $tagId;
-
-        return $this;
-    }
-
-    /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
      * @return ShowRequest|RequestInterface
@@ -54,7 +39,7 @@ class ShowRequestBuilder extends AbstractRequestBuilder
         ShowValidator::validate($this->data);
 
         // Assign values to request
-        $request = new ShowRequest($this->data['tagId']);
+        $request = new ShowRequest();
 
         $this->data = [];
 

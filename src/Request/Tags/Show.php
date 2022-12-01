@@ -23,31 +23,6 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 class Show implements RequestInterface
 {
     /**
-     * @var int
-     */
-    private $tagId;
-
-    /**
-     * Constructor.
-     *
-     * @param int $tagId
-     */
-    public function __construct(int $tagId)
-    {
-        $this->tagId = $tagId;
-    }
-
-    /**
-     * Returns the tag ID.
-     *
-     * @return int
-     */
-    public function getTagId(): int
-    {
-        return $this->tagId;
-    }
-
-    /**
      * @return array<string, string>
      */
     public function jsonSerialize(): array

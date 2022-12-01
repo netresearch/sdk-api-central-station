@@ -24,32 +24,9 @@ use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
 class Update implements RequestInterface
 {
     /**
-     * @var int
-     */
-    private $tagId;
-
-    /**
      * @var null|Tag
      */
     private $tag;
-
-    /**
-     * Constructor.
-     *
-     * @param int $tagId
-     */
-    public function __construct(int $tagId)
-    {
-        $this->tagId = $tagId;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTagId(): int
-    {
-        return $this->tagId;
-    }
 
     /**
      * @param Tag $tag
