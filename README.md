@@ -63,7 +63,9 @@ $apiClient = new \Netresearch\Sdk\CentralStation\CentralStation(
 ```
 
 
-### Get a list of persons
+#### People API
+
+##### Get a list of persons
 
 ```php
 // Create request builder instance
@@ -100,11 +102,10 @@ foreach ($peopleCollection as $people) {
 
     // ...
 }
-
 ```
 
 
-### Create a new person
+##### Create a new person
 
 ```php
 // Create request builder instance
@@ -127,7 +128,7 @@ $person = $apiClient
 ```
 
 
-### Update an existing person
+##### Update an existing person
 
 ```php
 // Create request builder instance
@@ -148,6 +149,36 @@ $response = $apiClient
 // Do something with the response
 ```
 
+
+#### Tags API
+
+##### Get a list of tags assigned to a specific person
+
+```php
+// Create request builder instance
+$requestBuilder = new \Netresearch\Sdk\CentralStation\RequestBuilder\Tags\IndexRequestBuilder();
+$requestBuilder
+    ->setLimit(10)
+    ->setOrder(
+        'name',
+        \Netresearch\Sdk\CentralStation\Constants::ORDER_DIRECTION_ASC
+    );
+
+// Perform request, returns a collection of tags for person ID 123456
+$tagsCollection = $apiClient
+    ->api()
+    ->people(123456)
+    ->tags()
+    ->index($requestBuilder->create());
+
+// Do something with the response
+/** @var \Netresearch\Sdk\CentralStation\Model\Tags $tags */
+foreach ($tagsCollection as $tags) {
+    echo $tags->tag->id . ' ' . $tags->tag->name;
+
+    // ...
+}
+```
 
 ## Error handling
 The exceptions thrown by the SDK will always be of type `\Netresearch\Sdk\CentralStation\Exception\ServiceException`.
