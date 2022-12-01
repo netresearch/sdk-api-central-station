@@ -20,7 +20,6 @@ use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index as IndexRequest;
-use Netresearch\Sdk\CentralStation\Request\Tags\Show as ShowRequest;
 use Netresearch\Sdk\CentralStation\Request\Tags\TagList as ListRequest;
 use Netresearch\Sdk\CentralStation\Request\Tags\Update as UpdateRequest;
 
@@ -74,8 +73,6 @@ class Tags extends AbstractApiEndpoint
      *
      * https://<BASE-URL>/api/tags/<TAG-ID>.json
      *
-     * @param ShowRequest $request The show request instance
-     *
      * @return null|Tag
      *
      * @throws AuthenticationException
@@ -83,11 +80,8 @@ class Tags extends AbstractApiEndpoint
      * @throws ServiceException
      * @throws JsonException
      */
-    public function show(ShowRequest $request): ?Tag
+    public function show(): ?Tag
     {
-        $this->urlBuilder
-            ->setParams($request->jsonSerialize());
-
         $response = $this->httpGet();
 
         /** @var null|\Netresearch\Sdk\CentralStation\Model\Tags $result */

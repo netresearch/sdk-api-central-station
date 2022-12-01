@@ -16,7 +16,6 @@ use Netresearch\Sdk\CentralStation\Model\Tags;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags\Create;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index;
-use Netresearch\Sdk\CentralStation\Request\Tags\Show;
 use Netresearch\Sdk\CentralStation\Request\Tags\Update;
 use Netresearch\Sdk\CentralStation\Test\Provider\Tags\CreateProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\Tags\IndexProvider;
@@ -137,7 +136,7 @@ class TagsTest extends TestCase
     public function show(string $responseJsonFile): void
     {
         $tagsApi = $this->getTagsApi($responseJsonFile, 123456);
-        $result  = $tagsApi->show(new Show());
+        $result  = $tagsApi->show();
 
         self::assertWebserviceUrl('https://www.example.org/tags/123456.json', $tagsApi);
         self::assertHttpMethod('GET', $tagsApi);
