@@ -47,11 +47,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     public function update(string $expectedJson): void
     {
         $requestBuilder = new UpdateRequestBuilder();
-        $requestBuilder
-            ->setTagId(1545412)
-            ->setTag(
-                'Updated tag'
-            );
+        $requestBuilder->setTag('Updated tag');
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);

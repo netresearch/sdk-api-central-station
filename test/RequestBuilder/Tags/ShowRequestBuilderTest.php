@@ -31,8 +31,6 @@ class ShowRequestBuilderTest extends RequestBuilderTestCase
     public function show(): void
     {
         $requestBuilder = new ShowRequestBuilder();
-        $requestBuilder
-            ->setTagId(123456);
 
         $request    = $requestBuilder->create();
         $requestUrl = http_build_query($request->jsonSerialize());

@@ -39,7 +39,6 @@ class UpdateTest extends TestCase
         $request = new Update(123456);
         $request->setTag($tag);
 
-        self::assertSame(123456, $request->getTagId());
         self::assertSame(
             [
                 'tag' => [

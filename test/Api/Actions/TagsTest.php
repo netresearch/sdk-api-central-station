@@ -35,6 +35,25 @@ use Netresearch\Sdk\CentralStation\Test\TestCase;
 class TagsTest extends TestCase
 {
     /**
+     * Returns an instance of the tags API endpoint.
+     *
+     * @param string   $responseJsonFile
+     * @param int|null $tagId
+     *
+     * @return \Netresearch\Sdk\CentralStation\Api\Actions\Tags
+     */
+    private function getTagsApi(
+        string $responseJsonFile = '',
+        int $tagId = null
+    ): \Netresearch\Sdk\CentralStation\Api\Actions\Tags {
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+
+        return $serviceFactoryMock
+            ->api()
+            ->tags($tagId);
+    }
+
+    /**
      * @return string[][]
      */
     public function indexResponseDataProvider(): array
@@ -56,13 +75,11 @@ class TagsTest extends TestCase
      */
     public function index(string $responseJsonFile): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $tagsApi = $this->getTagsApi($responseJsonFile);
+        $result  = $tagsApi->index(new Index());
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->tags()
-            ->index(new Index());
-
+        self::assertWebserviceUrl('https://www.example.org/tags.json', $tagsApi);
+        self::assertHttpMethod('GET', $tagsApi);
         self::assertInstanceOf(TagsCollection::class, $result);
         self::assertContainsOnlyInstancesOf(Tags::class, $result);
 
@@ -119,13 +136,11 @@ class TagsTest extends TestCase
      */
     public function show(string $responseJsonFile): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $tagsApi = $this->getTagsApi($responseJsonFile, 123456);
+        $result  = $tagsApi->show(new Show());
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->tags()
-            ->show(new Show(123456));
-
+        self::assertWebserviceUrl('https://www.example.org/tags/123456.json', $tagsApi);
+        self::assertHttpMethod('GET', $tagsApi);
         self::assertInstanceOf(Tags\Tag::class, $result);
 
         $this->assertFirstTag($result);
@@ -153,17 +168,17 @@ class TagsTest extends TestCase
      */
     public function create(string $responseJsonFile): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $tagsApi = $this->getTagsApi($responseJsonFile);
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->tags()
+        $result = $tagsApi
             ->create(
                 new Create(
                     new \Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag('')
                 )
             );
 
+        self::assertWebserviceUrl('https://www.example.org/tags.json', $tagsApi);
+        self::assertHttpMethod('POST', $tagsApi);
         self::assertInstanceOf(Tags\Tag::class, $result);
 
         $this->assertCreatedTag($result);
@@ -187,15 +202,11 @@ class TagsTest extends TestCase
      */
     public function update(): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock();
+        $tagsApi = $this->getTagsApi('', 123456);
+        $result  = $tagsApi->update(new Update());
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->tags()
-            ->update(
-                new Update(123456)
-            );
-
+        self::assertWebserviceUrl('https://www.example.org/tags/123456.json', $tagsApi);
+        self::assertHttpMethod('PUT', $tagsApi);
         self::assertTrue($result);
     }
 
@@ -206,13 +217,11 @@ class TagsTest extends TestCase
      */
     public function delete(): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock();
+        $tagsApi = $this->getTagsApi('', 123456);
+        $result  = $tagsApi->delete();
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->tags()
-            ->delete(12345);
-
+        self::assertWebserviceUrl('https://www.example.org/tags/123456.json', $tagsApi);
+        self::assertHttpMethod('DELETE', $tagsApi);
         self::assertTrue($result);
     }
 }
