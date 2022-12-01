@@ -28,21 +28,6 @@ use Netresearch\Sdk\CentralStation\Validator\People\UpdateValidator;
 class UpdateRequestBuilder extends AbstractRequestBuilder
 {
     /**
-     * Sets the person ID.
-     *
-     * @param int $personId A valid person ID
-     *
-     * @return UpdateRequestBuilder
-     */
-    public function setPersonId(
-        int $personId
-    ): UpdateRequestBuilder {
-        $this->data['personId'] = $personId;
-
-        return $this;
-    }
-
-    /**
      * Sets the person's data.
      *
      * @param null|string $lastName  The last name
@@ -81,7 +66,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
         UpdateValidator::validate($this->data);
 
         // Assign values to request
-        $request = new UpdateRequest($this->data['personId']);
+        $request = new UpdateRequest();
 
         if (isset($this->data['person'])) {
             $person = new Person();

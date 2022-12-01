@@ -33,7 +33,6 @@ class ShowRequestBuilderTest extends RequestBuilderTestCase
     {
         $requestBuilder = new ShowRequestBuilder();
         $requestBuilder
-            ->setPersonId(123456)
             ->addInclude(Constants::INCLUDE_TAGS)
             ->addInclude(Constants::INCLUDE_ADDRESSES);
 

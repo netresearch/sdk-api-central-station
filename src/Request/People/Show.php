@@ -23,32 +23,9 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 class Show implements RequestInterface
 {
     /**
-     * @var int
-     */
-    private $personId;
-
-    /**
      * @var string[]
      */
     private $includes;
-
-    /**
-     * Constructor.
-     *
-     * @param int $personId
-     */
-    public function __construct(int $personId)
-    {
-        $this->personId = $personId;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPersonId(): int
-    {
-        return $this->personId;
-    }
 
     /**
      * @param string ...$includes

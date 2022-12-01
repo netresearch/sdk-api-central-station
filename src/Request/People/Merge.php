@@ -23,11 +23,6 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 class Merge implements RequestInterface
 {
     /**
-     * @var int
-     */
-    private $personId;
-
-    /**
      * A list of person IDs used to merge into the $personId record.
      *
      * @var int[]

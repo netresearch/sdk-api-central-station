@@ -30,21 +30,6 @@ class ShowRequestBuilder extends AbstractRequestBuilder
     use IncludesTrait;
 
     /**
-     * Sets the person ID.
-     *
-     * @param int $personId A valid person ID
-     *
-     * @return ShowRequestBuilder
-     */
-    public function setPersonId(
-        int $personId
-    ): ShowRequestBuilder {
-        $this->data['personId'] = $personId;
-
-        return $this;
-    }
-
-    /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
      * @return ShowRequest|RequestInterface
@@ -57,7 +42,7 @@ class ShowRequestBuilder extends AbstractRequestBuilder
         ShowValidator::validate($this->data);
 
         // Assign values to request
-        $request = new ShowRequest($this->data['personId']);
+        $request = new ShowRequest();
 
         if (isset($this->data['includes'])) {
             $request->setIncludes(...$this->data['includes']);

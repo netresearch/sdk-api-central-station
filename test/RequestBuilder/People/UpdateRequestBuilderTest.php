@@ -47,11 +47,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     public function update(string $expectedJson): void
     {
         $requestBuilder = new UpdateRequestBuilder();
-        $requestBuilder
-            ->setPersonId(1545412)
-            ->setPerson(
-                'Miller Nr 2'
-            );
+        $requestBuilder->setPerson('Miller Nr 2');
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);

@@ -30,10 +30,9 @@ class ShowTest extends TestCase
      */
     public function jsonSerialize(): void
     {
-        $request = new Show(123456);
+        $request = new Show();
         $request->setIncludes('addrs', 'tags');
 
-        self::assertSame(123456, $request->getPersonId());
         self::assertSame(
             [
                 'includes' => 'addrs tags',

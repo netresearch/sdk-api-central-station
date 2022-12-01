@@ -24,32 +24,9 @@ use Netresearch\Sdk\CentralStation\Request\People\Common\Person;
 class Update implements RequestInterface
 {
     /**
-     * @var int
-     */
-    private $personId;
-
-    /**
      * @var null|Person
      */
     private $person;
-
-    /**
-     * Constructor.
-     *
-     * @param int $personId
-     */
-    public function __construct(int $personId)
-    {
-        $this->personId = $personId;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPersonId(): int
-    {
-        return $this->personId;
-    }
 
     /**
      * @param Person $person

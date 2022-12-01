@@ -60,7 +60,6 @@ class People extends AbstractApiEndpoint
     public function index(IndexRequest $request): PeopleCollection
     {
         $this->urlBuilder
-            ->addPath('.json')
             ->setParams($request->jsonSerialize());
 
         $response = $this->httpGet();
@@ -94,8 +93,6 @@ class People extends AbstractApiEndpoint
         ShowRequest $request
     ): ?Person {
         $this->urlBuilder
-            ->addPath('/' . $request->getPersonId())
-            ->addPath('.json')
             ->setParams($request->jsonSerialize());
 
         $response = $this->httpGet();
@@ -126,9 +123,6 @@ class People extends AbstractApiEndpoint
      */
     public function create(CreateRequest $request): ?Person
     {
-        $this->urlBuilder
-            ->addPath('.json');
-
         $response = $this->httpPost($request);
 
         /** @var null|\Netresearch\Sdk\CentralStation\Model\People $result */
@@ -155,17 +149,11 @@ class People extends AbstractApiEndpoint
      */
     public function update(UpdateRequest $request): bool
     {
-        $this->urlBuilder
-            ->addPath('/' . $request->getPersonId())
-            ->addPath('.json');
-
         return $this->httpPut($request)->getStatusCode() === 200;
     }
 
     /**
      * This method is used to delete an element. Returns TRUE on success, FALSE otherwise.
-     *
-     * @param int $personId A valid person ID
      *
      * @return bool
      *
@@ -173,12 +161,8 @@ class People extends AbstractApiEndpoint
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function delete(int $personId): bool
+    public function delete(): bool
     {
-        $this->urlBuilder
-            ->addPath('/' . $personId)
-            ->addPath('.json');
-
         return $this->httpDelete()->getStatusCode() === 200;
     }
 
@@ -201,7 +185,7 @@ class People extends AbstractApiEndpoint
     public function search(SearchRequest $request): PeopleCollection
     {
         $this->urlBuilder
-            ->addPath('/search.json')
+            ->addPath('/search')
             ->setParams($request->jsonSerialize());
 
         $response = $this->httpGet();
@@ -234,7 +218,7 @@ class People extends AbstractApiEndpoint
     public function stats(StatsRequest $request): int
     {
         $this->urlBuilder
-            ->addPath('/stats.json')
+            ->addPath('/stats')
             ->setParams($request->jsonSerialize());
 
         /** @var Stats $result */
@@ -262,8 +246,7 @@ class People extends AbstractApiEndpoint
     public function merge(MergeRequest $request): bool
     {
         $this->urlBuilder
-            ->addPath('/' . $request->getPersonId())
-            ->addPath('/merge.json');
+            ->addPath('/merge');
 
         return $this->httpPost($request)->getStatusCode() === 200;
     }

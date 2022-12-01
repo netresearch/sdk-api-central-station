@@ -34,12 +34,6 @@ class ShowValidator
      */
     public static function validate(array $data): void
     {
-        if (!isset($data['personId'])) {
-            throw new RequestValidatorException(
-                'Please provide a valid person ID'
-            );
-        }
-
         if (isset($data['includes'])) {
             self::validateIncludes($data['includes']);
         }

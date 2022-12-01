@@ -31,10 +31,6 @@ class UpdateValidator
      */
     public static function validate(array $data): void
     {
-        if (!isset($data['personId'])) {
-            throw new RequestValidatorException(
-                'Please provide a valid person ID'
-            );
-        }
+        // TODO Implement validations
     }
 }

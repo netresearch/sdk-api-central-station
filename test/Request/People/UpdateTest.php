@@ -33,16 +33,14 @@ class UpdateTest extends TestCase
     public function jsonSerialize(): void
     {
         $person = new Person();
-        $person
-            ->setFirstName('Max')
+        $person->setFirstName('Max')
             ->setLastName('Mustermann')
             ->setGender(Constants::GENDER_MALE)
             ->setTitle('Dr. Dr.');
 
-        $request = new Update(123456);
+        $request = new Update();
         $request->setPerson($person);
 
-        self::assertSame(123456, $request->getPersonId());
         self::assertSame(
             [
                 'person' => [
