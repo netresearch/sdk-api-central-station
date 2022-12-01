@@ -15,7 +15,7 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 use Netresearch\Sdk\CentralStation\Request\People\Common\Person;
 
 /**
- * A batch request used to send multiple hits in a single request.
+ * A "create" request.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -39,7 +39,7 @@ class Create implements RequestInterface
     }
 
     /**
-     * @return array<string, array<string, string>>
+     * @return array<string, array<string, null|string>>
      */
     public function jsonSerialize(): array
     {

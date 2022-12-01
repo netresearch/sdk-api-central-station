@@ -44,9 +44,9 @@ class People extends AbstractApiEndpoint
     public const PATH = 'people';
 
     /**
-     * The index action can be used to query a list of all people in an account.
+     * Returns a list of all people in an account.
      *
-     * https://<BASE-URL>/api/people.json
+     * GET https://<BASE-URL>/api/people
      *
      * @param IndexRequest $request The index request instance
      *
@@ -75,10 +75,9 @@ class People extends AbstractApiEndpoint
     }
 
     /**
-     * A single person can be loaded with the show action. The prerequisite for this is
-     * a valid personal ID for the account.
+     * Returns a single person. The route must contain the ID of the person to be processed.
      *
-     * https://<BASE-URL>/api/people/<PERSON-ID>.json
+     * GET https://<BASE-URL>/api/people/<PERSON-ID>
      *
      * @param ShowRequest $request The show request instance
      *
@@ -107,10 +106,11 @@ class People extends AbstractApiEndpoint
     }
 
     /**
-     * This method creates a new person. In the positive case, the system returns
-     * the new person. To create a new person, the transfer of the surname is mandatory. If the entry
-     * could not be created because the account no longer has sufficient storage space for contacts,
-     * we return a 507 Insufficient Storage.
+     * Creates a new person and returns the newly created element. To create a new person, the transfer of the
+     * surname is mandatory. If the entry could not be created because the account no longer has sufficient
+     * storage space for contacts, the HTTP error 507 Insufficient Storage is thrown.
+     *
+     * POST https://<BASE-URL>/api/people
      *
      * @param CreateRequest $request The create request instance
      *
@@ -131,12 +131,16 @@ class People extends AbstractApiEndpoint
             \Netresearch\Sdk\CentralStation\Model\People::class
         );
 
-        return $result->person ?? null;
+        return $result ? ($result->person ?? null) : null;
     }
 
     /**
+     * Updates an existing person. The route must contain the ID of the element to be processed.
+     *
      * The update works in the same way as the "create" action. The route must contain the ID of the
      * element to be processed. Returns TRUE on success, FALSE otherwise.
+     *
+     * PUT https://<BASE-URL>/api/people/<PERSON-ID>
      *
      * @param UpdateRequest $request The update request instance
      *
@@ -153,7 +157,9 @@ class People extends AbstractApiEndpoint
     }
 
     /**
-     * This method is used to delete an element. Returns TRUE on success, FALSE otherwise.
+     * Deletes an existing person. Returns TRUE on success, FALSE otherwise.
+     *
+     * DELETE https://<BASE-URL>/api/people/<PERSON-ID>
      *
      * @return bool
      *
@@ -171,7 +177,7 @@ class People extends AbstractApiEndpoint
      * If one or more hits are found, the return is in the same form as with the index function. If no matches
      * are found we return an empty array.
      *
-     * https://<BASE-URL>/api/people/search.json
+     * GET https://<BASE-URL>/api/people/search
      *
      * @param SearchRequest $request The search request instance
      *
@@ -204,7 +210,7 @@ class People extends AbstractApiEndpoint
      * The stats can be used to query pure count or sum calculations for all or filtered persons. The people
      * can be filtered like the index action, i.e. by tags or any fields.
      *
-     * https://<BASE-URL>/api/people/stats.json
+     * GET https://<BASE-URL>/api/people/stats
      *
      * @param StatsRequest $request The stats request instance
      *
@@ -233,6 +239,13 @@ class People extends AbstractApiEndpoint
     /**
      * Several people can be brought together using the merge function. The person IDs passed as looser_ids
      * are merged with the person passed as id. The logic is similar to a merger via the CentralStationCRM interface.
+     * After the merge request, the merged person records no longer exists.
+     *
+     * POST https://<BASE-URL>/api/people/<PERSON-ID>/merge
+     *
+     * @notice Merging takes some time. An index/show request should not be made directly after a merge,
+     *         since the returned data may be invalid or incorrect. As a guide, during API testing, the merged
+     *         data was mostly available within 5 seconds at most.
      *
      * @param MergeRequest $request The merge request instance
      *

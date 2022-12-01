@@ -14,7 +14,7 @@ namespace Netresearch\Sdk\CentralStation\Request\People;
 use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 
 /**
- *
+ * A "merge" request.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
