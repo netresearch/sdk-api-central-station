@@ -83,9 +83,8 @@ class Tags extends AbstractApiEndpoint
      * @throws ServiceException
      * @throws JsonException
      */
-    public function show(
-        ShowRequest $request
-    ): ?Tag {
+    public function show(ShowRequest $request): ?Tag
+    {
         $this->urlBuilder
             ->addPath('/' . $request->getTagId())
             ->addPath('.json')
