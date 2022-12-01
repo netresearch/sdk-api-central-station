@@ -98,7 +98,7 @@ class Tags extends AbstractApiEndpoint
             \Netresearch\Sdk\CentralStation\Model\Tags::class
         );
 
-        return $result->tag ?? null;
+        return $result ? ($result->tag ?? null) : null;
     }
 
     /**
@@ -129,7 +129,7 @@ class Tags extends AbstractApiEndpoint
             \Netresearch\Sdk\CentralStation\Model\Tags::class
         );
 
-        return $result->tag ?? null;
+        return $result ? ($result->tag ?? null) : null;
     }
 
     /**
