@@ -45,14 +45,38 @@ class CreateRequestBuilder extends AbstractRequestBuilder
         string $title = null,
         string $salutation = null
     ): CreateRequestBuilder {
-        $this->data['person'] = [
-            'lastName'   => $lastName,
-            'firstName'  => $firstName,
-            'gender'     => $gender,
-            'title'      => $title,
-            'salutation' => $salutation,
-        ];
+        $this->data['person']['lastName'] = $lastName;
+        $this->data['person']['firstName'] = $firstName;
+        $this->data['person']['gender'] = $gender;
+        $this->data['person']['title'] = $title;
+        $this->data['person']['salutation'] = $salutation;
 
+        return $this;
+    }
+
+    /**
+     * Sets the person's language.
+     *
+     * @param string $languageCode The person's language as ISO-639-1 (e.g. de, en, fr or not set)
+     *
+     * @return CreateRequestBuilder
+     */
+    public function setLanguage(string $languageCode): CreateRequestBuilder
+    {
+        $this->data['person']['languageCode'] = $languageCode;
+        return $this;
+    }
+
+    /**
+     * Sets the background information about the person.
+     *
+     * @param string $background The background information about the person
+     *
+     * @return CreateRequestBuilder
+     */
+    public function setBackground(string $background): CreateRequestBuilder
+    {
+        $this->data['person']['background'] = $background;
         return $this;
     }
 
@@ -74,6 +98,14 @@ class CreateRequestBuilder extends AbstractRequestBuilder
             ->setGender($this->data['person']['gender'])
             ->setTitle($this->data['person']['title'])
             ->setSalutation($this->data['person']['salutation']);
+
+        if (isset($this->data['person']['languageCode'])) {
+            $person->setCountryCode($this->data['person']['languageCode']);
+        }
+
+        if (isset($this->data['person']['background'])) {
+            $person->setBackground($this->data['person']['background']);
+        }
 
         // Assign values to request
         $request = new CreateRequest($person);

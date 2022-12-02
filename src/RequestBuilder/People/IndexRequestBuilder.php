@@ -112,10 +112,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder
         }
 
         if (isset($this->data['includes'])) {
-            $request->setIncludes(
-                ...
-                $this->data['includes']
-            );
+            $request->setIncludes(...$this->data['includes']);
         }
 
         $this->data = [];

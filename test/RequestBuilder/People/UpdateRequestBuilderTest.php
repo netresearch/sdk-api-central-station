@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
+use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\UpdateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\UpdateProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
@@ -47,7 +48,16 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     public function update(string $expectedJson): void
     {
         $requestBuilder = new UpdateRequestBuilder();
-        $requestBuilder->setPerson('Miller Nr 2');
+        $requestBuilder
+            ->setPerson(
+                'Miller Nr 2',
+                'Marianne',
+                Constants::GENDER_FEMALE,
+                'Prof. Dr.',
+                'Frau'
+            )
+            ->setBackground('background')
+            ->setLanguage('de');
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);

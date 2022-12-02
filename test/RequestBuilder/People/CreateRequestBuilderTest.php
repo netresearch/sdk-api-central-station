@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
+use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\CreateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\CreateProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
@@ -50,8 +51,13 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
         $requestBuilder
             ->setPerson(
                 'Miller',
-                'Marian'
-            );
+                'Marian',
+                Constants::GENDER_MALE,
+                'Dr. Dr.',
+                'Herr'
+            )
+            ->setBackground('background')
+            ->setLanguage('de');
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);

@@ -48,6 +48,16 @@ class Person implements JsonSerializable
     private $salutation;
 
     /**
+     * @var null|string
+     */
+    private $countryCode;
+
+    /**
+     * @var null|string
+     */
+    private $background;
+
+    /**
      * @param null|string $lastName
      *
      * @return Person
@@ -103,16 +113,40 @@ class Person implements JsonSerializable
     }
 
     /**
-     * @return array<string, string>
+     * @param null|string $countryCode
+     *
+     * @return Person
+     */
+    public function setCountryCode(?string $countryCode): Person
+    {
+        $this->countryCode = $countryCode;
+        return $this;
+    }
+
+    /**
+     * @param null|string $background
+     *
+     * @return Person
+     */
+    public function setBackground(?string $background): Person
+    {
+        $this->background = $background;
+        return $this;
+    }
+
+    /**
+     * @return array<string, null|string>
      */
     public function jsonSerialize(): array
     {
         return [
-            'name'       => $this->lastName,
-            'first_name' => $this->firstName,
-            'gender'     => $this->gender,
-            'title'      => $this->title,
-            'salutation' => $this->salutation,
+            'name'         => $this->lastName,
+            'first_name'   => $this->firstName,
+            'gender'       => $this->gender,
+            'title'        => $this->title,
+            'salutation'   => $this->salutation,
+            'country_code' => $this->countryCode,
+            'background'   => $this->background,
         ];
     }
 }

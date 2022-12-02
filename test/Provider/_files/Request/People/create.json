@@ -1,6 +1,11 @@
 {
     "person": {
         "name": "Miller",
-        "first_name": "Marian"
+        "first_name": "Marian",
+        "gender": "male_user",
+        "title": "Dr. Dr.",
+        "salutation": "Herr",
+        "country_code": "de",
+        "background": "background"
     }
 }

@@ -37,18 +37,23 @@ class CreateTest extends TestCase
             ->setFirstName('Max')
             ->setLastName('Mustermann')
             ->setGender(Constants::GENDER_MALE)
-            ->setTitle('Dr. Dr.');
+            ->setTitle('Dr. Dr.')
+            ->setSalutation('Herr')
+            ->setBackground('background')
+            ->setCountryCode('de');
 
         $request = new Create($person);
 
         self::assertSame(
             [
                 'person' => [
-                    'name'       => 'Mustermann',
-                    'first_name' => 'Max',
-                    'gender'     => Constants::GENDER_MALE,
-                    'title'      => 'Dr. Dr.',
-                    'salutation' => null,
+                    'name'         => 'Mustermann',
+                    'first_name'   => 'Max',
+                    'gender'       => Constants::GENDER_MALE,
+                    'title'        => 'Dr. Dr.',
+                    'salutation'   => 'Herr',
+                    'country_code' => 'de',
+                    'background'   => 'background',
                 ],
             ],
             $request->jsonSerialize()

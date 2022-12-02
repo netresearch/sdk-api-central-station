@@ -24,7 +24,7 @@ use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 trait IncludesTrait
 {
     /**
-     * List of allowed "includes" parameters.
+     * List of allowed values.
      *
      * @var string[]
      */

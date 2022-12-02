@@ -30,10 +30,11 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * Sets the person's data.
      *
-     * @param null|string $lastName  The last name
-     * @param null|string $firstName The first name
-     * @param null|string $gender    The gender
-     * @param null|string $title     The title
+     * @param null|string $lastName   The last name
+     * @param null|string $firstName  The first name
+     * @param null|string $gender     The gender
+     * @param null|string $title      The title
+     * @param null|string $salutation The salutation
      *
      * @return UpdateRequestBuilder
      */
@@ -41,15 +42,41 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
         string $lastName = null,
         string $firstName = null,
         string $gender = null,
-        string $title = null
+        string $title = null,
+        string $salutation = null
     ): UpdateRequestBuilder {
-        $this->data['person'] = [
-            'lastName'  => $lastName,
-            'firstName' => $firstName,
-            'gender'    => $gender,
-            'title'     => $title,
-        ];
+        $this->data['person']['lastName'] = $lastName;
+        $this->data['person']['firstName'] = $firstName;
+        $this->data['person']['gender'] = $gender;
+        $this->data['person']['title'] = $title;
+        $this->data['person']['salutation'] = $salutation;
 
+        return $this;
+    }
+
+    /**
+     * Sets the person's language.
+     *
+     * @param string $languageCode The person's language as ISO-639-1 (e.g. de, en, fr or not set)
+     *
+     * @return UpdateRequestBuilder
+     */
+    public function setLanguage(string $languageCode): UpdateRequestBuilder
+    {
+        $this->data['person']['languageCode'] = $languageCode;
+        return $this;
+    }
+
+    /**
+     * Sets the background information about the person.
+     *
+     * @param string $background The background information about the person
+     *
+     * @return UpdateRequestBuilder
+     */
+    public function setBackground(string $background): UpdateRequestBuilder
+    {
+        $this->data['person']['background'] = $background;
         return $this;
     }
 
@@ -70,11 +97,19 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
 
         if (isset($this->data['person'])) {
             $person = new Person();
-            $person
-                ->setLastName($this->data['person']['lastName'])
+            $person->setLastName($this->data['person']['lastName'])
                 ->setFirstName($this->data['person']['firstName'])
                 ->setGender($this->data['person']['gender'])
-                ->setTitle($this->data['person']['title']);
+                ->setTitle($this->data['person']['title'])
+                ->setSalutation($this->data['person']['salutation']);
+
+            if (isset($this->data['person']['languageCode'])) {
+                $person->setCountryCode($this->data['person']['languageCode']);
+            }
+
+            if (isset($this->data['person']['background'])) {
+                $person->setBackground($this->data['person']['background']);
+            }
 
             $request->setPerson($person);
         }

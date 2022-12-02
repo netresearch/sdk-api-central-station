@@ -27,7 +27,7 @@ use Netresearch\Sdk\CentralStation\Validator\People\MergeValidator;
 class MergeRequestBuilder extends AbstractRequestBuilder
 {
     /**
-     * Adds the ID of the person to merge to.
+     * Sets the ID of the person to merge to.
      *
      * @param int $personId The ID of the person to merge to
      *
@@ -42,7 +42,7 @@ class MergeRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * Adds the ID of a person to be merged.
+     * Adds an ID of a person to be merged.
      *
      * @param int $id The ID of the person to be merged
      *

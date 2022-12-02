@@ -1,5 +1,11 @@
 {
     "person": {
-        "name": "Miller Nr 2"
+        "name": "Miller Nr 2",
+        "first_name": "Marianne",
+        "gender": "female_user",
+        "title": "Prof. Dr.",
+        "salutation": "Frau",
+        "country_code": "de",
+        "background": "background"
     }
 }
