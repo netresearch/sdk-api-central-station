@@ -32,8 +32,9 @@ class UpdateTest extends TestCase
      */
     public function jsonSerialize(): void
     {
-        $tag = new Tag('Funny updated tag');
-        $tag->setAttachableId(123456)
+        $tag = new Tag();
+        $tag->setName('Funny updated tag')
+            ->setAttachableId(123456)
             ->setAttachableType('Person');
 
         $request = new Update(123456);

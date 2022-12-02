@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Validator\Tags;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
+use Netresearch\Sdk\CentralStation\Validator\Traits\TagTypeTrait;
 
 /**
  * Class UpdateValidator.
@@ -22,6 +23,8 @@ use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
  */
 class UpdateValidator
 {
+    use TagTypeTrait;
+
     /**
      * Validate request data before sending it to the web service.
      *
@@ -31,6 +34,8 @@ class UpdateValidator
      */
     public static function validate(array $data): void
     {
-        // TODO Implement validations
+        if (!empty($data['tag']['attachableType'])) {
+            self::validateAttachableType($data['tag']['attachableType']);
+        }
     }
 }

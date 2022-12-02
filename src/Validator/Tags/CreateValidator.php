@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Validator\Tags;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
+use Netresearch\Sdk\CentralStation\Validator\Traits\TagTypeTrait;
 
 /**
  * Class CreateValidator.
@@ -22,6 +23,8 @@ use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
  */
 class CreateValidator
 {
+    use TagTypeTrait;
+
     /**
      * Validate request data before sending it to the web service.
      *
@@ -33,7 +36,7 @@ class CreateValidator
     {
         if (empty($data['tag']['name'])) {
             throw new RequestValidatorException(
-                'Please provide at the name of the tag to create'
+                'Please provide at least the name of the tag to create'
             );
         }
 
@@ -48,5 +51,7 @@ class CreateValidator
                 'Please provide the type of the linked object'
             );
         }
+
+        self::validateAttachableType($data['tag']['attachableType']);
     }
 }

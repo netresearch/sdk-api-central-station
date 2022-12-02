@@ -23,7 +23,7 @@ use JsonSerializable;
 class Tag implements JsonSerializable
 {
     /**
-     * @var string
+     * @var null|string
      */
     private $name;
 
@@ -38,13 +38,14 @@ class Tag implements JsonSerializable
     private $attachableType;
 
     /**
-     * Constructor.
+     * @param null|string $name
      *
-     * @param string $name
+     * @return Tag
      */
-    public function __construct(string $name)
+    public function setName(?string $name): Tag
     {
         $this->name = $name;
+        return $this;
     }
 
     /**

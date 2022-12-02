@@ -28,24 +28,32 @@ use Netresearch\Sdk\CentralStation\Validator\Tags\CreateValidator;
 class CreateRequestBuilder extends AbstractRequestBuilder
 {
     /**
-     * Sets the tag's data.
+     * Sets the tag's name.
      *
-     * @param string $name           The name of the tag
-     * @param int    $attachableId   The attachable ID
-     * @param string $attachableType The attachable type
+     * @param string $name The name of the tag
      *
      * @return CreateRequestBuilder
      */
-    public function setTag(
-        string $name,
+    public function setTagName(string $name): CreateRequestBuilder
+    {
+        $this->data['tag']['name'] = $name;
+        return $this;
+    }
+
+    /**
+     * Sets the tag's attached data.
+     *
+     * @param int    $attachableId   The ID of the attached object, e.g. ID of person, company, offer or project
+     * @param string $attachableType The type of the attached object (use one of Constants::TAG_TYPE_*)
+     *
+     * @return CreateRequestBuilder
+     */
+    public function setAttachedData(
         int $attachableId,
         string $attachableType
     ): CreateRequestBuilder {
-        $this->data['tag'] = [
-            'name'           => $name,
-            'attachableId'   => $attachableId,
-            'attachableType' => $attachableType,
-        ];
+        $this->data['tag']['attachableId'] = $attachableId;
+        $this->data['tag']['attachableType'] = $attachableType;
 
         return $this;
     }
@@ -62,8 +70,9 @@ class CreateRequestBuilder extends AbstractRequestBuilder
         // Validate the input
         CreateValidator::validate($this->data);
 
-        $tag = new Tag($this->data['tag']['name']);
-        $tag->setAttachableId($this->data['tag']['attachableId'])
+        $tag = new Tag();
+        $tag->setName($this->data['tag']['name'])
+            ->setAttachableId($this->data['tag']['attachableId'])
             ->setAttachableType($this->data['tag']['attachableType']);
 
         // Assign values to request

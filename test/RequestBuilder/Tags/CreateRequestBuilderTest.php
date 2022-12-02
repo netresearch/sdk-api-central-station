@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Tags;
 
+use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Tags\CreateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\Provider\Tags\CreateProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
@@ -48,11 +49,8 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
     {
         $requestBuilder = new CreateRequestBuilder();
         $requestBuilder
-            ->setTag(
-                'New created tag',
-                1234567,
-                'Person'
-            );
+            ->setTagName('New created tag')
+            ->setAttachedData(1234567, Constants::TAG_TYPE_PERSON);
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);

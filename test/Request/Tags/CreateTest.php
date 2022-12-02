@@ -31,8 +31,9 @@ class CreateTest extends TestCase
      */
     public function jsonSerialize(): void
     {
-        $tag = new Tag('Funny new tag');
-        $tag->setAttachableId(123456)
+        $tag = new Tag();
+        $tag->setName('Funny new tag')
+            ->setAttachableId(123456)
             ->setAttachableType('Person');
 
         $request = new Create($tag);

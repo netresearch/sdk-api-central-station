@@ -44,7 +44,7 @@ class Constants
     public const FILTER_LIKE = 'like';
 
     /**
-     * Include types
+     * Include types.
      */
     public const INCLUDE_POSITIONS = 'positions';
     public const INCLUDE_COMPANIES = 'companies';
@@ -57,4 +57,12 @@ class Constants
     public const INCLUDE_CUSTOM_FIELDS = 'custom_fields';
     public const INCLUDE_CONNECTIONS = 'connections';
     public const INCLUDE_ALL = 'all';
+
+    /**
+     * Tag attachable types.
+     */
+    public const TAG_TYPE_PERSON = 'Person';
+    public const TAG_TYPE_COMPANY = 'Company';
+    public const TAG_TYPE_DEAL = 'Deal';
+    public const TAG_TYPE_PROJECT = 'Project';
 }
