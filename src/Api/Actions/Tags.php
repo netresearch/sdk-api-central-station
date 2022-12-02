@@ -42,7 +42,7 @@ class Tags extends AbstractApiEndpoint
     /**
      * The index action can be used to query a list of all tags in an account.
      *
-     * https://<BASE-URL>/api/tags.json
+     * https://<BASE-URL>/api/tags
      *
      * @param IndexRequest $request The index request instance
      *
@@ -71,7 +71,7 @@ class Tags extends AbstractApiEndpoint
      * A single tag can be loaded with the show action. The prerequisite for this is
      * a valid tag ID for the account.
      *
-     * https://<BASE-URL>/api/tags/<TAG-ID>.json
+     * https://<BASE-URL>/api/tags/<TAG-ID>
      *
      * @return null|Tag
      *

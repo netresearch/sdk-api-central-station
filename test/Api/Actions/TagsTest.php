@@ -77,8 +77,9 @@ class TagsTest extends TestCase
         $tagsApi = $this->getTagsApi($responseJsonFile);
         $result  = $tagsApi->index(new Index());
 
-        self::assertWebserviceUrl('https://www.example.org/tags.json', $tagsApi);
+        self::assertWebserviceUrl('https://www.example.org/tags', $tagsApi);
         self::assertHttpMethod('GET', $tagsApi);
+        self::assertHttpHeaders($tagsApi);
         self::assertInstanceOf(TagsCollection::class, $result);
         self::assertContainsOnlyInstancesOf(Tags::class, $result);
 
@@ -138,8 +139,9 @@ class TagsTest extends TestCase
         $tagsApi = $this->getTagsApi($responseJsonFile, 123456);
         $result  = $tagsApi->show();
 
-        self::assertWebserviceUrl('https://www.example.org/tags/123456.json', $tagsApi);
+        self::assertWebserviceUrl('https://www.example.org/tags/123456', $tagsApi);
         self::assertHttpMethod('GET', $tagsApi);
+        self::assertHttpHeaders($tagsApi);
         self::assertInstanceOf(Tags\Tag::class, $result);
 
         $this->assertFirstTag($result);
@@ -172,12 +174,13 @@ class TagsTest extends TestCase
         $result = $tagsApi
             ->create(
                 new Create(
-                    new \Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag('')
+                    new \Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag()
                 )
             );
 
-        self::assertWebserviceUrl('https://www.example.org/tags.json', $tagsApi);
+        self::assertWebserviceUrl('https://www.example.org/tags', $tagsApi);
         self::assertHttpMethod('POST', $tagsApi);
+        self::assertHttpHeaders($tagsApi);
         self::assertInstanceOf(Tags\Tag::class, $result);
 
         $this->assertCreatedTag($result);
@@ -204,8 +207,9 @@ class TagsTest extends TestCase
         $tagsApi = $this->getTagsApi('', 123456);
         $result  = $tagsApi->update(new Update());
 
-        self::assertWebserviceUrl('https://www.example.org/tags/123456.json', $tagsApi);
+        self::assertWebserviceUrl('https://www.example.org/tags/123456', $tagsApi);
         self::assertHttpMethod('PUT', $tagsApi);
+        self::assertHttpHeaders($tagsApi);
         self::assertTrue($result);
     }
 
@@ -219,8 +223,9 @@ class TagsTest extends TestCase
         $tagsApi = $this->getTagsApi('', 123456);
         $result  = $tagsApi->delete();
 
-        self::assertWebserviceUrl('https://www.example.org/tags/123456.json', $tagsApi);
+        self::assertWebserviceUrl('https://www.example.org/tags/123456', $tagsApi);
         self::assertHttpMethod('DELETE', $tagsApi);
+        self::assertHttpHeaders($tagsApi);
         self::assertTrue($result);
     }
 }

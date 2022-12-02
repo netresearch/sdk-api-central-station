@@ -126,9 +126,6 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      */
     protected function httpGet(): ResponseInterface
     {
-        $this->urlBuilder
-            ->addPath('.json');
-
         $request = $this->requestFactory
             ->createRequest('GET', $this->urlBuilder->getFullUrl());
 
@@ -149,9 +146,6 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      */
     protected function httpPost(ApiRequestInterface $requestType): ResponseInterface
     {
-        $this->urlBuilder
-            ->addPath('.json');
-
         $encodedBody = $this->serializer->encode($requestType);
 
         $request = $this->requestFactory
@@ -175,9 +169,6 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      */
     protected function httpPut(ApiRequestInterface $requestType): ResponseInterface
     {
-        $this->urlBuilder
-            ->addPath('.json');
-
         $encodedBody = $this->serializer->encode($requestType);
 
         $request = $this->requestFactory
@@ -198,9 +189,6 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      */
     protected function httpDelete(): ResponseInterface
     {
-        $this->urlBuilder
-            ->addPath('.json');
-
         $request = $this->requestFactory
             ->createRequest('DELETE', $this->urlBuilder->getFullUrl());
 
