@@ -64,8 +64,41 @@ $apiClient = new \Netresearch\Sdk\CentralStation\CentralStation(
 
 
 #### People API
+The people API endpoint (`people()`) provides the following methods to interact with the API:
 
-##### Get a list of persons
+- index 
+  - Returns a list of all people in an account.
+- show 
+  - Returns a single person. Pass the person ID as a parameter to the `people()`-method.
+- create 
+  - Creates a new person.
+- update 
+  - Updates an existing person. Pass the person ID as a parameter to the `people()`-method.
+- delete 
+  - Deletes an existing person. Pass the person ID as a parameter to the `people()`-method.
+- search 
+  - Searches for one or more people.
+- merge 
+  - Merge one or more person into an existing one.
+- stats 
+  - Returns the total number of people for all or filtered persons.
+- tags
+  - Returns the tags API endpoint used to process tags related to a specific person. Pass the person ID as a 
+    parameter to the `people()`-method.
+  - The tags endpoint itself provides than the following methods:
+    - index
+      - Returns a list of all tags assigned to a person.
+    - show
+      - Returns a single tag assigned to a person. Pass the tag ID as a parameter to the `tags()`-method.
+    - create
+      - Creates a new tag at the person.
+    - update
+      - Updates an existing tag at a person. Pass the tag ID as a parameter to the `tags()`-method.
+    - delete
+      - Deletes an existing tag at a person. Pass the tag ID as a parameter to the `tags()`-method.
+
+
+##### index - Get a list of persons
 
 ```php
 // Create request builder instance
@@ -105,7 +138,7 @@ foreach ($peopleCollection as $people) {
 ```
 
 
-##### Create a new person
+##### create - Create a new person
 
 ```php
 // Create request builder instance
@@ -128,7 +161,7 @@ $person = $apiClient
 ```
 
 
-##### Update an existing person
+##### update - Update an existing person
 
 ```php
 // Create request builder instance
@@ -151,8 +184,18 @@ $response = $apiClient
 
 
 #### Tags API
+The tags API endpoint (`tags()`) provides the following methods to interact with the tags API:
+ 
+- `index()`
+  - Returns a list of all tags in an account.
+- `show()`
+  - Returns a single tag. Requires a valid tag ID for the account. Pass the tag ID as a parameter 
+    to the `tags()`-method.
+- `list()`
+  - Returns a list of all tag names in the account.
 
-##### Get a list of tags assigned to a specific person
+
+##### index - Get a list of all tags in the account
 
 ```php
 // Create request builder instance
@@ -164,10 +207,9 @@ $requestBuilder
         \Netresearch\Sdk\CentralStation\Constants::ORDER_DIRECTION_ASC
     );
 
-// Perform request, returns a collection of tags for person ID 123456
+// Perform request, returns a collection of tags in the account sorted by name in ascending order
 $tagsCollection = $apiClient
     ->api()
-    ->people(123456)
     ->tags()
     ->index($requestBuilder->create());
 
@@ -179,6 +221,25 @@ foreach ($tagsCollection as $tags) {
     // ...
 }
 ```
+
+
+##### create - Create a new tag at a person
+
+```php
+// Create request builder instance
+$requestBuilder = new \Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags\CreateRequestBuilder();
+$requestBuilder->setTagName('NEW-FANCY-TAG');
+
+// Create a new tag at person 123456
+$tag = $apiClient
+    ->api()
+    ->people(123456)
+    ->tags()
+    ->create($requestBuilder->create());
+
+// Do something with the response
+```
+
 
 ## Error handling
 The exceptions thrown by the SDK will always be of type `\Netresearch\Sdk\CentralStation\Exception\ServiceException`.
