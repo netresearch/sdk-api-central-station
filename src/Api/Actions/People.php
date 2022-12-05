@@ -46,22 +46,30 @@ class People extends AbstractApiEndpoint
     /**
      * Instance of the "tags" API for implementing lazy loading.
      *
-     * @var null|Tags
+     * @var null|\Netresearch\Sdk\CentralStation\Api\Actions\People\Tags
      */
     private $tagsApi;
 
     /**
      * Returns the "tags" API used to process tags related to a specific person.
      *
-     * @return Tags
+     * @param null|int $tagId A valid tag ID
+     *
+     * @return \Netresearch\Sdk\CentralStation\Api\Actions\People\Tags
      */
-    public function tags(): Tags
+    public function tags(int $tagId = null): \Netresearch\Sdk\CentralStation\Api\Actions\People\Tags
     {
         $this->urlBuilder
-            ->addPath('/' . Tags::PATH);
+            ->addPath('/' . \Netresearch\Sdk\CentralStation\Api\Actions\People\Tags::PATH);
+
+        // Add tag ID if available
+        if ($tagId) {
+            $this->urlBuilder
+                ->addPath('/' . $tagId);
+        }
 
         if (!$this->tagsApi) {
-            $this->tagsApi = new Tags(
+            $this->tagsApi = new \Netresearch\Sdk\CentralStation\Api\Actions\People\Tags(
                 $this->client,
                 $this->requestFactory,
                 $this->streamFactory,

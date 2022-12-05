@@ -9,22 +9,19 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Validator\Tags;
+namespace Netresearch\Sdk\CentralStation\Validator\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Validator\Traits\TagTypeTrait;
 
 /**
- * Class UpdateValidator.
+ * Class CreateValidator.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class UpdateValidator
+class CreateValidator
 {
-    use TagTypeTrait;
-
     /**
      * Validate request data before sending it to the web service.
      *
@@ -34,8 +31,10 @@ class UpdateValidator
      */
     public static function validate(array $data): void
     {
-        if (!empty($data['tag']['attachableType'])) {
-            self::validateAttachableType($data['tag']['attachableType']);
+        if (empty($data['tag']['name'])) {
+            throw new RequestValidatorException(
+                'Please provide at least the name of the tag to create'
+            );
         }
     }
 }

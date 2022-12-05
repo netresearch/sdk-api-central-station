@@ -9,22 +9,19 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Validator\Tags;
+namespace Netresearch\Sdk\CentralStation\Validator\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Validator\Traits\TagTypeTrait;
 
 /**
- * Class CreateValidator.
+ * Class UpdateValidator.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class CreateValidator
+class UpdateValidator
 {
-    use TagTypeTrait;
-
     /**
      * Validate request data before sending it to the web service.
      *
@@ -36,22 +33,8 @@ class CreateValidator
     {
         if (empty($data['tag']['name'])) {
             throw new RequestValidatorException(
-                'Please provide at least the name of the tag to create'
+                'Please provide at least the updated name of the tag'
             );
         }
-
-        if (empty($data['tag']['attachableId'])) {
-            throw new RequestValidatorException(
-                'Please provide the ID of the linked object'
-            );
-        }
-
-        if (empty($data['tag']['attachableType'])) {
-            throw new RequestValidatorException(
-                'Please provide the type of the linked object'
-            );
-        }
-
-        self::validateAttachableType($data['tag']['attachableType']);
     }
 }

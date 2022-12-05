@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Tags;
 
-use Netresearch\Sdk\CentralStation\RequestBuilder\Tags\UpdateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\Tags\UpdateProvider;
+use Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags\UpdateRequestBuilder;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\Tags\UpdateProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**

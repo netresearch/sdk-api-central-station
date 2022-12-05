@@ -14,10 +14,7 @@ namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 use Netresearch\Sdk\CentralStation\Collection\TagsCollection;
 use Netresearch\Sdk\CentralStation\Model\Tags;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
-use Netresearch\Sdk\CentralStation\Request\Tags\Create;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index;
-use Netresearch\Sdk\CentralStation\Request\Tags\Update;
-use Netresearch\Sdk\CentralStation\Test\Provider\Tags\CreateProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\Tags\IndexProvider;
 use Netresearch\Sdk\CentralStation\Test\Provider\Tags\ShowProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
@@ -145,87 +142,5 @@ class TagsTest extends TestCase
         self::assertInstanceOf(Tags\Tag::class, $result);
 
         $this->assertFirstTag($result);
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function createResponseDataProvider(): array
-    {
-        return [
-            'Response' => [
-                CreateProvider::createResponseSuccess(),
-            ],
-        ];
-    }
-
-    /**
-     * Tests "create" method.
-     *
-     * @dataProvider createResponseDataProvider
-     * @test
-     *
-     * @param string $responseJsonFile
-     */
-    public function create(string $responseJsonFile): void
-    {
-        $tagsApi = $this->getTagsApi($responseJsonFile);
-
-        $result = $tagsApi
-            ->create(
-                new Create(
-                    new \Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag()
-                )
-            );
-
-        self::assertWebserviceUrl('https://www.example.org/tags', $tagsApi);
-        self::assertHttpMethod('POST', $tagsApi);
-        self::assertHttpHeaders($tagsApi);
-        self::assertInstanceOf(Tags\Tag::class, $result);
-
-        $this->assertCreatedTag($result);
-    }
-
-    private function assertCreatedTag(Tag $tag)
-    {
-        self::assertSame(45067258, $tag->id);
-        self::assertSame(47143, $tag->accountId);
-        self::assertSame(8439487, $tag->attachableId);
-        self::assertSame('Company', $tag->attachableType);
-        self::assertSame('Branche|Mobilität / Verkehr', $tag->name);
-        self::assertSame('13.10.2019', $tag->createdAt->format('d.m.Y'));
-        self::assertSame('05.11.2020 10:44:32', $tag->updatedAt->format('d.m.Y H:i:s'));
-    }
-
-    /**
-     * Tests "update" method.
-     *
-     * @test
-     */
-    public function update(): void
-    {
-        $tagsApi = $this->getTagsApi('', 123456);
-        $result  = $tagsApi->update(new Update());
-
-        self::assertWebserviceUrl('https://www.example.org/tags/123456', $tagsApi);
-        self::assertHttpMethod('PUT', $tagsApi);
-        self::assertHttpHeaders($tagsApi);
-        self::assertTrue($result);
-    }
-
-    /**
-     * Tests "delete" method.
-     *
-     * @test
-     */
-    public function delete(): void
-    {
-        $tagsApi = $this->getTagsApi('', 123456);
-        $result  = $tagsApi->delete();
-
-        self::assertWebserviceUrl('https://www.example.org/tags/123456', $tagsApi);
-        self::assertHttpMethod('DELETE', $tagsApi);
-        self::assertHttpHeaders($tagsApi);
-        self::assertTrue($result);
     }
 }

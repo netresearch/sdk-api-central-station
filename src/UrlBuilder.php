@@ -89,20 +89,6 @@ class UrlBuilder
     }
 
     /**
-     * Adds a query parameter. Overwrites any existing parameter with the same name.
-     *
-     * @param string $parameterName
-     * @param mixed  $parameterValue
-     *
-     * @return $this
-     */
-    public function addParam(string $parameterName, $parameterValue): UrlBuilder
-    {
-        $this->parameters[$parameterName] = $parameterValue;
-        return $this;
-    }
-
-    /**
      * Set additional query parameters.
      *
      * @param mixed[] $parameters

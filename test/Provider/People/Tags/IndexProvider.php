@@ -9,29 +9,21 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\Provider\Tags;
+namespace Netresearch\Sdk\CentralStation\Test\Provider\People\Tags;
 
 /**
- * Class CreateProvider
+ * Class IndexProvider
  *
  * @author Rico Sonntag <rico.sonntag@netresearch.de>
  * @link   https://www.netresearch.de/
  */
-class CreateProvider
+class IndexProvider
 {
     /**
      * @return string
      */
-    public static function createRequest(): string
+    public static function indexResponseSuccess(): string
     {
-        return __DIR__ . '/../_files/Request/Tags/create.json';
-    }
-
-    /**
-     * @return string
-     */
-    public static function createResponseSuccess(): string
-    {
-        return __DIR__ . '/../_files/Response/Tags/create.json';
+        return __DIR__ . '/../../_files/Response/People/Tags/index.json';
     }
 }

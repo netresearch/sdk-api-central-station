@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Request\Tags;
+namespace Netresearch\Sdk\CentralStation\Request\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
