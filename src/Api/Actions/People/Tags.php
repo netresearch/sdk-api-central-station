@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Api\Actions\People;
 
-use JsonException;
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Collection\TagsCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
@@ -50,20 +49,23 @@ class Tags extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function index(IndexRequest $request): TagsCollection
     {
-        $this->urlBuilder
-            ->setParams($request->jsonSerialize());
+        $requestClosure = function () use ($request): TagsCollection {
+            $this->urlBuilder
+                ->setParams($request->jsonSerialize());
 
-        $response = $this->httpGet();
+            $response = $this->httpGet();
 
-        return $this->serializer->decode(
-            (string) $response->getBody(),
-            \Netresearch\Sdk\CentralStation\Model\Tags::class,
-            TagsCollection::class
-        );
+            return $this->serializer->decode(
+                (string) $response->getBody(),
+                \Netresearch\Sdk\CentralStation\Model\Tags::class,
+                TagsCollection::class
+            );
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -76,19 +78,22 @@ class Tags extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function show(): ?Tag
     {
-        $response = $this->httpGet();
+        $requestClosure = function (): ?Tag {
+            $response = $this->httpGet();
 
-        /** @var null|\Netresearch\Sdk\CentralStation\Model\Tags $result */
-        $result = $this->serializer->decode(
-            (string) $response->getBody(),
-            \Netresearch\Sdk\CentralStation\Model\Tags::class
-        );
+            /** @var null|\Netresearch\Sdk\CentralStation\Model\Tags $result */
+            $result = $this->serializer->decode(
+                (string) $response->getBody(),
+                \Netresearch\Sdk\CentralStation\Model\Tags::class
+            );
 
-        return $result ? ($result->tag ?? null) : null;
+            return $result ? ($result->tag ?? null) : null;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -103,19 +108,22 @@ class Tags extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function create(CreateRequest $request): ?Tag
     {
-        $response = $this->httpPost($request);
+        $requestClosure = function () use ($request): ?Tag {
+            $response = $this->httpPost($request);
 
-        /** @var null|\Netresearch\Sdk\CentralStation\Model\Tags $result */
-        $result = $this->serializer->decode(
-            (string) $response->getBody(),
-            \Netresearch\Sdk\CentralStation\Model\Tags::class
-        );
+            /** @var null|\Netresearch\Sdk\CentralStation\Model\Tags $result */
+            $result = $this->serializer->decode(
+                (string) $response->getBody(),
+                \Netresearch\Sdk\CentralStation\Model\Tags::class
+            );
 
-        return $result ? ($result->tag ?? null) : null;
+            return $result ? ($result->tag ?? null) : null;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -131,11 +139,14 @@ class Tags extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function update(UpdateRequest $request): bool
     {
-        return $this->httpPut($request)->getStatusCode() === 200;
+        $requestClosure = function () use ($request): bool {
+            return $this->httpPut($request)->getStatusCode() === 200;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -151,6 +162,10 @@ class Tags extends AbstractApiEndpoint
      */
     public function delete(): bool
     {
-        return $this->httpDelete()->getStatusCode() === 200;
+        $requestClosure = function (): bool {
+            return $this->httpDelete()->getStatusCode() === 200;
+        };
+
+        return $this->execute($requestClosure);
     }
 }

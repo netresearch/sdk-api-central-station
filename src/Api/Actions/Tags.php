@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Api\Actions;
 
-use JsonException;
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Collection\TagsCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
@@ -49,20 +48,23 @@ class Tags extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function index(IndexRequest $request): TagsCollection
     {
-        $this->urlBuilder
-            ->setParams($request->jsonSerialize());
+        $requestClosure = function () use ($request): TagsCollection {
+            $this->urlBuilder
+                ->setParams($request->jsonSerialize());
 
-        $response = $this->httpGet();
+            $response = $this->httpGet();
 
-        return $this->serializer->decode(
-            (string) $response->getBody(),
-            \Netresearch\Sdk\CentralStation\Model\Tags::class,
-            TagsCollection::class
-        );
+            return $this->serializer->decode(
+                (string) $response->getBody(),
+                \Netresearch\Sdk\CentralStation\Model\Tags::class,
+                TagsCollection::class
+            );
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -75,19 +77,22 @@ class Tags extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function show(): ?Tag
     {
-        $response = $this->httpGet();
+        $requestClosure = function (): ?Tag {
+            $response = $this->httpGet();
 
-        /** @var null|\Netresearch\Sdk\CentralStation\Model\Tags $result */
-        $result = $this->serializer->decode(
-            (string) $response->getBody(),
-            \Netresearch\Sdk\CentralStation\Model\Tags::class
-        );
+            /** @var null|\Netresearch\Sdk\CentralStation\Model\Tags $result */
+            $result = $this->serializer->decode(
+                (string) $response->getBody(),
+                \Netresearch\Sdk\CentralStation\Model\Tags::class
+            );
 
-        return $result ? ($result->tag ?? null) : null;
+            return $result ? ($result->tag ?? null) : null;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -102,18 +107,21 @@ class Tags extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function list(ListRequest $request): array
     {
-        $this->urlBuilder
-            ->addPath('/list')
-            ->setParams($request->jsonSerialize());
+        $requestClosure = function () use ($request): array {
+            $this->urlBuilder
+                ->addPath('/list')
+                ->setParams($request->jsonSerialize());
 
-        $response = $this->httpGet();
+            $response = $this->httpGet();
 
-        return $this->serializer->decode(
-            (string) $response->getBody()
-        );
+            return $this->serializer->decode(
+                (string) $response->getBody()
+            );
+        };
+
+        return $this->execute($requestClosure);
     }
 }

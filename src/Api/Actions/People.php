@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Api\Actions;
 
-use JsonException;
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
@@ -93,23 +92,26 @@ class People extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function index(IndexRequest $request): PeopleCollection
     {
-        $this->urlBuilder
-            ->setParams($request->jsonSerialize());
+        $requestClosure = function () use ($request): PeopleCollection {
+            $this->urlBuilder
+                ->setParams($request->jsonSerialize());
 
-        $response = $this->httpGet();
+            $response = $this->httpGet();
 
-        /** @var PeopleCollection $result */
-        $result = $this->serializer->decode(
-            (string) $response->getBody(),
-            \Netresearch\Sdk\CentralStation\Model\People::class,
-            PeopleCollection::class
-        );
+            /** @var PeopleCollection $result */
+            $result = $this->serializer->decode(
+                (string) $response->getBody(),
+                \Netresearch\Sdk\CentralStation\Model\People::class,
+                PeopleCollection::class
+            );
 
-        return $result;
+            return $result;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -124,22 +126,25 @@ class People extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function show(ShowRequest $request): ?Person
     {
-        $this->urlBuilder
-            ->setParams($request->jsonSerialize());
+        $requestClosure = function () use ($request): ?Person {
+            $this->urlBuilder
+                ->setParams($request->jsonSerialize());
 
-        $response = $this->httpGet();
+            $response = $this->httpGet();
 
-        /** @var null|\Netresearch\Sdk\CentralStation\Model\People $result */
-        $result = $this->serializer->decode(
-            (string) $response->getBody(),
-            \Netresearch\Sdk\CentralStation\Model\People::class
-        );
+            /** @var null|\Netresearch\Sdk\CentralStation\Model\People $result */
+            $result = $this->serializer->decode(
+                (string) $response->getBody(),
+                \Netresearch\Sdk\CentralStation\Model\People::class
+            );
 
-        return $result ? ($result->person ?? null) : null;
+            return $result ? ($result->person ?? null) : null;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -156,19 +161,22 @@ class People extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function create(CreateRequest $request): ?Person
     {
-        $response = $this->httpPost($request);
+        $requestClosure = function () use ($request): ?Person {
+            $response = $this->httpPost($request);
 
-        /** @var null|\Netresearch\Sdk\CentralStation\Model\People $result */
-        $result = $this->serializer->decode(
-            (string) $response->getBody(),
-            \Netresearch\Sdk\CentralStation\Model\People::class
-        );
+            /** @var null|\Netresearch\Sdk\CentralStation\Model\People $result */
+            $result = $this->serializer->decode(
+                (string) $response->getBody(),
+                \Netresearch\Sdk\CentralStation\Model\People::class
+            );
 
-        return $result ? ($result->person ?? null) : null;
+            return $result ? ($result->person ?? null) : null;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -186,11 +194,14 @@ class People extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function update(UpdateRequest $request): bool
     {
-        return $this->httpPut($request)->getStatusCode() === 200;
+        $requestClosure = function () use ($request): bool {
+            return $this->httpPut($request)->getStatusCode() === 200;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -206,7 +217,11 @@ class People extends AbstractApiEndpoint
      */
     public function delete(): bool
     {
-        return $this->httpDelete()->getStatusCode() === 200;
+        $requestClosure = function (): bool {
+            return $this->httpDelete()->getStatusCode() === 200;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -223,24 +238,27 @@ class People extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function search(SearchRequest $request): PeopleCollection
     {
-        $this->urlBuilder
-            ->addPath('/search')
-            ->setParams($request->jsonSerialize());
+        $requestClosure = function () use ($request): PeopleCollection {
+            $this->urlBuilder
+                ->addPath('/search')
+                ->setParams($request->jsonSerialize());
 
-        $response = $this->httpGet();
+            $response = $this->httpGet();
 
-        /** @var PeopleCollection $result */
-        $result = $this->serializer->decode(
-            (string) $response->getBody(),
-            \Netresearch\Sdk\CentralStation\Model\People::class,
-            PeopleCollection::class
-        );
+            /** @var PeopleCollection $result */
+            $result = $this->serializer->decode(
+                (string) $response->getBody(),
+                \Netresearch\Sdk\CentralStation\Model\People::class,
+                PeopleCollection::class
+            );
 
-        return $result;
+            return $result;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -256,21 +274,24 @@ class People extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function stats(StatsRequest $request): int
     {
-        $this->urlBuilder
-            ->addPath('/stats')
-            ->setParams($request->jsonSerialize());
+        $requestClosure = function () use ($request): int {
+            $this->urlBuilder
+                ->addPath('/stats')
+                ->setParams($request->jsonSerialize());
 
-        /** @var Stats $result */
-        $result = $this->serializer->decode(
-            (string) $this->httpGet()->getBody(),
-            Stats::class
-        );
+            /** @var Stats $result */
+            $result = $this->serializer->decode(
+                (string) $this->httpGet()->getBody(),
+                Stats::class
+            );
 
-        return $result->totalEntries;
+            return $result->totalEntries;
+        };
+
+        return $this->execute($requestClosure);
     }
 
     /**
@@ -291,13 +312,16 @@ class People extends AbstractApiEndpoint
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
-     * @throws JsonException
      */
     public function merge(MergeRequest $request): bool
     {
-        $this->urlBuilder
-            ->addPath('/merge');
+        $requestClosure = function () use ($request): bool {
+            $this->urlBuilder
+                ->addPath('/merge');
 
-        return $this->httpPost($request)->getStatusCode() === 200;
+            return $this->httpPost($request)->getStatusCode() === 200;
+        };
+
+        return $this->execute($requestClosure);
     }
 }
