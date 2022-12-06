@@ -88,9 +88,8 @@ class People extends AbstractApiEndpoint
      * @throws ServiceException
      * @throws JsonException
      */
-    public function show(
-        ShowRequest $request
-    ): ?Person {
+    public function show(ShowRequest $request): ?Person
+    {
         $this->urlBuilder
             ->setParams($request->jsonSerialize());
 
@@ -102,7 +101,7 @@ class People extends AbstractApiEndpoint
             \Netresearch\Sdk\CentralStation\Model\People::class
         );
 
-        return $result->person ?? null;
+        return $result ? ($result->person ?? null) : null;
     }
 
     /**

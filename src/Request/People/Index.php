@@ -136,8 +136,13 @@ class Index implements RequestInterface
     {
         $data = [];
 
-        $data['perpage'] = $this->perPage;
-        $data['page']    = $this->page;
+        if (!empty($this->perPage)) {
+            $data['perpage'] = $this->perPage;
+        }
+
+        if (!empty($this->page)) {
+            $data['page'] = $this->page;
+        }
 
         if (!empty($this->orderBy) && !empty($this->orderDirection)) {
             $data['order'] = $this->orderBy . '-' . $this->orderDirection;
