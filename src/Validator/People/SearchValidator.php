@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Validator\People;
 
+use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 
 /**
@@ -28,10 +29,10 @@ class SearchValidator
      * @var string[]
      */
     private static $allowedSearchFields = [
-        'name',
-        'first_name',
-        'phone',
-        'email',
+        Constants::SORT_BY_NAME,
+        Constants::SORT_BY_FIRST_NAME,
+        Constants::SORT_BY_PHONE,
+        Constants::SORT_BY_EMAIL,
     ];
 
     /**

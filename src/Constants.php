@@ -34,6 +34,14 @@ class Constants
     public const ORDER_DIRECTION_DESC = 'desc';
 
     /**
+     * Order types.
+     */
+    public const SORT_BY_NAME = 'name';
+    public const SORT_BY_FIRST_NAME = 'first_name';
+    public const SORT_BY_PHONE = 'phone';
+    public const SORT_BY_EMAIL = 'email';
+
+    /**
      * Filter comparison methods.
      */
     public const FILTER_LARGER_THAN = 'larger_than';

@@ -29,7 +29,7 @@ class SearchRequestBuilder extends AbstractRequestBuilder
     /**
      * Adds a search query.
      *
-     * @param string $field The field to search for
+     * @param string $field The field to search for (use one of Constants::SORT_BY_*)
      * @param string $value The value of the field to search for
      *
      * @return SearchRequestBuilder
