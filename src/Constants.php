@@ -28,6 +28,14 @@ class Constants
     public const GENDER_UNKNOWN = 'gender_unknown';
 
     /**
+     * Order by types.
+     */
+    public const ORDER_BY_CREATED_AT = 'created_at';
+    public const ORDER_BY_UPDATED_AT = 'updated_at';
+    public const ORDER_BY_ACTIVITY = 'activity';
+    public const ORDER_BY_NAME = 'name';
+
+    /**
      * Order types.
      */
     public const ORDER_DIRECTION_ASC = 'asc';

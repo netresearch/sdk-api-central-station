@@ -55,13 +55,13 @@ class IndexRequestBuilder extends AbstractRequestBuilder
     /**
      * Sets the sort order of the response.
      *
-     * @param string $orderBy        The order type (either "created_at", "updated_at", "activity" or "name" (default))
-     * @param string $orderDirection The order direction (use one of Constants::ORDER_*)
+     * @param string $orderBy        The order type (use one of Constants::ORDER_BY_*)
+     * @param string $orderDirection The order direction (use one of Constants::ORDER_DIRECTION_*)
      *
      * @return IndexRequestBuilder
      */
     public function setOrder(
-        string $orderBy = 'name',
+        string $orderBy = Constants::ORDER_BY_NAME,
         string $orderDirection = Constants::ORDER_DIRECTION_ASC
     ): IndexRequestBuilder {
         $this->data['order'] = [
