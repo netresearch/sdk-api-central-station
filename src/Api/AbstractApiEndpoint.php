@@ -91,7 +91,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Executes the given closure and returns the response result.
      *
-     * @template T of object
+     * @template T
      *
      * @param Closure(): T $requestClosure The closure to execute
      *
