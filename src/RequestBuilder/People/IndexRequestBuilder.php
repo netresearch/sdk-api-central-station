@@ -35,14 +35,14 @@ class IndexRequestBuilder extends AbstractRequestBuilder
     /**
      * Sets the limitations of the response.
      *
-     * @param int      $perPage The number of elements to return (default: 25)
+     * @param null|int $perPage The number of elements to return (default: 25)
      * @param null|int $page    The page number for which to return the results
      *
      * @return IndexRequestBuilder
      */
     public function setLimit(
-        int $perPage = 25,
-        int $page = null
+        ?int $perPage = 25,
+        ?int $page = 1
     ): IndexRequestBuilder {
         $this->data['limit'] = [
             'perPage' => $perPage,
@@ -55,14 +55,14 @@ class IndexRequestBuilder extends AbstractRequestBuilder
     /**
      * Sets the sort order of the response.
      *
-     * @param string $orderBy        The order type (use one of Constants::ORDER_BY_*)
-     * @param string $orderDirection The order direction (use one of Constants::ORDER_DIRECTION_*)
+     * @param null|string $orderBy        The order type (use one of Constants::ORDER_BY_*)
+     * @param null|string $orderDirection The order direction (use one of Constants::ORDER_DIRECTION_*)
      *
      * @return IndexRequestBuilder
      */
     public function setOrder(
-        string $orderBy = Constants::ORDER_BY_NAME,
-        string $orderDirection = Constants::ORDER_DIRECTION_ASC
+        ?string $orderBy = Constants::ORDER_BY_NAME,
+        ?string $orderDirection = Constants::ORDER_DIRECTION_ASC
     ): IndexRequestBuilder {
         $this->data['order'] = [
             'orderBy'   => $orderBy,
@@ -98,11 +98,11 @@ class IndexRequestBuilder extends AbstractRequestBuilder
         }
 
         if (isset($this->data['order'])) {
-            if ($this->data['order']['orderBy'] !== '') {
+            if ($this->data['order']['orderBy'] !== null) {
                 $request->setOrderBy($this->data['order']['orderBy']);
             }
 
-            if ($this->data['order']['direction'] !== '') {
+            if ($this->data['order']['direction'] !== null) {
                 $request->setOrderDirection($this->data['order']['direction']);
             }
         }

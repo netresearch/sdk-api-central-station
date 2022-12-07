@@ -32,7 +32,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
      *
      * @param string      $lastName   The last name
      * @param null|string $firstName  The first name
-     * @param null|string $gender     The gender
+     * @param null|string $gender     The gender (use one of Constants::GENDER_*)
      * @param null|string $title      The title
      * @param null|string $salutation The salutation
      *

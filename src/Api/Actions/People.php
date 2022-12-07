@@ -101,14 +101,11 @@ class People extends AbstractApiEndpoint
 
             $response = $this->httpGet();
 
-            /** @var PeopleCollection $result */
-            $result = $this->serializer->decode(
+            return $this->serializer->decode(
                 (string) $response->getBody(),
                 \Netresearch\Sdk\CentralStation\Model\People::class,
                 PeopleCollection::class
             );
-
-            return $result;
         };
 
         return $this->execute($requestClosure);
@@ -248,14 +245,11 @@ class People extends AbstractApiEndpoint
 
             $response = $this->httpGet();
 
-            /** @var PeopleCollection $result */
-            $result = $this->serializer->decode(
+            return $this->serializer->decode(
                 (string) $response->getBody(),
                 \Netresearch\Sdk\CentralStation\Model\People::class,
                 PeopleCollection::class
             );
-
-            return $result;
         };
 
         return $this->execute($requestClosure);
