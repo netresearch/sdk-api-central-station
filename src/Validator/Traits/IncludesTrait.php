@@ -30,16 +30,16 @@ trait IncludesTrait
      */
     private static $allowedIncludes = [
         Constants::INCLUDE_POSITIONS,
-        CONSTANTS::INCLUDE_COMPANIES,
-        CONSTANTS::INCLUDE_TAGS,
-        CONSTANTS::INCLUDE_AVATAR,
-        CONSTANTS::INCLUDE_PHONE_NUMBERS,
-        CONSTANTS::INCLUDE_EMAILS,
-        CONSTANTS::INCLUDE_HOMEPAGES,
-        CONSTANTS::INCLUDE_ADDRESSES,
-        CONSTANTS::INCLUDE_CUSTOM_FIELDS,
-        CONSTANTS::INCLUDE_CONNECTIONS,
-        CONSTANTS::INCLUDE_ALL,
+        Constants::INCLUDE_COMPANIES,
+        Constants::INCLUDE_TAGS,
+        Constants::INCLUDE_AVATAR,
+        Constants::INCLUDE_PHONE_NUMBERS,
+        Constants::INCLUDE_EMAILS,
+        Constants::INCLUDE_HOMEPAGES,
+        Constants::INCLUDE_ADDRESSES,
+        Constants::INCLUDE_CUSTOM_FIELDS,
+        Constants::INCLUDE_CONNECTIONS,
+        Constants::INCLUDE_ALL,
     ];
 
     /**
