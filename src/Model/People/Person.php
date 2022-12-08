@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Model\People;
 
 use DateTime;
+use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 
 /**
  * A person record.
@@ -105,4 +106,11 @@ class Person
      * @var DateTime
      */
     public $updatedAt;
+
+    /**
+     * The assigned tag collection of the person.
+     *
+     * @var Tag[]
+     */
+    public $tags;
 }

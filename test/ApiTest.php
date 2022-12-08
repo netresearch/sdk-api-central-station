@@ -122,4 +122,22 @@ class ApiTest extends TestCase
             $peopleApi
         );
     }
+
+    /**
+     * Tests if "tags"-method returns the right configured people API instance.
+     *
+     * @test
+     */
+    public function tags(): void
+    {
+        $tagsApi = $this
+            ->getServiceFactoryMock()
+            ->api()
+            ->tags();
+
+        self::assertWebserviceUrl(
+            'https://www.example.org/tags',
+            $tagsApi
+        );
+    }
 }

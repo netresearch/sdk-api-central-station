@@ -9,16 +9,15 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\RequestBuilder\People;
+namespace Netresearch\Sdk\CentralStation\RequestBuilder\Tags;
 
 use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
+use Netresearch\Sdk\CentralStation\Request\Tags\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\FilterTrait;
-use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
-use Netresearch\Sdk\CentralStation\Validator\People\IndexValidator;
+use Netresearch\Sdk\CentralStation\Validator\Tags\IndexValidator;
 
 /**
  * The request builder to create a valid "index" request.
@@ -29,7 +28,6 @@ use Netresearch\Sdk\CentralStation\Validator\People\IndexValidator;
  */
 class IndexRequestBuilder extends AbstractRequestBuilder
 {
-    use IncludesTrait;
     use FilterTrait;
 
     /**
@@ -56,12 +54,12 @@ class IndexRequestBuilder extends AbstractRequestBuilder
      * Sets the sort order of the response.
      *
      * @param null|string $orderBy        The order type (use one of Constants::ORDER_BY_*)
-     * @param null|string $orderDirection The order direction (use one of Constants::ORDER_DIRECTION_*)
+     * @param null|string $orderDirection The order direction (use one of Constants::ORDER_*)
      *
      * @return IndexRequestBuilder
      */
     public function setOrder(
-        ?string $orderBy = Constants::ORDER_BY_NAME,
+        ?string $orderBy = 'name',
         ?string $orderDirection = Constants::ORDER_DIRECTION_ASC
     ): IndexRequestBuilder {
         $this->data['order'] = [
@@ -109,10 +107,6 @@ class IndexRequestBuilder extends AbstractRequestBuilder
 
         if (isset($this->data['filter'])) {
             $request->setFilter($this->data['filter']);
-        }
-
-        if (isset($this->data['includes'])) {
-            $request->setIncludes(...$this->data['includes']);
         }
 
         $this->data = [];

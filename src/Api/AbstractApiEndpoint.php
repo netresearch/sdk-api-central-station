@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Api;
 
+use Closure;
 use JsonException;
-use Netresearch\Sdk\CentralStation\Api\RequestInterface as ApiRequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationErrorException;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedErrorException;
@@ -24,7 +24,6 @@ use Netresearch\Sdk\CentralStation\UrlBuilder;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Throwable;
@@ -42,17 +41,17 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * @var ClientInterface
      */
-    private $client;
+    protected $client;
 
     /**
      * @var RequestFactoryInterface
      */
-    private $requestFactory;
+    protected $requestFactory;
 
     /**
      * @var StreamFactoryInterface
      */
-    private $streamFactory;
+    protected $streamFactory;
 
     /**
      * The JSON serializer instance.
@@ -90,25 +89,28 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     }
 
     /**
-     * Sends the request and perform error handling.
+     * Executes the given closure and returns the response result.
      *
-     * @param RequestInterface $request The request instance
+     * @template T
      *
-     * @return ResponseInterface
+     * @param Closure(): T $requestClosure The closure to execute
+     *
+     * @return T
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    private function sendRequest(RequestInterface $request): ResponseInterface
+    protected function execute(Closure $requestClosure)
     {
         try {
-            return $this->client->sendRequest($request);
+            return $requestClosure();
         } catch (AuthenticationErrorException $exception) {
             throw ServiceExceptionFactory::createAuthenticationException($exception);
         } catch (DetailedErrorException $exception) {
             throw ServiceExceptionFactory::createDetailedServiceException($exception);
         } catch (ClientExceptionInterface $exception) {
+            // Do not remove, a ClientExceptionInterface maybe thrown sendRequest() method
             throw ServiceExceptionFactory::createServiceException($exception);
         } catch (Throwable $exception) {
             throw ServiceExceptionFactory::create($exception);
@@ -120,71 +122,56 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      *
      * @return ResponseInterface
      *
-     * @throws AuthenticationException
-     * @throws DetailedServiceException
-     * @throws ServiceException
+     * @throws ClientExceptionInterface
      */
     protected function httpGet(): ResponseInterface
     {
-        $this->urlBuilder
-            ->addPath('.json');
-
         $request = $this->requestFactory
             ->createRequest('GET', $this->urlBuilder->getFullUrl());
 
-        return $this->sendRequest($request);
+        return $this->client->sendRequest($request);
     }
 
     /**
      * Perform a POST request.
      *
-     * @param ApiRequestInterface $requestType The API request instance
+     * @param RequestInterface $requestType The API request instance
      *
      * @return ResponseInterface
      *
-     * @throws AuthenticationException
-     * @throws DetailedServiceException
-     * @throws ServiceException
+     * @throws ClientExceptionInterface
      * @throws JsonException
      */
-    protected function httpPost(ApiRequestInterface $requestType): ResponseInterface
+    protected function httpPost(RequestInterface $requestType): ResponseInterface
     {
-        $this->urlBuilder
-            ->addPath('.json');
-
         $encodedBody = $this->serializer->encode($requestType);
 
         $request = $this->requestFactory
             ->createRequest('POST', $this->urlBuilder->getFullUrl())
             ->withBody($this->streamFactory->createStream($encodedBody));
 
-        return $this->sendRequest($request);
+        return $this->client->sendRequest($request);
     }
 
     /**
      * Perform a PUT request.
      *
-     * @param ApiRequestInterface $requestType The API request instance
+     * @param RequestInterface $requestType The API request instance
      *
      * @return ResponseInterface
      *
-     * @throws AuthenticationException
-     * @throws DetailedServiceException
-     * @throws ServiceException
+     * @throws ClientExceptionInterface
      * @throws JsonException
      */
-    protected function httpPut(ApiRequestInterface $requestType): ResponseInterface
+    protected function httpPut(RequestInterface $requestType): ResponseInterface
     {
-        $this->urlBuilder
-            ->addPath('.json');
-
         $encodedBody = $this->serializer->encode($requestType);
 
         $request = $this->requestFactory
             ->createRequest('PUT', $this->urlBuilder->getFullUrl())
             ->withBody($this->streamFactory->createStream($encodedBody));
 
-        return $this->sendRequest($request);
+        return $this->client->sendRequest($request);
     }
 
     /**
@@ -192,18 +179,13 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      *
      * @return ResponseInterface
      *
-     * @throws AuthenticationException
-     * @throws DetailedServiceException
-     * @throws ServiceException
+     * @throws ClientExceptionInterface
      */
     protected function httpDelete(): ResponseInterface
     {
-        $this->urlBuilder
-            ->addPath('.json');
-
         $request = $this->requestFactory
             ->createRequest('DELETE', $this->urlBuilder->getFullUrl());
 
-        return $this->sendRequest($request);
+        return $this->client->sendRequest($request);
     }
 }

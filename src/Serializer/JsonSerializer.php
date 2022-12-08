@@ -79,8 +79,8 @@ class JsonSerializer
     }
 
     /**
-     * @param string $jsonResponse
-     * @param string $className
+     * @param string      $jsonResponse
+     * @param null|string $className
      * @param null|string $collectionClassName
      *
      * @return null|mixed|AbstractCollection
@@ -89,7 +89,7 @@ class JsonSerializer
      */
     public function decode(
         string $jsonResponse,
-        string $className,
+        string $className = null,
         string $collectionClassName = null
     ) {
         $extractor = new PropertyInfoExtractor(

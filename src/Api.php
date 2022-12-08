@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation;
 
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
+use Netresearch\Sdk\CentralStation\Api\Actions\Tags;
 use Netresearch\Sdk\CentralStation\Serializer\JsonSerializer;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -27,11 +28,18 @@ use Psr\Http\Message\StreamFactoryInterface;
 class Api
 {
     /**
-     * Instance of the people API for implementing lazy loading.
+     * Instance of the "people" API for implementing lazy loading.
      *
      * @var null|People
      */
     private $peopleApi;
+
+    /**
+     * Instance of the "tags" API for implementing lazy loading.
+     *
+     * @var null|Tags
+     */
+    private $tagsApi;
 
     /**
      * @var ClientInterface
@@ -82,15 +90,23 @@ class Api
     }
 
     /**
-     * Returns the people API by lazy loading.
+     * Returns the "people" API by lazy loading.
+     *
+     * @param null|int $personId A valid person ID
      *
      * @return People
      */
-    public function people(): People
+    public function people(int $personId = null): People
     {
         $this->urlBuilder
             ->reset()
             ->addPath('/' . People::PATH);
+
+        // Add person ID if available
+        if ($personId) {
+            $this->urlBuilder
+                ->addPath('/' . $personId);
+        }
 
         if (!$this->peopleApi) {
             $this->peopleApi = new People(
@@ -103,5 +119,37 @@ class Api
         }
 
         return $this->peopleApi;
+    }
+
+    /**
+     * Returns the "tags" API by lazy loading.
+     *
+     * @param null|int $tagId A valid tag ID
+     *
+     * @return Tags
+     */
+    public function tags(int $tagId = null): Tags
+    {
+        $this->urlBuilder
+            ->reset()
+            ->addPath('/' . Tags::PATH);
+
+        // Add tag ID if available
+        if ($tagId) {
+            $this->urlBuilder
+                ->addPath('/' . $tagId);
+        }
+
+        if (!$this->tagsApi) {
+            $this->tagsApi = new Tags(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->tagsApi;
     }
 }

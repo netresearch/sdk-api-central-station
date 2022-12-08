@@ -28,10 +28,26 @@ class Constants
     public const GENDER_UNKNOWN = 'gender_unknown';
 
     /**
+     * Order by types.
+     */
+    public const ORDER_BY_CREATED_AT = 'created_at';
+    public const ORDER_BY_UPDATED_AT = 'updated_at';
+    public const ORDER_BY_ACTIVITY = 'activity';
+    public const ORDER_BY_NAME = 'name';
+
+    /**
      * Order types.
      */
     public const ORDER_DIRECTION_ASC = 'asc';
     public const ORDER_DIRECTION_DESC = 'desc';
+
+    /**
+     * Order types.
+     */
+    public const SORT_BY_NAME = 'name';
+    public const SORT_BY_FIRST_NAME = 'first_name';
+    public const SORT_BY_PHONE = 'phone';
+    public const SORT_BY_EMAIL = 'email';
 
     /**
      * Filter comparison methods.
@@ -44,7 +60,7 @@ class Constants
     public const FILTER_LIKE = 'like';
 
     /**
-     * Include types
+     * Include types.
      */
     public const INCLUDE_POSITIONS = 'positions';
     public const INCLUDE_COMPANIES = 'companies';
@@ -57,4 +73,12 @@ class Constants
     public const INCLUDE_CUSTOM_FIELDS = 'custom_fields';
     public const INCLUDE_CONNECTIONS = 'connections';
     public const INCLUDE_ALL = 'all';
+
+    /**
+     * Tag attachable types.
+     */
+    public const TAG_TYPE_PERSON = 'Person';
+    public const TAG_TYPE_COMPANY = 'Company';
+    public const TAG_TYPE_DEAL = 'Deal';
+    public const TAG_TYPE_PROJECT = 'Project';
 }

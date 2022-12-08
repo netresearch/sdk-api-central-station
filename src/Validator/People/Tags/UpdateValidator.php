@@ -9,32 +9,19 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Validator\People;
+namespace Netresearch\Sdk\CentralStation\Validator\People\Tags;
 
-use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 
 /**
- * Class SearchValidator.
+ * Class UpdateValidator.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class SearchValidator
+class UpdateValidator
 {
-    /**
-     * List of allowed "search" fields.
-     *
-     * @var string[]
-     */
-    private static $allowedSearchFields = [
-        Constants::SORT_BY_NAME,
-        Constants::SORT_BY_FIRST_NAME,
-        Constants::SORT_BY_PHONE,
-        Constants::SORT_BY_EMAIL,
-    ];
-
     /**
      * Validate request data before sending it to the web service.
      *
@@ -44,12 +31,10 @@ class SearchValidator
      */
     public static function validate(array $data): void
     {
-        foreach ($data['search'] as $search => $value) {
-            if (!in_array($search, self::$allowedSearchFields, true)) {
-                throw new RequestValidatorException(
-                    'The provided search parameter "' . $search . '" is not allowed'
-                );
-            }
+        if (empty($data['tag']['name'])) {
+            throw new RequestValidatorException(
+                'Please provide at least the updated name of the tag'
+            );
         }
     }
 }

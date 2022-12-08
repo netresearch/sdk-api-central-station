@@ -9,58 +9,54 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\RequestBuilder\People;
+namespace Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Request\People\Search as SearchRequest;
+use Netresearch\Sdk\CentralStation\Request\People\Tags\Create as CreateRequest;
+use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
-use Netresearch\Sdk\CentralStation\Validator\People\SearchValidator;
+use Netresearch\Sdk\CentralStation\Validator\People\Tags\CreateValidator;
 
 /**
- * The request builder to create a valid "search" request.
+ * The request builder to create a valid "create" request.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class SearchRequestBuilder extends AbstractRequestBuilder
+class CreateRequestBuilder extends AbstractRequestBuilder
 {
     /**
-     * Adds a search query.
+     * Sets the tag's name.
      *
-     * @param string $field The field to search for (use one of Constants::SORT_BY_*)
-     * @param string $value The value of the field to search for
+     * @param string $name The name of the tag
      *
-     * @return SearchRequestBuilder
+     * @return CreateRequestBuilder
      */
-    public function addQuery(
-        string $field,
-        string $value
-    ): SearchRequestBuilder {
-        $this->data['search'][$field] = $value;
-
+    public function setTagName(string $name): CreateRequestBuilder
+    {
+        $this->data['tag']['name'] = $name;
         return $this;
     }
 
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return SearchRequest|RequestInterface
+     * @return CreateRequest|RequestInterface
      *
      * @throws RequestValidatorException
      */
     public function create(): RequestInterface
     {
         // Validate the input
-        SearchValidator::validate($this->data);
+        CreateValidator::validate($this->data);
+
+        $tag = new Tag();
+        $tag->setName($this->data['tag']['name']);
 
         // Assign values to request
-        $request = new SearchRequest();
-
-        if (isset($this->data['search'])) {
-            $request->setQuery($this->data['search']);
-        }
+        $request = new CreateRequest($tag);
 
         $this->data = [];
 
