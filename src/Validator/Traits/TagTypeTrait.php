@@ -30,9 +30,9 @@ trait TagTypeTrait
      */
     private static $allowedAttachableTypes = [
         Constants::TAG_TYPE_PERSON,
-        CONSTANTS::TAG_TYPE_COMPANY,
-        CONSTANTS::TAG_TYPE_DEAL,
-        CONSTANTS::TAG_TYPE_PROJECT,
+        Constants::TAG_TYPE_COMPANY,
+        Constants::TAG_TYPE_DEAL,
+        Constants::TAG_TYPE_PROJECT,
     ];
 
     /**
