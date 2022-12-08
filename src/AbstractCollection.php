@@ -53,7 +53,9 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
     }
 
     /**
-     * @param TKey $offset
+     * Offset to retrieve.
+     *
+     * @param TKey $offset The offset to retrieve
      *
      * @return null|TValue
      */
@@ -64,8 +66,10 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
     }
 
     /**
-     * @param TKey   $offset
-     * @param TValue $value
+     * Offset to set.
+     *
+     * @param TKey   $offset The offset to assign the value to
+     * @param TValue $value  The value to set
      */
     public function offsetSet($offset, $value): void
     {
@@ -73,7 +77,9 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
     }
 
     /**
-     * @param TKey $offset
+     * Offset to unset.
+     *
+     * @param TKey $offset The offset to unset
      */
     public function offsetUnset($offset): void
     {
@@ -81,7 +87,9 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
     }
 
     /**
-     * @param TKey $offset
+     * Whether an offset exists.
+     *
+     * @param TKey $offset An offset to check for
      *
      * @return bool
      */
@@ -91,6 +99,8 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
     }
 
     /**
+     * Count elements of an object.
+     *
      * @return int
      */
     public function count(): int
@@ -101,19 +111,26 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
     /**
      * Appends a value to the collection.
      *
-     * @param TValue $value A value
+     * @param TValue $value The value to append
      */
     public function append($value): void
     {
         $this->elements[] = $value;
     }
 
+    /**
+     * Rewind to the first element.
+     *
+     * @return void
+     */
     public function rewind(): void
     {
         reset($this->elements);
     }
 
     /**
+     * Return the current element.
+     *
      * @return false|TValue
      */
     #[\ReturnTypeWillChange]
@@ -123,6 +140,8 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
     }
 
     /**
+     * Return the key of the current element.
+     *
      * @return null|int|string
      */
     #[\ReturnTypeWillChange]
@@ -132,6 +151,8 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
     }
 
     /**
+     * Move forward to next element.
+     *
      * @return false|TValue
      */
     #[\ReturnTypeWillChange]
@@ -141,6 +162,8 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
     }
 
     /**
+     * Checks if current position is valid.
+     *
      * @return bool
      */
     public function valid(): bool
@@ -165,7 +188,7 @@ abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, J
     }
 
     /**
-     * Returns the collection as plain array.
+     * Specify data which should be serialized to JSON.
      *
      * @return TValue[]
      */

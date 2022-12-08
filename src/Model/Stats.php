@@ -9,22 +9,21 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Api;
-
-use JsonSerializable;
+namespace Netresearch\Sdk\CentralStation\Model;
 
 /**
- * The request interface.
+ * Class Stats.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
- * @api
  */
-interface RequestInterface extends JsonSerializable
+class Stats
 {
     /**
-     * @return array<string, mixed>
+     * The absolute number of people.
+     *
+     * @var int
      */
-    public function jsonSerialize(): array;
+    public $totalEntries;
 }

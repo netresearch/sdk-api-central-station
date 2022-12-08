@@ -9,22 +9,20 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Api;
+namespace Netresearch\Sdk\CentralStation\Collection;
 
-use JsonSerializable;
+use Netresearch\Sdk\CentralStation\AbstractCollection;
+use Netresearch\Sdk\CentralStation\Model\People;
 
 /**
- * The request interface.
+ * A collection of people.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
- * @api
+ *
+ * @extends AbstractCollection<int, People>
  */
-interface RequestInterface extends JsonSerializable
+class PeopleCollection extends AbstractCollection
 {
-    /**
-     * @return array<string, mixed>
-     */
-    public function jsonSerialize(): array;
 }

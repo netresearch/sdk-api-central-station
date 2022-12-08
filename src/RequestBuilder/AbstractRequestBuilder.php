@@ -9,22 +9,23 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Api;
+namespace Netresearch\Sdk\CentralStation\RequestBuilder;
 
-use JsonSerializable;
+use Netresearch\Sdk\CentralStation\Api\RequestBuilderInterface;
 
 /**
- * The request interface.
+ * An abstract request builder providing common methods for all request builders.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
- * @api
  */
-interface RequestInterface extends JsonSerializable
+abstract class AbstractRequestBuilder implements RequestBuilderInterface
 {
     /**
-     * @return array<string, mixed>
+     * The collected data used to build the request.
+     *
+     * @var array<string, mixed>
      */
-    public function jsonSerialize(): array;
+    protected $data = [];
 }
