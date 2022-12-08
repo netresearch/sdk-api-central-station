@@ -11,15 +11,17 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test;
 
+use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Common\Plugin\LoggerPlugin;
+use Http\Client\Common\PluginClient;
 use Http\Client\Common\PluginClientFactory;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Message\Formatter\FullHttpMessageFormatter;
 use Http\Mock\Client;
 use Netresearch\Sdk\CentralStation\Api;
 use Netresearch\Sdk\CentralStation\Api\EndpointInterface;
-use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\CentralStation;
+use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Http\ClientPlugin\ErrorPlugin;
 use Netresearch\Sdk\CentralStation\Serializer\JsonSerializer;
 use Netresearch\Sdk\CentralStation\UrlBuilder;
@@ -71,6 +73,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $httpPluginClient = (new PluginClientFactory())->createClient(
             $httpClientMock,
             [
+                new HeaderDefaultsPlugin([
+                    'X-apikey'     => 'TOTALLY-SECRET-API-KEY',
+                    'Accept'       => 'application/json',
+                    'Content-Type' => 'application/json',
+                ]),
                 new LoggerPlugin(new NullLogger(), new FullHttpMessageFormatter(null)),
                 new ErrorPlugin(),
             ]
@@ -123,6 +130,75 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $urlBuilder = $urlBuilderProperty->getValue($actual);
 
         self::assertSame($expected, $urlBuilder->getFullUrl(), $message);
+    }
+
+    /**
+     * Asserts that given $actual matches the $expected HTTP method.
+     *
+     * @param string            $expected
+     * @param EndpointInterface $actual
+     * @param string            $message
+     *
+     * @return void
+     * @throws ReflectionException
+     */
+    public static function assertHttpMethod(string $expected, EndpointInterface $actual, string $message = ''): void
+    {
+        $reflection = new ReflectionObject($actual);
+        $clientProperty = $reflection->getProperty('client');
+        $clientProperty->setAccessible(true);
+
+        /** @var PluginClient $pluginClient */
+        $pluginClient = $clientProperty->getValue($actual);
+
+        $reflection = new ReflectionObject($pluginClient);
+        $clientProperty = $reflection->getProperty('client');
+        $clientProperty->setAccessible(true);
+
+        /** @var Client $mockClient */
+        $mockClient = $clientProperty->getValue($pluginClient);
+
+        self::assertSame($expected, $mockClient->getLastRequest()->getMethod(), $message);
+    }
+
+    /**
+     * Asserts that the client performs the request with required HTTP headers.
+     *
+     * @param EndpointInterface $actual
+     * @param string            $message
+     *
+     * @return void
+     * @throws ReflectionException
+     */
+    public static function assertHttpHeaders(
+        EndpointInterface $actual,
+        string $message = ''
+    ): void {
+        $reflection = new ReflectionObject($actual);
+        $clientProperty = $reflection->getProperty('client');
+        $clientProperty->setAccessible(true);
+
+        /** @var PluginClient $pluginClient */
+        $pluginClient = $clientProperty->getValue($actual);
+
+        $reflection = new ReflectionObject($pluginClient);
+        $clientProperty = $reflection->getProperty('client');
+        $clientProperty->setAccessible(true);
+
+        /** @var Client $mockClient */
+        $mockClient = $clientProperty->getValue($pluginClient);
+
+        self::assertSame(
+            'application/json',
+            $mockClient->getLastRequest()->getHeaderLine('Accept'),
+            $message
+        );
+
+        self::assertSame(
+            'TOTALLY-SECRET-API-KEY',
+            $mockClient->getLastRequest()->getHeaderLine('X-apikey'),
+            $message
+        );
     }
 
     /**

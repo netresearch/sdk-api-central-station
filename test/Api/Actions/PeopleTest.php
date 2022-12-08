@@ -40,6 +40,25 @@ use Netresearch\Sdk\CentralStation\Test\TestCase;
 class PeopleTest extends TestCase
 {
     /**
+     * Returns an instance of the people API endpoint.
+     *
+     * @param string   $responseJsonFile
+     * @param int|null $personId
+     *
+     * @return \Netresearch\Sdk\CentralStation\Api\Actions\People
+     */
+    private function getPeopleApi(
+        string $responseJsonFile = '',
+        int $personId = null
+    ): \Netresearch\Sdk\CentralStation\Api\Actions\People {
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+
+        return $serviceFactoryMock
+            ->api()
+            ->people($personId);
+    }
+
+    /**
      * @return string[][]
      */
     public function indexResponseDataProvider(): array
@@ -61,13 +80,11 @@ class PeopleTest extends TestCase
      */
     public function index(string $responseJsonFile): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $peopleApi = $this->getPeopleApi($responseJsonFile);
+        $result    = $peopleApi->index(new Index());
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->people()
-            ->index(new Index());
-
+        self::assertWebserviceUrl('https://www.example.org/people', $peopleApi);
+        self::assertHttpMethod('GET', $peopleApi);
         self::assertInstanceOf(PeopleCollection::class, $result);
         self::assertContainsOnlyInstancesOf(People::class, $result);
 
@@ -76,11 +93,18 @@ class PeopleTest extends TestCase
             self::assertInstanceOf(People\Person::class, $people->person);
         }
 
-        $this->assertFirstPerson($result[0]->person);
-        $this->assertSecondPerson($result[1]->person);
+        self::assertFirstPerson($result[0]->person);
+        self::assertSecondPerson($result[1]->person);
     }
 
-    private function assertFirstPerson(Person $person)
+    /**
+     * Asserts that the data of the given person matches the expected values.
+     *
+     * @param Person $person
+     *
+     * @return void
+     */
+    private static function assertFirstPerson(Person $person): void
     {
         self::assertSame(455637, $person->id);
         self::assertSame(21, $person->accountId);
@@ -96,7 +120,14 @@ class PeopleTest extends TestCase
         self::assertSame('21.05.2015 14:06:00', $person->updatedAt->format('d.m.Y H:i:s'));
     }
 
-    private function assertSecondPerson(Person $person)
+    /**
+     * Asserts that the data of the given person matches the expected values.
+     *
+     * @param Person $person
+     *
+     * @return void
+     */
+    private static function assertSecondPerson(Person $person): void
     {
         self::assertSame(455636, $person->id);
         self::assertSame(21, $person->accountId);
@@ -134,16 +165,14 @@ class PeopleTest extends TestCase
      */
     public function show(string $responseJsonFile): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $peopleApi = $this->getPeopleApi($responseJsonFile, 123456);
+        $result    = $peopleApi->show(new Show());
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->people()
-            ->show(new Show(123456));
-
+        self::assertWebserviceUrl('https://www.example.org/people/123456', $peopleApi);
+        self::assertHttpMethod('GET', $peopleApi);
         self::assertInstanceOf(People\Person::class, $result);
 
-        $this->assertFirstPerson($result);
+        self::assertFirstPerson($result);
     }
 
     /**
@@ -168,23 +197,30 @@ class PeopleTest extends TestCase
      */
     public function create(string $responseJsonFile): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $peopleApi = $this->getPeopleApi($responseJsonFile);
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->people()
+        $result = $peopleApi
             ->create(
                 new Create(
-                    new \Netresearch\Sdk\CentralStation\Request\People\Common\Person('')
+                    new \Netresearch\Sdk\CentralStation\Request\People\Common\Person()
                 )
             );
 
+        self::assertWebserviceUrl('https://www.example.org/people', $peopleApi);
+        self::assertHttpMethod('POST', $peopleApi);
+        self::assertHttpHeaders($peopleApi);
         self::assertInstanceOf(People\Person::class, $result);
-
-        $this->assertCreatedPerson($result);
+        self::assertCreatedPerson($result);
     }
 
-    private function assertCreatedPerson(Person $person)
+    /**
+     * Asserts that the data of the given person matches the expected values.
+     *
+     * @param Person $person
+     *
+     * @return void
+     */
+    private static function assertCreatedPerson(Person $person)
     {
         self::assertSame(1545412, $person->id);
         self::assertSame(21, $person->accountId);
@@ -207,15 +243,12 @@ class PeopleTest extends TestCase
      */
     public function update(): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock();
+        $peopleApi = $this->getPeopleApi('', 123456);
+        $result    = $peopleApi->update(new Update());
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->people()
-            ->update(
-                new Update(123456)
-            );
-
+        self::assertWebserviceUrl('https://www.example.org/people/123456', $peopleApi);
+        self::assertHttpHeaders($peopleApi);
+        self::assertHttpMethod('PUT', $peopleApi);
         self::assertTrue($result);
     }
 
@@ -241,13 +274,12 @@ class PeopleTest extends TestCase
      */
     public function stats(string $responseJsonFile): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $peopleApi = $this->getPeopleApi($responseJsonFile);
+        $result    = $peopleApi->stats(new Stats());
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->people()
-            ->stats(new Stats());
-
+        self::assertWebserviceUrl('https://www.example.org/people/stats', $peopleApi);
+        self::assertHttpHeaders($peopleApi);
+        self::assertHttpMethod('GET', $peopleApi);
         self::assertSame(40, $result);
     }
 
@@ -258,16 +290,17 @@ class PeopleTest extends TestCase
      */
     public function merge(): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock();
+        $peopleApi = $this->getPeopleApi('', 1);
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->people()
+        $result = $peopleApi
             ->merge(
                 (new Merge(1))
                     ->setMergeIds(5, 10, 100)
             );
 
+        self::assertWebserviceUrl('https://www.example.org/people/1/merge', $peopleApi);
+        self::assertHttpHeaders($peopleApi);
+        self::assertHttpMethod('POST', $peopleApi);
         self::assertTrue($result);
     }
 
@@ -293,13 +326,12 @@ class PeopleTest extends TestCase
      */
     public function search(string $responseJsonFile): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $peopleApi = $this->getPeopleApi($responseJsonFile);
+        $result    = $peopleApi->search(new Search());
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->people()
-            ->search(new Search());
-
+        self::assertWebserviceUrl('https://www.example.org/people/search', $peopleApi);
+        self::assertHttpMethod('GET', $peopleApi);
+        self::assertHttpHeaders($peopleApi);
         self::assertInstanceOf(PeopleCollection::class, $result);
         self::assertContainsOnlyInstancesOf(People::class, $result);
 
@@ -308,10 +340,17 @@ class PeopleTest extends TestCase
             self::assertInstanceOf(People\Person::class, $people->person);
         }
 
-        $this->assertSearchedPerson($result[0]->person);
+        self::assertSearchedPerson($result[0]->person);
     }
 
-    private function assertSearchedPerson(Person $person)
+    /**
+     * Asserts that the data of the given person matches the expected values.
+     *
+     * @param Person $person
+     *
+     * @return void
+     */
+    private static function assertSearchedPerson(Person $person)
     {
         self::assertSame(235321, $person->id);
         self::assertSame(21, $person->accountId);
@@ -334,13 +373,12 @@ class PeopleTest extends TestCase
      */
     public function delete(): void
     {
-        $serviceFactoryMock = $this->getServiceFactoryMock();
+        $peopleApi = $this->getPeopleApi('', 123456);
+        $result    = $peopleApi->delete();
 
-        $result = $serviceFactoryMock
-            ->api()
-            ->people()
-            ->delete(12345);
-
+        self::assertWebserviceUrl('https://www.example.org/people/123456', $peopleApi);
+        self::assertHttpHeaders($peopleApi);
+        self::assertHttpMethod('DELETE', $peopleApi);
         self::assertTrue($result);
     }
 }
