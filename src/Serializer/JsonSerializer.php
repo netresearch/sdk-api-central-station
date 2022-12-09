@@ -79,11 +79,18 @@ class JsonSerializer
     }
 
     /**
-     * @param string      $jsonResponse
-     * @param null|string $className
-     * @param null|string $collectionClassName
+     * Decodes the JSON string into PHP objects.
      *
-     * @return null|mixed|AbstractCollection
+     * @template TEntity
+     * @template TEntityCollection
+     *
+     * @param string                                      $jsonResponse
+     * @param null|string|class-string<TEntity>           $className
+     * @param null|string|class-string<TEntityCollection> $collectionClassName
+     *
+     * @return ($collectionClassName is class-string<TEntityCollection>
+     *             ? TEntityCollection
+     *             : ($className is class-string<TEntity> ? TEntity : null|mixed))
      *
      * @throws JsonException
      */

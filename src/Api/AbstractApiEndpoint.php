@@ -35,6 +35,9 @@ use Throwable;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @template TEntity
+ * @template TEntityCollection
  */
 abstract class AbstractApiEndpoint implements EndpointInterface
 {
@@ -192,15 +195,12 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Returns a list of all elements.
      *
-     * @template T
-     * @template TCollection
+     * @param IndexRequestInterface                       $request             The index request instance
+     * @param null|string|class-string<TEntity>           $className           The class name of the mapped response
+     * @param null|string|class-string<TEntityCollection> $collectionClassName The collection class name of the
+     *                                                                         mapped response
      *
-     * @param IndexRequestInterface                 $request             The index request instance
-     * @param null|string|class-string<T>           $className           The class name of the mapped response
-     * @param null|string|class-string<TCollection> $collectionClassName The collection class name of the
-     *                                                                   mapped response
-     *
-     * @return TCollection
+     * @return TEntityCollection
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -227,12 +227,10 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Returns a single element. The route must contain the ID of the element to be processed.
      *
-     * @template T
+     * @param null|ShowRequestInterface    $request   The show request instance
+     * @param string|class-string<TEntity> $className The class name of the mapped response
      *
-     * @param null|ShowRequestInterface $request   The show request instance
-     * @param string|class-string<T>    $className The class name of the mapped response
-     *
-     * @return null|T
+     * @return null|TEntity
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -257,12 +255,10 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Creates a new element and returns it.
      *
-     * @template T
+     * @param CreateRequestInterface       $request   The create request instance
+     * @param string|class-string<TEntity> $className The class name of the mapped response
      *
-     * @param CreateRequestInterface $request   The create request instance
-     * @param string|class-string<T> $className The class name of the mapped response
-     *
-     * @return null|T
+     * @return null|TEntity
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

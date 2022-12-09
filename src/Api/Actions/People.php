@@ -40,6 +40,9 @@ use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @extends AbstractApiEndpoint<Model\People, PeopleCollection>
+ * @extends AbstractApiEndpoint<Model\Stats, PeopleCollection>
  */
 class People extends AbstractApiEndpoint
 {
@@ -249,7 +252,7 @@ class People extends AbstractApiEndpoint
             Model\Stats::class
         );
 
-        return $result->totalEntries;
+        return $result->totalEntries ?? 0;
     }
 
     /**

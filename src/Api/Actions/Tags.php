@@ -31,6 +31,8 @@ use Netresearch\Sdk\CentralStation\Request\Tags\TagList as ListRequest;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @extends AbstractApiEndpoint<Model\Tags, TagsCollection>
  */
 class Tags extends AbstractApiEndpoint
 {
@@ -99,13 +101,17 @@ class Tags extends AbstractApiEndpoint
      */
     public function list(ListRequest $request): array
     {
-        $this->urlBuilder
-            ->addPath('/list');
+        $requestClosure = function () use ($request) {
+            $this->urlBuilder
+                ->addPath('/list')
+                ->setParams($request->jsonSerialize());
 
-        return $this->findAll(
-            $request,
-            null,
-            null
-        );
+            $response = $this->httpGet();
+
+            return $this->serializer
+                ->decode((string) $response->getBody());
+        };
+
+        return $this->execute($requestClosure);
     }
 }
