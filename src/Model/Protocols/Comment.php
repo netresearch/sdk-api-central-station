@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model\Protocols;
 
-use DateTime;
+use Netresearch\Sdk\CentralStation\Model\AbstractEntity;
 
 /**
  * A protocol comment.
@@ -20,15 +20,8 @@ use DateTime;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class Comment
+class Comment extends AbstractEntity
 {
-    /**
-     * ID of comment.
-     *
-     * @var int
-     */
-    public $id;
-
     /**
      * ID of the linked object, for example the protocol ID.
      *
@@ -56,18 +49,4 @@ class Comment
      * @var string
      */
     public $name;
-
-    /**
-     * Time of creation.
-     *
-     * @var DateTime
-     */
-    public $createdAt;
-
-    /**
-     * Time of last update.
-     *
-     * @var DateTime
-     */
-    public $updatedAt;
 }
