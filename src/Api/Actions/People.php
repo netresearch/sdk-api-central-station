@@ -58,6 +58,13 @@ class People extends AbstractApiEndpoint
     private $tagsApi;
 
     /**
+     * Instance of the "protocols" API for implementing lazy loading.
+     *
+     * @var null|People\Protocols
+     */
+    private $protocolsApi;
+
+    /**
      * Returns the "tags" API used to process tags related to a specific person.
      *
      * @param null|int $tagId A valid tag ID
@@ -87,6 +94,38 @@ class People extends AbstractApiEndpoint
         }
 
         return $this->tagsApi;
+    }
+
+    /**
+     * Returns the "protocols" API used to process protocols related to a specific person.
+     *
+     * @param null|int $protocolId A valid protocol ID
+     *
+     * @return People\Protocols
+     */
+    public function protocols(int $protocolId = null): People\Protocols
+    {
+        $this->urlBuilder
+            ->setParams([])
+            ->addPath('/' . People\Protocols::PATH);
+
+        // Add protocol ID if available
+        if ($protocolId) {
+            $this->urlBuilder
+                ->addPath('/' . $protocolId);
+        }
+
+        if (!$this->protocolsApi) {
+            $this->protocolsApi = new People\Protocols(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->protocolsApi;
     }
 
     /**
