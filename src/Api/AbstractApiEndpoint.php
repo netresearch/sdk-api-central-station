@@ -193,7 +193,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     }
 
     /**
-     * Returns a list of all elements.
+     * Returns a list of all entities.
      *
      * @param IndexRequestInterface                       $request             The index request instance
      * @param null|string|class-string<TEntity>           $className           The class name of the mapped response
@@ -206,7 +206,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    protected function findAll(
+    protected function findAllEntities(
         IndexRequestInterface $request,
         ?string $className,
         ?string $collectionClassName
@@ -225,7 +225,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     }
 
     /**
-     * Returns a single element. The route must contain the ID of the element to be processed.
+     * Returns a single entity. The route must contain the ID of the entity to be processed.
      *
      * @param null|ShowRequestInterface    $request   The show request instance
      * @param string|class-string<TEntity> $className The class name of the mapped response
@@ -236,7 +236,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    protected function findOne(?ShowRequestInterface $request, string $className)
+    protected function findEntity(?ShowRequestInterface $request, string $className)
     {
         $requestClosure = function () use ($request, $className) {
             if ($request) {
@@ -253,7 +253,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     }
 
     /**
-     * Creates a new element and returns it.
+     * Creates a new entity and returns it.
      *
      * @param CreateRequestInterface       $request   The create request instance
      * @param string|class-string<TEntity> $className The class name of the mapped response
@@ -264,7 +264,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    protected function createNew(CreateRequestInterface $request, string $className)
+    protected function createNewEntity(CreateRequestInterface $request, string $className)
     {
         $requestClosure = function () use ($request, $className) {
             $response = $this->httpPost($request);
@@ -277,7 +277,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     }
 
     /**
-     * Updates an existing element. The route must contain the ID of the element to be processed.
+     * Updates an existing entity. The route must contain the ID of the entity to be processed.
      * Returns TRUE on success, FALSE otherwise.
      *
      * @param UpdateRequestInterface $request The update request instance
@@ -298,7 +298,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     }
 
     /**
-     * Deletes an existing element. Returns TRUE on success, FALSE otherwise.
+     * Deletes an existing entity. Returns TRUE on success, FALSE otherwise.
      *
      * @return bool
      *

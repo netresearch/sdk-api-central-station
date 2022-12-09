@@ -60,7 +60,7 @@ class Tags extends AbstractApiEndpoint
      */
     public function index(IndexRequest $request): TagsCollection
     {
-        return $this->findAll(
+        return $this->findAllEntities(
             $request,
             Model\Tags::class,
             TagsCollection::class
@@ -80,7 +80,7 @@ class Tags extends AbstractApiEndpoint
      */
     public function show(): ?Tag
     {
-        $result = $this->findOne(
+        $result = $this->findEntity(
             null,
             Model\Tags::class
         );
@@ -103,7 +103,7 @@ class Tags extends AbstractApiEndpoint
      */
     public function create(CreateRequest $request): ?Tag
     {
-        $result = $this->createNew(
+        $result = $this->createNewEntity(
             $request,
             Model\Tags::class
         );

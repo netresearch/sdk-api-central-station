@@ -146,7 +146,7 @@ class People extends AbstractApiEndpoint
      */
     public function index(IndexRequest $request): PeopleCollection
     {
-        return $this->findAll(
+        return $this->findAllEntities(
             $request,
             Model\People::class,
             PeopleCollection::class
@@ -168,7 +168,7 @@ class People extends AbstractApiEndpoint
      */
     public function show(ShowRequest $request): ?Person
     {
-        $result = $this->findOne(
+        $result = $this->findEntity(
             $request,
             Model\People::class
         );
@@ -193,7 +193,7 @@ class People extends AbstractApiEndpoint
      */
     public function create(CreateRequest $request): ?Person
     {
-        $result = $this->createNew(
+        $result = $this->createNewEntity(
             $request,
             Model\People::class
         );
@@ -221,7 +221,7 @@ class People extends AbstractApiEndpoint
         $this->urlBuilder
             ->addPath('/search');
 
-        return $this->findAll(
+        return $this->findAllEntities(
             $request,
             Model\People::class,
             PeopleCollection::class
@@ -247,7 +247,7 @@ class People extends AbstractApiEndpoint
         $this->urlBuilder
             ->addPath('/stats');
 
-        $result = $this->findOne(
+        $result = $this->findEntity(
             $request,
             Model\Stats::class
         );

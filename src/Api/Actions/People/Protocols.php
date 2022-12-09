@@ -59,7 +59,7 @@ class Protocols extends AbstractApiEndpoint
      */
     public function index(IndexRequest $request): ProtocolsCollection
     {
-        return $this->findAll(
+        return $this->findAllEntities(
             $request,
             Model\Protocols::class,
             ProtocolsCollection::class
@@ -79,7 +79,7 @@ class Protocols extends AbstractApiEndpoint
      */
     public function show(): ?Model\Protocols
     {
-        return $this->findOne(
+        return $this->findEntity(
             null,
             Model\Protocols::class
         );
@@ -100,7 +100,7 @@ class Protocols extends AbstractApiEndpoint
      */
     public function create(CreateRequest $request): ?Model\Protocols
     {
-        return $this->createNew(
+        return $this->createNewEntity(
             $request,
             Model\Protocols::class
         );
