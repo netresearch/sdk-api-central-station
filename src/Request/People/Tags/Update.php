@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People\Tags;
 
-use Netresearch\Sdk\CentralStation\Api\RequestInterface;
+use Netresearch\Sdk\CentralStation\Api\UpdateRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
 
 /**
@@ -21,7 +21,7 @@ use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Update implements RequestInterface
+class Update implements UpdateRequestInterface
 {
     /**
      * @var null|Tag

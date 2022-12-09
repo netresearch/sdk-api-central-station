@@ -110,7 +110,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
         } catch (DetailedErrorException $exception) {
             throw ServiceExceptionFactory::createDetailedServiceException($exception);
         } catch (ClientExceptionInterface $exception) {
-            // Do not remove, a ClientExceptionInterface maybe thrown sendRequest() method
+            // Do not remove, a ClientExceptionInterface maybe thrown in the sendRequest() method
             throw ServiceExceptionFactory::createServiceException($exception);
         } catch (Throwable $exception) {
             throw ServiceExceptionFactory::create($exception);
@@ -187,5 +187,135 @@ abstract class AbstractApiEndpoint implements EndpointInterface
             ->createRequest('DELETE', $this->urlBuilder->getFullUrl());
 
         return $this->client->sendRequest($request);
+    }
+
+    /**
+     * Returns a list of all elements.
+     *
+     * @template T
+     * @template TCollection
+     *
+     * @param IndexRequestInterface                 $request             The index request instance
+     * @param null|string|class-string<T>           $className           The class name of the mapped response
+     * @param null|string|class-string<TCollection> $collectionClassName The collection class name of the
+     *                                                                   mapped response
+     *
+     * @return TCollection
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    protected function findAll(
+        IndexRequestInterface $request,
+        ?string $className,
+        ?string $collectionClassName
+    ) {
+        $requestClosure = function () use ($request, $className, $collectionClassName) {
+            $this->urlBuilder
+                ->setParams($request->jsonSerialize());
+
+            $response = $this->httpGet();
+
+            return $this->serializer
+                ->decode((string) $response->getBody(), $className, $collectionClassName);
+        };
+
+        return $this->execute($requestClosure);
+    }
+
+    /**
+     * Returns a single element. The route must contain the ID of the element to be processed.
+     *
+     * @template T
+     *
+     * @param null|ShowRequestInterface $request   The show request instance
+     * @param string|class-string<T>    $className The class name of the mapped response
+     *
+     * @return null|T
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    protected function findOne(?ShowRequestInterface $request, string $className)
+    {
+        $requestClosure = function () use ($request, $className) {
+            if ($request) {
+                $this->urlBuilder->setParams($request->jsonSerialize());
+            }
+
+            $response = $this->httpGet();
+
+            return $this->serializer
+                ->decode((string) $response->getBody(), $className);
+        };
+
+        return $this->execute($requestClosure);
+    }
+
+    /**
+     * Creates a new element and returns it.
+     *
+     * @template T
+     *
+     * @param CreateRequestInterface $request   The create request instance
+     * @param string|class-string<T> $className The class name of the mapped response
+     *
+     * @return null|T
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    protected function createNew(CreateRequestInterface $request, string $className)
+    {
+        $requestClosure = function () use ($request, $className) {
+            $response = $this->httpPost($request);
+
+            return $this->serializer
+                ->decode((string) $response->getBody(), $className);
+        };
+
+        return $this->execute($requestClosure);
+    }
+
+    /**
+     * Updates an existing element. The route must contain the ID of the element to be processed.
+     * Returns TRUE on success, FALSE otherwise.
+     *
+     * @param UpdateRequestInterface $request The update request instance
+     *
+     * @return bool
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    public function update(UpdateRequestInterface $request): bool
+    {
+        $requestClosure = function () use ($request): bool {
+            return $this->httpPut($request)->getStatusCode() === 200;
+        };
+
+        return $this->execute($requestClosure);
+    }
+
+    /**
+     * Deletes an existing element. Returns TRUE on success, FALSE otherwise.
+     *
+     * @return bool
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    public function delete(): bool
+    {
+        $requestClosure = function (): bool {
+            return $this->httpDelete()->getStatusCode() === 200;
+        };
+
+        return $this->execute($requestClosure);
     }
 }
