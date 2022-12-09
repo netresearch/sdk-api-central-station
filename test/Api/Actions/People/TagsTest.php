@@ -93,6 +93,13 @@ class TagsTest extends TestCase
         $this->assertSecondTag($result[1]->tag);
     }
 
+    /**
+     * Asserts that the data of the given tag matches the expected values.
+     *
+     * @param Tag $tag
+     *
+     * @return void
+     */
     private function assertFirstTag(Tag $tag)
     {
         self::assertSame(45067258, $tag->id);
@@ -104,6 +111,13 @@ class TagsTest extends TestCase
         self::assertSame('05.11.2020 10:44:32', $tag->updatedAt->format('d.m.Y H:i:s'));
     }
 
+    /**
+     * Asserts that the data of the given tag matches the expected values.
+     *
+     * @param Tag $tag
+     *
+     * @return void
+     */
     private function assertSecondTag(Tag $tag)
     {
         self::assertSame(45067261, $tag->id);
@@ -188,6 +202,13 @@ class TagsTest extends TestCase
         $this->assertCreatedTag($result);
     }
 
+    /**
+     * Asserts that the data of the given tag matches the expected values.
+     *
+     * @param Tag $tag
+     *
+     * @return void
+     */
     private function assertCreatedTag(Tag $tag)
     {
         self::assertSame(45067258, $tag->id);
