@@ -1,0 +1,68 @@
+[
+    {
+        "protocol_object_note": {
+            "id": 43342215,
+            "user_id": 158291,
+            "attachments_count": 0,
+            "comments_count": 1,
+            "name": "E-Mail",
+            "confidential": true,
+            "format": "markdown",
+            "content": "E-Mail",
+            "updated_by_user_id": null,
+            "created_at": "2022-12-08T15:18:33.000+01:00",
+            "updated_at": "2022-12-08T15:26:03.000+01:00",
+            "data_hash": {},
+            "account_id": 87444,
+            "type": "ProtocolObjectNote",
+            "badge": "email",
+            "person_ids": [
+                30016185
+            ],
+            "company_ids": [],
+            "deal_ids": [],
+            "project_ids": [],
+            "person_id": 30016185,
+            "company_id": null,
+            "comments": [
+                {
+                    "id": 2372871,
+                    "attachable_id": "43342215",
+                    "attachable_type": "Protocol",
+                    "user_id": 158291,
+                    "name": "Testkommentar",
+                    "created_at": "2022-12-08T15:26:03.000+01:00",
+                    "updated_at": "2022-12-08T15:26:03.000+01:00"
+                }
+            ]
+        }
+    },
+    {
+        "protocol_object_note": {
+            "id": 43342275,
+            "user_id": 158291,
+            "attachments_count": 1,
+            "comments_count": 0,
+            "name": "Testdatei",
+            "confidential": false,
+            "format": "markdown",
+            "content": "Testdatei",
+            "updated_by_user_id": 158291,
+            "created_at": "2022-12-08T15:19:20.000+01:00",
+            "updated_at": "2022-12-08T15:31:09.000+01:00",
+            "data_hash": {},
+            "account_id": 87444,
+            "type": "ProtocolObjectNote",
+            "badge": "other",
+            "person_ids": [
+                30016185
+            ],
+            "company_ids": [],
+            "deal_ids": [],
+            "project_ids": [],
+            "person_id": 30016185,
+            "company_id": null,
+            "comments": []
+        }
+    }
+]

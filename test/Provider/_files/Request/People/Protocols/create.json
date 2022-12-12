@@ -1,0 +1,9 @@
+{
+    "protocol": {
+        "name": "Protocol name",
+        "content": "Protocol content",
+        "confidential": true,
+        "format": "plaintext",
+        "badge": "meeting"
+    }
+}

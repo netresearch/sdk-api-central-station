@@ -1,0 +1,27 @@
+{
+    "protocol_object_note": {
+        "id": 42483967,
+        "user_id": 117760,
+        "attachments_count": 1,
+        "comments_count": 0,
+        "name": "ISB Call 9",
+        "confidential": false,
+        "format": "plaintext",
+        "content": "ISB Call 9",
+        "updated_by_user_id": 117760,
+        "created_at": "2022-11-03T16:38:34.000+01:00",
+        "updated_at": "2022-12-08T12:40:07.000+01:00",
+        "data_hash": {},
+        "account_id": 87444,
+        "type": "ProtocolObjectNote",
+        "badge": "note",
+        "person_ids": [
+            27325165
+        ],
+        "company_ids": [],
+        "deal_ids": [],
+        "project_ids": [],
+        "person_id": 27325165,
+        "company_id": null
+    }
+}

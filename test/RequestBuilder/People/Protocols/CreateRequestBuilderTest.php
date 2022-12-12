@@ -9,10 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Tags;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Protocols;
 
-use Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags\CreateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Tags\CreateProvider;
+use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\RequestBuilder\People\Protocols\CreateRequestBuilder;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\Protocols\CreateProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -47,7 +48,11 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
     public function create(string $expectedJson): void
     {
         $requestBuilder = new CreateRequestBuilder();
-        $requestBuilder->setTagName('New created tag');
+        $requestBuilder->setName('Protocol name')
+            ->setContent('Protocol content')
+            ->setConfidential(true)
+            ->setBadge(Constants::PROTOCOL_BADGE_MEETING)
+            ->setFormat(Constants::PROTOCOL_FORMAT_PLAINTEXT);
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);
