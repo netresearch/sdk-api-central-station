@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Serializer;
 
+use Closure;
 use DateTime;
 use JsonException;
 use MagicSunday\JsonMapper;
@@ -35,6 +36,21 @@ use function json_encode;
  */
 class JsonSerializer
 {
+    /**
+     * @var string[]|Closure[]
+     */
+    private $classMap;
+
+    /**
+     * JsonSerializer constructor.
+     *
+     * @param string[]|Closure[] $classMap A class map to override the default class names (source => target)
+     */
+    public function __construct(array $classMap = [])
+    {
+        $this->classMap = $classMap;
+    }
+
     /**
      * Maps the given request type instance to JSON.
      *
@@ -111,7 +127,8 @@ class JsonSerializer
         $decoder = new JsonMapper(
             $extractor,
             PropertyAccess::createPropertyAccessor(),
-            new CamelCasePropertyNameConverter()
+            new CamelCasePropertyNameConverter(),
+            $this->classMap
         );
 
         // Add handler for DateTime elements

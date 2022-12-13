@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation;
 
+use Closure;
 use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Common\Plugin\LoggerPlugin;
 use Http\Client\Common\PluginClient;
@@ -26,11 +27,12 @@ use Netresearch\Sdk\CentralStation\Serializer\JsonSerializer;
 use Psr\Log\LoggerInterface;
 
 /**
- * Provides methods to get classes for each type of API call.
+ * The main API entry point.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ * @api
  */
 class CentralStation
 {
@@ -66,14 +68,16 @@ class CentralStation
     /**
      * CentralStation constructor.
      *
-     * @param LoggerInterface $logger        A logger instance
-     * @param string          $webserviceUrl The URL of the webservice endpoint
-     * @param string          $apiKey        The API key
+     * @param LoggerInterface    $logger        A logger instance
+     * @param string             $webserviceUrl The URL of the webservice endpoint
+     * @param string             $apiKey        The API key
+     * @param string[]|Closure[] $classMap      A class map to override the default class names (source => target)
      */
     public function __construct(
         LoggerInterface $logger,
         string $webserviceUrl,
-        string $apiKey
+        string $apiKey,
+        array $classMap = []
     ) {
         $this->logger = $logger;
         $this->apiKey = $apiKey;
@@ -82,7 +86,7 @@ class CentralStation
         $this->urlBuilder
             ->setBase($webserviceUrl);
 
-        $this->serializer = new JsonSerializer();
+        $this->serializer = new JsonSerializer($classMap);
     }
 
     /**
