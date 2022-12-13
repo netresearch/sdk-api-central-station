@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
-use Netresearch\Sdk\CentralStation\Api\UpdateRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\People\Common\Person;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 
 /**
  * A "update" request.
@@ -21,7 +21,7 @@ use Netresearch\Sdk\CentralStation\Request\People\Common\Person;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Update implements UpdateRequestInterface
+class Update implements RequestInterface
 {
     /**
      * @var null|Person

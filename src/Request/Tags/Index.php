@@ -11,7 +11,12 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\Tags;
 
-use Netresearch\Sdk\CentralStation\Api\IndexRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\FilterRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\SortRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\Traits\FilterRequestTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\PaginationRequestTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\SortRequestTrait;
 
 /**
  * An "index" request to return all tags.
@@ -20,98 +25,14 @@ use Netresearch\Sdk\CentralStation\Api\IndexRequestInterface;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Index implements IndexRequestInterface
+class Index implements
+    FilterRequestInterface,
+    PaginationRequestInterface,
+    SortRequestInterface
 {
-    /**
-     * @var int
-     */
-    private $perPage;
-
-    /**
-     * @var int
-     */
-    private $page;
-
-    /**
-     * @var string
-     */
-    private $orderBy;
-
-    /**
-     * @var string
-     */
-    private $orderDirection = 'asc';
-
-    /**
-     * @var string[][]
-     */
-    private $filter;
-
-    /**
-     * @param int $perPage
-     *
-     * @return Index
-     */
-    public function setPerPage(int $perPage): Index
-    {
-        $this->perPage = $perPage;
-        return $this;
-    }
-
-    /**
-     * @param int $page
-     *
-     * @return Index
-     */
-    public function setPage(int $page): Index
-    {
-        $this->page = $page;
-        return $this;
-    }
-
-    /**
-     * @param string $orderBy
-     *
-     * @return Index
-     */
-    public function setOrderBy(string $orderBy): Index
-    {
-        $this->orderBy = $orderBy;
-        return $this;
-    }
-
-    /**
-     * @param string $orderDirection
-     *
-     * @return Index
-     */
-    public function setOrderDirection(string $orderDirection): Index
-    {
-        $this->orderDirection = $orderDirection;
-        return $this;
-    }
-
-    /**
-     * Sets a list of filters:
-     *
-     * [
-     *     <field1> => [
-     *         <comparison-method1> => <value1>
-     *     ],
-     *     <field2> => [
-     *         <comparison-method2> => <value2>
-     *     ],
-     * ]
-     *
-     * @param string[][] $filter The list of filters
-     *
-     * @return Index
-     */
-    public function setFilter(array $filter): Index
-    {
-        $this->filter = $filter;
-        return $this;
-    }
+    use FilterRequestTrait;
+    use PaginationRequestTrait;
+    use SortRequestTrait;
 
     /**
      * @return array<string, int|string|string[][]>
@@ -119,22 +40,9 @@ class Index implements IndexRequestInterface
     public function jsonSerialize(): array
     {
         $data = [];
-
-        if (!empty($this->perPage)) {
-            $data['perpage'] = $this->perPage;
-        }
-
-        if (!empty($this->page)) {
-            $data['page'] = $this->page;
-        }
-
-        if (!empty($this->orderBy) && !empty($this->orderDirection)) {
-            $data['order'] = $this->orderBy . '-' . $this->orderDirection;
-        }
-
-        if (!empty($this->filter)) {
-            $data['filter'] = $this->filter;
-        }
+        $data = $this->addPaginationToSerializedData($data);
+        $data = $this->addSortToSerializedData($data);
+        $data = $this->addFilterToSerializedData($data);
 
         return $data;
     }

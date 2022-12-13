@@ -11,7 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
-use Netresearch\Sdk\CentralStation\Api\ShowRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\FilterRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\Traits\FilterRequestTrait;
 
 /**
  * A "stats" request.
@@ -20,34 +21,9 @@ use Netresearch\Sdk\CentralStation\Api\ShowRequestInterface;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Stats implements ShowRequestInterface
+class Stats implements FilterRequestInterface
 {
-    /**
-     * @var string[][]
-     */
-    private $filter;
-
-    /**
-     * Sets a list of filters:
-     *
-     * [
-     *     <field1> => [
-     *         <comparison-method1> => <value1>
-     *     ],
-     *     <field2> => [
-     *         <comparison-method2> => <value2>
-     *     ],
-     * ]
-     *
-     * @param string[][] $filter The list of filters
-     *
-     * @return Stats
-     */
-    public function setFilter(array $filter): Stats
-    {
-        $this->filter = $filter;
-        return $this;
-    }
+    use FilterRequestTrait;
 
     /**
      * @return array<string, array<array<string>>>
@@ -55,10 +31,7 @@ class Stats implements ShowRequestInterface
     public function jsonSerialize(): array
     {
         $data = [];
-
-        if (!empty($this->filter)) {
-            $data['filter'] = $this->filter;
-        }
+        $data = $this->addFilterToSerializedData($data);
 
         return $data;
     }

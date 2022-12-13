@@ -9,22 +9,28 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Api;
-
-use JsonSerializable;
+namespace Netresearch\Sdk\CentralStation\Request;
 
 /**
- * The request interface.
+ * The pagination request interface.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
- * @api
  */
-interface RequestInterface extends JsonSerializable
+interface PaginationRequestInterface extends RequestInterface
 {
     /**
-     * @return array<string, mixed>
+     * @param int $perPage
+     *
+     * @return self
      */
-    public function jsonSerialize(): array;
+    public function setPerPage(int $perPage): PaginationRequestInterface;
+
+    /**
+     * @param int $page
+     *
+     * @return self
+     */
+    public function setPage(int $page): PaginationRequestInterface;
 }

@@ -11,7 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
-use Netresearch\Sdk\CentralStation\Api\ShowRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\Traits\IncludesRequestTrait;
 
 /**
  * A "show" request.
@@ -20,23 +21,9 @@ use Netresearch\Sdk\CentralStation\Api\ShowRequestInterface;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Show implements ShowRequestInterface
+class Show implements IncludesRequestInterface
 {
-    /**
-     * @var string[]
-     */
-    private $includes;
-
-    /**
-     * @param string ...$includes
-     *
-     * @return Show
-     */
-    public function setIncludes(string ...$includes): Show
-    {
-        $this->includes = $includes;
-        return $this;
-    }
+    use IncludesRequestTrait;
 
     /**
      * @return array<string, string>
@@ -44,10 +31,7 @@ class Show implements ShowRequestInterface
     public function jsonSerialize(): array
     {
         $data = [];
-
-        if (!empty($this->includes)) {
-            $data['includes'] = implode(' ', $this->includes);
-        }
+        $data = $this->addIncludesToSerializedData($data);
 
         return $data;
     }

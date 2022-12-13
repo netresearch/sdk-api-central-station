@@ -9,21 +9,28 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\RequestBuilder;
+namespace Netresearch\Sdk\CentralStation\Request;
 
 /**
- * An abstract request builder providing common methods for all request builders.
+ * The sort request interface.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-abstract class AbstractRequestBuilder implements RequestBuilderInterface
+interface SortRequestInterface extends RequestInterface
 {
     /**
-     * The collected data used to build the request.
+     * @param string $orderBy
      *
-     * @var array<string, mixed>
+     * @return self
      */
-    protected $data = [];
+    public function setOrderBy(string $orderBy): SortRequestInterface;
+
+    /**
+     * @param string $orderDirection
+     *
+     * @return self
+     */
+    public function setOrderDirection(string $orderDirection): SortRequestInterface;
 }

@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People\Protocols;
 
-use Netresearch\Sdk\CentralStation\Api\CreateRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Common\Protocol;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 
 /**
  * A "create" request.
@@ -21,7 +21,7 @@ use Netresearch\Sdk\CentralStation\Request\Protocols\Common\Protocol;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Create implements CreateRequestInterface
+class Create implements RequestInterface
 {
     /**
      * @var Protocol

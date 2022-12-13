@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People\Protocols;
 
-use Netresearch\Sdk\CentralStation\Api\UpdateRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Common\Protocol;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 
 /**
  * A "update" request.
@@ -21,7 +21,7 @@ use Netresearch\Sdk\CentralStation\Request\Protocols\Common\Protocol;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Update implements UpdateRequestInterface
+class Update implements RequestInterface
 {
     /**
      * @var null|Protocol

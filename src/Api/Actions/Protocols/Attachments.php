@@ -12,14 +12,14 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Api\Actions\Protocols;
 
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
-use Netresearch\Sdk\CentralStation\Api\UpdateRequestInterface;
 use Netresearch\Sdk\CentralStation\Collection\AttachmentsCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model;
-use Netresearch\Sdk\CentralStation\Request\Protocols\Attachments\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\Attachments\Index as IndexRequest;
+use Netresearch\Sdk\CentralStation\Request\Protocols\Attachments\Create as CreateRequest;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 
 /**
  * The /protocols/<PROTOCOL-ID>/attachments endpoint. Implements the following endpoints:
@@ -110,13 +110,13 @@ class Attachments extends AbstractApiEndpoint
     /**
      * The update method is not available for attachments.
      *
-     * @param UpdateRequestInterface $request The update request instance
+     * @param RequestInterface $request The update request instance
      *
      * @return bool
      *
      * @throws DetailedServiceException
      */
-    public function update(UpdateRequestInterface $request): bool
+    public function update(RequestInterface $request): bool
     {
         throw new DetailedServiceException('Update not implemented for attachments');
     }

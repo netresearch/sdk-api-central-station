@@ -11,7 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
-use Netresearch\Sdk\CentralStation\Api\IndexRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\Traits\PaginationRequestTrait;
 
 /**
  * A "search" request.
@@ -20,8 +21,10 @@ use Netresearch\Sdk\CentralStation\Api\IndexRequestInterface;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Search implements IndexRequestInterface
+class Search implements PaginationRequestInterface
 {
+    use PaginationRequestTrait;
+
     /**
      * @var string[]
      */
@@ -44,6 +47,7 @@ class Search implements IndexRequestInterface
     public function jsonSerialize(): array
     {
         $data = [];
+        $data = $this->addPaginationToSerializedData($data);
 
         if (!empty($this->query)) {
             foreach ($this->query as $key => $value) {

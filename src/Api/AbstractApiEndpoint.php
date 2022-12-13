@@ -19,6 +19,7 @@ use Netresearch\Sdk\CentralStation\Exception\DetailedErrorException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceExceptionFactory;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\Serializer\JsonSerializer;
 use Netresearch\Sdk\CentralStation\UrlBuilder;
 use Psr\Http\Client\ClientExceptionInterface;
@@ -195,7 +196,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Returns a list of all entities.
      *
-     * @param IndexRequestInterface                       $request             The index request instance
+     * @param RequestInterface                            $request             The index request instance
      * @param null|string|class-string<TEntity>           $className           The class name of the mapped response
      * @param null|string|class-string<TEntityCollection> $collectionClassName The collection class name of the
      *                                                                         mapped response
@@ -207,7 +208,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      * @throws ServiceException
      */
     protected function findAllEntities(
-        IndexRequestInterface $request,
+        RequestInterface $request,
         ?string $className,
         ?string $collectionClassName
     ) {
@@ -227,7 +228,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Returns a single entity. The route must contain the ID of the entity to be processed.
      *
-     * @param null|ShowRequestInterface    $request   The show request instance
+     * @param null|RequestInterface        $request   The show request instance
      * @param string|class-string<TEntity> $className The class name of the mapped response
      *
      * @return null|TEntity
@@ -236,7 +237,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    protected function findEntity(?ShowRequestInterface $request, string $className)
+    protected function findEntity(?RequestInterface $request, string $className)
     {
         $requestClosure = function () use ($request, $className) {
             if ($request) {
@@ -255,7 +256,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Creates a new entity and returns it.
      *
-     * @param CreateRequestInterface       $request   The create request instance
+     * @param RequestInterface             $request   The create request instance
      * @param string|class-string<TEntity> $className The class name of the mapped response
      *
      * @return null|TEntity
@@ -264,7 +265,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    protected function createNewEntity(CreateRequestInterface $request, string $className)
+    protected function createNewEntity(RequestInterface $request, string $className)
     {
         $requestClosure = function () use ($request, $className) {
             $response = $this->httpPost($request);
@@ -280,7 +281,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      * Updates an existing entity. The route must contain the ID of the entity to be processed.
      * Returns TRUE on success, FALSE otherwise.
      *
-     * @param UpdateRequestInterface $request The update request instance
+     * @param RequestInterface $request The update request instance
      *
      * @return bool
      *
@@ -288,7 +289,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function update(UpdateRequestInterface $request): bool
+    public function update(RequestInterface $request): bool
     {
         $requestClosure = function () use ($request): bool {
             return $this->httpPut($request)->getStatusCode() === 200;
