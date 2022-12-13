@@ -103,7 +103,7 @@ class Index implements IndexRequestInterface
     }
 
     /**
-     * @return array<string, int|string|array<string>|array<array<string>>>
+     * @return array<string, int|string>
      */
     public function jsonSerialize(): array
     {

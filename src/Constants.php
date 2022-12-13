@@ -105,4 +105,12 @@ class Constants
     public const PROTOCOL_BADGE_MEETING = 'meeting';
     public const PROTOCOL_BADGE_OTHER = 'other';
     public const PROTOCOL_BADGE_RESEARCH = 'research'; // Companies only
+
+    /**
+     * Protocol include types.
+     */
+    public const ATTACHMENT_INCLUDE_COMMENTS = 'comments';
+    public const ATTACHMENT_INCLUDE_USER = 'user';
+    public const ATTACHMENT_INCLUDE_CATEGORY = 'attachment_category';
+    public const ATTACHMENT_INCLUDE_ALL = 'all';
 }
