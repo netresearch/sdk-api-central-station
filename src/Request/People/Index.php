@@ -15,10 +15,10 @@ use Netresearch\Sdk\CentralStation\Request\FilterRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\SortRequestInterface;
-use Netresearch\Sdk\CentralStation\Request\Traits\FilterRequestTrait;
-use Netresearch\Sdk\CentralStation\Request\Traits\IncludesRequestTrait;
-use Netresearch\Sdk\CentralStation\Request\Traits\PaginationRequestTrait;
-use Netresearch\Sdk\CentralStation\Request\Traits\SortRequestTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\FilterTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\IncludesTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\PaginationTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\SortTrait;
 
 /**
  * A "index" request.
@@ -33,10 +33,10 @@ class Index implements
     PaginationRequestInterface,
     SortRequestInterface
 {
-    use FilterRequestTrait;
-    use IncludesRequestTrait;
-    use PaginationRequestTrait;
-    use SortRequestTrait;
+    use FilterTrait;
+    use IncludesTrait;
+    use PaginationTrait;
+    use SortTrait;
 
     /**
      * @return array<string, int|string|string[][]>

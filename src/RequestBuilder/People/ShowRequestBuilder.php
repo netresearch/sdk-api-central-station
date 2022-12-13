@@ -11,10 +11,11 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\People;
 
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Show as ShowRequest;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
 use Netresearch\Sdk\CentralStation\Validator\People\ShowValidator;
 
@@ -25,7 +26,8 @@ use Netresearch\Sdk\CentralStation\Validator\People\ShowValidator;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class ShowRequestBuilder extends AbstractRequestBuilder
+class ShowRequestBuilder extends AbstractRequestBuilder implements
+    IncludesRequestBuilderInterface
 {
     use IncludesTrait;
 
@@ -44,9 +46,7 @@ class ShowRequestBuilder extends AbstractRequestBuilder
         // Assign values to request
         $request = new ShowRequest();
 
-        if (isset($this->data['includes'])) {
-            $request->setIncludes(...$this->data['includes']);
-        }
+        $this->assignIncludesToRequest($request);
 
         $this->data = [];
 

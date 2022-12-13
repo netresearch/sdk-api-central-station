@@ -13,8 +13,8 @@ namespace Netresearch\Sdk\CentralStation\Request\Attachments;
 
 use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
-use Netresearch\Sdk\CentralStation\Request\Traits\IncludesRequestTrait;
-use Netresearch\Sdk\CentralStation\Request\Traits\PaginationRequestTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\IncludesTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\PaginationTrait;
 
 /**
  * An "index" request to return all attachments.
@@ -25,8 +25,8 @@ use Netresearch\Sdk\CentralStation\Request\Traits\PaginationRequestTrait;
  */
 class Index implements IncludesRequestInterface, PaginationRequestInterface
 {
-    use IncludesRequestTrait;
-    use PaginationRequestTrait;
+    use IncludesTrait;
+    use PaginationTrait;
 
     /**
      * @return array<string, int|string>

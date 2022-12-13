@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
 use Netresearch\Sdk\CentralStation\Request\FilterRequestInterface;
-use Netresearch\Sdk\CentralStation\Request\Traits\FilterRequestTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\FilterTrait;
 
 /**
  * A "stats" request.
@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\Traits\FilterRequestTrait;
  */
 class Stats implements FilterRequestInterface
 {
-    use FilterRequestTrait;
+    use FilterTrait;
 
     /**
      * @return array<string, array<array<string>>>

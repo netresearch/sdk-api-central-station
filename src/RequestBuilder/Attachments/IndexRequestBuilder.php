@@ -11,12 +11,15 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\Attachments;
 
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\Attachments\Index as IndexRequest;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
-use Netresearch\Sdk\CentralStation\Validator\Attachments\IndexValidator;
+use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
+use Netresearch\Sdk\CentralStation\RequestBuilder\PaginationRequestBuilderInterface;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\PaginationTrait;
 
 /**
  * The request builder to create a valid "index" request.
@@ -25,27 +28,12 @@ use Netresearch\Sdk\CentralStation\Validator\Attachments\IndexValidator;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class IndexRequestBuilder extends AbstractRequestBuilder
+class IndexRequestBuilder extends AbstractRequestBuilder implements
+    IncludesRequestBuilderInterface,
+    PaginationRequestBuilderInterface
 {
-    /**
-     * Sets the limitations of the response.
-     *
-     * @param null|int $perPage The number of elements to return (default: 25)
-     * @param null|int $page    The page number for which to return the results
-     *
-     * @return IndexRequestBuilder
-     */
-    public function setLimit(
-        ?int $perPage = 25,
-        ?int $page = 1
-    ): IndexRequestBuilder {
-        $this->data['limit'] = [
-            'perPage' => $perPage,
-            'page'    => $page,
-        ];
-
-        return $this;
-    }
+    use IncludesTrait;
+    use PaginationTrait;
 
     /**
      * Whether to include comments or not.
@@ -110,19 +98,8 @@ class IndexRequestBuilder extends AbstractRequestBuilder
         // Assign values to request
         $request = new IndexRequest();
 
-        if (isset($this->data['limit'])) {
-            if (($this->data['limit']['perPage'] !== null) && ($this->data['limit']['perPage'] > 0)) {
-                $request->setPerPage($this->data['limit']['perPage']);
-            }
-
-            if (($this->data['limit']['page'] !== null) && ($this->data['limit']['page'] > 0)) {
-                $request->setPage($this->data['limit']['page']);
-            }
-        }
-
-        if (isset($this->data['includes'])) {
-            $request->setIncludes(...$this->data['includes']);
-        }
+        $this->assignPaginationToRequest($request);
+        $this->assignIncludesToRequest($request);
 
         $this->data = [];
 

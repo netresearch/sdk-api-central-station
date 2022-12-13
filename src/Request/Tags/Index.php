@@ -14,9 +14,9 @@ namespace Netresearch\Sdk\CentralStation\Request\Tags;
 use Netresearch\Sdk\CentralStation\Request\FilterRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\SortRequestInterface;
-use Netresearch\Sdk\CentralStation\Request\Traits\FilterRequestTrait;
-use Netresearch\Sdk\CentralStation\Request\Traits\PaginationRequestTrait;
-use Netresearch\Sdk\CentralStation\Request\Traits\SortRequestTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\FilterTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\PaginationTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\SortTrait;
 
 /**
  * An "index" request to return all tags.
@@ -30,9 +30,9 @@ class Index implements
     PaginationRequestInterface,
     SortRequestInterface
 {
-    use FilterRequestTrait;
-    use PaginationRequestTrait;
-    use SortRequestTrait;
+    use FilterTrait;
+    use PaginationTrait;
+    use SortTrait;
 
     /**
      * @return array<string, int|string|string[][]>

@@ -14,13 +14,13 @@ namespace Netresearch\Sdk\CentralStation\Request\Traits;
 use Netresearch\Sdk\CentralStation\Request\SortRequestInterface;
 
 /**
- * The sort request trait.
+ * The sort trait.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-trait SortRequestTrait
+trait SortTrait
 {
     /**
      * @var string

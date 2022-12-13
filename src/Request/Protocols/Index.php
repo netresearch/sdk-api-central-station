@@ -14,9 +14,9 @@ namespace Netresearch\Sdk\CentralStation\Request\Protocols;
 use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\SortRequestInterface;
-use Netresearch\Sdk\CentralStation\Request\Traits\IncludesRequestTrait;
-use Netresearch\Sdk\CentralStation\Request\Traits\PaginationRequestTrait;
-use Netresearch\Sdk\CentralStation\Request\Traits\SortRequestTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\IncludesTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\PaginationTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\SortTrait;
 
 /**
  * A "index" request.
@@ -30,9 +30,9 @@ class Index implements
     PaginationRequestInterface,
     SortRequestInterface
 {
-    use IncludesRequestTrait;
-    use PaginationRequestTrait;
-    use SortRequestTrait;
+    use IncludesTrait;
+    use PaginationTrait;
+    use SortTrait;
 
     /**
      * @return array<string, int|string>

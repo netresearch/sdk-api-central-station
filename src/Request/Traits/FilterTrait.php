@@ -11,30 +11,41 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\Traits;
 
-use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\FilterRequestInterface;
 
 /**
- * The includes request trait.
+ * The filter trait.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-trait IncludesRequestTrait
+trait FilterTrait
 {
     /**
-     * @var string[]
+     * @var string[][]
      */
-    private $includes;
+    private $filter;
 
     /**
-     * @param string ...$includes
+     * Sets a list of filters:
      *
-     * @return IncludesRequestInterface
+     * [
+     *     <field1> => [
+     *         <comparison-method1> => <value1>
+     *     ],
+     *     <field2> => [
+     *         <comparison-method2> => <value2>
+     *     ],
+     * ]
+     *
+     * @param string[][] $filter The list of filters
+     *
+     * @return FilterRequestInterface
      */
-    public function setIncludes(string ...$includes): IncludesRequestInterface
+    public function setFilter(array $filter): FilterRequestInterface
     {
-        $this->includes = $includes;
+        $this->filter = $filter;
         return $this;
     }
 
@@ -45,10 +56,10 @@ trait IncludesRequestTrait
      *
      * @return mixed[]
      */
-    private function addIncludesToSerializedData(array $data): array
+    private function addFilterToSerializedData(array $data): array
     {
-        if (!empty($this->includes)) {
-            $data['includes'] = implode(' ', $this->includes);
+        if (!empty($this->filter)) {
+            $data['filter'] = $this->filter;
         }
 
         return $data;

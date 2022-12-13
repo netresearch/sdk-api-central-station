@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
 use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
-use Netresearch\Sdk\CentralStation\Request\Traits\IncludesRequestTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\IncludesTrait;
 
 /**
  * A "show" request.
@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\Traits\IncludesRequestTrait;
  */
 class Show implements IncludesRequestInterface
 {
-    use IncludesRequestTrait;
+    use IncludesTrait;
 
     /**
      * @return array<string, string>

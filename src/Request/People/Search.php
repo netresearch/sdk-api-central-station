@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
 use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
-use Netresearch\Sdk\CentralStation\Request\Traits\PaginationRequestTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\PaginationTrait;
 
 /**
  * A "search" request.
@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\Traits\PaginationRequestTrait;
  */
 class Search implements PaginationRequestInterface
 {
-    use PaginationRequestTrait;
+    use PaginationTrait;
 
     /**
      * @var string[]

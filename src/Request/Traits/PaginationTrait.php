@@ -14,13 +14,13 @@ namespace Netresearch\Sdk\CentralStation\Request\Traits;
 use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
 
 /**
- * The pagination request trait.
+ * The pagination trait.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-trait PaginationRequestTrait
+trait PaginationTrait
 {
     /**
      * @var int
