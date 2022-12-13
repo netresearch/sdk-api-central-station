@@ -40,6 +40,7 @@ use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ * @api
  *
  * @extends AbstractApiEndpoint<Model\People, PeopleCollection>
  * @extends AbstractApiEndpoint<Model\Stats, PeopleCollection>

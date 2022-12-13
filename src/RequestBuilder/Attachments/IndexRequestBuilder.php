@@ -27,6 +27,7 @@ use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\PaginationTrait;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ * @api
  */
 class IndexRequestBuilder extends AbstractRequestBuilder implements
     IncludesRequestBuilderInterface,
