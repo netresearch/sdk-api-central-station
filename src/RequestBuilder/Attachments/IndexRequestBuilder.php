@@ -20,6 +20,7 @@ use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterfac
 use Netresearch\Sdk\CentralStation\RequestBuilder\PaginationRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\PaginationTrait;
+use Netresearch\Sdk\CentralStation\Validator\Attachments\IndexValidator;
 
 /**
  * The request builder to create a valid "index" request.
@@ -43,7 +44,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
      *
      * @return self
      */
-    public function setIncludeComments(bool $includeComments): self
+    public function setIncludeComments(bool $includeComments): IndexRequestBuilder
     {
         if ($includeComments) {
             $this->data['includes'][] = Constants::ATTACHMENT_INCLUDE_COMMENTS;
@@ -59,7 +60,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
      *
      * @return self
      */
-    public function setIncludeUser(bool $includeUser): self
+    public function setIncludeUser(bool $includeUser): IndexRequestBuilder
     {
         if ($includeUser) {
             $this->data['includes'][] = Constants::ATTACHMENT_INCLUDE_USER;
@@ -75,7 +76,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
      *
      * @return self
      */
-    public function setIncludeCategory(bool $includeCategory): self
+    public function setIncludeCategory(bool $includeCategory): IndexRequestBuilder
     {
         if ($includeCategory) {
             $this->data['includes'][] = Constants::ATTACHMENT_INCLUDE_CATEGORY;
@@ -94,7 +95,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
     public function create(): RequestInterface
     {
         // Validate the input
-//        IndexValidator::validate($this->data);
+        IndexValidator::validate($this->data);
 
         // Assign values to request
         $request = new IndexRequest();

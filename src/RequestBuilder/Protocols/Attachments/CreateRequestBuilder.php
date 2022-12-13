@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\Protocols\Attachments;
 
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\Attachments\Common\Attachment;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Attachments\Create as CreateRequest;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\Protocols\Attachments\CreateValidator;
 
@@ -111,7 +111,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function create(): RequestInterface
     {
         // Validate the input
-//        CreateValidator::validate($this->data);
+        CreateValidator::validate($this->data);
 
         $attachment = new Attachment();
         $attachment->setFilename($this->data['attachment']['filename'])

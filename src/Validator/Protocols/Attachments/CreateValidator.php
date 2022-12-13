@@ -9,19 +9,18 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Validator\Tags;
+namespace Netresearch\Sdk\CentralStation\Validator\Protocols\Attachments;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Validator\Traits\FilterTrait;
 
 /**
- * Class IndexValidator.
+ * Class CreateValidator.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class IndexValidator
+class CreateValidator
 {
     /**
      * Validate request data before sending it to the web service.

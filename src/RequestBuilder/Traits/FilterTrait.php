@@ -31,7 +31,7 @@ trait FilterTrait
      * @param string              $comparison The comparison type (use one of Constants::FILTER_*)
      * @param int|string|DateTime $value      The value used to filter the field by
      *
-     * @return FilterRequestBuilderInterface
+     * @return self
      */
     public function addFilter(string $field, string $comparison, $value): FilterRequestBuilderInterface
     {
