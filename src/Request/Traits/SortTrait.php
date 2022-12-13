@@ -35,7 +35,7 @@ trait SortTrait
     /**
      * @param string $orderBy
      *
-     * @return SortRequestInterface
+     * @return self
      */
     public function setOrderBy(string $orderBy): SortRequestInterface
     {
@@ -46,7 +46,7 @@ trait SortTrait
     /**
      * @param string $orderDirection
      *
-     * @return SortRequestInterface
+     * @return self
      */
     public function setOrderDirection(string $orderDirection): SortRequestInterface
     {

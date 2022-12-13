@@ -9,45 +9,47 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Tags;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Protocols\Attachments;
 
-use Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags\UpdateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Tags\UpdateProvider;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Protocols\Attachments\CreateRequestBuilder;
+use Netresearch\Sdk\CentralStation\Test\Provider\Protocols\Attachments\CreateProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class UpdateRequestBuilderTest
+ * Class CreateRequestBuilderTest
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class UpdateRequestBuilderTest extends RequestBuilderTestCase
+class CreateRequestBuilderTest extends RequestBuilderTestCase
 {
     /**
      * @return string[][]
      */
-    public function updateRequestDataProvider(): array
+    public function createRequestDataProvider(): array
     {
         return [
             'Request' => [
-                file_get_contents(UpdateProvider::updateRequest()) ?: '',
+                file_get_contents(CreateProvider::createRequest()) ?: '',
             ],
         ];
     }
 
     /**
-     * Tests updating an existing tag.
+     * Tests creating a new attachment.
      *
-     * @dataProvider updateRequestDataProvider
+     * @dataProvider createRequestDataProvider
      * @test
      *
      * @param string $expectedJson
      */
-    public function update(string $expectedJson): void
+    public function create(string $expectedJson): void
     {
-        $requestBuilder = new UpdateRequestBuilder();
-        $requestBuilder->setTagName('Updated tag');
+        $requestBuilder = new CreateRequestBuilder();
+        $requestBuilder->setFilename('uploaded-file.png')
+            ->setContentType('image/png')
+            ->setData(base64_encode('BASE64 ENCODED FILE CONTENT'));
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);

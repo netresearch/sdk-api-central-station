@@ -41,7 +41,7 @@ trait FilterTrait
      *
      * @param string[][] $filter The list of filters
      *
-     * @return FilterRequestInterface
+     * @return self
      */
     public function setFilter(array $filter): FilterRequestInterface
     {

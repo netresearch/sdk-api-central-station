@@ -38,7 +38,7 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
     }
 
     /**
-     * Tests creating a new tag.
+     * Tests creating a new protocol.
      *
      * @dataProvider createRequestDataProvider
      * @test
@@ -57,6 +57,6 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);
 
-        $this->assertSameJson($expectedJson, $requestJson);
+        self::assertSameJson($expectedJson, $requestJson);
     }
 }
