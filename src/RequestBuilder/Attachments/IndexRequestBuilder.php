@@ -47,7 +47,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
     public function setIncludeComments(bool $includeComments): IndexRequestBuilder
     {
         if ($includeComments) {
-            $this->data['includes'][] = Constants::ATTACHMENT_INCLUDE_COMMENTS;
+            $this->addInclude(Constants::ATTACHMENT_INCLUDE_COMMENTS);
         }
 
         return $this;
@@ -63,7 +63,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
     public function setIncludeUser(bool $includeUser): IndexRequestBuilder
     {
         if ($includeUser) {
-            $this->data['includes'][] = Constants::ATTACHMENT_INCLUDE_USER;
+            $this->addInclude(Constants::ATTACHMENT_INCLUDE_USER);
         }
 
         return $this;
@@ -79,7 +79,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
     public function setIncludeCategory(bool $includeCategory): IndexRequestBuilder
     {
         if ($includeCategory) {
-            $this->data['includes'][] = Constants::ATTACHMENT_INCLUDE_CATEGORY;
+            $this->addInclude(Constants::ATTACHMENT_INCLUDE_CATEGORY);
         }
 
         return $this;

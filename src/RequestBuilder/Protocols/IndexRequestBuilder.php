@@ -51,7 +51,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
     public function setIncludeComments(bool $includeComments): IndexRequestBuilder
     {
         if ($includeComments) {
-            $this->data['includes'][] = Constants::PROTOCOL_INCLUDE_COMMENTS;
+            $this->addInclude(Constants::PROTOCOL_INCLUDE_COMMENTS);
         }
 
         return $this;
