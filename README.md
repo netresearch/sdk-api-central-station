@@ -63,53 +63,53 @@ $apiClient = new \Netresearch\Sdk\CentralStation\CentralStation(
 ```
 
 
-#### People API
+### People API
 The people API endpoint (`people()`) provides the following methods to interact with the API:
 
-- index
+- `index()`
     - Returns a list of all people in an account.
-- show
+- `show()`
     - Returns a single person. Pass the person ID as a parameter to the `people()`-method.
-- create
+- `create()`
     - Creates a new person.
-- update
+- `update()`
     - Updates an existing person. Pass the person ID as a parameter to the `people()`-method.
-- delete
+- `delete()`
     - Deletes an existing person. Pass the person ID as a parameter to the `people()`-method.
-- search
+- `search()`
     - Searches for one or more people.
-- merge
+- `merge()`
     - Merge one or more person into an existing one.
-- stats
+- `stats()`
     - Returns the total number of people for all or filtered persons.
-- tags
+- `tags()`
     - Returns the tags API endpoint used to process tags related to a specific person. Pass the person ID as a
       parameter to the `people()`-method.
     - The tags endpoint itself provides than the following methods:
-        - index
+        - `index()`
             - Returns a list of all tags assigned to a person.
-        - show
+        - `show()`
             - Returns a single tag assigned to a person. Pass the tag ID as a parameter to the `tags()`-method.
-        - create
+        - `create()`
             - Creates a new tag at the person.
-        - update
+        - `update()`
             - Updates an existing tag at a person. Pass the tag ID as a parameter to the `tags()`-method.
-        - delete
+        - `delete()`
             - Deletes an existing tag at a person. Pass the tag ID as a parameter to the `tags()`-method.
-- protocols
+- `protocols()`
     - Returns the protocols API endpoint used to process protocols related to a specific person. Pass the person
       ID as a parameter to the `people()`-method.
     - The protocols endpoint itself provides than the following methods:
-        - index
+        - `index()`
             - Returns a list of all protocols assigned to a person.
-        - show
+        - `show()`
             - Returns a single protocol assigned to a person. Pass the tag ID as a parameter to
               the `protocols()`-method.
-        - create
+        - `create()`
             - Creates a new protocol at the person.
-        - update
+        - `update()`
             - Updates an existing protocol at a person. Pass the tag ID as a parameter to the `protocols()`-method.
-        - delete
+        - `delete()`
             - Deletes an existing protocol at a person. Pass the tag ID as a parameter to the `protocols()`-method.
 
 ##### index - Get a list of persons
@@ -197,7 +197,7 @@ $response = $apiClient
 ```
 
 
-#### Tags API
+### Tags API
 The tags API endpoint (`tags()`) provides the following methods to interact with the tags API:
  
 - `index()`
@@ -253,6 +253,30 @@ $tag = $apiClient
 
 // Do something with the response
 ```
+
+
+### Protocols API
+The tags API endpoint (`protocols()`) provides the following methods to interact with the protocols API:
+
+- `index()`
+    - Returns a list of all protocols in an account.
+- `show()`
+    - Returns a single protocol. Requires a valid protocol ID for the account. Pass the protocol ID as a parameter
+      to the `protocols()`-method.
+- `attachments()`
+    - Returns the attachments API endpoint used to process attachments related to a specific protocol. Pass the protocol
+      ID as a parameter to the `protocols()`-method.
+    - The attachments endpoint itself provides than the following methods:
+        - `index()`
+            - Returns a list of all attachments assigned to a protocol.
+        - `show()`
+            - Returns a single attachment assigned to a protocol. Pass the attachment ID as a parameter to
+              the `attachments()`-method.
+        - `create()`
+            - Creates a new attachment at the protocol.
+        - `delete()`
+            - Deletes an existing attachment at a protocol. Pass the attachment ID as a parameter to the
+              `attachments()`-method.
 
 
 ## Error handling
