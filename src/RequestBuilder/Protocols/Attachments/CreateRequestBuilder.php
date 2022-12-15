@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\Protocols\Attachments;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Request\Attachments\Common\Attachment;
+use Netresearch\Sdk\CentralStation\Request\Attachment;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Attachments\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;

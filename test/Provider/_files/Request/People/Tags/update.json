@@ -1,5 +1,6 @@
 {
     "tag": {
-        "name": "Updated tag"
+        "name": "Updated tag",
+        "api_input": false
     }
 }

@@ -197,10 +197,10 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Returns a list of all entities.
      *
-     * @param RequestInterface                            $request             The index request instance
-     * @param null|string|class-string<TEntity>           $className           The class name of the mapped response
-     * @param null|string|class-string<TEntityCollection> $collectionClassName The collection class name of the
-     *                                                                         mapped response
+     * @param null|RequestInterface                  $request             The index request instance
+     * @param string|class-string<TEntity>           $className           The class name of the mapped response
+     * @param string|class-string<TEntityCollection> $collectionClassName The collection class name of the
+     *                                                                    mapped response
      *
      * @return TEntityCollection
      *
@@ -209,13 +209,14 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      * @throws ServiceException
      */
     protected function findAllEntities(
-        RequestInterface $request,
-        ?string $className,
-        ?string $collectionClassName
+        ?RequestInterface $request,
+        string $className,
+        string $collectionClassName
     ) {
         $requestClosure = function () use ($request, $className, $collectionClassName) {
-            $this->urlBuilder
-                ->setParams($request->jsonSerialize());
+            if ($request) {
+                $this->urlBuilder->setParams($request->jsonSerialize());
+            }
 
             $response = $this->httpGet();
 

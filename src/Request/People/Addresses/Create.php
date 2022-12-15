@@ -9,46 +9,43 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Request\People\Protocols;
+namespace Netresearch\Sdk\CentralStation\Request\People\Addresses;
 
-use Netresearch\Sdk\CentralStation\Request\Protocol;
+use Netresearch\Sdk\CentralStation\Request\Address;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 
 /**
- * A "update" request.
+ * A "create" request.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Update implements RequestInterface
+class Create implements RequestInterface
 {
     /**
-     * @var null|Protocol
+     * @var Address
      */
-    private $protocol;
+    private $address;
 
     /**
-     * @param Protocol $protocol
+     * Constructor.
      *
-     * @return Update
+     * @param Address $address
      */
-    public function setProtocol(Protocol $protocol): Update
+    public function __construct(Address $address)
     {
-        $this->protocol = $protocol;
-        return $this;
+        $this->address = $address;
     }
 
     /**
-     * @return array<string, array<string, null|bool|string|int[]>>
+     * @return array<string, array<string, null|bool|string>>
      */
     public function jsonSerialize(): array
     {
         $data = [];
 
-        if ($this->protocol) {
-            $data['protocol'] = $this->protocol->jsonSerialize();
-        }
+        $data['addr'] = $this->address->jsonSerialize();
 
         return $data;
     }

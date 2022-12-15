@@ -69,6 +69,13 @@ class People extends AbstractApiEndpoint
     private $protocolsApi;
 
     /**
+     * Instance of the "addrs" API for implementing lazy loading.
+     *
+     * @var null|People\Addresses
+     */
+    private $addressesApi;
+
+    /**
      * Returns the "tags" API used to process tags related to a specific person.
      *
      * @param null|int $tagId A valid tag ID
@@ -130,6 +137,38 @@ class People extends AbstractApiEndpoint
         }
 
         return $this->protocolsApi;
+    }
+
+    /**
+     * Returns the "addrs" API used to process addresses related to a specific person.
+     *
+     * @param null|int $addressId A valid address ID
+     *
+     * @return People\Addresses
+     */
+    public function addresses(int $addressId = null): People\Addresses
+    {
+        $this->urlBuilder
+            ->setParams([])
+            ->addPath('/' . People\Addresses::PATH);
+
+        // Add address ID if available
+        if ($addressId) {
+            $this->urlBuilder
+                ->addPath('/' . $addressId);
+        }
+
+        if (!$this->addressesApi) {
+            $this->addressesApi = new People\Addresses(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->addressesApi;
     }
 
     /**
@@ -211,7 +250,7 @@ class People extends AbstractApiEndpoint
      *
      * @param SearchRequest $request The search request instance
      *
-     * @return PeopleCollection
+     * @return PeopleCollection<Model\People>
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

@@ -9,30 +9,20 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Model;
+namespace Netresearch\Sdk\CentralStation\Collection;
 
-use Netresearch\Sdk\CentralStation\Model\Attachments\Attachment;
+use Netresearch\Sdk\CentralStation\AbstractCollection;
+use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 
 /**
- * An attachments container.
+ * A collection of tags.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @extends AbstractCollection<int, Tag>
  */
-class Attachments
+class TagCollection extends AbstractCollection
 {
-    /**
-     * An attachment.
-     *
-     * @var Attachment
-     */
-    public $attachment;
-
-    /**
-     * The base64 encoded data of the attachment.
-     *
-     * @var string
-     */
-    public $data;
 }

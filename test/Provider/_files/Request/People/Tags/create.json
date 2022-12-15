@@ -1,5 +1,6 @@
 {
     "tag": {
-        "name": "New created tag"
+        "name": "New created tag",
+        "api_input": true
     }
 }

@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Test\Request\Protocols\Attachments;
 
-use Netresearch\Sdk\CentralStation\Request\Attachments\Common\Attachment;
+use Netresearch\Sdk\CentralStation\Request\Attachment;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Attachments\Create;
 use PHPUnit\Framework\TestCase;
 
@@ -41,13 +41,13 @@ class CreateTest extends TestCase
         self::assertSame(
             [
                 'attachment' => [
-                    'content_type'             => 'image/jpg',
                     'filename'                 => 'my-uploaded-file.jpg',
+                    'content_type'             => 'image/jpg',
+                    'data'                     => 'QkFTRTY0IEVOQ09ERUQgRklMRSBDT05URU5U',
                     'attachable_id'            => null,
                     'attachable_type'          => null,
                     'attachment_category_id'   => null,
                     'attachment_category_name' => null,
-                    'data'                     => 'QkFTRTY0IEVOQ09ERUQgRklMRSBDT05URU5U',
                 ],
             ],
             $request->jsonSerialize()

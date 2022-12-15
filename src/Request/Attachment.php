@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Request\Attachments\Common;
+namespace Netresearch\Sdk\CentralStation\Request;
 
 use JsonSerializable;
 
@@ -25,9 +25,19 @@ class Attachment implements JsonSerializable
     /**
      * The sketch of the note.
      *
-     * @var string
+     * @var null|string
      */
     private $filename;
+
+    /**
+     * @var null|string
+     */
+    private $contentType;
+
+    /**
+     * @var null|string
+     */
+    private $data;
 
     /**
      * @var null|int
@@ -40,11 +50,6 @@ class Attachment implements JsonSerializable
     private $attachableType;
 
     /**
-     * @var string
-     */
-    private $contentType;
-
-    /**
      * @var null|int
      */
     private $attachmentCategoryId;
@@ -55,18 +60,35 @@ class Attachment implements JsonSerializable
     private $attachmentCategoryName;
 
     /**
-     * @var string
-     */
-    private $data;
-
-    /**
-     * @param string $filename
+     * @param null|string $filename
      *
      * @return Attachment
      */
-    public function setFilename(string $filename): Attachment
+    public function setFilename(?string $filename): Attachment
     {
         $this->filename = $filename;
+        return $this;
+    }
+
+    /**
+     * @param null|string $contentType
+     *
+     * @return Attachment
+     */
+    public function setContentType(?string $contentType): Attachment
+    {
+        $this->contentType = $contentType;
+        return $this;
+    }
+
+    /**
+     * @param null|string $data
+     *
+     * @return Attachment
+     */
+    public function setData(?string $data): Attachment
+    {
+        $this->data = $data;
         return $this;
     }
 
@@ -93,17 +115,6 @@ class Attachment implements JsonSerializable
     }
 
     /**
-     * @param string $contentType
-     *
-     * @return Attachment
-     */
-    public function setContentType(string $contentType): Attachment
-    {
-        $this->contentType = $contentType;
-        return $this;
-    }
-
-    /**
      * @param null|int $attachmentCategoryId
      *
      * @return Attachment
@@ -126,29 +137,18 @@ class Attachment implements JsonSerializable
     }
 
     /**
-     * @param string $data
-     *
-     * @return Attachment
-     */
-    public function setData(string $data): Attachment
-    {
-        $this->data = $data;
-        return $this;
-    }
-
-    /**
      * @return array<string, null|int|string>
      */
     public function jsonSerialize(): array
     {
         return [
-            'content_type'             => $this->contentType,
             'filename'                 => $this->filename,
+            'content_type'             => $this->contentType,
+            'data'                     => $this->data,
             'attachable_id'            => $this->attachableId,
             'attachable_type'          => $this->attachableType,
             'attachment_category_id'   => $this->attachmentCategoryId,
             'attachment_category_name' => $this->attachmentCategoryName,
-            'data'                     => $this->data,
         ];
     }
 }

@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Tags;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Tags;
 
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags\CreateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\Tags\CreateProvider;
@@ -47,7 +47,8 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
     public function create(string $expectedJson): void
     {
         $requestBuilder = new CreateRequestBuilder();
-        $requestBuilder->setTagName('New created tag');
+        $requestBuilder->setTagName('New created tag')
+            ->setApiInput(true);
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);

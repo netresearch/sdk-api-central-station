@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Request\Protocols\Common;
+namespace Netresearch\Sdk\CentralStation\Request;
 
 use JsonSerializable;
 
@@ -25,28 +25,28 @@ class Protocol implements JsonSerializable
     /**
      * IDs of the linked persons.
      *
-     * @var int[]
+     * @var null|int[]
      */
     private $personIds;
 
     /**
      * IDs of the linked companies.
      *
-     * @var int[]
+     * @var null|int[]
      */
     private $companyIds;
 
     /**
      * The sketch of the note.
      *
-     * @var string
+     * @var null|string
      */
     private $name;
 
     /**
      * The content of the note.
      *
-     * @var string
+     * @var null|string
      */
     private $content;
 
@@ -55,21 +55,76 @@ class Protocol implements JsonSerializable
      *
      * @var bool
      */
-    private $confidential;
+    private $confidential = false;
 
     /**
      * The format of the note (one of Constants::PROTOCOL_FORMAT_*).
      *
-     * @var string
+     * @var null|string
      */
     private $format;
 
     /**
      * The badge of the note (one of Constants::PROTOCOL_BADGE_*).
      *
-     * @var string
+     * @var null|string
      */
     private $badge;
+
+    /**
+     * @param null|string $name
+     *
+     * @return Protocol
+     */
+    public function setName(?string $name): Protocol
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @param null|string $content
+     *
+     * @return Protocol
+     */
+    public function setContent(?string $content): Protocol
+    {
+        $this->content = $content;
+        return $this;
+    }
+
+    /**
+     * @param bool $confidential
+     *
+     * @return Protocol
+     */
+    public function setConfidential(bool $confidential): Protocol
+    {
+        $this->confidential = $confidential;
+        return $this;
+    }
+
+    /**
+     * @param null|string $format
+     *
+     * @return Protocol
+     */
+    public function setFormat(?string $format): Protocol
+    {
+        $this->format = $format;
+        return $this;
+    }
+
+    /**
+     * @param null|string $badge
+     *
+     * @return Protocol
+     */
+    public function setBadge(?string $badge): Protocol
+    {
+        $this->badge = $badge;
+        return $this;
+    }
 
     /**
      * @param int ...$personIds
@@ -90,61 +145,6 @@ class Protocol implements JsonSerializable
     public function setCompanyIds(int ...$companyIds): Protocol
     {
         $this->companyIds = $companyIds;
-        return $this;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return Protocol
-     */
-    public function setName(string $name): Protocol
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @param string $content
-     *
-     * @return Protocol
-     */
-    public function setContent(string $content): Protocol
-    {
-        $this->content = $content;
-        return $this;
-    }
-
-    /**
-     * @param bool $confidential
-     *
-     * @return Protocol
-     */
-    public function setConfidential(bool $confidential): Protocol
-    {
-        $this->confidential = $confidential;
-        return $this;
-    }
-
-    /**
-     * @param string $format
-     *
-     * @return Protocol
-     */
-    public function setFormat(string $format): Protocol
-    {
-        $this->format = $format;
-        return $this;
-    }
-
-    /**
-     * @param string $badge
-     *
-     * @return Protocol
-     */
-    public function setBadge(string $badge): Protocol
-    {
-        $this->badge = $badge;
         return $this;
     }
 

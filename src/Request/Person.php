@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Request\People\Common;
+namespace Netresearch\Sdk\CentralStation\Request;
 
 use JsonSerializable;
 

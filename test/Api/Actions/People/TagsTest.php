@@ -190,7 +190,7 @@ class TagsTest extends TestCase
             ->tags()
             ->create(
                 new Create(
-                    new \Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag()
+                    new \Netresearch\Sdk\CentralStation\Request\Tag()
                 )
             );
 

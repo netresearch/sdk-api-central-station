@@ -11,28 +11,21 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model;
 
-use Netresearch\Sdk\CentralStation\Model\Attachments\Attachment;
+use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
 
 /**
- * An attachments container.
+ * An addresses container.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class Attachments
+class Addresses
 {
     /**
-     * An attachment.
+     * An address.
      *
-     * @var Attachment
+     * @var null|Address
      */
-    public $attachment;
-
-    /**
-     * The base64 encoded data of the attachment.
-     *
-     * @var string
-     */
-    public $data;
+    public $addr;
 }

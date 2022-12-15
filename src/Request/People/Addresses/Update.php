@@ -9,9 +9,9 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Request\People\Protocols;
+namespace Netresearch\Sdk\CentralStation\Request\People\Addresses;
 
-use Netresearch\Sdk\CentralStation\Request\Protocol;
+use Netresearch\Sdk\CentralStation\Request\Address;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 
 /**
@@ -24,30 +24,30 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 class Update implements RequestInterface
 {
     /**
-     * @var null|Protocol
+     * @var null|Address
      */
-    private $protocol;
+    private $address;
 
     /**
-     * @param Protocol $protocol
+     * @param null|Address $address
      *
      * @return Update
      */
-    public function setProtocol(Protocol $protocol): Update
+    public function setAddress(?Address $address): Update
     {
-        $this->protocol = $protocol;
+        $this->address = $address;
         return $this;
     }
 
     /**
-     * @return array<string, array<string, null|bool|string|int[]>>
+     * @return array<string, array<string, null|bool|string>>
      */
     public function jsonSerialize(): array
     {
         $data = [];
 
-        if ($this->protocol) {
-            $data['protocol'] = $this->protocol->jsonSerialize();
+        if ($this->address) {
+            $data['addr'] = $this->address->jsonSerialize();
         }
 
         return $data;

@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags;
 
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Update as UpdateRequest;
-use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
+use Netresearch\Sdk\CentralStation\Request\Tag;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\People\Tags\UpdateValidator;
 
@@ -53,15 +53,12 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
         // Validate the input
         UpdateValidator::validate($this->data);
 
+        $tag = new Tag();
+        $tag->setName($this->data['tag']['name']);
+
         // Assign values to request
         $request = new UpdateRequest();
-
-        if (isset($this->data['tag'])) {
-            $tag = new Tag();
-            $tag->setName($this->data['tag']['name']);
-
-            $request->setTag($tag);
-        }
+        $request->setTag($tag);
 
         $this->data = [];
 

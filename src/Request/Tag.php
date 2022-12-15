@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Request\Tags\Common;
+namespace Netresearch\Sdk\CentralStation\Request;
 
 use JsonSerializable;
 
@@ -71,7 +71,7 @@ class Tag implements JsonSerializable
     }
 
     /**
-     * @return array<string, null|int|string>
+     * @return array<string, null|int|bool|string>
      */
     public function jsonSerialize(): array
     {

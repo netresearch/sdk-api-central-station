@@ -114,4 +114,14 @@ class Constants
     public const ATTACHMENT_INCLUDE_USER = 'user';
     public const ATTACHMENT_INCLUDE_CATEGORY = 'attachment_category';
     public const ATTACHMENT_INCLUDE_ALL = 'all';
+
+    /**
+     * Address types.
+     */
+    public const ADDRESS_TYPE_WORK_HQ = 'work_hq';
+    public const ADDRESS_TYPE_WORK = 'work';
+    public const ADDRESS_TYPE_INVOICE = 'invoice';
+    public const ADDRESS_TYPE_DELIVERY = 'delivery';
+    public const ADDRESS_TYPE_PRIVATE = 'private';
+    public const ADDRESS_TYPE_OTHER = 'other';
 }

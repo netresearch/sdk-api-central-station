@@ -13,7 +13,7 @@ namespace Netresearch\Test\Request\People\Protocols;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Request\People\Protocols\Update;
-use Netresearch\Sdk\CentralStation\Request\Protocols\Common\Protocol;
+use Netresearch\Sdk\CentralStation\Request\Protocol;
 use PHPUnit\Framework\TestCase;
 
 /**

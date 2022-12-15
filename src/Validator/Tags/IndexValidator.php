@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Validator\Tags;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Validator\Traits\FilterTrait;
 
 /**
  * Class IndexValidator.

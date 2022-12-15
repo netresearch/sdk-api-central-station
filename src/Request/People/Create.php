@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
-use Netresearch\Sdk\CentralStation\Request\People\Common\Person;
+use Netresearch\Sdk\CentralStation\Request\Person;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 
 /**

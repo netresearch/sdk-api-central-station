@@ -15,7 +15,9 @@ use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Search as SearchRequest;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\PaginationRequestBuilderInterface;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\PaginationTrait;
 use Netresearch\Sdk\CentralStation\Validator\People\SearchValidator;
 
@@ -28,9 +30,11 @@ use Netresearch\Sdk\CentralStation\Validator\People\SearchValidator;
  * @api
  */
 class SearchRequestBuilder extends AbstractRequestBuilder implements
+    IncludesRequestBuilderInterface,
     PaginationRequestBuilderInterface
 {
     use PaginationTrait;
+    use IncludesTrait;
 
     /**
      * Adds a search query.
@@ -65,6 +69,7 @@ class SearchRequestBuilder extends AbstractRequestBuilder implements
         $request = new SearchRequest();
 
         $this->assignPaginationToRequest($request);
+        $this->assignIncludesToRequest($request);
 
         if (isset($this->data['search'])) {
             $request->setQuery($this->data['search']);

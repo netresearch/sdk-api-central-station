@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Request\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
-use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
+use Netresearch\Sdk\CentralStation\Request\Tag;
 
 /**
  * A "create" request.
@@ -39,7 +39,7 @@ class Create implements RequestInterface
     }
 
     /**
-     * @return array<string, array<string, null|int|string>>
+     * @return array<string, array<string, null|int|bool|string>>
      */
     public function jsonSerialize(): array
     {

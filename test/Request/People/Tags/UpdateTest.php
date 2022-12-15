@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Test\Request\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Update;
-use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
+use Netresearch\Sdk\CentralStation\Request\Tag;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,6 +45,7 @@ class UpdateTest extends TestCase
                     'name'            => 'Funny updated tag',
                     'attachable_id'   => 123456,
                     'attachable_type' => 'Person',
+                    'api_input'       => false,
                 ],
             ],
             $request->jsonSerialize()

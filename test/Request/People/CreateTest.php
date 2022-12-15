@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Netresearch\Test\Request\People;
 
 use Netresearch\Sdk\CentralStation\Constants;
-use Netresearch\Sdk\CentralStation\Request\People\Common\Person;
 use Netresearch\Sdk\CentralStation\Request\People\Create;
+use Netresearch\Sdk\CentralStation\Request\Person;
 use PHPUnit\Framework\TestCase;
 
 /**

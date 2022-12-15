@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Test\Request\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Create;
-use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
+use Netresearch\Sdk\CentralStation\Request\Tag;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -34,7 +34,8 @@ class CreateTest extends TestCase
         $tag = new Tag();
         $tag->setName('Funny new tag')
             ->setAttachableId(123456)
-            ->setAttachableType('Person');
+            ->setAttachableType('Person')
+            ->setApiInput(true);
 
         $request = new Create($tag);
 
@@ -44,6 +45,7 @@ class CreateTest extends TestCase
                     'name'            => 'Funny new tag',
                     'attachable_id'   => 123456,
                     'attachable_type' => 'Person',
+                    'api_input'       => true,
                 ],
             ],
             $request->jsonSerialize()

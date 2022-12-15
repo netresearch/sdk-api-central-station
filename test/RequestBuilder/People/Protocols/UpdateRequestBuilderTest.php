@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Protocols;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Protocols;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Protocols\UpdateRequestBuilder;

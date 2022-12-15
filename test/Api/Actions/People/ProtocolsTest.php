@@ -239,7 +239,7 @@ class ProtocolsTest extends TestCase
             ->protocols()
             ->create(
                 new Create(
-                    new \Netresearch\Sdk\CentralStation\Request\Protocols\Common\Protocol()
+                    new \Netresearch\Sdk\CentralStation\Request\Protocol()
                 )
             );
 

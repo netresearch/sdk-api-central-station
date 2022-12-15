@@ -11,7 +11,9 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
+use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\Traits\IncludesTrait;
 use Netresearch\Sdk\CentralStation\Request\Traits\PaginationTrait;
 
 /**
@@ -21,8 +23,9 @@ use Netresearch\Sdk\CentralStation\Request\Traits\PaginationTrait;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Search implements PaginationRequestInterface
+class Search implements IncludesRequestInterface, PaginationRequestInterface
 {
+    use IncludesTrait;
     use PaginationTrait;
 
     /**
@@ -48,6 +51,7 @@ class Search implements PaginationRequestInterface
     {
         $data = [];
         $data = $this->addPaginationToSerializedData($data);
+        $data = $this->addIncludesToSerializedData($data);
 
         if (!empty($this->query)) {
             foreach ($this->query as $key => $value) {
