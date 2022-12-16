@@ -56,7 +56,7 @@ class Address extends AbstractEntity
     public $zip = '';
 
     /**
-     * The city name. Either the city or the country_code is mandatory.
+     * The city name.
      *
      * @var string
      *
