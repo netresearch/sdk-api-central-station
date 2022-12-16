@@ -1,0 +1,8 @@
+{
+    "addr": {
+        "zip": "98765",
+        "city": "Musterstadt",
+        "atype": "other",
+        "primary": false
+    }
+}

@@ -13,7 +13,7 @@ namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\UpdateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\UpdateProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\PeopleProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -32,7 +32,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     {
         return [
             'Request' => [
-                file_get_contents(UpdateProvider::updateRequest()) ?: '',
+                file_get_contents(PeopleProvider::updateRequest()) ?: '',
             ],
         ];
     }

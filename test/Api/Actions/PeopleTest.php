@@ -25,11 +25,7 @@ use Netresearch\Sdk\CentralStation\Request\People\Search;
 use Netresearch\Sdk\CentralStation\Request\People\Show;
 use Netresearch\Sdk\CentralStation\Request\People\Stats;
 use Netresearch\Sdk\CentralStation\Request\People\Update;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\CreateProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\IndexProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\SearchProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\ShowProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\StatsProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\PeopleProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
@@ -69,7 +65,7 @@ class PeopleTest extends TestCase
     {
         return [
             'Response' => [
-                IndexProvider::indexResponseSuccess(),
+                PeopleProvider::indexResponseSuccess(),
             ],
         ];
     }
@@ -154,7 +150,7 @@ class PeopleTest extends TestCase
     {
         return [
             'Response' => [
-                ShowProvider::showResponseSuccess(),
+                PeopleProvider::showResponseSuccess(),
             ],
         ];
     }
@@ -213,7 +209,7 @@ class PeopleTest extends TestCase
     {
         return [
             'Response' => [
-                CreateProvider::createResponseSuccess(),
+                PeopleProvider::createResponseSuccess(),
             ],
         ];
     }
@@ -290,7 +286,7 @@ class PeopleTest extends TestCase
     {
         return [
             'Response' => [
-                StatsProvider::statsResponseSuccess(),
+                PeopleProvider::statsResponseSuccess(),
             ],
         ];
     }
@@ -342,7 +338,7 @@ class PeopleTest extends TestCase
     {
         return [
             'Response' => [
-                SearchProvider::searchResponseSuccess(),
+                PeopleProvider::searchResponseSuccess(),
             ],
         ];
     }

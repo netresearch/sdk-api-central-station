@@ -9,21 +9,29 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\Provider\Protocols;
+namespace Netresearch\Sdk\CentralStation\Test\Provider;
 
 /**
- * Class IndexProvider
+ * Class ProtocolsProvider
  *
  * @author Rico Sonntag <rico.sonntag@netresearch.de>
  * @link   https://www.netresearch.de/
  */
-class IndexProvider
+class ProtocolsProvider
 {
     /**
      * @return string
      */
     public static function indexResponseSuccess(): string
     {
-        return __DIR__ . '/../_files/Response/Protocols/index.json';
+        return __DIR__ . '/_files/Response/Protocols/index.json';
+    }
+
+    /**
+     * @return string
+     */
+    public static function showResponseSuccess(): string
+    {
+        return __DIR__ . '/_files/Response/Protocols/show.json';
     }
 }

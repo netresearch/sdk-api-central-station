@@ -9,10 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Tags;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Addresses;
 
-use Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags\CreateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\TagsProvider;
+use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\RequestBuilder\People\Addresses\CreateRequestBuilder;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\AddressesProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -31,13 +32,13 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
     {
         return [
             'Request' => [
-                file_get_contents(TagsProvider::createRequest()) ?: '',
+                file_get_contents(AddressesProvider::createRequest()) ?: '',
             ],
         ];
     }
 
     /**
-     * Tests creating a new tag.
+     * Tests creating a new address.
      *
      * @dataProvider createRequestDataProvider
      * @test
@@ -47,7 +48,16 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
     public function create(string $expectedJson): void
     {
         $requestBuilder = new CreateRequestBuilder();
-        $requestBuilder->setTagName('New created tag');
+        $requestBuilder
+            ->setAddress(
+                'Mustergasse 1',
+                '12345',
+                'Musterhausen',
+                'DE',
+                'SN'
+            )
+            ->setType(Constants::ADDRESS_TYPE_PRIVATE)
+            ->setPrimary(true);
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);

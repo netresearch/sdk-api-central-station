@@ -9,21 +9,29 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\Provider\People\Tags;
+namespace Netresearch\Sdk\CentralStation\Test\Provider;
 
 /**
- * Class ShowProvider
+ * Class TagsProvider
  *
  * @author Rico Sonntag <rico.sonntag@netresearch.de>
  * @link   https://www.netresearch.de/
  */
-class ShowProvider
+class TagsProvider
 {
+    /**
+     * @return string
+     */
+    public static function indexResponseSuccess(): string
+    {
+        return __DIR__ . '/_files/Response/Tags/index.json';
+    }
+
     /**
      * @return string
      */
     public static function showResponseSuccess(): string
     {
-        return __DIR__ . '/../../_files/Response/People/Tags/show.json';
+        return __DIR__ . '/_files/Response/Tags/show.json';
     }
 }

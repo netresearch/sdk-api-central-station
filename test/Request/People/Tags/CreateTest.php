@@ -34,8 +34,7 @@ class CreateTest extends TestCase
         $tag = new Tag();
         $tag->setName('Funny new tag')
             ->setAttachableId(123456)
-            ->setAttachableType('Person')
-            ->setApiInput(true);
+            ->setAttachableType('Person');
 
         $request = new Create($tag);
 
@@ -45,7 +44,6 @@ class CreateTest extends TestCase
                     'name'            => 'Funny new tag',
                     'attachable_id'   => 123456,
                     'attachable_type' => 'Person',
-                    'api_input'       => true,
                 ],
             ],
             $request->jsonSerialize()

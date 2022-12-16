@@ -9,22 +9,22 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\Provider\People\Protocols;
+namespace Netresearch\Sdk\CentralStation\Test\Provider\Protocols;
 
 /**
- * Class CreateProvider
+ * Class AttachmentsProvider
  *
  * @author Rico Sonntag <rico.sonntag@netresearch.de>
  * @link   https://www.netresearch.de/
  */
-class CreateProvider
+class AttachmentsProvider
 {
     /**
      * @return string
      */
     public static function createRequest(): string
     {
-        return __DIR__ . '/../../_files/Request/People/Protocols/create.json';
+        return __DIR__ . '/../_files/Request/Protocols/Attachments/create.json';
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateProvider
      */
     public static function createResponseSuccess(): string
     {
-        return __DIR__ . '/../../_files/Response/People/Protocols/create.json';
+        return __DIR__ . '/../_files/Response/Protocols/Attachments/create.json';
     }
 }

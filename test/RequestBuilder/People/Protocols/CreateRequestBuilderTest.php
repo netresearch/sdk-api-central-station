@@ -13,7 +13,7 @@ namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Protocols;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Protocols\CreateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Protocols\CreateProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\ProtocolsProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -32,7 +32,7 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
     {
         return [
             'Request' => [
-                file_get_contents(CreateProvider::createRequest()) ?: '',
+                file_get_contents(ProtocolsProvider::createRequest()) ?: '',
             ],
         ];
     }

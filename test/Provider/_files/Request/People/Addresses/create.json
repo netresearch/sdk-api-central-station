@@ -1,0 +1,11 @@
+{
+    "addr": {
+        "street": "Mustergasse 1",
+        "zip": "12345",
+        "city": "Musterhausen",
+        "state_code": "SN",
+        "country_code": "DE",
+        "atype": "private",
+        "primary": true
+    }
+}

@@ -36,7 +36,7 @@ class UpdateTest extends TestCase
             ->setAttachableId(123456)
             ->setAttachableType('Person');
 
-        $request = new Update(123456);
+        $request = new Update();
         $request->setTag($tag);
 
         self::assertSame(
@@ -45,7 +45,6 @@ class UpdateTest extends TestCase
                     'name'            => 'Funny updated tag',
                     'attachable_id'   => 123456,
                     'attachable_type' => 'Person',
-                    'api_input'       => false,
                 ],
             ],
             $request->jsonSerialize()

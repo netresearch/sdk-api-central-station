@@ -1,0 +1,38 @@
+[
+    {
+        "addr": {
+            "id": 28752100,
+            "attachable_id": 30016185,
+            "attachable_type": "Person",
+            "street": null,
+            "zip": null,
+            "city": "Leipzig",
+            "state_code": "SN",
+            "country_code": "DE",
+            "primary": null,
+            "created_at": "2022-12-14T15:48:34.000+01:00",
+            "updated_at": "2022-12-14T15:49:49.000+01:00",
+            "atype": "work_hq",
+            "api_input": false,
+            "country_name": "Deutschland"
+        }
+    },
+    {
+        "addr": {
+            "id": 28762507,
+            "attachable_id": 30016185,
+            "attachable_type": "Person",
+            "street": "Mustergasse 1",
+            "zip": "98765",
+            "city": "Musterstadt",
+            "state_code": null,
+            "country_code": "DE",
+            "primary": false,
+            "created_at": "2022-12-16T09:11:30.000+01:00",
+            "updated_at": "2022-12-16T09:52:17.000+01:00",
+            "atype": "other",
+            "api_input": true,
+            "country_name": "Deutschland"
+        }
+    }
+]

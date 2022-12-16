@@ -9,10 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Tags;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Addresses;
 
-use Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags\UpdateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\TagsProvider;
+use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\RequestBuilder\People\Addresses\UpdateRequestBuilder;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\AddressesProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -31,13 +32,13 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     {
         return [
             'Request' => [
-                file_get_contents(TagsProvider::updateRequest()) ?: '',
+                file_get_contents(AddressesProvider::updateRequest()) ?: '',
             ],
         ];
     }
 
     /**
-     * Tests updating an existing tag.
+     * Tests updating an existing address.
      *
      * @dataProvider updateRequestDataProvider
      * @test
@@ -47,7 +48,14 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     public function update(string $expectedJson): void
     {
         $requestBuilder = new UpdateRequestBuilder();
-        $requestBuilder->setTagName('Updated tag');
+        $requestBuilder
+            ->setAddress(
+                null,
+                '98765',
+                'Musterstadt'
+            )
+            ->setType(Constants::ADDRESS_TYPE_OTHER)
+            ->setPrimary(false);
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);
