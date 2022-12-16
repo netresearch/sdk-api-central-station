@@ -250,7 +250,7 @@ class People extends AbstractApiEndpoint
      *
      * @param SearchRequest $request The search request instance
      *
-     * @return PeopleCollection<Model\People>
+     * @return PeopleCollection
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -323,6 +323,6 @@ class People extends AbstractApiEndpoint
             return $this->httpPost($request)->getStatusCode() === 200;
         };
 
-        return $this->execute($requestClosure);
+        return (bool) $this->execute($requestClosure);
     }
 }

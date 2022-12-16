@@ -21,7 +21,6 @@ use Http\Mock\Client;
 use Netresearch\Sdk\CentralStation\Api;
 use Netresearch\Sdk\CentralStation\Api\EndpointInterface;
 use Netresearch\Sdk\CentralStation\CentralStation;
-use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Http\ClientPlugin\ErrorPlugin;
 use Netresearch\Sdk\CentralStation\Serializer\JsonSerializer;
 use Netresearch\Sdk\CentralStation\UrlBuilder;
@@ -48,8 +47,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param int    $statusCode
      *
      * @return CentralStation|MockObject
-     *
-     * @throws ServiceException
      */
     public function getServiceFactoryMock(string $responseData = '', int $statusCode = 200)
     {
@@ -118,18 +115,22 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param string            $message
      *
      * @return void
-     * @throws ReflectionException
      */
     public static function assertWebserviceUrl(string $expected, EndpointInterface $actual, string $message = ''): void
     {
         $reflection = new ReflectionObject($actual);
-        $urlBuilderProperty = $reflection->getProperty('urlBuilder');
-        $urlBuilderProperty->setAccessible(true);
 
-        /** @var UrlBuilder $urlBuilder */
-        $urlBuilder = $urlBuilderProperty->getValue($actual);
+        try {
+            $urlBuilderProperty = $reflection->getProperty('urlBuilder');
+            $urlBuilderProperty->setAccessible(true);
 
-        self::assertSame($expected, $urlBuilder->getFullUrl(), $message);
+            /** @var UrlBuilder $urlBuilder */
+            $urlBuilder = $urlBuilderProperty->getValue($actual);
+
+            self::assertSame($expected, $urlBuilder->getFullUrl(), $message);
+        } catch (ReflectionException $exception) {
+            self::fail('Reflection failed');
+        }
     }
 
     /**
@@ -140,25 +141,29 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param string            $message
      *
      * @return void
-     * @throws ReflectionException
      */
     public static function assertHttpMethod(string $expected, EndpointInterface $actual, string $message = ''): void
     {
         $reflection = new ReflectionObject($actual);
-        $clientProperty = $reflection->getProperty('client');
-        $clientProperty->setAccessible(true);
 
-        /** @var PluginClient $pluginClient */
-        $pluginClient = $clientProperty->getValue($actual);
+        try {
+            $clientProperty = $reflection->getProperty('client');
+            $clientProperty->setAccessible(true);
 
-        $reflection = new ReflectionObject($pluginClient);
-        $clientProperty = $reflection->getProperty('client');
-        $clientProperty->setAccessible(true);
+            /** @var PluginClient $pluginClient */
+            $pluginClient = $clientProperty->getValue($actual);
 
-        /** @var Client $mockClient */
-        $mockClient = $clientProperty->getValue($pluginClient);
+            $reflection = new ReflectionObject($pluginClient);
+            $clientProperty = $reflection->getProperty('client');
+            $clientProperty->setAccessible(true);
 
-        self::assertSame($expected, $mockClient->getLastRequest()->getMethod(), $message);
+            /** @var Client $mockClient */
+            $mockClient = $clientProperty->getValue($pluginClient);
+
+            self::assertSame($expected, $mockClient->getLastRequest()->getMethod(), $message);
+        } catch (ReflectionException $exception) {
+            self::fail('Reflection failed');
+        }
     }
 
     /**
@@ -168,37 +173,38 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param string            $message
      *
      * @return void
-     * @throws ReflectionException
      */
-    public static function assertHttpHeaders(
-        EndpointInterface $actual,
-        string $message = ''
-    ): void {
-        $reflection = new ReflectionObject($actual);
-        $clientProperty = $reflection->getProperty('client');
-        $clientProperty->setAccessible(true);
+    public static function assertHttpHeaders(EndpointInterface $actual, string $message = ''): void
+    {
+        try {
+            $reflection = new ReflectionObject($actual);
+            $clientProperty = $reflection->getProperty('client');
+            $clientProperty->setAccessible(true);
 
-        /** @var PluginClient $pluginClient */
-        $pluginClient = $clientProperty->getValue($actual);
+            /** @var PluginClient $pluginClient */
+            $pluginClient = $clientProperty->getValue($actual);
 
-        $reflection = new ReflectionObject($pluginClient);
-        $clientProperty = $reflection->getProperty('client');
-        $clientProperty->setAccessible(true);
+            $reflection = new ReflectionObject($pluginClient);
+            $clientProperty = $reflection->getProperty('client');
+            $clientProperty->setAccessible(true);
 
-        /** @var Client $mockClient */
-        $mockClient = $clientProperty->getValue($pluginClient);
+            /** @var Client $mockClient */
+            $mockClient = $clientProperty->getValue($pluginClient);
 
-        self::assertSame(
-            'application/json',
-            $mockClient->getLastRequest()->getHeaderLine('Accept'),
-            $message
-        );
+            self::assertSame(
+                'application/json',
+                $mockClient->getLastRequest()->getHeaderLine('Accept'),
+                $message
+            );
 
-        self::assertSame(
-            'TOTALLY-SECRET-API-KEY',
-            $mockClient->getLastRequest()->getHeaderLine('X-apikey'),
-            $message
-        );
+            self::assertSame(
+                'TOTALLY-SECRET-API-KEY',
+                $mockClient->getLastRequest()->getHeaderLine('X-apikey'),
+                $message
+            );
+        } catch (ReflectionException $exception) {
+            self::fail('Reflection failed');
+        }
     }
 
     /**

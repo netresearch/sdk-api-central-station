@@ -297,7 +297,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
             return $this->httpPut($request)->getStatusCode() === 200;
         };
 
-        return $this->execute($requestClosure);
+        return (bool) $this->execute($requestClosure);
     }
 
     /**
@@ -315,6 +315,6 @@ abstract class AbstractApiEndpoint implements EndpointInterface
             return $this->httpDelete()->getStatusCode() === 200;
         };
 
-        return $this->execute($requestClosure);
+        return (bool) $this->execute($requestClosure);
     }
 }
