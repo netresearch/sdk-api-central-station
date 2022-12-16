@@ -12,9 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Model\People;
 
 use Netresearch\Sdk\CentralStation\Collection\AddressCollection;
-use Netresearch\Sdk\CentralStation\Collection\AddressesCollection;
 use Netresearch\Sdk\CentralStation\Collection\TagCollection;
-use Netresearch\Sdk\CentralStation\Collection\TagsCollection;
 use Netresearch\Sdk\CentralStation\Model\AbstractEntity;
 use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;

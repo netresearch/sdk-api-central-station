@@ -19,7 +19,6 @@ use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model;
 use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
 use Netresearch\Sdk\CentralStation\Request\People\Addresses\Create as CreateRequest;
-use Netresearch\Sdk\CentralStation\Request\People\Addresses\Index as IndexRequest;
 
 /**
  * The /people/<PERSON-ID>/addrs endpoint. Implements the following endpoints:
