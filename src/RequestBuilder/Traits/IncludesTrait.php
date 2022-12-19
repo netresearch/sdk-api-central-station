@@ -11,8 +11,11 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\Traits;
 
+use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
+use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
+
 /**
- * Trait providing method to add includes to request builder.
+ * Trait providing methods to add includes to request builder.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -29,7 +32,7 @@ trait IncludesTrait
      *
      * @return self
      */
-    public function addInclude(string $include): self
+    public function addInclude(string $include): IncludesRequestBuilderInterface
     {
         if (!isset($this->data['includes'])) {
             $this->data['includes'] = [];
@@ -40,5 +43,19 @@ trait IncludesTrait
         }
 
         return $this;
+    }
+
+    /**
+     * Assigns the defined data to the request.
+     *
+     * @param IncludesRequestInterface $request The request instance
+     *
+     * @return void
+     */
+    private function assignIncludesToRequest(IncludesRequestInterface $request): void
+    {
+        if (isset($this->data['includes'])) {
+            $request->setIncludes(...$this->data['includes']);
+        }
     }
 }

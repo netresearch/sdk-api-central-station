@@ -41,7 +41,7 @@ class RequestBuilderTestCase extends \PHPUnit\Framework\TestCase
      *
      * @throws JsonException
      */
-    protected function assertSameJson(string $expectedJson, string $actualJson): void
+    protected static function assertSameJson(string $expectedJson, string $actualJson): void
     {
         // Get rid of the formatting of the test data
         $expectedJson = json_encode(

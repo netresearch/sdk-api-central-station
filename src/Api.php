@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation;
 
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
+use Netresearch\Sdk\CentralStation\Api\Actions\Protocols;
 use Netresearch\Sdk\CentralStation\Api\Actions\Tags;
 use Netresearch\Sdk\CentralStation\Serializer\JsonSerializer;
 use Psr\Http\Client\ClientInterface;
@@ -40,6 +41,13 @@ class Api
      * @var null|Tags
      */
     private $tagsApi;
+
+    /**
+     * Instance of the "protocols" API for implementing lazy loading.
+     *
+     * @var null|Protocols
+     */
+    private $protocolsApi;
 
     /**
      * @var ClientInterface
@@ -151,5 +159,37 @@ class Api
         }
 
         return $this->tagsApi;
+    }
+
+    /**
+     * Returns the "protocols" API by lazy loading.
+     *
+     * @param null|int $protocolId A valid protocol ID
+     *
+     * @return Protocols
+     */
+    public function protocols(int $protocolId = null): Protocols
+    {
+        $this->urlBuilder
+            ->reset()
+            ->addPath('/' . Protocols::PATH);
+
+        // Add protocol ID if available
+        if ($protocolId) {
+            $this->urlBuilder
+                ->addPath('/' . $protocolId);
+        }
+
+        if (!$this->protocolsApi) {
+            $this->protocolsApi = new Protocols(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->protocolsApi;
     }
 }

@@ -24,13 +24,16 @@ use Netresearch\Sdk\CentralStation\Request\Tags\TagList as ListRequest;
 /**
  * The /tags endpoint. Implements the following endpoints:
  *
- *     GET https://<BASE-URL>/api/tags
- *     GET https://<BASE-URL>/api/tags/<TAG-ID>
- *     GET https://<BASE-URL>/api/tags/list
+ *     GET    https://<BASE-URL>/api/tags
+ *     GET    https://<BASE-URL>/api/tags/<TAG-ID>
+ *     PUT    https://<BASE-URL>/api/tags/<TAG-ID>
+ *     DELETE https://<BASE-URL>/api/tags/<TAG-ID>
+ *     GET    https://<BASE-URL>/api/tags/list
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ * @api
  *
  * @extends AbstractApiEndpoint<Model\Tags, TagsCollection>
  */

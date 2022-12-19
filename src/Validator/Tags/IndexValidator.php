@@ -23,8 +23,6 @@ use Netresearch\Sdk\CentralStation\Validator\Traits\FilterTrait;
  */
 class IndexValidator
 {
-    use FilterTrait;
-
     /**
      * Validate request data before sending it to the web service.
      *
@@ -34,8 +32,6 @@ class IndexValidator
      */
     public static function validate(array $data): void
     {
-        if (isset($data['filter'])) {
-            self::validateFilters($data['filter']);
-        }
+        // TODO Implement validations
     }
 }

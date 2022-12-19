@@ -12,9 +12,11 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\Traits;
 
 use DateTime;
+use Netresearch\Sdk\CentralStation\Request\FilterRequestInterface;
+use Netresearch\Sdk\CentralStation\RequestBuilder\FilterRequestBuilderInterface;
 
 /**
- * Trait providing method to add filters to request builder.
+ * Trait providing methods to add filters to request builder.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -31,11 +33,8 @@ trait FilterTrait
      *
      * @return self
      */
-    public function addFilter(
-        string $field,
-        string $comparison,
-        $value
-    ): self {
+    public function addFilter(string $field, string $comparison, $value): FilterRequestBuilderInterface
+    {
         if (!isset($this->data['filter'])) {
             $this->data['filter'] = [];
         }
@@ -47,5 +46,19 @@ trait FilterTrait
         $this->data['filter'][$field][$comparison] = $value;
 
         return $this;
+    }
+
+    /**
+     * Assigns the defined data to the request.
+     *
+     * @param FilterRequestInterface $request The request instance
+     *
+     * @return void
+     */
+    private function assignFilterToRequest(FilterRequestInterface $request): void
+    {
+        if (isset($this->data['filter'])) {
+            $request->setFilter($this->data['filter']);
+        }
     }
 }

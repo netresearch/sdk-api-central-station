@@ -1,0 +1,60 @@
+[
+    {
+        "protocol_object_note": {
+            "id": 36085763,
+            "user_id": 150959,
+            "attachments_count": 0,
+            "comments_count": 0,
+            "name": "Interview Text 2015 - 1",
+            "confidential": false,
+            "format": "plaintext",
+            "content": "Interview Text 2015 - 2",
+            "updated_by_user_id": null,
+            "created_at": "2022-01-24T10:10:31.000+01:00",
+            "updated_at": "2022-01-24T10:10:31.000+01:00",
+            "data_hash": {},
+            "account_id": 87444,
+            "type": "ProtocolObjectNote",
+            "badge": "other",
+            "person_ids": [
+                26125010
+            ],
+            "company_ids": [
+                1799973197
+            ],
+            "deal_ids": [],
+            "project_ids": [],
+            "person_id": 26125010,
+            "company_id": 1799973197
+        }
+    },
+    {
+        "protocol_object_note": {
+            "id": 36085781,
+            "user_id": 150959,
+            "attachments_count": 0,
+            "comments_count": 0,
+            "name": "Investoren-Interview - 1",
+            "confidential": false,
+            "format": "plaintext",
+            "content": "Investoren-Interview - 2",
+            "updated_by_user_id": null,
+            "created_at": "2022-01-24T10:10:38.000+01:00",
+            "updated_at": "2022-01-24T10:10:38.000+01:00",
+            "data_hash": {},
+            "account_id": 87444,
+            "type": "ProtocolObjectNote",
+            "badge": "other",
+            "person_ids": [
+                26125043
+            ],
+            "company_ids": [
+                1799973221
+            ],
+            "deal_ids": [],
+            "project_ids": [],
+            "person_id": 26125043,
+            "company_id": 1799973221
+        }
+    }
+]

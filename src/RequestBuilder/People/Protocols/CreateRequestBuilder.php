@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\People\Protocols;
 
-use Netresearch\Sdk\CentralStation\Api\RequestInterface;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Protocols\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Common\Protocol;
@@ -24,6 +24,7 @@ use Netresearch\Sdk\CentralStation\Validator\People\Protocols\CreateValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ * @api
  */
 class CreateRequestBuilder extends AbstractRequestBuilder
 {

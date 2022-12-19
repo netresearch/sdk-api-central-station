@@ -52,6 +52,6 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);
 
-        $this->assertSameJson($expectedJson, $requestJson);
+        self::assertSameJson($expectedJson, $requestJson);
     }
 }

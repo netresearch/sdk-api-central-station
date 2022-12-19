@@ -9,22 +9,42 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Api;
-
-use JsonSerializable;
+namespace Netresearch\Sdk\CentralStation\Model\Attachments;
 
 /**
- * The request interface.
+ * A user.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
- * @api
  */
-interface RequestInterface extends JsonSerializable
+class User
 {
     /**
-     * @return array<string, mixed>
+     * ID of entity.
+     *
+     * @var int
      */
-    public function jsonSerialize(): array;
+    public $id;
+
+    /**
+     * The first name.
+     *
+     * @var string
+     */
+    public $first;
+
+    /**
+     * The last name.
+     *
+     * @var string
+     */
+    public $name;
+
+    /**
+     * The login name.
+     *
+     * @var string
+     */
+    public $login;
 }

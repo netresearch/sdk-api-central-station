@@ -11,10 +11,11 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\People;
 
-use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\FilterRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\FilterTrait;
 use Netresearch\Sdk\CentralStation\Validator\People\StatsValidator;
 
@@ -24,8 +25,10 @@ use Netresearch\Sdk\CentralStation\Validator\People\StatsValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ * @api
  */
-class StatsRequestBuilder extends AbstractRequestBuilder
+class StatsRequestBuilder extends AbstractRequestBuilder implements
+    FilterRequestBuilderInterface
 {
     use FilterTrait;
 
@@ -44,9 +47,7 @@ class StatsRequestBuilder extends AbstractRequestBuilder
         // Assign values to request
         $request = new StatsRequest();
 
-        if (isset($this->data['filter'])) {
-            $request->setFilter($this->data['filter']);
-        }
+        $this->assignFilterToRequest($request);
 
         $this->data = [];
 

@@ -9,16 +9,20 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Api;
+namespace Netresearch\Sdk\CentralStation\Collection;
+
+use Netresearch\Sdk\CentralStation\AbstractCollection;
+use Netresearch\Sdk\CentralStation\Model\Attachments;
 
 /**
- * The update request interface.
+ * A collection of attachments.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
- * @api
+ *
+ * @extends AbstractCollection<int, Attachments>
  */
-interface UpdateRequestInterface extends RequestInterface
+class AttachmentsCollection extends AbstractCollection
 {
 }

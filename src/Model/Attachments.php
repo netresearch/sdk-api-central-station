@@ -9,16 +9,30 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Api;
+namespace Netresearch\Sdk\CentralStation\Model;
+
+use Netresearch\Sdk\CentralStation\Model\Attachments\Attachment;
 
 /**
- * The index request interface.
+ * An attachments record.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
- * @api
  */
-interface IndexRequestInterface extends RequestInterface
+class Attachments
 {
+    /**
+     * An attachment.
+     *
+     * @var Attachment
+     */
+    public $attachment;
+
+    /**
+     * The base64 encoded data of the attachment.
+     *
+     * @var string
+     */
+    public $data;
 }

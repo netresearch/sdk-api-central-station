@@ -11,7 +11,10 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\Tags;
 
-use Netresearch\Sdk\CentralStation\Api\IndexRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\SortRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\Traits\PaginationTrait;
+use Netresearch\Sdk\CentralStation\Request\Traits\SortTrait;
 
 /**
  * A "list" request.
@@ -23,76 +26,15 @@ use Netresearch\Sdk\CentralStation\Api\IndexRequestInterface;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class TagList implements IndexRequestInterface
+class TagList implements PaginationRequestInterface, SortRequestInterface
 {
-    /**
-     * @var int
-     */
-    private $perPage;
-
-    /**
-     * @var int
-     */
-    private $page;
-
-    /**
-     * @var string
-     */
-    private $orderBy;
-
-    /**
-     * @var string
-     */
-    private $orderDirection = 'asc';
+    use PaginationTrait;
+    use SortTrait;
 
     /**
      * @var string
      */
     private $attachableType;
-
-    /**
-     * @param int $perPage
-     *
-     * @return TagList
-     */
-    public function setPerPage(int $perPage): TagList
-    {
-        $this->perPage = $perPage;
-        return $this;
-    }
-
-    /**
-     * @param int $page
-     *
-     * @return TagList
-     */
-    public function setPage(int $page): TagList
-    {
-        $this->page = $page;
-        return $this;
-    }
-
-    /**
-     * @param string $orderBy
-     *
-     * @return TagList
-     */
-    public function setOrderBy(string $orderBy): TagList
-    {
-        $this->orderBy = $orderBy;
-        return $this;
-    }
-
-    /**
-     * @param string $orderDirection
-     *
-     * @return TagList
-     */
-    public function setOrderDirection(string $orderDirection): TagList
-    {
-        $this->orderDirection = $orderDirection;
-        return $this;
-    }
 
     /**
      * @param string $attachableType
@@ -111,13 +53,8 @@ class TagList implements IndexRequestInterface
     public function jsonSerialize(): array
     {
         $data = [];
-
-        $data['perpage'] = $this->perPage;
-        $data['page']    = $this->page;
-
-        if (!empty($this->orderBy) && !empty($this->orderDirection)) {
-            $data['order'] = $this->orderBy . '-' . $this->orderDirection;
-        }
+        $data = $this->addPaginationToSerializedData($data);
+        $data = $this->addSortToSerializedData($data);
 
         if (!empty($this->attachableType)) {
             $data['attachable_type'] = $this->attachableType;

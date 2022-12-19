@@ -11,11 +11,17 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\Protocols;
 
-use Netresearch\Sdk\CentralStation\Api\RequestInterface;
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Index as IndexRequest;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
+use Netresearch\Sdk\CentralStation\RequestBuilder\PaginationRequestBuilderInterface;
+use Netresearch\Sdk\CentralStation\RequestBuilder\SortRequestBuilderInterface;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\PaginationTrait;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\SortTrait;
 use Netresearch\Sdk\CentralStation\Validator\Protocols\IndexValidator;
 
 /**
@@ -24,59 +30,30 @@ use Netresearch\Sdk\CentralStation\Validator\Protocols\IndexValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ * @api
  */
-class IndexRequestBuilder extends AbstractRequestBuilder
+class IndexRequestBuilder extends AbstractRequestBuilder implements
+    IncludesRequestBuilderInterface,
+    PaginationRequestBuilderInterface,
+    SortRequestBuilderInterface
 {
-    /**
-     * Sets the limitations of the response.
-     *
-     * @param null|int $perPage The number of elements to return (default: 25)
-     * @param null|int $page    The page number for which to return the results
-     *
-     * @return IndexRequestBuilder
-     */
-    public function setLimit(
-        ?int $perPage = 25,
-        ?int $page = 1
-    ): IndexRequestBuilder {
-        $this->data['limit'] = [
-            'perPage' => $perPage,
-            'page'    => $page,
-        ];
-
-        return $this;
-    }
-
-    /**
-     * Sets the sort order of the response.
-     *
-     * @param null|string $orderBy        The order type (use one of Constants::ORDER_BY_*)
-     * @param null|string $orderDirection The order direction (use one of Constants::ORDER_*)
-     *
-     * @return IndexRequestBuilder
-     */
-    public function setOrder(
-        ?string $orderBy = 'name',
-        ?string $orderDirection = Constants::ORDER_DIRECTION_ASC
-    ): IndexRequestBuilder {
-        $this->data['order'] = [
-            'orderBy'   => $orderBy,
-            'direction' => $orderDirection,
-        ];
-
-        return $this;
-    }
+    use IncludesTrait;
+    use PaginationTrait;
+    use SortTrait;
 
     /**
      * Whether to include comments or not.
      *
      * @param bool $includeComments TRUE to include comments in the result
      *
-     * @return self
+     * @return IndexRequestBuilder
      */
-    public function setIncludeComments(bool $includeComments): self
+    public function setIncludeComments(bool $includeComments): IndexRequestBuilder
     {
-        $this->data['includeComments'] = $includeComments;
+        if ($includeComments) {
+            $this->addInclude(Constants::PROTOCOL_INCLUDE_COMMENTS);
+        }
+
         return $this;
     }
 
@@ -95,29 +72,9 @@ class IndexRequestBuilder extends AbstractRequestBuilder
         // Assign values to request
         $request = new IndexRequest();
 
-        if (isset($this->data['limit'])) {
-            if (($this->data['limit']['perPage'] !== null) && ($this->data['limit']['perPage'] > 0)) {
-                $request->setPerPage($this->data['limit']['perPage']);
-            }
-
-            if (($this->data['limit']['page'] !== null) && ($this->data['limit']['page'] > 0)) {
-                $request->setPage($this->data['limit']['page']);
-            }
-        }
-
-        if (isset($this->data['order'])) {
-            if ($this->data['order']['orderBy'] !== null) {
-                $request->setOrderBy($this->data['order']['orderBy']);
-            }
-
-            if ($this->data['order']['direction'] !== null) {
-                $request->setOrderDirection($this->data['order']['direction']);
-            }
-        }
-
-        if (isset($this->data['includeComments']) && $this->data['includeComments']) {
-            $request->setIncludes(Constants::PROTOCOL_INCLUDE_COMMENTS);
-        }
+        $this->assignPaginationToRequest($request);
+        $this->assignSortToRequest($request);
+        $this->assignIncludesToRequest($request);
 
         $this->data = [];
 

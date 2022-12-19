@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder;
 
-use Netresearch\Sdk\CentralStation\Api\RequestBuilderInterface;
-
 /**
  * An abstract request builder providing common methods for all request builders.
  *

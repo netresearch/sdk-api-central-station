@@ -9,16 +9,21 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Api;
+namespace Netresearch\Sdk\CentralStation\Request;
 
 /**
- * The show request interface.
+ * The includes request interface.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
- * @api
  */
-interface ShowRequestInterface extends RequestInterface
+interface IncludesRequestInterface extends RequestInterface
 {
+    /**
+     * @param string ...$includes
+     *
+     * @return self
+     */
+    public function setIncludes(string ...$includes): IncludesRequestInterface;
 }
