@@ -45,6 +45,26 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
     use SortTrait;
 
     /**
+     * Sets the restriction to individual tags.
+     *
+     * @param null|int    $tagId   The tag ID, returns all objects with the same name of the respective tag
+     * @param null|string $tagName The tag name, returns all objects that have the corresponding tag
+     *
+     * @return self
+     */
+    public function setTagRestriction(
+        ?int $tagId = null,
+        ?string $tagName = null
+    ): IndexRequestBuilder {
+        $this->data['tag'] = [
+            'tagId'   => $tagId,
+            'tagName' => $tagName,
+        ];
+
+        return $this;
+    }
+
+    /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
      * @return IndexRequest|RequestInterface
@@ -63,6 +83,14 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
         $this->assignSortToRequest($request);
         $this->assignFilterToRequest($request);
         $this->assignIncludesToRequest($request);
+
+        if (isset($this->data['tag']['tagId'])) {
+            $request->setTagId($this->data['tag']['tagId']);
+        }
+
+        if (isset($this->data['tag']['tagName'])) {
+            $request->setTagName($this->data['tag']['tagName']);
+        }
 
         $this->data = [];
 

@@ -52,13 +52,14 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
                 '2022-10-25'
             )
             ->addInclude(Constants::INCLUDE_TAGS)
-            ->addInclude(Constants::INCLUDE_ADDRESSES);
+            ->addInclude(Constants::INCLUDE_ADDRESSES)
+            ->setTagRestriction(null, 'TAG-NAME');
 
         $request    = $requestBuilder->create();
         $requestUrl = http_build_query($request->jsonSerialize());
 
         self::assertSame(
-            'perpage=10&page=2&order=name-desc&filter[first_name][equal]=Daniel&filter[created_at][smaller_than]=2022-10-25&includes=tags addrs',
+            'perpage=10&page=2&order=name-desc&filter[first_name][equal]=Daniel&filter[created_at][smaller_than]=2022-10-25&includes=tags addrs&tag_name=TAG-NAME',
             urldecode($requestUrl)
         );
     }

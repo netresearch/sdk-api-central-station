@@ -44,7 +44,8 @@ class IndexTest extends TestCase
                     Constants::FILTER_SMALLER_THAN => '2022-10-25'
                 ]
             ])
-            ->setIncludes('addrs', 'tags');
+            ->setIncludes('addrs', 'tags')
+            ->setTagName('TAG-NAME');
 
         self::assertSame(
             [
@@ -60,6 +61,7 @@ class IndexTest extends TestCase
                     ],
                 ],
                 'includes' => 'addrs tags',
+                'tag_name' => 'TAG-NAME',
             ],
             $request->jsonSerialize()
         );

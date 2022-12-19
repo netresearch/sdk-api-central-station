@@ -43,5 +43,11 @@ class IndexValidator
         if (isset($data['filter'])) {
             self::validateFilters($data['filter']);
         }
+
+        if (isset($data['tag']['tagId'], $data['tag']['tagName'])) {
+            throw new RequestValidatorException(
+                'Please provide either the tag ID or the tag name'
+            );
+        }
     }
 }

@@ -39,6 +39,38 @@ class Index implements
     use SortTrait;
 
     /**
+     * @var null|int
+     */
+    private $tagId;
+
+    /**
+     * @var null|string
+     */
+    private $tagName;
+
+    /**
+     * @param null|int $tagId
+     *
+     * @return Index
+     */
+    public function setTagId(?int $tagId): Index
+    {
+        $this->tagId = $tagId;
+        return $this;
+    }
+
+    /**
+     * @param null|string $tagName
+     *
+     * @return Index
+     */
+    public function setTagName(?string $tagName): Index
+    {
+        $this->tagName = $tagName;
+        return $this;
+    }
+
+    /**
      * @return array<string, int|string|string[][]>
      */
     public function jsonSerialize(): array
@@ -48,6 +80,14 @@ class Index implements
         $data = $this->addSortToSerializedData($data);
         $data = $this->addFilterToSerializedData($data);
         $data = $this->addIncludesToSerializedData($data);
+
+        if (!empty($this->tagId)) {
+            $data['tag_id'] = $this->tagId;
+        }
+
+        if (!empty($this->tagName)) {
+            $data['tag_name'] = $this->tagName;
+        }
 
         return $data;
     }
