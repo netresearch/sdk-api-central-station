@@ -66,37 +66,51 @@ $apiClient = new \Netresearch\Sdk\CentralStation\CentralStation(
 #### People API
 The people API endpoint (`people()`) provides the following methods to interact with the API:
 
-- index 
-  - Returns a list of all people in an account.
-- show 
-  - Returns a single person. Pass the person ID as a parameter to the `people()`-method.
-- create 
-  - Creates a new person.
-- update 
-  - Updates an existing person. Pass the person ID as a parameter to the `people()`-method.
-- delete 
-  - Deletes an existing person. Pass the person ID as a parameter to the `people()`-method.
-- search 
-  - Searches for one or more people.
-- merge 
-  - Merge one or more person into an existing one.
-- stats 
-  - Returns the total number of people for all or filtered persons.
+- index
+    - Returns a list of all people in an account.
+- show
+    - Returns a single person. Pass the person ID as a parameter to the `people()`-method.
+- create
+    - Creates a new person.
+- update
+    - Updates an existing person. Pass the person ID as a parameter to the `people()`-method.
+- delete
+    - Deletes an existing person. Pass the person ID as a parameter to the `people()`-method.
+- search
+    - Searches for one or more people.
+- merge
+    - Merge one or more person into an existing one.
+- stats
+    - Returns the total number of people for all or filtered persons.
 - tags
-  - Returns the tags API endpoint used to process tags related to a specific person. Pass the person ID as a 
-    parameter to the `people()`-method.
-  - The tags endpoint itself provides than the following methods:
-    - index
-      - Returns a list of all tags assigned to a person.
-    - show
-      - Returns a single tag assigned to a person. Pass the tag ID as a parameter to the `tags()`-method.
-    - create
-      - Creates a new tag at the person.
-    - update
-      - Updates an existing tag at a person. Pass the tag ID as a parameter to the `tags()`-method.
-    - delete
-      - Deletes an existing tag at a person. Pass the tag ID as a parameter to the `tags()`-method.
-
+    - Returns the tags API endpoint used to process tags related to a specific person. Pass the person ID as a
+      parameter to the `people()`-method.
+    - The tags endpoint itself provides than the following methods:
+        - index
+            - Returns a list of all tags assigned to a person.
+        - show
+            - Returns a single tag assigned to a person. Pass the tag ID as a parameter to the `tags()`-method.
+        - create
+            - Creates a new tag at the person.
+        - update
+            - Updates an existing tag at a person. Pass the tag ID as a parameter to the `tags()`-method.
+        - delete
+            - Deletes an existing tag at a person. Pass the tag ID as a parameter to the `tags()`-method.
+- protocols
+    - Returns the protocols API endpoint used to process protocols related to a specific person. Pass the person
+      ID as a parameter to the `people()`-method.
+    - The protocols endpoint itself provides than the following methods:
+        - index
+            - Returns a list of all protocols assigned to a person.
+        - show
+            - Returns a single protocol assigned to a person. Pass the tag ID as a parameter to
+              the `protocols()`-method.
+        - create
+            - Creates a new protocol at the person.
+        - update
+            - Updates an existing protocol at a person. Pass the tag ID as a parameter to the `protocols()`-method.
+        - delete
+            - Deletes an existing protocol at a person. Pass the tag ID as a parameter to the `protocols()`-method.
 
 ##### index - Get a list of persons
 

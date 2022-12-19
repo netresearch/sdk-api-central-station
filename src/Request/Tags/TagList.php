@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\Tags;
 
-use Netresearch\Sdk\CentralStation\Api\RequestInterface;
+use Netresearch\Sdk\CentralStation\Api\IndexRequestInterface;
 
 /**
  * A "list" request.
@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class TagList implements RequestInterface
+class TagList implements IndexRequestInterface
 {
     /**
      * @var int

@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
-use Netresearch\Sdk\CentralStation\Api\RequestInterface;
+use Netresearch\Sdk\CentralStation\Api\ShowRequestInterface;
 
 /**
  * A "stats" request.
@@ -20,7 +20,7 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Stats implements RequestInterface
+class Stats implements ShowRequestInterface
 {
     /**
      * @var string[][]

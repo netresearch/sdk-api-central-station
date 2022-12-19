@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model\Tags;
 
-use DateTime;
+use Netresearch\Sdk\CentralStation\Model\AbstractEntity;
 
 /**
  * A tag record.
@@ -20,15 +20,8 @@ use DateTime;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class Tag
+class Tag extends AbstractEntity
 {
-    /**
-     * ID of a tag.
-     *
-     * @var int
-     */
-    public $id;
-
     /**
      * ID of account.
      *
@@ -58,16 +51,9 @@ class Tag
     public $name;
 
     /**
-     * Time of creation.
+     * Whether the element was created by an API call or not.
      *
-     * @var DateTime
+     * @var bool
      */
-    public $createdAt;
-
-    /**
-     * Time of last update.
-     *
-     * @var DateTime
-     */
-    public $updatedAt;
+    public $apiInput;
 }

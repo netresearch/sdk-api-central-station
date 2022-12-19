@@ -1,0 +1,25 @@
+{
+    "protocol_object_note": {
+        "id": 43388190,
+        "user_id": 117760,
+        "attachments_count": 0,
+        "comments_count": 0,
+        "name": "Test-Protokoll-Notiz",
+        "confidential": true,
+        "format": "markdown",
+        "content": "Inhalt meiner Test-Protokoll-Notiz",
+        "updated_by_user_id": 117760,
+        "created_at": "2022-12-12T11:24:31.000+01:00",
+        "updated_at": "2022-12-12T11:24:31.000+01:00",
+        "data_hash": {},
+        "account_id": 87444,
+        "type": "ProtocolObjectNote",
+        "badge": "email",
+        "person_ids": [],
+        "company_ids": [],
+        "deal_ids": [],
+        "project_ids": [],
+        "person_id": null,
+        "company_id": null
+    }
+}

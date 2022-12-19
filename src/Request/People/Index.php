@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\People;
 
-use Netresearch\Sdk\CentralStation\Api\RequestInterface;
+use Netresearch\Sdk\CentralStation\Api\IndexRequestInterface;
 
 /**
  * A "index" request.
@@ -20,7 +20,7 @@ use Netresearch\Sdk\CentralStation\Api\RequestInterface;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Index implements RequestInterface
+class Index implements IndexRequestInterface
 {
     /**
      * @var int

@@ -35,6 +35,9 @@ use Throwable;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @template TEntity
+ * @template TEntityCollection
  */
 abstract class AbstractApiEndpoint implements EndpointInterface
 {
@@ -110,7 +113,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
         } catch (DetailedErrorException $exception) {
             throw ServiceExceptionFactory::createDetailedServiceException($exception);
         } catch (ClientExceptionInterface $exception) {
-            // Do not remove, a ClientExceptionInterface maybe thrown sendRequest() method
+            // Do not remove, a ClientExceptionInterface maybe thrown in the sendRequest() method
             throw ServiceExceptionFactory::createServiceException($exception);
         } catch (Throwable $exception) {
             throw ServiceExceptionFactory::create($exception);
@@ -187,5 +190,128 @@ abstract class AbstractApiEndpoint implements EndpointInterface
             ->createRequest('DELETE', $this->urlBuilder->getFullUrl());
 
         return $this->client->sendRequest($request);
+    }
+
+    /**
+     * Returns a list of all entities.
+     *
+     * @param IndexRequestInterface                       $request             The index request instance
+     * @param null|string|class-string<TEntity>           $className           The class name of the mapped response
+     * @param null|string|class-string<TEntityCollection> $collectionClassName The collection class name of the
+     *                                                                         mapped response
+     *
+     * @return TEntityCollection
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    protected function findAllEntities(
+        IndexRequestInterface $request,
+        ?string $className,
+        ?string $collectionClassName
+    ) {
+        $requestClosure = function () use ($request, $className, $collectionClassName) {
+            $this->urlBuilder
+                ->setParams($request->jsonSerialize());
+
+            $response = $this->httpGet();
+
+            return $this->serializer
+                ->decode((string) $response->getBody(), $className, $collectionClassName);
+        };
+
+        return $this->execute($requestClosure);
+    }
+
+    /**
+     * Returns a single entity. The route must contain the ID of the entity to be processed.
+     *
+     * @param null|ShowRequestInterface    $request   The show request instance
+     * @param string|class-string<TEntity> $className The class name of the mapped response
+     *
+     * @return null|TEntity
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    protected function findEntity(?ShowRequestInterface $request, string $className)
+    {
+        $requestClosure = function () use ($request, $className) {
+            if ($request) {
+                $this->urlBuilder->setParams($request->jsonSerialize());
+            }
+
+            $response = $this->httpGet();
+
+            return $this->serializer
+                ->decode((string) $response->getBody(), $className);
+        };
+
+        return $this->execute($requestClosure);
+    }
+
+    /**
+     * Creates a new entity and returns it.
+     *
+     * @param CreateRequestInterface       $request   The create request instance
+     * @param string|class-string<TEntity> $className The class name of the mapped response
+     *
+     * @return null|TEntity
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    protected function createNewEntity(CreateRequestInterface $request, string $className)
+    {
+        $requestClosure = function () use ($request, $className) {
+            $response = $this->httpPost($request);
+
+            return $this->serializer
+                ->decode((string) $response->getBody(), $className);
+        };
+
+        return $this->execute($requestClosure);
+    }
+
+    /**
+     * Updates an existing entity. The route must contain the ID of the entity to be processed.
+     * Returns TRUE on success, FALSE otherwise.
+     *
+     * @param UpdateRequestInterface $request The update request instance
+     *
+     * @return bool
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    public function update(UpdateRequestInterface $request): bool
+    {
+        $requestClosure = function () use ($request): bool {
+            return $this->httpPut($request)->getStatusCode() === 200;
+        };
+
+        return $this->execute($requestClosure);
+    }
+
+    /**
+     * Deletes an existing entity. Returns TRUE on success, FALSE otherwise.
+     *
+     * @return bool
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
+     */
+    public function delete(): bool
+    {
+        $requestClosure = function (): bool {
+            return $this->httpDelete()->getStatusCode() === 200;
+        };
+
+        return $this->execute($requestClosure);
     }
 }

@@ -16,22 +16,33 @@ use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
+use Netresearch\Sdk\CentralStation\Model;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
-use Netresearch\Sdk\CentralStation\Model\Stats;
 use Netresearch\Sdk\CentralStation\Request\People\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Merge as MergeRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Search as SearchRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Show as ShowRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
-use Netresearch\Sdk\CentralStation\Request\People\Update as UpdateRequest;
 
 /**
- * The /people endpoint.
+ * The /people endpoint. Implements the following endpoints:
+ *
+ *     GET    https://<BASE-URL>/api/people
+ *     GET    https://<BASE-URL>/api/people/<PERSON-ID>
+ *     POST   https://<BASE-URL>/api/people
+ *     PUT    https://<BASE-URL>/api/people/<PERSON-ID>
+ *     DELETE https://<BASE-URL>/api/people/<PERSON-ID>
+ *     GET    https://<BASE-URL>/api/people/search
+ *     GET    https://<BASE-URL>/api/people/stats
+ *     POST   https://<BASE-URL>/api/people/merge
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @extends AbstractApiEndpoint<Model\People, PeopleCollection>
+ * @extends AbstractApiEndpoint<Model\Stats, PeopleCollection>
  */
 class People extends AbstractApiEndpoint
 {
@@ -45,21 +56,29 @@ class People extends AbstractApiEndpoint
     /**
      * Instance of the "tags" API for implementing lazy loading.
      *
-     * @var null|\Netresearch\Sdk\CentralStation\Api\Actions\People\Tags
+     * @var null|People\Tags
      */
     private $tagsApi;
+
+    /**
+     * Instance of the "protocols" API for implementing lazy loading.
+     *
+     * @var null|People\Protocols
+     */
+    private $protocolsApi;
 
     /**
      * Returns the "tags" API used to process tags related to a specific person.
      *
      * @param null|int $tagId A valid tag ID
      *
-     * @return \Netresearch\Sdk\CentralStation\Api\Actions\People\Tags
+     * @return People\Tags
      */
-    public function tags(int $tagId = null): \Netresearch\Sdk\CentralStation\Api\Actions\People\Tags
+    public function tags(int $tagId = null): People\Tags
     {
         $this->urlBuilder
-            ->addPath('/' . \Netresearch\Sdk\CentralStation\Api\Actions\People\Tags::PATH);
+            ->setParams([])
+            ->addPath('/' . People\Tags::PATH);
 
         // Add tag ID if available
         if ($tagId) {
@@ -68,7 +87,7 @@ class People extends AbstractApiEndpoint
         }
 
         if (!$this->tagsApi) {
-            $this->tagsApi = new \Netresearch\Sdk\CentralStation\Api\Actions\People\Tags(
+            $this->tagsApi = new People\Tags(
                 $this->client,
                 $this->requestFactory,
                 $this->streamFactory,
@@ -78,6 +97,38 @@ class People extends AbstractApiEndpoint
         }
 
         return $this->tagsApi;
+    }
+
+    /**
+     * Returns the "protocols" API used to process protocols related to a specific person.
+     *
+     * @param null|int $protocolId A valid protocol ID
+     *
+     * @return People\Protocols
+     */
+    public function protocols(int $protocolId = null): People\Protocols
+    {
+        $this->urlBuilder
+            ->setParams([])
+            ->addPath('/' . People\Protocols::PATH);
+
+        // Add protocol ID if available
+        if ($protocolId) {
+            $this->urlBuilder
+                ->addPath('/' . $protocolId);
+        }
+
+        if (!$this->protocolsApi) {
+            $this->protocolsApi = new People\Protocols(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->protocolsApi;
     }
 
     /**
@@ -95,20 +146,11 @@ class People extends AbstractApiEndpoint
      */
     public function index(IndexRequest $request): PeopleCollection
     {
-        $requestClosure = function () use ($request): PeopleCollection {
-            $this->urlBuilder
-                ->setParams($request->jsonSerialize());
-
-            $response = $this->httpGet();
-
-            return $this->serializer->decode(
-                (string) $response->getBody(),
-                \Netresearch\Sdk\CentralStation\Model\People::class,
-                PeopleCollection::class
-            );
-        };
-
-        return $this->execute($requestClosure);
+        return $this->findAllEntities(
+            $request,
+            Model\People::class,
+            PeopleCollection::class
+        );
     }
 
     /**
@@ -126,26 +168,16 @@ class People extends AbstractApiEndpoint
      */
     public function show(ShowRequest $request): ?Person
     {
-        $requestClosure = function () use ($request): ?Person {
-            $this->urlBuilder
-                ->setParams($request->jsonSerialize());
+        $result = $this->findEntity(
+            $request,
+            Model\People::class
+        );
 
-            $response = $this->httpGet();
-
-            /** @var null|\Netresearch\Sdk\CentralStation\Model\People $result */
-            $result = $this->serializer->decode(
-                (string) $response->getBody(),
-                \Netresearch\Sdk\CentralStation\Model\People::class
-            );
-
-            return $result ? ($result->person ?? null) : null;
-        };
-
-        return $this->execute($requestClosure);
+        return $result ? ($result->person ?? null) : null;
     }
 
     /**
-     * Creates a new person and returns the newly created element. To create a new person, the transfer of the
+     * Creates a new person and returns it. To create a new person, the transfer of the
      * surname is mandatory. If the entry could not be created because the account no longer has sufficient
      * storage space for contacts, the HTTP error 507 Insufficient Storage is thrown.
      *
@@ -161,64 +193,12 @@ class People extends AbstractApiEndpoint
      */
     public function create(CreateRequest $request): ?Person
     {
-        $requestClosure = function () use ($request): ?Person {
-            $response = $this->httpPost($request);
+        $result = $this->createNewEntity(
+            $request,
+            Model\People::class
+        );
 
-            /** @var null|\Netresearch\Sdk\CentralStation\Model\People $result */
-            $result = $this->serializer->decode(
-                (string) $response->getBody(),
-                \Netresearch\Sdk\CentralStation\Model\People::class
-            );
-
-            return $result ? ($result->person ?? null) : null;
-        };
-
-        return $this->execute($requestClosure);
-    }
-
-    /**
-     * Updates an existing person. The route must contain the ID of the element to be processed.
-     *
-     * The update works in the same way as the "create" action. The route must contain the ID of the
-     * element to be processed. Returns TRUE on success, FALSE otherwise.
-     *
-     * PUT https://<BASE-URL>/api/people/<PERSON-ID>
-     *
-     * @param UpdateRequest $request The update request instance
-     *
-     * @return bool
-     *
-     * @throws AuthenticationException
-     * @throws DetailedServiceException
-     * @throws ServiceException
-     */
-    public function update(UpdateRequest $request): bool
-    {
-        $requestClosure = function () use ($request): bool {
-            return $this->httpPut($request)->getStatusCode() === 200;
-        };
-
-        return $this->execute($requestClosure);
-    }
-
-    /**
-     * Deletes an existing person. Returns TRUE on success, FALSE otherwise.
-     *
-     * DELETE https://<BASE-URL>/api/people/<PERSON-ID>
-     *
-     * @return bool
-     *
-     * @throws AuthenticationException
-     * @throws DetailedServiceException
-     * @throws ServiceException
-     */
-    public function delete(): bool
-    {
-        $requestClosure = function (): bool {
-            return $this->httpDelete()->getStatusCode() === 200;
-        };
-
-        return $this->execute($requestClosure);
+        return $result ? ($result->person ?? null) : null;
     }
 
     /**
@@ -238,21 +218,14 @@ class People extends AbstractApiEndpoint
      */
     public function search(SearchRequest $request): PeopleCollection
     {
-        $requestClosure = function () use ($request): PeopleCollection {
-            $this->urlBuilder
-                ->addPath('/search')
-                ->setParams($request->jsonSerialize());
+        $this->urlBuilder
+            ->addPath('/search');
 
-            $response = $this->httpGet();
-
-            return $this->serializer->decode(
-                (string) $response->getBody(),
-                \Netresearch\Sdk\CentralStation\Model\People::class,
-                PeopleCollection::class
-            );
-        };
-
-        return $this->execute($requestClosure);
+        return $this->findAllEntities(
+            $request,
+            Model\People::class,
+            PeopleCollection::class
+        );
     }
 
     /**
@@ -271,21 +244,15 @@ class People extends AbstractApiEndpoint
      */
     public function stats(StatsRequest $request): int
     {
-        $requestClosure = function () use ($request): int {
-            $this->urlBuilder
-                ->addPath('/stats')
-                ->setParams($request->jsonSerialize());
+        $this->urlBuilder
+            ->addPath('/stats');
 
-            /** @var Stats $result */
-            $result = $this->serializer->decode(
-                (string) $this->httpGet()->getBody(),
-                Stats::class
-            );
+        $result = $this->findEntity(
+            $request,
+            Model\Stats::class
+        );
 
-            return $result->totalEntries;
-        };
-
-        return $this->execute($requestClosure);
+        return $result->totalEntries ?? 0;
     }
 
     /**

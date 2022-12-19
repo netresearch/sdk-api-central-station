@@ -81,4 +81,28 @@ class Constants
     public const TAG_TYPE_COMPANY = 'Company';
     public const TAG_TYPE_DEAL = 'Deal';
     public const TAG_TYPE_PROJECT = 'Project';
+
+    /**
+     * Protocol include types.
+     */
+    public const PROTOCOL_INCLUDE_COMMENTS = 'comments';
+    public const PROTOCOL_INCLUDE_ALL = 'all';
+
+    /**
+     * Protocol format types.
+     */
+    public const PROTOCOL_FORMAT_PLAINTEXT = 'plaintext';
+    public const PROTOCOL_FORMAT_MARKDOWN = 'markdown';
+    public const PROTOCOL_FORMAT_TEXTILE = 'textile';
+    public const PROTOCOL_FORMAT_HTML = 'html';
+
+    /**
+     * Protocol badge types.
+     */
+    public const PROTOCOL_BADGE_NOTE = 'note';
+    public const PROTOCOL_BADGE_CALL = 'call';
+    public const PROTOCOL_BADGE_EMAIL = 'email';
+    public const PROTOCOL_BADGE_MEETING = 'meeting';
+    public const PROTOCOL_BADGE_OTHER = 'other';
+    public const PROTOCOL_BADGE_RESEARCH = 'research'; // Companies only
 }
