@@ -57,11 +57,11 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     /**
      * Sets the address's type.
      *
-     * @param string $type The type of the address (use one of Constants::ADDRESS_TYPE_*)
+     * @param null|string $type The type of the address (use one of Constants::ADDRESS_TYPE_*)
      *
      * @return CreateRequestBuilder
      */
-    public function setType(string $type): CreateRequestBuilder
+    public function setType(string $type = null): CreateRequestBuilder
     {
         $this->data['type'] = $type;
         return $this;
