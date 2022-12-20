@@ -96,6 +96,21 @@ The people API endpoint (`people()`) provides the following methods to interact 
             - Updates an existing tag at a person. Pass the tag ID as a parameter to the `tags()`-method.
         - `delete()`
             - Deletes an existing tag at a person. Pass the tag ID as a parameter to the `tags()`-method.
+- `addresses()`
+    - Returns the addresses API endpoint used to process addresses related to a specific person. Pass the person
+      ID as a parameter to the `people()`-method.
+    - The addresses endpoint itself provides than the following methods:
+        - `index()`
+            - Returns a list of all addresses assigned to a person.
+        - `show()`
+            - Returns a single address assigned to a person. Pass the address ID as a parameter to
+              the `addresses()`-method.
+        - `create()`
+            - Creates a new address at the person.
+        - `update()`
+            - Updates an existing address at a person. Pass the address ID as a parameter to the `addresses()`-method.
+        - `delete()`
+            - Deletes an existing address at a person. Pass the address ID as a parameter to the `addresses()`-method.
 - `protocols()`
     - Returns the protocols API endpoint used to process protocols related to a specific person. Pass the person
       ID as a parameter to the `people()`-method.
