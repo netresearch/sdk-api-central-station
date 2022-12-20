@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Tags;
 
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags\CreateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\TagsProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
@@ -53,5 +54,17 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
         $requestJson = $this->serializer->encode($request);
 
         self::assertSameJson($expectedJson, $requestJson);
+    }
+
+    /**
+     * @test
+     */
+    public function throwExceptionOnEmptyTagName()
+    {
+        $this->expectException(RequestValidatorException::class);
+        $this->expectExceptionMessage('Please provide at least the name of the tag to create');
+
+        $requestBuilder = new CreateRequestBuilder();
+        $requestBuilder->create();
     }
 }

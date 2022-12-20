@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Addresses;
 
 use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Addresses\CreateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\AddressesProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
@@ -63,5 +64,32 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
         $requestJson = $this->serializer->encode($request);
 
         self::assertSameJson($expectedJson, $requestJson);
+    }
+
+    /**
+     * @test
+     */
+    public function throwExceptionOnEmptyStreetName()
+    {
+        $this->expectException(RequestValidatorException::class);
+        $this->expectExceptionMessage('Please provide at least the street name of the address to create');
+
+        $requestBuilder = new CreateRequestBuilder();
+        $requestBuilder->create();
+    }
+
+    /**
+     * @test
+     */
+    public function throwExceptionOnUnsupportedType()
+    {
+        $this->expectException(RequestValidatorException::class);
+        $this->expectExceptionMessage('The provided address type parameter "CREATED-TYPE" is not allowed');
+
+        $requestBuilder = new CreateRequestBuilder();
+        $requestBuilder
+            ->setAddress('Street name 1')
+            ->setType('CREATED-TYPE')
+            ->create();
     }
 }
