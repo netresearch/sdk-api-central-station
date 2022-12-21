@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Test\Request\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Create;
-use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
+use Netresearch\Sdk\CentralStation\Request\Tag;
 use PHPUnit\Framework\TestCase;
 
 /**

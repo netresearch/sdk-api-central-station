@@ -14,7 +14,7 @@ namespace Netresearch\Sdk\CentralStation\Model;
 use Netresearch\Sdk\CentralStation\Model\Attachments\Attachment;
 
 /**
- * An attachments record.
+ * An attachments container.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de

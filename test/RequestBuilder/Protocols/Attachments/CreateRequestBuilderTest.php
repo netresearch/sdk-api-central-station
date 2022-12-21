@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Protocols\Attachments;
 
 use Netresearch\Sdk\CentralStation\RequestBuilder\Protocols\Attachments\CreateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\Protocols\Attachments\CreateProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\Protocols\AttachmentsProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -31,7 +31,7 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
     {
         return [
             'Request' => [
-                file_get_contents(CreateProvider::createRequest()) ?: '',
+                file_get_contents(AttachmentsProvider::createRequest()) ?: '',
             ],
         ];
     }

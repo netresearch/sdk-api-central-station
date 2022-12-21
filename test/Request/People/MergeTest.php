@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace Netresearch\Test\Request\People;
 
-use Netresearch\Sdk\CentralStation\Constants;
-use Netresearch\Sdk\CentralStation\Request\People\Common\Person;
 use Netresearch\Sdk\CentralStation\Request\People\Merge;
 use PHPUnit\Framework\TestCase;
 

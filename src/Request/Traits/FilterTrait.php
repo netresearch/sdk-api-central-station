@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\FilterRequestInterface;
 trait FilterTrait
 {
     /**
-     * @var string[][]
+     * @var null|string[][]
      */
     private $filter;
 

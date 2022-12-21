@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\Protocols\Attachments;
 
-use Netresearch\Sdk\CentralStation\Request\Attachments\Common\Attachment;
+use Netresearch\Sdk\CentralStation\Request\Attachment;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 
 /**

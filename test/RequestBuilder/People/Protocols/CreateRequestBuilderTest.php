@@ -9,11 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Protocols;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Protocols;
 
 use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Protocols\CreateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Protocols\CreateProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\ProtocolsProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -32,7 +33,7 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
     {
         return [
             'Request' => [
-                file_get_contents(CreateProvider::createRequest()) ?: '',
+                file_get_contents(ProtocolsProvider::createRequest()) ?: '',
             ],
         ];
     }
@@ -58,5 +59,48 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
         $requestJson = $this->serializer->encode($request);
 
         self::assertSameJson($expectedJson, $requestJson);
+    }
+
+    /**
+     * @test
+     */
+    public function throwExceptionOnEmptyContent()
+    {
+        $this->expectException(RequestValidatorException::class);
+        $this->expectExceptionMessage('Please provide at least the content of the protocol to create');
+
+        $requestBuilder = new CreateRequestBuilder();
+        $requestBuilder->create();
+    }
+
+    /**
+     * @test
+     */
+    public function throwExceptionOnUnsupportedFormat()
+    {
+        $this->expectException(RequestValidatorException::class);
+        $this->expectExceptionMessage('The provided format parameter "CREATED-FORMAT" is not allowed');
+
+        $requestBuilder = new CreateRequestBuilder();
+        $requestBuilder
+            ->setContent('CONTENT')
+            ->setFormat('CREATED-FORMAT')
+            ->create();
+    }
+
+    /**
+     * @test
+     */
+    public function throwExceptionOnUnsupportedBadge()
+    {
+        $this->expectException(RequestValidatorException::class);
+        $this->expectExceptionMessage('The provided badge parameter "CREATED-BADGE" is not allowed');
+
+        $requestBuilder = new CreateRequestBuilder();
+        $requestBuilder
+            ->setContent('CONTENT')
+            ->setFormat(Constants::PROTOCOL_FORMAT_HTML)
+            ->setBadge('CREATED-BADGE')
+            ->create();
     }
 }

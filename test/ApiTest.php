@@ -62,6 +62,12 @@ class ApiTest extends TestCase
                 . 'Only .json is supported.',
             ],
 
+            'InternalServerError' => [
+                500,
+                ServiceException::class,
+                'Internal Server Error',
+            ],
+
             'InsufficientStorage' => [
                 507,
                 ServiceException::class,

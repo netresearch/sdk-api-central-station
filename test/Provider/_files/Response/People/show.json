@@ -1,17 +1,65 @@
 {
     "person": {
-        "id": 455637,
-        "account_id": 21,
-        "user_id": 64,
-        "title": "",
+        "id": 30016185,
+        "account_id": 87444,
+        "group_id": 109398,
+        "user_id": null,
+        "country_code": "de",
+        "salutation": "Frau",
+        "title": "Dr. Dr.",
         "gender": "female_user",
-        "first_name": "Marion",
-        "name": "Beber",
-        "background": "",
-        "created_by_user_id": 64,
-        "updated_by_user_id": 2797,
-        "created_at": "2013-06-27T06:58:14.000Z",
-        "updated_at": "2015-05-21T14:06:00.000Z",
-        "responsible_user_natural_name": "Axel von Leitner"
+        "first_name": "Maxi",
+        "name": "Mustermann",
+        "background": "Ich bin Maxi Mustermann.",
+        "created_by_user_id": 117760,
+        "updated_by_user_id": 158291,
+        "created_at": "2022-11-29T13:25:56.000+01:00",
+        "updated_at": "2022-12-14T15:53:43.000+01:00",
+        "tags": [
+            {
+                "id": 120484083,
+                "account_id": 87444,
+                "attachable_id": 30016185,
+                "attachable_type": "Person",
+                "api_input": true,
+                "name": "NEW-FANCY-TAG",
+                "created_at": "2022-12-02T15:26:34.000+01:00",
+                "updated_at": "2022-12-02T15:26:34.000+01:00"
+            }
+        ],
+        "addrs": [
+            {
+                "id": 28752100,
+                "attachable_id": 30016185,
+                "attachable_type": "Person",
+                "street": "",
+                "zip": "",
+                "city": "Leipzig",
+                "state_code": "SN",
+                "country_code": "DE",
+                "primary": null,
+                "created_at": "2022-12-14T15:48:34.000+01:00",
+                "updated_at": "2022-12-14T15:49:49.000+01:00",
+                "atype": "work_hq",
+                "api_input": false,
+                "country_name": "Deutschland"
+            },
+            {
+                "id": 28752130,
+                "attachable_id": 30016185,
+                "attachable_type": "Person",
+                "street": "Waldweg 1",
+                "zip": "",
+                "city": "",
+                "state_code": null,
+                "country_code": "BW",
+                "primary": null,
+                "created_at": "2022-12-14T15:52:11.000+01:00",
+                "updated_at": "2022-12-14T15:53:43.000+01:00",
+                "atype": "delivery",
+                "api_input": false,
+                "country_name": "Botsuana"
+            }
+        ]
     }
 }

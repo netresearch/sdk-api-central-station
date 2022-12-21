@@ -30,14 +30,14 @@ class Tag extends AbstractEntity
     public $accountId;
 
     /**
-     * ID of the linked object, for example person, company, offer or project.
+     * ID of the record the tag belongs to, e.g. person, company, offer or project.
      *
      * @var int
      */
     public $attachableId;
 
     /**
-     * Type of linked object, e.g. Person, Company, Deal or Project.
+     * The record type the address belongs to. Must be either "Person", "Company", "Deal" or "Project".
      *
      * @var string
      */
@@ -51,7 +51,7 @@ class Tag extends AbstractEntity
     public $name;
 
     /**
-     * Whether the element was created by an API call or not.
+     * States whether the tag has been added via the API or some sort of integration.
      *
      * @var bool
      */

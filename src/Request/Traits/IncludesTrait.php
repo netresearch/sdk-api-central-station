@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
 trait IncludesTrait
 {
     /**
-     * @var string[]
+     * @var null|string[]
      */
     private $includes;
 

@@ -1,0 +1,18 @@
+{
+    "addr": {
+        "id": 25045244,
+        "attachable_id": 26146820,
+        "attachable_type": "Person",
+        "street": null,
+        "zip": "01187",
+        "city": "Dresden",
+        "state_code": "SN",
+        "country_code": "DE",
+        "primary": false,
+        "created_at": "2022-01-24T11:09:17.000+01:00",
+        "updated_at": "2022-01-24T11:09:17.000+01:00",
+        "atype": "work",
+        "api_input": false,
+        "country_name": "Deutschland"
+    }
+}

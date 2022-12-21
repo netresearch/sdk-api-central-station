@@ -15,8 +15,7 @@ use Netresearch\Sdk\CentralStation\Collection\TagsCollection;
 use Netresearch\Sdk\CentralStation\Model\Tags;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index;
-use Netresearch\Sdk\CentralStation\Test\Provider\Tags\IndexProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\Tags\ShowProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\TagsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
@@ -56,7 +55,7 @@ class TagsTest extends TestCase
     {
         return [
             'Response' => [
-                IndexProvider::indexResponseSuccess(),
+                TagsProvider::indexResponseSuccess(),
             ],
         ];
     }
@@ -132,7 +131,7 @@ class TagsTest extends TestCase
     {
         return [
             'Response' => [
-                ShowProvider::showResponseSuccess(),
+                TagsProvider::showResponseSuccess(),
             ],
         ];
     }

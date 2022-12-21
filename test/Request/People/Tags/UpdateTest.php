@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Test\Request\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Update;
-use Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag;
+use Netresearch\Sdk\CentralStation\Request\Tag;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -36,7 +36,7 @@ class UpdateTest extends TestCase
             ->setAttachableId(123456)
             ->setAttachableType('Person');
 
-        $request = new Update(123456);
+        $request = new Update();
         $request->setTag($tag);
 
         self::assertSame(

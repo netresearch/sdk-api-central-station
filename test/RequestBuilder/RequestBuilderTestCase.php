@@ -13,6 +13,7 @@ namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder;
 
 use JsonException;
 use Netresearch\Sdk\CentralStation\Serializer\JsonSerializer;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class TestCase
@@ -21,7 +22,7 @@ use Netresearch\Sdk\CentralStation\Serializer\JsonSerializer;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class RequestBuilderTestCase extends \PHPUnit\Framework\TestCase
+class RequestBuilderTestCase extends TestCase
 {
     /**
      * @var JsonSerializer

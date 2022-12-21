@@ -14,7 +14,7 @@ namespace Netresearch\Sdk\CentralStation\Model;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 
 /**
- * A tags record.
+ * A tags container.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de

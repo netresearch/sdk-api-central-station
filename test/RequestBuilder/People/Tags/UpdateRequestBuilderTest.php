@@ -9,10 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Tags;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Tags;
 
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags\UpdateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Tags\UpdateProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\TagsProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -31,7 +32,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     {
         return [
             'Request' => [
-                file_get_contents(UpdateProvider::updateRequest()) ?: '',
+                file_get_contents(TagsProvider::updateRequest()) ?: '',
             ],
         ];
     }
@@ -53,5 +54,17 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
         $requestJson = $this->serializer->encode($request);
 
         self::assertSameJson($expectedJson, $requestJson);
+    }
+
+    /**
+     * @test
+     */
+    public function throwExceptionOnEmptyTagName()
+    {
+        $this->expectException(RequestValidatorException::class);
+        $this->expectExceptionMessage('Please provide at least the updated name of the tag');
+
+        $requestBuilder = new UpdateRequestBuilder();
+        $requestBuilder->create();
     }
 }

@@ -9,11 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Protocols;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Protocols;
 
 use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Protocols\UpdateRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Protocols\UpdateProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\ProtocolsProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -32,7 +33,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     {
         return [
             'Request' => [
-                file_get_contents(UpdateProvider::updateRequest()) ?: '',
+                file_get_contents(ProtocolsProvider::updateRequest()) ?: '',
             ],
         ];
     }
@@ -58,5 +59,34 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
         $requestJson = $this->serializer->encode($request);
 
         self::assertSameJson($expectedJson, $requestJson);
+    }
+
+    /**
+     * @test
+     */
+    public function throwExceptionOnUnsupportedFormat()
+    {
+        $this->expectException(RequestValidatorException::class);
+        $this->expectExceptionMessage('The provided format parameter "UPDATED-FORMAT" is not allowed');
+
+        $requestBuilder = new UpdateRequestBuilder();
+        $requestBuilder
+            ->setFormat('UPDATED-FORMAT')
+            ->create();
+    }
+
+    /**
+     * @test
+     */
+    public function throwExceptionOnUnsupportedBadge()
+    {
+        $this->expectException(RequestValidatorException::class);
+        $this->expectExceptionMessage('The provided badge parameter "UPDATED-BADGE" is not allowed');
+
+        $requestBuilder = new UpdateRequestBuilder();
+        $requestBuilder
+            ->setFormat(Constants::PROTOCOL_FORMAT_HTML)
+            ->setBadge('UPDATED-BADGE')
+            ->create();
     }
 }

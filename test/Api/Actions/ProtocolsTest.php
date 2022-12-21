@@ -16,8 +16,7 @@ use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Model\Protocols;
 use Netresearch\Sdk\CentralStation\Model\Protocols\Protocol;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Index;
-use Netresearch\Sdk\CentralStation\Test\Provider\Protocols\IndexProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\Protocols\ShowProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\ProtocolsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
@@ -57,7 +56,7 @@ class ProtocolsTest extends TestCase
     {
         return [
             'Response' => [
-                IndexProvider::indexResponseSuccess(),
+                ProtocolsProvider::indexResponseSuccess(),
             ],
         ];
     }
@@ -153,7 +152,7 @@ class ProtocolsTest extends TestCase
     {
         return [
             'Response' => [
-                ShowProvider::showResponseSuccess(),
+                ProtocolsProvider::showResponseSuccess(),
             ],
         ];
     }

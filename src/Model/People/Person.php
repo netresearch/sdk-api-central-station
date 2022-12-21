@@ -11,7 +11,10 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model\People;
 
+use Netresearch\Sdk\CentralStation\Collection\AddressCollection;
+use Netresearch\Sdk\CentralStation\Collection\TagCollection;
 use Netresearch\Sdk\CentralStation\Model\AbstractEntity;
+use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 
 /**
@@ -87,9 +90,16 @@ class Person extends AbstractEntity
     public $userId;
 
     /**
-     * The assigned tag collection of the person.
+     * A collection of tags assigned to the person.
      *
-     * @var Tag[]
+     * @var TagCollection<Tag>
      */
     public $tags;
+
+    /**
+     * A collection of addresses assigned to the person.
+     *
+     * @var AddressCollection<Address>
+     */
+    public $addrs;
 }

@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\People;
 
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Request\People\Common\Person;
 use Netresearch\Sdk\CentralStation\Request\People\Create as CreateRequest;
+use Netresearch\Sdk\CentralStation\Request\Person;
+use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\People\CreateValidator;
 

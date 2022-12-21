@@ -18,9 +18,7 @@ use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Update;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Tags\CreateProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Tags\IndexProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Tags\ShowProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\TagsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
@@ -60,7 +58,7 @@ class TagsTest extends TestCase
     {
         return [
             'Response' => [
-                IndexProvider::indexResponseSuccess(),
+                TagsProvider::indexResponseSuccess(),
             ],
         ];
     }
@@ -136,7 +134,7 @@ class TagsTest extends TestCase
     {
         return [
             'Response' => [
-                ShowProvider::showResponseSuccess(),
+                TagsProvider::showResponseSuccess(),
             ],
         ];
     }
@@ -169,7 +167,7 @@ class TagsTest extends TestCase
     {
         return [
             'Response' => [
-                CreateProvider::createResponseSuccess(),
+                TagsProvider::createResponseSuccess(),
             ],
         ];
     }
@@ -190,7 +188,7 @@ class TagsTest extends TestCase
             ->tags()
             ->create(
                 new Create(
-                    new \Netresearch\Sdk\CentralStation\Request\Tags\Common\Tag()
+                    new \Netresearch\Sdk\CentralStation\Request\Tag()
                 )
             );
 

@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\MergeRequestBuilder;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\MergeProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\PeopleProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -31,7 +31,7 @@ class MergeRequestBuilderTest extends RequestBuilderTestCase
     {
         return [
             'Request' => [
-                file_get_contents(MergeProvider::mergeRequest()) ?: '',
+                file_get_contents(PeopleProvider::mergeRequest()) ?: '',
             ],
         ];
     }

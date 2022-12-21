@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Validator\People;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Validator\Traits\IncludesTrait;
 use Netresearch\Sdk\CentralStation\Validator\Traits\FilterTrait;
+use Netresearch\Sdk\CentralStation\Validator\Traits\IncludesTrait;
 
 /**
  * Class IndexValidator.
@@ -42,6 +42,12 @@ class IndexValidator
 
         if (isset($data['filter'])) {
             self::validateFilters($data['filter']);
+        }
+
+        if (isset($data['tag']['tagId'], $data['tag']['tagName'])) {
+            throw new RequestValidatorException(
+                'Please provide either the tag ID or the tag name'
+            );
         }
     }
 }

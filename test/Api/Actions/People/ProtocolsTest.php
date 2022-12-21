@@ -19,9 +19,7 @@ use Netresearch\Sdk\CentralStation\Model\Protocols\Protocol;
 use Netresearch\Sdk\CentralStation\Request\People\Protocols\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Protocols\Update;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Index;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Protocols\CreateProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Protocols\IndexProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\Protocols\ShowProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\People\ProtocolsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
@@ -61,7 +59,7 @@ class ProtocolsTest extends TestCase
     {
         return [
             'Response' => [
-                IndexProvider::indexResponseSuccess(),
+                ProtocolsProvider::indexResponseSuccess(),
             ],
         ];
     }
@@ -157,7 +155,7 @@ class ProtocolsTest extends TestCase
     {
         return [
             'Response' => [
-                ShowProvider::showResponseSuccess(),
+                ProtocolsProvider::showResponseSuccess(),
             ],
         ];
     }
@@ -218,7 +216,7 @@ class ProtocolsTest extends TestCase
     {
         return [
             'Response' => [
-                CreateProvider::createResponseSuccess(),
+                ProtocolsProvider::createResponseSuccess(),
             ],
         ];
     }
@@ -239,7 +237,7 @@ class ProtocolsTest extends TestCase
             ->protocols()
             ->create(
                 new Create(
-                    new \Netresearch\Sdk\CentralStation\Request\Protocols\Common\Protocol()
+                    new \Netresearch\Sdk\CentralStation\Request\Protocol()
                 )
             );
 

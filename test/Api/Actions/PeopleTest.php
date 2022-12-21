@@ -11,9 +11,13 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Collection\AddressCollection;
 use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
+use Netresearch\Sdk\CentralStation\Collection\TagCollection;
+use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
 use Netresearch\Sdk\CentralStation\Model\People;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
+use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 use Netresearch\Sdk\CentralStation\Request\People\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
 use Netresearch\Sdk\CentralStation\Request\People\Merge;
@@ -21,11 +25,7 @@ use Netresearch\Sdk\CentralStation\Request\People\Search;
 use Netresearch\Sdk\CentralStation\Request\People\Show;
 use Netresearch\Sdk\CentralStation\Request\People\Stats;
 use Netresearch\Sdk\CentralStation\Request\People\Update;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\CreateProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\IndexProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\SearchProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\ShowProvider;
-use Netresearch\Sdk\CentralStation\Test\Provider\People\StatsProvider;
+use Netresearch\Sdk\CentralStation\Test\Provider\PeopleProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
@@ -65,7 +65,7 @@ class PeopleTest extends TestCase
     {
         return [
             'Response' => [
-                IndexProvider::indexResponseSuccess(),
+                PeopleProvider::indexResponseSuccess(),
             ],
         ];
     }
@@ -150,7 +150,7 @@ class PeopleTest extends TestCase
     {
         return [
             'Response' => [
-                ShowProvider::showResponseSuccess(),
+                PeopleProvider::showResponseSuccess(),
             ],
         ];
     }
@@ -172,7 +172,34 @@ class PeopleTest extends TestCase
         self::assertHttpMethod('GET', $peopleApi);
         self::assertInstanceOf(People\Person::class, $result);
 
-        self::assertFirstPerson($result);
+        self::assertThirdPerson($result);
+    }
+
+    /**
+     * Asserts that the data of the given person matches the expected values.
+     *
+     * @param Person $person
+     *
+     * @return void
+     */
+    private static function assertThirdPerson(Person $person): void
+    {
+        self::assertSame(30016185, $person->id);
+        self::assertSame(87444, $person->accountId);
+        self::assertSame('Frau', $person->salutation);
+        self::assertSame('Dr. Dr.', $person->title);
+        self::assertSame('female_user', $person->gender);
+        self::assertSame('de', $person->countryCode);
+        self::assertSame('Maxi', $person->firstName);
+        self::assertSame('Mustermann', $person->name);
+        self::assertSame('Ich bin Maxi Mustermann.', $person->background);
+        self::assertNull($person->userId);
+        self::assertSame('29.11.2022', $person->createdAt->format('d.m.Y'));
+        self::assertSame('14.12.2022 15:53:43', $person->updatedAt->format('d.m.Y H:i:s'));
+        self::assertInstanceOf(TagCollection::class, $person->tags);
+        self::assertContainsOnlyInstancesOf(Tag::class, $person->tags);
+        self::assertInstanceOf(AddressCollection::class, $person->addrs);
+        self::assertContainsOnlyInstancesOf(Address::class, $person->addrs);
     }
 
     /**
@@ -182,7 +209,7 @@ class PeopleTest extends TestCase
     {
         return [
             'Response' => [
-                CreateProvider::createResponseSuccess(),
+                PeopleProvider::createResponseSuccess(),
             ],
         ];
     }
@@ -202,7 +229,7 @@ class PeopleTest extends TestCase
         $result = $peopleApi
             ->create(
                 new Create(
-                    new \Netresearch\Sdk\CentralStation\Request\People\Common\Person()
+                    new \Netresearch\Sdk\CentralStation\Request\Person()
                 )
             );
 
@@ -259,7 +286,7 @@ class PeopleTest extends TestCase
     {
         return [
             'Response' => [
-                StatsProvider::statsResponseSuccess(),
+                PeopleProvider::statsResponseSuccess(),
             ],
         ];
     }
@@ -311,7 +338,7 @@ class PeopleTest extends TestCase
     {
         return [
             'Response' => [
-                SearchProvider::searchResponseSuccess(),
+                PeopleProvider::searchResponseSuccess(),
             ],
         ];
     }
