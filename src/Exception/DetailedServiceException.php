@@ -12,10 +12,8 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Exception;
 
 /**
- * Class DetailedServiceException
- *
- * A special instance of the ServiceException which is able to
- * provide a meaningful error message, suitable for UI display.
+ * A special instance of the ServiceException which is able to provide a meaningful
+ * error message, suitable for UI display.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de

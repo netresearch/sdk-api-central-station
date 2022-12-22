@@ -12,10 +12,8 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Exception;
 
 /**
- * Class RequestValidatorException
- *
- * A special instance of the DetailedServiceException which is
- * caused by invalid request data before a web service request was sent.
+ * A special instance of the DetailedServiceException which is caused by invalid request data
+ * before a web service request was sent.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de

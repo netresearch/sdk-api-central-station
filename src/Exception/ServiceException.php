@@ -14,11 +14,8 @@ namespace Netresearch\Sdk\CentralStation\Exception;
 use Exception;
 
 /**
- * Class ServiceException
- *
- * Generic SDK exception, can be used to catch any SDK exception
- * in cases where the exact type does not matter. Exception messages
- * are suitable for logging.
+ * Generic SDK exception, can be used to catch any SDK exception in cases where the exact type does not matter.
+ * Exception messages are suitable for logging.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de

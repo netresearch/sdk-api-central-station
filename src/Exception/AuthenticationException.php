@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Exception;
 
 /**
- * Class AuthenticationException
+ * A special instance of the DetailedServiceException which is caused by invalid authentication data.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de

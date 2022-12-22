@@ -15,8 +15,6 @@ use Psr\Http\Client\ClientExceptionInterface;
 use Throwable;
 
 /**
- * Class ServiceExceptionFactory
- *
  * A service exception factory to create specific exception instances.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
