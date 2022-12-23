@@ -24,25 +24,6 @@ use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 trait IncludesTrait
 {
     /**
-     * List of allowed values.
-     *
-     * @var string[]
-     */
-    private static $allowedIncludes = [
-        Constants::INCLUDE_POSITIONS,
-        Constants::INCLUDE_COMPANIES,
-        Constants::INCLUDE_TAGS,
-        Constants::INCLUDE_AVATAR,
-        Constants::INCLUDE_PHONE_NUMBERS,
-        Constants::INCLUDE_EMAILS,
-        Constants::INCLUDE_HOMEPAGES,
-        Constants::INCLUDE_ADDRESSES,
-        Constants::INCLUDE_CUSTOM_FIELDS,
-        Constants::INCLUDE_CONNECTIONS,
-        Constants::INCLUDE_ALL,
-    ];
-
-    /**
      * Validate request data before sending it to the web service.
      *
      * @param string[] $includes The "includes" data collected by the request builder
@@ -52,7 +33,7 @@ trait IncludesTrait
     public static function validateIncludes(array $includes): void
     {
         foreach ($includes as $include) {
-            if (!in_array($include, self::$allowedIncludes, true)) {
+            if (!in_array($include, Constants::PEOPLE_INCLUDE, true)) {
                 throw new RequestValidatorException(
                     'The provided include parameter "' . $include . '" is not allowed'
                 );

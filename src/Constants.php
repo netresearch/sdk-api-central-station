@@ -51,6 +51,18 @@ class Constants
     public const SORT_BY_EMAIL = 'email';
 
     /**
+     * List of allowed "search" fields.
+     *
+     * @var string[]
+     */
+    public const SORT_BY = [
+        Constants::SORT_BY_NAME,
+        Constants::SORT_BY_FIRST_NAME,
+        Constants::SORT_BY_PHONE,
+        Constants::SORT_BY_EMAIL,
+    ];
+
+    /**
      * Filter comparison methods.
      */
     public const FILTER_LARGER_THAN = 'larger_than';
@@ -76,6 +88,25 @@ class Constants
     public const INCLUDE_ALL = 'all';
 
     /**
+     * List of include types.
+     *
+     * @var string[]
+     */
+    public const PEOPLE_INCLUDE = [
+        Constants::INCLUDE_POSITIONS,
+        Constants::INCLUDE_COMPANIES,
+        Constants::INCLUDE_TAGS,
+        Constants::INCLUDE_AVATAR,
+        Constants::INCLUDE_PHONE_NUMBERS,
+        Constants::INCLUDE_EMAILS,
+        Constants::INCLUDE_HOMEPAGES,
+        Constants::INCLUDE_ADDRESSES,
+        Constants::INCLUDE_CUSTOM_FIELDS,
+        Constants::INCLUDE_CONNECTIONS,
+        Constants::INCLUDE_ALL,
+    ];
+
+    /**
      * Tag attachable types.
      */
     public const TAG_TYPE_PERSON = 'Person';
@@ -98,6 +129,18 @@ class Constants
     public const PROTOCOL_FORMAT_HTML = 'html';
 
     /**
+     * List of protocol format types.
+     *
+     * @var string[]
+     */
+    public const PROTOCOL_FORMAT = [
+        Constants::PROTOCOL_FORMAT_HTML,
+        Constants::PROTOCOL_FORMAT_MARKDOWN,
+        Constants::PROTOCOL_FORMAT_PLAINTEXT,
+        Constants::PROTOCOL_FORMAT_TEXTILE,
+    ];
+
+    /**
      * Protocol badge types.
      */
     public const PROTOCOL_BADGE_NOTE = 'note';
@@ -106,6 +149,20 @@ class Constants
     public const PROTOCOL_BADGE_MEETING = 'meeting';
     public const PROTOCOL_BADGE_OTHER = 'other';
     public const PROTOCOL_BADGE_RESEARCH = 'research'; // Companies only
+
+    /**
+     * List of protocol badge types.
+     *
+     * @var string[]
+     */
+    public const PROTOCOL_BADGE = [
+        Constants::PROTOCOL_BADGE_CALL,
+        Constants::PROTOCOL_BADGE_EMAIL,
+        Constants::PROTOCOL_BADGE_MEETING,
+        Constants::PROTOCOL_BADGE_NOTE,
+        Constants::PROTOCOL_BADGE_OTHER,
+        Constants::PROTOCOL_BADGE_RESEARCH,
+    ];
 
     /**
      * Protocol include types.
@@ -124,4 +181,18 @@ class Constants
     public const ADDRESS_TYPE_DELIVERY = 'delivery';
     public const ADDRESS_TYPE_PRIVATE = 'private';
     public const ADDRESS_TYPE_OTHER = 'other';
+
+    /**
+     * List of address types.
+     *
+     * @var string[]
+     */
+    public const ADDRESS_TYPE = [
+        Constants::ADDRESS_TYPE_WORK_HQ,
+        Constants::ADDRESS_TYPE_WORK,
+        Constants::ADDRESS_TYPE_DELIVERY,
+        Constants::ADDRESS_TYPE_INVOICE,
+        Constants::ADDRESS_TYPE_PRIVATE,
+        Constants::ADDRESS_TYPE_OTHER,
+    ];
 }

@@ -24,20 +24,6 @@ use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 class UpdateValidator
 {
     /**
-     * List of allowed values.
-     *
-     * @var string[]
-     */
-    private static $allowedTypes = [
-        Constants::ADDRESS_TYPE_WORK_HQ,
-        Constants::ADDRESS_TYPE_WORK,
-        Constants::ADDRESS_TYPE_DELIVERY,
-        Constants::ADDRESS_TYPE_INVOICE,
-        Constants::ADDRESS_TYPE_PRIVATE,
-        Constants::ADDRESS_TYPE_OTHER,
-    ];
-
-    /**
      * Validate request data before sending it to the web service.
      *
      * @param array<string, mixed> $data The data collected by the request builder
@@ -48,7 +34,7 @@ class UpdateValidator
     {
         if (
             isset($data['type'])
-            && !in_array($data['type'], self::$allowedTypes, true)
+            && !in_array($data['type'], Constants::ADDRESS_TYPE, true)
         ) {
             throw new RequestValidatorException(
                 'The provided address type parameter "' . $data['type'] . '" is not allowed'
