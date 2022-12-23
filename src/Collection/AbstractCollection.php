@@ -9,11 +9,8 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation;
+namespace Netresearch\Sdk\CentralStation\Collection;
 
-use ArrayAccess;
-use Countable;
-use Iterator;
 use JsonSerializable;
 
 use function array_key_exists;
@@ -27,13 +24,12 @@ use function count;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  *
- * @template TKey of int|string
+ * @template TKey of array-key
  * @template TValue
  *
- * @implements ArrayAccess<TKey, TValue>
- * @implements Iterator<TKey, TValue>
+ * @implements CollectionInterface<TKey, TValue>
  */
-abstract class AbstractCollection implements ArrayAccess, Countable, Iterator, JsonSerializable
+abstract class AbstractCollection implements CollectionInterface, JsonSerializable
 {
     /**
      * An array containing the elements of this collection

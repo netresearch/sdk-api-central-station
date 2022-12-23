@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Collection;
 
-use Netresearch\Sdk\CentralStation\AbstractCollection;
 use Netresearch\Sdk\CentralStation\Model\Attachments;
 
 /**

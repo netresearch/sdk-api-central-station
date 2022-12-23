@@ -11,17 +11,24 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Collection;
 
-use Netresearch\Sdk\CentralStation\Model\People;
+use ArrayAccess;
+use Countable;
+use Iterator;
+use Traversable;
 
 /**
- * A collection of people.
+ * CollectionInterface.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  *
- * @extends AbstractCollection<int, People>
+ * @template TKey
+ * @template TValue
+ *
+ * @extends ArrayAccess<TKey, TValue>
+ * @extends Iterator<TKey, TValue>
  */
-class PeopleCollection extends AbstractCollection
+interface CollectionInterface extends ArrayAccess, Countable, Iterator
 {
 }
