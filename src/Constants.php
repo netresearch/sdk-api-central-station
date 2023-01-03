@@ -195,4 +195,46 @@ class Constants
         Constants::ADDRESS_TYPE_PRIVATE,
         Constants::ADDRESS_TYPE_OTHER,
     ];
+
+    /**
+     * Custom field type categories.
+     */
+    public const CUSTOM_FIELDS_TYPE_CATEGORY_PERSON = 'Person';
+    public const CUSTOM_FIELDS_TYPE_CATEGORY_COMPANY = 'Company';
+    public const CUSTOM_FIELDS_TYPE_CATEGORY_DEAL = 'Deal';
+    public const CUSTOM_FIELDS_TYPE_CATEGORY_PROJECT = 'Project';
+
+    /**
+     * List of custom field types categories.
+     *
+     * @var string[]
+     */
+    public const CUSTOM_FIELDS_TYPE_CATEGORY = [
+        Constants::CUSTOM_FIELDS_TYPE_CATEGORY_PERSON,
+        Constants::CUSTOM_FIELDS_TYPE_CATEGORY_COMPANY,
+        Constants::CUSTOM_FIELDS_TYPE_CATEGORY_DEAL,
+        Constants::CUSTOM_FIELDS_TYPE_CATEGORY_PROJECT,
+    ];
+
+    /**
+     * Custom field type field types.
+     */
+    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_STRING = 'string';
+    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_SELECT = 'select';
+    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_DECIMAL = 'decimal';
+    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_DATE = 'date';
+    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_URL = 'url';
+
+    /**
+     * List of field types for custom field types.
+     *
+     * @var string[]
+     */
+    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE = [
+        Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_STRING,
+        Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_SELECT,
+        Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_DECIMAL,
+        Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_DATE,
+        Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_URL,
+    ];
 }

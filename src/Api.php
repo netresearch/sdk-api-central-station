@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation;
 
+use Netresearch\Sdk\CentralStation\Api\Actions\CustomFieldsTypes;
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
 use Netresearch\Sdk\CentralStation\Api\Actions\Protocols;
 use Netresearch\Sdk\CentralStation\Api\Actions\Tags;
@@ -48,6 +49,13 @@ class Api
      * @var null|Protocols
      */
     private $protocolsApi;
+
+    /**
+     * Instance of the "custom_fields_types" API for implementing lazy loading.
+     *
+     * @var null|CustomFieldsTypes
+     */
+    private $customFieldsTypesApi;
 
     /**
      * @var ClientInterface
@@ -191,5 +199,37 @@ class Api
         }
 
         return $this->protocolsApi;
+    }
+
+    /**
+     * Returns the "customFieldsTypes" API by lazy loading.
+     *
+     * @param null|int $customFieldsTypesId A valid custom field type ID
+     *
+     * @return CustomFieldsTypes
+     */
+    public function customFieldsTypes(int $customFieldsTypesId = null): CustomFieldsTypes
+    {
+        $this->urlBuilder
+            ->reset()
+            ->addPath('/' . CustomFieldsTypes::PATH);
+
+        // Add custom field type ID if available
+        if ($customFieldsTypesId) {
+            $this->urlBuilder
+                ->addPath('/' . $customFieldsTypesId);
+        }
+
+        if (!$this->customFieldsTypesApi) {
+            $this->customFieldsTypesApi = new CustomFieldsTypes(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->customFieldsTypesApi;
     }
 }
