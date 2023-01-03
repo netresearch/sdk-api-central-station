@@ -45,6 +45,84 @@ final class ErrorPlugin implements Plugin
     private const HTTP_INSUFFICIENT_STORAGE   = 507;
 
     /**
+     * Handles all 400 errors.
+     *
+     * @param RequestInterface  $request
+     * @param ResponseInterface $response
+     *
+     * @return void
+     *
+     * @throws ClientErrorException
+     * @throws DetailedErrorException
+     */
+    private function handleBadRequest(RequestInterface $request, ResponseInterface $response): void
+    {
+        try {
+            $errorResponse = json_decode(
+                (string) $response->getBody(),
+                true,
+                512,
+                JSON_THROW_ON_ERROR
+            );
+        } catch (JsonException $exception) {
+            throw new ClientErrorException($response->getReasonPhrase(), $request, $response);
+        }
+
+        if ($errorResponse['error'] === 'param-missing') {
+            $errorMessage = sprintf(
+                'Request failed with "%s".',
+                $errorResponse['description']
+            );
+
+            throw new DetailedErrorException(
+                $errorMessage,
+                $request,
+                $response
+            );
+        }
+    }
+
+    /**
+     * Handles all 422 errors.
+     *
+     * @param RequestInterface  $request
+     * @param ResponseInterface $response
+     *
+     * @return void
+     *
+     * @throws ClientErrorException
+     * @throws DetailedErrorException
+     */
+    private function handleUnprocessableEntity(RequestInterface $request, ResponseInterface $response): void
+    {
+        try {
+            $errorResponse = json_decode(
+                (string) $response->getBody(),
+                true,
+                512,
+                JSON_THROW_ON_ERROR
+            );
+        } catch (JsonException $exception) {
+            throw new ClientErrorException($response->getReasonPhrase(), $request, $response);
+        }
+
+        $errorKey   = key($errorResponse);
+        $errorValue = current($errorResponse);
+
+        $errorMessage = sprintf(
+            'The entity "%s" failed with "%s".',
+            $errorKey,
+            is_array($errorValue) ? implode('" or "', $errorValue) : $errorValue
+        );
+
+        throw new DetailedErrorException(
+            $errorMessage,
+            $request,
+            $response
+        );
+    }
+
+    /**
      * Handles all client/server errors.
      *
      * @param RequestInterface  $request
@@ -113,31 +191,12 @@ final class ErrorPlugin implements Plugin
 
         // Unprocessable entity
         if ($response->getStatusCode() === self::HTTP_UNPROCESSABLE_ENTITY) {
-            try {
-                $errorResponse = json_decode(
-                    (string)$response->getBody(),
-                    true,
-                    512,
-                    JSON_THROW_ON_ERROR
-                );
-            } catch (JsonException $exception) {
-                throw new ClientErrorException($response->getReasonPhrase(), $request, $response);
-            }
+            $this->handleUnprocessableEntity($request, $response);
+        }
 
-            $errorKey   = key($errorResponse);
-            $errorValue = current($errorResponse);
-
-            $errorMessage = sprintf(
-                'The entity "%s" failed with "%s".',
-                $errorKey,
-                is_array($errorValue) ? implode('" or "', $errorValue) : $errorValue
-            );
-
-            throw new DetailedErrorException(
-                $errorMessage,
-                $request,
-                $response
-            );
+        // Bad request
+        if ($response->getStatusCode() === self::HTTP_BAD_REQUEST) {
+            $this->handleBadRequest($request, $response);
         }
 
         // Every other 4xx error
