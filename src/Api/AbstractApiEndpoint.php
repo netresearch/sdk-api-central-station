@@ -294,7 +294,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     public function update(RequestInterface $request): bool
     {
         $requestClosure = function () use ($request): bool {
-            return $this->httpPut($request)->getStatusCode() === 200;
+            return $this->httpPut($request)->getStatusCode() === 204;
         };
 
         return (bool) $this->execute($requestClosure);
@@ -312,7 +312,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     public function delete(): bool
     {
         $requestClosure = function (): bool {
-            return $this->httpDelete()->getStatusCode() === 200;
+            return $this->httpDelete()->getStatusCode() === 204;
         };
 
         return (bool) $this->execute($requestClosure);
