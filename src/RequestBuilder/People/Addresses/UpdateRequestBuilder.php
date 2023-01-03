@@ -13,7 +13,7 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\People\Addresses;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\Address;
-use Netresearch\Sdk\CentralStation\Request\People\Addresses\Create as CreateRequest;
+use Netresearch\Sdk\CentralStation\Request\People\Addresses\Update as UpdateRequest;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\Addresses\UpdateValidator;
@@ -83,7 +83,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return CreateRequest|RequestInterface
+     * @return UpdateRequest|RequestInterface
      *
      * @throws RequestValidatorException
      */
@@ -105,7 +105,8 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
         }
 
         // Assign values to request
-        $request = new CreateRequest($address);
+        $request = new UpdateRequest();
+        $request->setAddress($address);
 
         $this->data = [];
 
