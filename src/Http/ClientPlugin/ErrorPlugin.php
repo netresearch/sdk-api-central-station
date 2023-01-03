@@ -15,6 +15,7 @@ use Http\Client\Common\Exception\ClientErrorException;
 use Http\Client\Common\Exception\ServerErrorException;
 use Http\Client\Common\Plugin;
 use Http\Promise\Promise;
+use JsonException;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationErrorException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedErrorException;
 use Psr\Http\Message\RequestInterface;
@@ -39,6 +40,7 @@ final class ErrorPlugin implements Plugin
     private const HTTP_FORBIDDEN              = 403;
     private const HTTP_CONFLICT               = 409;
     private const HTTP_UNSUPPORTED_MEDIA_TYPE = 415;
+    private const HTTP_UNPROCESSABLE_ENTITY   = 422;
     private const HTTP_INTERNAL_SERVER_ERROR  = 500;
     private const HTTP_INSUFFICIENT_STORAGE   = 507;
 
@@ -104,6 +106,35 @@ final class ErrorPlugin implements Plugin
             throw new DetailedErrorException(
                 'The content of the request was submitted with an invalid or not allowed media type. '
                 . 'Only .json is supported.',
+                $request,
+                $response
+            );
+        }
+
+        // Unprocessable entity
+        if ($response->getStatusCode() === self::HTTP_UNPROCESSABLE_ENTITY) {
+            try {
+                $errorResponse = json_decode(
+                    (string)$response->getBody(),
+                    true,
+                    512,
+                    JSON_THROW_ON_ERROR
+                );
+            } catch (JsonException $exception) {
+                throw new ClientErrorException($response->getReasonPhrase(), $request, $response);
+            }
+
+            $errorKey   = key($errorResponse);
+            $errorValue = current($errorResponse);
+
+            $errorMessage = sprintf(
+                'The entity "%s" failed with "%s".',
+                $errorKey,
+                is_array($errorValue) ? implode('" or "', $errorValue) : $errorValue
+            );
+
+            throw new DetailedErrorException(
+                $errorMessage,
                 $request,
                 $response
             );
