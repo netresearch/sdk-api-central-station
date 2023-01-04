@@ -49,9 +49,10 @@ class PeopleTest extends TestCase
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null
+        int $personId = null,
+        int $statusCode = 200
     ): \Netresearch\Sdk\CentralStation\Api\Actions\People {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile, $statusCode);
 
         return $serviceFactoryMock
             ->api()
@@ -270,7 +271,7 @@ class PeopleTest extends TestCase
      */
     public function update(): void
     {
-        $peopleApi = $this->getPeopleApi('', 123456);
+        $peopleApi = $this->getPeopleApi('', 123456, 204);
         $result    = $peopleApi->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/123456', $peopleApi);
@@ -400,7 +401,7 @@ class PeopleTest extends TestCase
      */
     public function delete(): void
     {
-        $peopleApi = $this->getPeopleApi('', 123456);
+        $peopleApi = $this->getPeopleApi('', 123456, 204);
         $result    = $peopleApi->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/123456', $peopleApi);

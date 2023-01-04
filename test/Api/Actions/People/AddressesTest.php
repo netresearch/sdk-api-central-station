@@ -41,9 +41,10 @@ class AddressesTest extends TestCase
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null
+        int $personId = null,
+        int $statusCode = 200
     ): People {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile, $statusCode);
 
         return $serviceFactoryMock
             ->api()
@@ -268,8 +269,8 @@ class AddressesTest extends TestCase
      */
     public function update(): void
     {
-        $peopleApi = $this->getPeopleApi('', 30016185);
-        $result  = $peopleApi->addresses(25045244)->update(new Update());
+        $peopleApi = $this->getPeopleApi('', 30016185, 204);
+        $result    = $peopleApi->addresses(25045244)->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/30016185/addrs/25045244', $peopleApi);
         self::assertHttpMethod('PUT', $peopleApi);
@@ -284,8 +285,8 @@ class AddressesTest extends TestCase
      */
     public function delete(): void
     {
-        $peopleApi = $this->getPeopleApi('', 30016185);
-        $result  = $peopleApi->addresses(25045244)->delete();
+        $peopleApi = $this->getPeopleApi('', 30016185, 204);
+        $result    = $peopleApi->addresses(25045244)->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/30016185/addrs/25045244', $peopleApi);
         self::assertHttpMethod('DELETE', $peopleApi);

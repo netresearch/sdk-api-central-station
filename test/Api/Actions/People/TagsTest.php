@@ -42,9 +42,10 @@ class TagsTest extends TestCase
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null
+        int $personId = null,
+        int $statusCode = 200
     ): People {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile, $statusCode);
 
         return $serviceFactoryMock
             ->api()
@@ -225,7 +226,7 @@ class TagsTest extends TestCase
      */
     public function update(): void
     {
-        $peopleApi = $this->getPeopleApi('', 123456);
+        $peopleApi = $this->getPeopleApi('', 123456, 204);
         $result  = $peopleApi->tags(987654)->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags/987654', $peopleApi);
@@ -241,7 +242,7 @@ class TagsTest extends TestCase
      */
     public function delete(): void
     {
-        $peopleApi = $this->getPeopleApi('', 123456);
+        $peopleApi = $this->getPeopleApi('', 123456, 204);
         $result  = $peopleApi->tags(987654)->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags/987654', $peopleApi);
