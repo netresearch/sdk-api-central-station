@@ -41,9 +41,6 @@ use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  * @api
- *
- * @extends AbstractApiEndpoint<Model\People, PeopleCollection>
- * @extends AbstractApiEndpoint<Model\Stats, PeopleCollection>
  */
 class People extends AbstractApiEndpoint
 {

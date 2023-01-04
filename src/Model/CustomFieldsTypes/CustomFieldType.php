@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Model\CustomFieldsType;
+namespace Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes;
 
 use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
 use Netresearch\Sdk\CentralStation\Model\AbstractEntity;
@@ -59,12 +59,14 @@ class CustomFieldType extends AbstractEntity
     /**
      * The name of the custom field type.
      *
-     * @var
+     * @var string
      */
     public $name;
 
     /**
-     * @var array
+     * The options if type is "select".
+     *
+     * @var string[]
      *
      * @ReplaceNullWithDefaultValue
      */

@@ -33,8 +33,6 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  * @api
- *
- * @extends AbstractApiEndpoint<Model\Attachments, AttachmentsCollection>
  */
 class Attachments extends AbstractApiEndpoint
 {

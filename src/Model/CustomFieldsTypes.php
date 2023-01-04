@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model;
 
-use Netresearch\Sdk\CentralStation\Model\CustomFieldsType\CustomFieldType;
+use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes\CustomFieldType;
 
 /**
  * A custom field type record.
@@ -20,7 +20,7 @@ use Netresearch\Sdk\CentralStation\Model\CustomFieldsType\CustomFieldType;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class CustomFieldsType
+class CustomFieldsTypes
 {
     /**
      * A custom field type.

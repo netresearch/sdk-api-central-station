@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Collection;
 
-use Netresearch\Sdk\CentralStation\Model\CustomFieldsType;
+use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes;
 
 /**
  * A collection of custom field types.
@@ -20,8 +20,8 @@ use Netresearch\Sdk\CentralStation\Model\CustomFieldsType;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  *
- * @extends AbstractCollection<int, CustomFieldsType>
+ * @extends AbstractCollection<int, CustomFieldsTypes>
  */
-class CustomFieldsTypeCollection extends AbstractCollection
+class CustomFieldsTypesCollection extends AbstractCollection
 {
 }
