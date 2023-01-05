@@ -14,6 +14,9 @@ namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 use Netresearch\Sdk\CentralStation\Collection\AddressCollection;
 use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
 use Netresearch\Sdk\CentralStation\Collection\TagCollection;
+use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
+use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
+use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
 use Netresearch\Sdk\CentralStation\Model\People;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
@@ -46,13 +49,13 @@ class PeopleTest extends TestCase
      * @param int|null $personId
      *
      * @return \Netresearch\Sdk\CentralStation\Api\Actions\People
+     * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null,
-        int $statusCode = 200
+        int $personId = null
     ): \Netresearch\Sdk\CentralStation\Api\Actions\People {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile, $statusCode);
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
         return $serviceFactoryMock
             ->api()
@@ -78,6 +81,10 @@ class PeopleTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function index(string $responseJsonFile): void
     {
@@ -163,6 +170,9 @@ class PeopleTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function show(string $responseJsonFile): void
     {
@@ -222,6 +232,9 @@ class PeopleTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function create(string $responseJsonFile): void
     {
@@ -248,7 +261,7 @@ class PeopleTest extends TestCase
      *
      * @return void
      */
-    private static function assertCreatedPerson(Person $person)
+    private static function assertCreatedPerson(Person $person): void
     {
         self::assertSame(1545412, $person->id);
         self::assertSame(21, $person->accountId);
@@ -271,7 +284,7 @@ class PeopleTest extends TestCase
      */
     public function update(): void
     {
-        $peopleApi = $this->getPeopleApi('', 123456, 204);
+        $peopleApi = $this->getPeopleApi('', 123456);
         $result    = $peopleApi->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/123456', $peopleApi);
@@ -299,6 +312,9 @@ class PeopleTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function stats(string $responseJsonFile): void
     {
@@ -351,6 +367,9 @@ class PeopleTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function search(string $responseJsonFile): void
     {
@@ -378,7 +397,7 @@ class PeopleTest extends TestCase
      *
      * @return void
      */
-    private static function assertSearchedPerson(Person $person)
+    private static function assertSearchedPerson(Person $person): void
     {
         self::assertSame(235321, $person->id);
         self::assertSame(21, $person->accountId);
@@ -401,7 +420,7 @@ class PeopleTest extends TestCase
      */
     public function delete(): void
     {
-        $peopleApi = $this->getPeopleApi('', 123456, 204);
+        $peopleApi = $this->getPeopleApi('', 123456);
         $result    = $peopleApi->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/123456', $peopleApi);

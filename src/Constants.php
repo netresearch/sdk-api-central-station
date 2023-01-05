@@ -237,4 +237,9 @@ class Constants
         Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_DATE,
         Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_URL,
     ];
+
+    /**
+     * Custom fields include types.
+     */
+    public const CUSTOM_FIELDS_INCLUDE_CUSTOM_FIELDS_TYPE = 'custom_fields_type';
 }

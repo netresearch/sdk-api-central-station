@@ -1,0 +1,15 @@
+{
+    "custom_field": {
+        "id": 2002,
+        "account_id": 10000,
+        "attachable_type": "Person",
+        "attachable_id": 12345678,
+        "custom_fields_type_id": 1000,
+        "api_input": true,
+        "name": "MY-CUSTOM-FIELD-VALUE",
+        "name_decimal": null,
+        "name_date": null,
+        "created_at": "2023-01-02T01:01:01.000+01:00",
+        "updated_at": "2023-01-02T01:01:01.000+01:00"
+    }
+}

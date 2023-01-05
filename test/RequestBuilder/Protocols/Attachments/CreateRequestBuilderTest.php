@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Protocols\Attachments;
 
+use JsonException;
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Protocols\Attachments\CreateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\Provider\Protocols\AttachmentsProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
@@ -43,6 +45,9 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
      * @test
      *
      * @param string $expectedJson
+     *
+     * @throws RequestValidatorException
+     * @throws JsonException
      */
     public function create(string $expectedJson): void
     {

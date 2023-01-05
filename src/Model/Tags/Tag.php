@@ -30,14 +30,14 @@ class Tag extends AbstractEntity
     public $accountId;
 
     /**
-     * ID of the record the tag belongs to, e.g. person, company, offer or project.
+     * The ID of the record the tag belongs to, e.g. person, company, offer or project.
      *
      * @var int
      */
     public $attachableId;
 
     /**
-     * The record type the address belongs to. Must be either "Person", "Company", "Deal" or "Project".
+     * The record type the tag belongs to. Must be either "Person", "Company", "Deal" or "Project".
      *
      * @var string
      */

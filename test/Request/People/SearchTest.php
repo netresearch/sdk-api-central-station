@@ -32,18 +32,14 @@ class SearchTest extends TestCase
     {
         $request = new Search();
         $request->setQuery([
-            [
-                'name',
-                'Mäh',
-            ]
+            'name',
+            'Mäh',
         ]);
 
         self::assertSame(
             [
-                [
-                    'name',
-                    'Mäh',
-                ],
+                'name',
+                'Mäh',
             ],
             $request->jsonSerialize()
         );

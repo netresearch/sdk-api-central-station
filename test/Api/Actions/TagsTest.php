@@ -12,6 +12,9 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
 use Netresearch\Sdk\CentralStation\Collection\TagsCollection;
+use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
+use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
+use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Tags;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index;
@@ -36,6 +39,7 @@ class TagsTest extends TestCase
      * @param int|null $tagId
      *
      * @return \Netresearch\Sdk\CentralStation\Api\Actions\Tags
+     * @throws ServiceException
      */
     private function getTagsApi(
         string $responseJsonFile = '',
@@ -67,6 +71,10 @@ class TagsTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function index(string $responseJsonFile): void
     {
@@ -95,7 +103,7 @@ class TagsTest extends TestCase
      *
      * @return void
      */
-    private function assertFirstTag(Tag $tag)
+    private function assertFirstTag(Tag $tag): void
     {
         self::assertSame(45067258, $tag->id);
         self::assertSame(47143, $tag->accountId);
@@ -113,7 +121,7 @@ class TagsTest extends TestCase
      *
      * @return void
      */
-    private function assertSecondTag(Tag $tag)
+    private function assertSecondTag(Tag $tag): void
     {
         self::assertSame(45067261, $tag->id);
         self::assertSame(47143, $tag->accountId);
@@ -143,6 +151,9 @@ class TagsTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function show(string $responseJsonFile): void
     {

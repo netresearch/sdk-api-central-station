@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\SearchRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
@@ -27,6 +28,7 @@ class SearchRequestBuilderTest extends RequestBuilderTestCase
      * Tests creating a "search" request URL.
      *
      * @test
+     * @throws RequestValidatorException
      */
     public function search(): void
     {

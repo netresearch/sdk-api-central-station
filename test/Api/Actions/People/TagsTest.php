@@ -13,6 +13,9 @@ namespace Netresearch\Sdk\CentralStation\Test\Api\Actions\People;
 
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
 use Netresearch\Sdk\CentralStation\Collection\TagsCollection;
+use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
+use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
+use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Tags;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Create;
@@ -39,13 +42,13 @@ class TagsTest extends TestCase
      * @param int|null $personId
      *
      * @return People
+     * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null,
-        int $statusCode = 200
+        int $personId = null
     ): People {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile, $statusCode);
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
         return $serviceFactoryMock
             ->api()
@@ -71,6 +74,10 @@ class TagsTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function index(string $responseJsonFile): void
     {
@@ -99,7 +106,7 @@ class TagsTest extends TestCase
      *
      * @return void
      */
-    private function assertFirstTag(Tag $tag)
+    private function assertFirstTag(Tag $tag): void
     {
         self::assertSame(45067258, $tag->id);
         self::assertSame(47143, $tag->accountId);
@@ -117,7 +124,7 @@ class TagsTest extends TestCase
      *
      * @return void
      */
-    private function assertSecondTag(Tag $tag)
+    private function assertSecondTag(Tag $tag): void
     {
         self::assertSame(45067261, $tag->id);
         self::assertSame(47143, $tag->accountId);
@@ -147,6 +154,9 @@ class TagsTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function show(string $responseJsonFile): void
     {
@@ -180,6 +190,9 @@ class TagsTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function create(string $responseJsonFile): void
     {
@@ -208,7 +221,7 @@ class TagsTest extends TestCase
      *
      * @return void
      */
-    private function assertCreatedTag(Tag $tag)
+    private function assertCreatedTag(Tag $tag): void
     {
         self::assertSame(45067258, $tag->id);
         self::assertSame(47143, $tag->accountId);
@@ -226,7 +239,7 @@ class TagsTest extends TestCase
      */
     public function update(): void
     {
-        $peopleApi = $this->getPeopleApi('', 123456, 204);
+        $peopleApi = $this->getPeopleApi('', 123456);
         $result  = $peopleApi->tags(987654)->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags/987654', $peopleApi);
@@ -242,7 +255,7 @@ class TagsTest extends TestCase
      */
     public function delete(): void
     {
-        $peopleApi = $this->getPeopleApi('', 123456, 204);
+        $peopleApi = $this->getPeopleApi('', 123456);
         $result  = $peopleApi->tags(987654)->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags/987654', $peopleApi);

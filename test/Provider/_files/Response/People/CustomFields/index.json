@@ -1,0 +1,50 @@
+[
+    {
+        "custom_field": {
+            "id": 2000,
+            "account_id": 10000,
+            "attachable_type": "Person",
+            "attachable_id": 12345678,
+            "custom_fields_type_id": 1000,
+            "api_input": false,
+            "name": "https://www.example.org",
+            "name_decimal": null,
+            "name_date": null,
+            "created_at": "2023-01-02T00:00:00.000+01:00",
+            "updated_at": "2023-01-02T02:02:02.000+01:00",
+            "custom_fields_type_name": "CUSTOM-FIELD-TYPE-STRING",
+            "custom_fields_type": {
+                "id": 1000,
+                "position": 1,
+                "category": "Person",
+                "name": "CUSTOM-FIELD-TYPE-STRING",
+                "created_at": "2023-01-01T00:00:00.000+01:00",
+                "updated_at": "2023-01-01T01:01:01.000+01:00"
+            }
+        }
+    },
+    {
+        "custom_field": {
+            "id": 2001,
+            "account_id": 10000,
+            "attachable_type": "Person",
+            "attachable_id": 12345678,
+            "custom_fields_type_id": 1001,
+            "api_input": true,
+            "name": "Option-2",
+            "name_decimal": null,
+            "name_date": null,
+            "created_at": "2023-01-02T00:00:00.000+01:00",
+            "updated_at": "2023-01-02T02:02:02.000+01:00",
+            "custom_fields_type_name": "CUSTOM-FIELD-TYPE-SELECT",
+            "custom_fields_type": {
+                "id": 1001,
+                "position": 2,
+                "category": "Person",
+                "name": "CUSTOM-FIELD-TYPE-SELECT",
+                "created_at": "2023-01-01T00:00:00.000+01:00",
+                "updated_at": "2023-01-01T01:01:01.000+01:00"
+            }
+        }
+    }
+]

@@ -14,6 +14,9 @@ namespace Netresearch\Sdk\CentralStation\Test\Api\Actions\People;
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
 use Netresearch\Sdk\CentralStation\Collection\ProtocolsCollection;
 use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
+use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
+use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Protocols;
 use Netresearch\Sdk\CentralStation\Model\Protocols\Protocol;
 use Netresearch\Sdk\CentralStation\Request\People\Protocols\Create;
@@ -40,13 +43,13 @@ class ProtocolsTest extends TestCase
      * @param int|null $personId
      *
      * @return People
+     * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null,
-        int $statusCode = 200
+        int $personId = null
     ): People {
-        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile, $statusCode);
+        $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
         return $serviceFactoryMock
             ->api()
@@ -72,6 +75,10 @@ class ProtocolsTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function index(string $responseJsonFile): void
     {
@@ -100,7 +107,7 @@ class ProtocolsTest extends TestCase
      *
      * @return void
      */
-    private function assertFirstProtocol(Protocol $protocol)
+    private function assertFirstProtocol(Protocol $protocol): void
     {
         self::assertSame(43342215, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
@@ -128,7 +135,7 @@ class ProtocolsTest extends TestCase
      *
      * @return void
      */
-    private function assertSecondProtocol(Protocol $protocol)
+    private function assertSecondProtocol(Protocol $protocol): void
     {
         self::assertSame(43342275, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
@@ -168,6 +175,9 @@ class ProtocolsTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function show(string $responseJsonFile): void
     {
@@ -189,7 +199,7 @@ class ProtocolsTest extends TestCase
      *
      * @return void
      */
-    private function assertThirdProtocol(Protocol $protocol)
+    private function assertThirdProtocol(Protocol $protocol): void
     {
         self::assertSame(42483967, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
@@ -229,6 +239,9 @@ class ProtocolsTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function create(string $responseJsonFile): void
     {
@@ -257,7 +270,7 @@ class ProtocolsTest extends TestCase
      *
      * @return void
      */
-    private function assertCreatedProtocol(Protocol $protocol)
+    private function assertCreatedProtocol(Protocol $protocol): void
     {
         self::assertSame(43388190, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
@@ -285,7 +298,7 @@ class ProtocolsTest extends TestCase
      */
     public function update(): void
     {
-        $peopleApi = $this->getPeopleApi('', 123456, 204);
+        $peopleApi = $this->getPeopleApi('', 123456);
         $result  = $peopleApi->protocols(987654)->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/protocols/987654', $peopleApi);
@@ -301,7 +314,7 @@ class ProtocolsTest extends TestCase
      */
     public function delete(): void
     {
-        $peopleApi = $this->getPeopleApi('', 123456, 204);
+        $peopleApi = $this->getPeopleApi('', 123456);
         $result  = $peopleApi->protocols(987654)->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/protocols/987654', $peopleApi);

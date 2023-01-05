@@ -11,6 +11,9 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
+use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
+use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes;
 use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes\CustomFieldsType;
 use Netresearch\Sdk\CentralStation\Test\Provider\CustomFieldsTypesProvider;
@@ -34,6 +37,7 @@ class CustomFieldsTypesTest extends TestCase
      * @param int|null $customFieldsTypesId
      *
      * @return \Netresearch\Sdk\CentralStation\Api\Actions\CustomFieldsTypes
+     * @throws ServiceException
      */
     private function getCustomFieldsTypesApi(
         string $responseJsonFile = '',
@@ -65,6 +69,10 @@ class CustomFieldsTypesTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function index(string $responseJsonFile): void
     {
@@ -148,6 +156,9 @@ class CustomFieldsTypesTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function show(string $responseJsonFile): void
     {

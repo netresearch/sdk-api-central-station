@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
+use JsonException;
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\MergeRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\Provider\PeopleProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
@@ -43,6 +45,9 @@ class MergeRequestBuilderTest extends RequestBuilderTestCase
      * @test
      *
      * @param string $expectedJson
+     *
+     * @throws RequestValidatorException
+     * @throws JsonException
      */
     public function merge(string $expectedJson): void
     {

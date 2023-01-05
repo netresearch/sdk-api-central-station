@@ -13,6 +13,9 @@ namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
 use Netresearch\Sdk\CentralStation\Collection\ProtocolsCollection;
 use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
+use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
+use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Protocols;
 use Netresearch\Sdk\CentralStation\Model\Protocols\Protocol;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Index;
@@ -37,6 +40,7 @@ class ProtocolsTest extends TestCase
      * @param int|null $protocolId
      *
      * @return \Netresearch\Sdk\CentralStation\Api\Actions\Protocols
+     * @throws ServiceException
      */
     private function getProtocolsApi(
         string $responseJsonFile = '',
@@ -68,6 +72,10 @@ class ProtocolsTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function index(string $responseJsonFile): void
     {
@@ -96,7 +104,7 @@ class ProtocolsTest extends TestCase
      *
      * @return void
      */
-    private function assertFirstProtocol(Protocol $protocol)
+    private function assertFirstProtocol(Protocol $protocol): void
     {
         self::assertSame(36085763, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
@@ -124,7 +132,7 @@ class ProtocolsTest extends TestCase
      *
      * @return void
      */
-    private function assertSecondProtocol(Protocol $protocol)
+    private function assertSecondProtocol(Protocol $protocol): void
     {
         self::assertSame(36085781, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
@@ -164,6 +172,9 @@ class ProtocolsTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function show(string $responseJsonFile): void
     {
@@ -185,7 +196,7 @@ class ProtocolsTest extends TestCase
      *
      * @return void
      */
-    private function assertThirdProtocol(Protocol $protocol)
+    private function assertThirdProtocol(Protocol $protocol): void
     {
         self::assertSame(43342275, $protocol->id);
         self::assertSame(87444, $protocol->accountId);

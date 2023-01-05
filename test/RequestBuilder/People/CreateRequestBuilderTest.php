@@ -11,7 +11,9 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
+use JsonException;
 use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\CreateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\Provider\PeopleProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
@@ -44,6 +46,9 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
      * @test
      *
      * @param string $expectedJson
+     *
+     * @throws RequestValidatorException
+     * @throws JsonException
      */
     public function create(string $expectedJson): void
     {

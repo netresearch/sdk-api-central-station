@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Tags;
 
 use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Tags\IndexRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
@@ -28,6 +29,7 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
      * Tests creating an "index" request URL.
      *
      * @test
+     * @throws RequestValidatorException
      */
     public function index(): void
     {

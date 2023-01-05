@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Tags;
 
+use JsonException;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags\UpdateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\TagsProvider;
@@ -44,6 +45,9 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
      * @test
      *
      * @param string $expectedJson
+     *
+     * @throws RequestValidatorException
+     * @throws JsonException
      */
     public function update(string $expectedJson): void
     {
@@ -59,7 +63,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     /**
      * @test
      */
-    public function throwExceptionOnEmptyTagName()
+    public function throwExceptionOnEmptyTagName(): void
     {
         $this->expectException(RequestValidatorException::class);
         $this->expectExceptionMessage('Please provide at least the updated name of the tag');

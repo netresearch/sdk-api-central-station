@@ -73,6 +73,13 @@ class People extends AbstractApiEndpoint
     private $addressesApi;
 
     /**
+     * Instance of the "custom_fields" API for implementing lazy loading.
+     *
+     * @var null|People\CustomFields
+     */
+    private $customFieldsApi;
+
+    /**
      * Returns the "tags" API used to process tags related to a specific person.
      *
      * @param null|int $tagId A valid tag ID
@@ -166,6 +173,38 @@ class People extends AbstractApiEndpoint
         }
 
         return $this->addressesApi;
+    }
+
+    /**
+     * Returns the "custom_fields" API used to process custom fields related to a specific person.
+     *
+     * @param null|int $customFieldId A valid custom field ID
+     *
+     * @return People\CustomFields
+     */
+    public function customFields(int $customFieldId = null): People\CustomFields
+    {
+        $this->urlBuilder
+            ->setParams([])
+            ->addPath('/' . People\CustomFields::PATH);
+
+        // Add custom field ID if available
+        if ($customFieldId) {
+            $this->urlBuilder
+                ->addPath('/' . $customFieldId);
+        }
+
+        if (!$this->customFieldsApi) {
+            $this->customFieldsApi = new People\CustomFields(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->customFieldsApi;
     }
 
     /**
@@ -317,7 +356,9 @@ class People extends AbstractApiEndpoint
             $this->urlBuilder
                 ->addPath('/merge');
 
-            return $this->httpPost($request)->getStatusCode() === 200;
+            // Each API endpoint returns different HTTP status codes (200, 204, ...),
+            // so we need to check if it's at least one in the 200s range.
+            return $this->httpPost($request)->getStatusCode() < 300;
         };
 
         return (bool) $this->execute($requestClosure);
