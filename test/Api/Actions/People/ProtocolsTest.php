@@ -89,8 +89,8 @@ class ProtocolsTest extends TestCase
             self::assertInstanceOf(Protocols\Protocol::class, $protocols->protocolObjectNote);
         }
 
-        $this->assertFirstProtocol($result[0]->protocolObjectNote);
-        $this->assertSecondProtocol($result[1]->protocolObjectNote);
+        $this->assertFirstProtocol($result->offsetGet(0)->protocolObjectNote);
+        $this->assertSecondProtocol($result->offsetGet(1)->protocolObjectNote);
     }
 
     /**

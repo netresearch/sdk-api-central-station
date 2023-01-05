@@ -85,8 +85,8 @@ class AddressesTest extends TestCase
         foreach ($result as $addresses) {
             self::assertInstanceOf(Addresses\Address::class, $addresses->addr);
         }
-        $this->assertFirstAddress($result[0]->addr);
-        $this->assertSecondAddress($result[1]->addr);
+        $this->assertFirstAddress($result->offsetGet(0)->addr);
+        $this->assertSecondAddress($result->offsetGet(1)->addr);
     }
 
     /**

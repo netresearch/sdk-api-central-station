@@ -12,16 +12,19 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes;
 
 use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
+use MagicSunday\JsonMapper\Annotation\ReplaceProperty;
 use Netresearch\Sdk\CentralStation\Model\AbstractEntity;
 
 /**
- * A custom field type record.
+ * A custom fields type record.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @ReplaceProperty("type", replaces="ftype")
  */
-class CustomFieldType extends AbstractEntity
+class CustomFieldsType extends AbstractEntity
 {
     /**
      * ID of account.
@@ -54,7 +57,7 @@ class CustomFieldType extends AbstractEntity
      *
      * @var string
      */
-    public $ftype;
+    public $type;
 
     /**
      * The name of the custom field type.

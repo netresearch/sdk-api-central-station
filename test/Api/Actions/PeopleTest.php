@@ -94,8 +94,8 @@ class PeopleTest extends TestCase
             self::assertInstanceOf(People\Person::class, $people->person);
         }
 
-        self::assertFirstPerson($result[0]->person);
-        self::assertSecondPerson($result[1]->person);
+        self::assertFirstPerson($result->offsetGet(0)->person);
+        self::assertSecondPerson($result->offsetGet(1)->person);
     }
 
     /**
@@ -368,7 +368,7 @@ class PeopleTest extends TestCase
             self::assertInstanceOf(People\Person::class, $people->person);
         }
 
-        self::assertSearchedPerson($result[0]->person);
+        self::assertSearchedPerson($result->offsetGet(0)->person);
     }
 
     /**

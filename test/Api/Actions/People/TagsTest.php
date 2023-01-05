@@ -88,8 +88,8 @@ class TagsTest extends TestCase
             self::assertInstanceOf(Tags\Tag::class, $tags->tag);
         }
 
-        $this->assertFirstTag($result[0]->tag);
-        $this->assertSecondTag($result[1]->tag);
+        $this->assertFirstTag($result->offsetGet(0)->tag);
+        $this->assertSecondTag($result->offsetGet(1)->tag);
     }
 
     /**

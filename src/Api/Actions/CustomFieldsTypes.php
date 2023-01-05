@@ -17,7 +17,7 @@ use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model;
-use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes\CustomFieldType;
+use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes\CustomFieldsType;
 use Netresearch\Sdk\CentralStation\Request\CustomFieldsTypes\Create as CreateRequest;
 
 /**
@@ -68,13 +68,13 @@ class CustomFieldsTypes extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/custom_fields_types/<CUSTOM-FIELDS-TYPE-ID>
      *
-     * @return null|CustomFieldType
+     * @return null|CustomFieldsType
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function show(): ?CustomFieldType
+    public function show(): ?CustomFieldsType
     {
         $result = $this->findEntity(
             null,
@@ -91,13 +91,13 @@ class CustomFieldsTypes extends AbstractApiEndpoint
      *
      * @param CreateRequest $request The create request instance
      *
-     * @return null|CustomFieldType
+     * @return null|CustomFieldsType
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function create(CreateRequest $request): ?CustomFieldType
+    public function create(CreateRequest $request): ?CustomFieldsType
     {
         $result = $this->createNewEntity(
             $request,

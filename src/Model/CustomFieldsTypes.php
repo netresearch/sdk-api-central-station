@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model;
 
-use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes\CustomFieldType;
+use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes\CustomFieldsType;
 
 /**
  * A custom field type record.
@@ -25,7 +25,7 @@ class CustomFieldsTypes
     /**
      * A custom field type.
      *
-     * @var null|CustomFieldType
+     * @var null|CustomFieldsType
      */
     public $customFieldsType;
 }
