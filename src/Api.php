@@ -204,20 +204,20 @@ class Api
     /**
      * Returns the "customFieldsTypes" API by lazy loading.
      *
-     * @param null|int $customFieldsTypesId A valid custom field type ID
+     * @param null|int $customFieldsTypeId A valid custom fields type ID
      *
      * @return CustomFieldsTypes
      */
-    public function customFieldsTypes(int $customFieldsTypesId = null): CustomFieldsTypes
+    public function customFieldsTypes(int $customFieldsTypeId = null): CustomFieldsTypes
     {
         $this->urlBuilder
             ->reset()
             ->addPath('/' . CustomFieldsTypes::PATH);
 
         // Add custom field type ID if available
-        if ($customFieldsTypesId) {
+        if ($customFieldsTypeId) {
             $this->urlBuilder
-                ->addPath('/' . $customFieldsTypesId);
+                ->addPath('/' . $customFieldsTypeId);
         }
 
         if (!$this->customFieldsTypesApi) {
