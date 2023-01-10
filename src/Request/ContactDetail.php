@@ -14,46 +14,48 @@ namespace Netresearch\Sdk\CentralStation\Request;
 use JsonSerializable;
 
 /**
- * A tag object used to create/update a record.
+ * A contact detail object.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Tag implements JsonSerializable
+class ContactDetail implements JsonSerializable
 {
     /**
-     * @var null|string
-     */
-    private $name;
-
-    /**
+     * The ID of the record the contact detail belongs to.
+     *
      * @var null|int
      */
     private $attachableId;
 
     /**
+     * The record type the contact detail belongs to. Must be either Person or Company.
+     *
      * @var null|string
      */
     private $attachableType;
 
     /**
-     * @param null|string $name
+     * The value of the contact detail according to the selected type.
      *
-     * @return Tag
+     * @var null|string
      */
-    public function setName(?string $name): Tag
-    {
-        $this->name = $name;
-        return $this;
-    }
+    private $name;
+
+    /**
+     * Must be one of office, office_hq, mobile, fax, private, voip, skype or other.
+     *
+     * @var null|string
+     */
+    private $type;
 
     /**
      * @param null|int $attachableId
      *
-     * @return Tag
+     * @return ContactDetail
      */
-    public function setAttachableId(?int $attachableId): Tag
+    public function setAttachableId(?int $attachableId): ContactDetail
     {
         $this->attachableId = $attachableId;
         return $this;
@@ -62,11 +64,33 @@ class Tag implements JsonSerializable
     /**
      * @param null|string $attachableType
      *
-     * @return Tag
+     * @return ContactDetail
      */
-    public function setAttachableType(?string $attachableType): Tag
+    public function setAttachableType(?string $attachableType): ContactDetail
     {
         $this->attachableType = $attachableType;
+        return $this;
+    }
+
+    /**
+     * @param null|string $name
+     *
+     * @return ContactDetail
+     */
+    public function setName(?string $name): ContactDetail
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @param null|string $type
+     *
+     * @return ContactDetail
+     */
+    public function setType(?string $type): ContactDetail
+    {
+        $this->type = $type;
         return $this;
     }
 
@@ -77,6 +101,7 @@ class Tag implements JsonSerializable
     {
         return [
             'name'            => $this->name,
+            'atype'           => $this->type,
             'attachable_id'   => $this->attachableId,
             'attachable_type' => $this->attachableType,
         ];

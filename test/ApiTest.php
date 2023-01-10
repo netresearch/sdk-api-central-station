@@ -151,4 +151,40 @@ class ApiTest extends TestCase
             $tagsApi
         );
     }
+
+    /**
+     * Tests if "protocols"-method returns the right configured people API instance.
+     *
+     * @test
+     */
+    public function protocols(): void
+    {
+        $tagsApi = $this
+            ->getServiceFactoryMock()
+            ->api()
+            ->protocols();
+
+        self::assertWebserviceUrl(
+            'https://www.example.org/protocols',
+            $tagsApi
+        );
+    }
+
+    /**
+     * Tests if "customFieldsTypes"-method returns the right configured people API instance.
+     *
+     * @test
+     */
+    public function customFieldsTypes(): void
+    {
+        $tagsApi = $this
+            ->getServiceFactoryMock()
+            ->api()
+            ->customFieldsTypes();
+
+        self::assertWebserviceUrl(
+            'https://www.example.org/custom_fields_types',
+            $tagsApi
+        );
+    }
 }

@@ -47,14 +47,19 @@ class UpdateTest extends TestCase
         self::assertSame(
             [
                 'person' => [
-                    'name'         => 'Musterfrau',
-                    'first_name'   => 'Maxi',
-                    'gender'       => Constants::GENDER_FEMALE,
-                    'title'        => 'Prof. Dr.',
-                    'salutation'   => 'Frau',
-                    'country_code' => 'de',
-                    'background'   => 'background',
-
+                    'name'                     => 'Musterfrau',
+                    'first_name'               => 'Maxi',
+                    'gender'                   => Constants::GENDER_FEMALE,
+                    'title'                    => 'Prof. Dr.',
+                    'salutation'               => 'Frau',
+                    'country_code'             => 'de',
+                    'background'               => 'background',
+                    'positions_attributes'     => null,
+                    'tags_attributes'          => null,
+                    'tels_attributes'          => null,
+                    'emails_attributes'        => null,
+                    'addrs_attributes'         => null,
+                    'custom_fields_attributes' => null,
                 ],
             ],
             $request->jsonSerialize()

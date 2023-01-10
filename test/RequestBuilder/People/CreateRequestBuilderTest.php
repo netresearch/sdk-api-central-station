@@ -62,7 +62,23 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
                 'Herr'
             )
             ->setBackground('background')
-            ->setLanguage('de');
+            ->setLanguage('de')
+            ->addPosition('Company 1', 'CEO')
+            ->addPosition('Company 2', 'HoS', true)
+            ->addTag('TAG-1')
+            ->addTag('TAG-2')
+            ->addTag('TAG-3')
+            ->addTelephone(Constants::CONTACT_DETAILS_TYPE_MOBILE, '000-0000000')
+            ->addEmailAddress(Constants::CONTACT_DETAILS_TYPE_OFFICE, 'marian.miller@example.org')
+            ->addAddress(
+                Constants::ADDRESS_TYPE_WORK_HQ,
+                'Nowhere 1',
+                '12345',
+                'City name',
+                'DE'
+            )
+            ->addCustomField('MY-CUSTOM-FIELD-VALUE-1', 1234567)
+            ->addCustomField('MY-CUSTOM-FIELD-VALUE-2', 1234568);
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);
