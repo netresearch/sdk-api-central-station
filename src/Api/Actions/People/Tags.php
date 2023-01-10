@@ -34,8 +34,6 @@ use Netresearch\Sdk\CentralStation\Request\Tags\Index as IndexRequest;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  * @api
- *
- * @extends AbstractApiEndpoint<Model\Tags, TagsCollection>
  */
 class Tags extends AbstractApiEndpoint
 {

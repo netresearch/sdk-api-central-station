@@ -13,6 +13,7 @@ namespace Netresearch\Sdk\CentralStation\Serializer;
 
 use Closure;
 use DateTime;
+use InvalidArgumentException;
 use JsonException;
 use MagicSunday\JsonMapper;
 use MagicSunday\JsonMapper\Converter\CamelCasePropertyNameConverter;
@@ -32,6 +33,9 @@ use function json_encode;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @template TEntity
+ * @template TEntityCollection
  */
 class JsonSerializer
 {
@@ -96,17 +100,15 @@ class JsonSerializer
     /**
      * Decodes the JSON string into PHP objects.
      *
-     * @template TEntity
-     * @template TEntityCollection
-     *
-     * @param string                                      $jsonResponse
-     * @param null|string|class-string<TEntity>           $className
-     * @param null|string|class-string<TEntityCollection> $collectionClassName
+     * @param string                               $jsonResponse
+     * @param null|class-string<TEntity>           $className
+     * @param null|class-string<TEntityCollection> $collectionClassName
      *
      * @return ($collectionClassName is class-string<TEntityCollection>
-     *             ? TEntityCollection
-     *             : ($className is class-string<TEntity> ? TEntity : null|mixed))
+     *              ? TEntityCollection
+     *              : ($className is class-string<TEntity> ? TEntity : null|mixed))
      *
+     * @throws InvalidArgumentException
      * @throws JsonException
      */
     public function decode(

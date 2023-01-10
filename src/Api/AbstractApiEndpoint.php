@@ -197,10 +197,10 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Returns a list of all entities.
      *
-     * @param null|RequestInterface                  $request             The index request instance
-     * @param string|class-string<TEntity>           $className           The class name of the mapped response
-     * @param string|class-string<TEntityCollection> $collectionClassName The collection class name of the
-     *                                                                    mapped response
+     * @param null|RequestInterface           $request             The index request instance
+     * @param class-string<TEntity>           $className           The class name of the mapped response
+     * @param class-string<TEntityCollection> $collectionClassName The collection class name of the
+     *                                                             mapped response
      *
      * @return TEntityCollection
      *
@@ -230,8 +230,8 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Returns a single entity. The route must contain the ID of the entity to be processed.
      *
-     * @param null|RequestInterface        $request   The show request instance
-     * @param string|class-string<TEntity> $className The class name of the mapped response
+     * @param null|RequestInterface $request   The show request instance
+     * @param class-string<TEntity> $className The class name of the mapped response
      *
      * @return null|TEntity
      *
@@ -258,8 +258,8 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Creates a new entity and returns it.
      *
-     * @param RequestInterface             $request   The create request instance
-     * @param string|class-string<TEntity> $className The class name of the mapped response
+     * @param RequestInterface      $request   The create request instance
+     * @param class-string<TEntity> $className The class name of the mapped response
      *
      * @return null|TEntity
      *
@@ -294,7 +294,9 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     public function update(RequestInterface $request): bool
     {
         $requestClosure = function () use ($request): bool {
-            return $this->httpPut($request)->getStatusCode() === 204;
+            // Each API endpoint returns different HTTP status codes (200, 204, ...),
+            // so we need to check if it's at least one in the 200s range.
+            return $this->httpPut($request)->getStatusCode() < 300;
         };
 
         return (bool) $this->execute($requestClosure);
@@ -312,7 +314,9 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     public function delete(): bool
     {
         $requestClosure = function (): bool {
-            return $this->httpDelete()->getStatusCode() === 204;
+            // Each API endpoint returns different HTTP status codes (200, 204, ...),
+            // so we need to check if it's at least one in the 200s range.
+            return $this->httpDelete()->getStatusCode() < 300;
         };
 
         return (bool) $this->execute($requestClosure);

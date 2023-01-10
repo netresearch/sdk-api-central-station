@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Addresses;
 
+use JsonException;
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Addresses\UpdateRequestBuilder;
@@ -45,6 +46,9 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
      * @test
      *
      * @param string $expectedJson
+     *
+     * @throws RequestValidatorException
+     * @throws JsonException
      */
     public function update(string $expectedJson): void
     {
@@ -67,7 +71,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     /**
      * @test
      */
-    public function throwExceptionOnUnsupportedType()
+    public function throwExceptionOnUnsupportedType(): void
     {
         $this->expectException(RequestValidatorException::class);
         $this->expectExceptionMessage('The provided address type parameter "UPDATED-TYPE" is not allowed');

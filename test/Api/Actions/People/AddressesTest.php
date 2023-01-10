@@ -13,6 +13,9 @@ namespace Netresearch\Sdk\CentralStation\Test\Api\Actions\People;
 
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
 use Netresearch\Sdk\CentralStation\Collection\AddressesCollection;
+use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
+use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
+use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Addresses;
 use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
 use Netresearch\Sdk\CentralStation\Request\People\Addresses\Create;
@@ -38,6 +41,7 @@ class AddressesTest extends TestCase
      * @param int|null $personId
      *
      * @return People
+     * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
@@ -69,6 +73,10 @@ class AddressesTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function index(string $responseJsonFile): void
     {
@@ -84,8 +92,8 @@ class AddressesTest extends TestCase
         foreach ($result as $addresses) {
             self::assertInstanceOf(Addresses\Address::class, $addresses->addr);
         }
-        $this->assertFirstAddress($result[0]->addr);
-        $this->assertSecondAddress($result[1]->addr);
+        $this->assertFirstAddress($result->offsetGet(0)->addr);
+        $this->assertSecondAddress($result->offsetGet(1)->addr);
     }
 
     /**
@@ -95,12 +103,12 @@ class AddressesTest extends TestCase
      *
      * @return void
      */
-    private function assertFirstAddress(Address $address)
+    private function assertFirstAddress(Address $address): void
     {
         self::assertSame(28752100, $address->id);
         self::assertSame(30016185, $address->attachableId);
         self::assertSame('Person', $address->attachableType);
-        self::assertSame('work_hq', $address->atype);
+        self::assertSame('work_hq', $address->type);
         self::assertSame('', $address->street);
         self::assertSame('', $address->zip);
         self::assertSame('Leipzig', $address->city);
@@ -120,12 +128,12 @@ class AddressesTest extends TestCase
      *
      * @return void
      */
-    private function assertSecondAddress(Address $address)
+    private function assertSecondAddress(Address $address): void
     {
         self::assertSame(28762507, $address->id);
         self::assertSame(30016185, $address->attachableId);
         self::assertSame('Person', $address->attachableType);
-        self::assertSame('other', $address->atype);
+        self::assertSame('other', $address->type);
         self::assertSame('Mustergasse 1', $address->street);
         self::assertSame('98765', $address->zip);
         self::assertSame('Musterstadt', $address->city);
@@ -157,6 +165,9 @@ class AddressesTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function show(string $responseJsonFile): void
     {
@@ -178,12 +189,12 @@ class AddressesTest extends TestCase
      *
      * @return void
      */
-    private function assertThirdAddress(Address $address)
+    private function assertThirdAddress(Address $address): void
     {
         self::assertSame(25045244, $address->id);
         self::assertSame(26146820, $address->attachableId);
         self::assertSame('Person', $address->attachableType);
-        self::assertSame('work', $address->atype);
+        self::assertSame('work', $address->type);
         self::assertSame('', $address->street);
         self::assertSame('01187', $address->zip);
         self::assertSame('Dresden', $address->city);
@@ -215,6 +226,9 @@ class AddressesTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function create(string $responseJsonFile): void
     {
@@ -243,12 +257,12 @@ class AddressesTest extends TestCase
      *
      * @return void
      */
-    private function assertCreatedAddress(Address $address)
+    private function assertCreatedAddress(Address $address): void
     {
         self::assertSame(28763152, $address->id);
         self::assertSame(30016185, $address->attachableId);
         self::assertSame('Person', $address->attachableType);
-        self::assertSame('private', $address->atype);
+        self::assertSame('private', $address->type);
         self::assertSame('Mustergasse 1', $address->street);
         self::assertSame('12345', $address->zip);
         self::assertSame('Musterhausen', $address->city);
@@ -269,7 +283,7 @@ class AddressesTest extends TestCase
     public function update(): void
     {
         $peopleApi = $this->getPeopleApi('', 30016185);
-        $result  = $peopleApi->addresses(25045244)->update(new Update());
+        $result    = $peopleApi->addresses(25045244)->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/30016185/addrs/25045244', $peopleApi);
         self::assertHttpMethod('PUT', $peopleApi);
@@ -285,7 +299,7 @@ class AddressesTest extends TestCase
     public function delete(): void
     {
         $peopleApi = $this->getPeopleApi('', 30016185);
-        $result  = $peopleApi->addresses(25045244)->delete();
+        $result    = $peopleApi->addresses(25045244)->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/30016185/addrs/25045244', $peopleApi);
         self::assertHttpMethod('DELETE', $peopleApi);

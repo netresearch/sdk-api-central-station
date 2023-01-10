@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Model\Addresses;
 
 use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
+use MagicSunday\JsonMapper\Annotation\ReplaceProperty;
 use Netresearch\Sdk\CentralStation\Model\AbstractEntity;
 
 /**
@@ -20,6 +21,8 @@ use Netresearch\Sdk\CentralStation\Model\AbstractEntity;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @ReplaceProperty("type", replaces="atype")
  */
 class Address extends AbstractEntity
 {
@@ -99,7 +102,7 @@ class Address extends AbstractEntity
      *
      * @var string
      */
-    public $atype;
+    public $type;
 
     /**
      * States whether the address has been added via the API or some sort of integration.

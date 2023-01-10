@@ -33,8 +33,6 @@ use Netresearch\Sdk\CentralStation\Request\People\Addresses\Create as CreateRequ
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  * @api
- *
- * @extends AbstractApiEndpoint<Model\Addresses, AddressesCollection>
  */
 class Addresses extends AbstractApiEndpoint
 {

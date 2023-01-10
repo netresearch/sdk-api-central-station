@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People\Protocols;
 
+use JsonException;
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\Protocols\UpdateRequestBuilder;
@@ -45,6 +46,9 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
      * @test
      *
      * @param string $expectedJson
+     *
+     * @throws RequestValidatorException
+     * @throws JsonException
      */
     public function update(string $expectedJson): void
     {
@@ -64,7 +68,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     /**
      * @test
      */
-    public function throwExceptionOnUnsupportedFormat()
+    public function throwExceptionOnUnsupportedFormat(): void
     {
         $this->expectException(RequestValidatorException::class);
         $this->expectExceptionMessage('The provided format parameter "UPDATED-FORMAT" is not allowed');
@@ -78,7 +82,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     /**
      * @test
      */
-    public function throwExceptionOnUnsupportedBadge()
+    public function throwExceptionOnUnsupportedBadge(): void
     {
         $this->expectException(RequestValidatorException::class);
         $this->expectExceptionMessage('The provided badge parameter "UPDATED-BADGE" is not allowed');

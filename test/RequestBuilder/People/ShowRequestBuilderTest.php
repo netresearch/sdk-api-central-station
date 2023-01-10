@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
 
 use Netresearch\Sdk\CentralStation\Constants;
+use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\RequestBuilder\People\ShowRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
@@ -28,6 +29,7 @@ class ShowRequestBuilderTest extends RequestBuilderTestCase
      * Tests creating a "show" request URL.
      *
      * @test
+     * @throws RequestValidatorException
      */
     public function show(): void
     {

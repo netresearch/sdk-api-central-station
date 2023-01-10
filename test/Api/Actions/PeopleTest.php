@@ -14,6 +14,9 @@ namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 use Netresearch\Sdk\CentralStation\Collection\AddressCollection;
 use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
 use Netresearch\Sdk\CentralStation\Collection\TagCollection;
+use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
+use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
+use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
 use Netresearch\Sdk\CentralStation\Model\People;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
@@ -46,6 +49,7 @@ class PeopleTest extends TestCase
      * @param int|null $personId
      *
      * @return \Netresearch\Sdk\CentralStation\Api\Actions\People
+     * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
@@ -77,6 +81,10 @@ class PeopleTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function index(string $responseJsonFile): void
     {
@@ -93,8 +101,8 @@ class PeopleTest extends TestCase
             self::assertInstanceOf(People\Person::class, $people->person);
         }
 
-        self::assertFirstPerson($result[0]->person);
-        self::assertSecondPerson($result[1]->person);
+        self::assertFirstPerson($result->offsetGet(0)->person);
+        self::assertSecondPerson($result->offsetGet(1)->person);
     }
 
     /**
@@ -162,6 +170,9 @@ class PeopleTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function show(string $responseJsonFile): void
     {
@@ -221,6 +232,9 @@ class PeopleTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function create(string $responseJsonFile): void
     {
@@ -247,7 +261,7 @@ class PeopleTest extends TestCase
      *
      * @return void
      */
-    private static function assertCreatedPerson(Person $person)
+    private static function assertCreatedPerson(Person $person): void
     {
         self::assertSame(1545412, $person->id);
         self::assertSame(21, $person->accountId);
@@ -298,6 +312,9 @@ class PeopleTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function stats(string $responseJsonFile): void
     {
@@ -350,6 +367,9 @@ class PeopleTest extends TestCase
      * @test
      *
      * @param string $responseJsonFile
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function search(string $responseJsonFile): void
     {
@@ -367,7 +387,7 @@ class PeopleTest extends TestCase
             self::assertInstanceOf(People\Person::class, $people->person);
         }
 
-        self::assertSearchedPerson($result[0]->person);
+        self::assertSearchedPerson($result->offsetGet(0)->person);
     }
 
     /**
@@ -377,7 +397,7 @@ class PeopleTest extends TestCase
      *
      * @return void
      */
-    private static function assertSearchedPerson(Person $person)
+    private static function assertSearchedPerson(Person $person): void
     {
         self::assertSame(235321, $person->id);
         self::assertSame(21, $person->accountId);

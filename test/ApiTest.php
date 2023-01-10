@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Test;
 
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
+use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
 
@@ -86,6 +87,10 @@ class ApiTest extends TestCase
      * @param int    $expectedStatusCode     The expected status code
      * @param string $expectedExceptionClass The expected exception class thrown by this error
      * @param string $expectedErrorMessage   The expected exception message thrown
+     *
+     * @throws AuthenticationException
+     * @throws DetailedServiceException
+     * @throws ServiceException
      */
     public function errorResponse(
         int $expectedStatusCode,

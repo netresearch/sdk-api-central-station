@@ -29,6 +29,7 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
      * Tests creating an "index" request URL.
      *
      * @test
+     * @throws RequestValidatorException
      */
     public function index(): void
     {
@@ -68,7 +69,7 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
     /**
      * @test
      */
-    public function throwExceptionOnUnsupportedInclude()
+    public function throwExceptionOnUnsupportedInclude(): void
     {
         $this->expectException(RequestValidatorException::class);
         $this->expectExceptionMessage('The provided include parameter "INDEX-INCLUDE" is not allowed');
@@ -82,7 +83,7 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
     /**
      * @test
      */
-    public function throwExceptionOnUnsupportedFilter()
+    public function throwExceptionOnUnsupportedFilter(): void
     {
         $this->expectException(RequestValidatorException::class);
         $this->expectExceptionMessage('The provided filter parameter "INDEX-FILTER" is not allowed');
@@ -97,7 +98,7 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
     /**
      * @test
      */
-    public function throwExceptionOnTagIdAndTagName()
+    public function throwExceptionOnTagIdAndTagName(): void
     {
         $this->expectException(RequestValidatorException::class);
         $this->expectExceptionMessage('Please provide either the tag ID or the tag name');

@@ -33,8 +33,6 @@ use Netresearch\Sdk\CentralStation\Request\Protocols\Index as IndexRequest;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  * @api
- *
- * @extends AbstractApiEndpoint<Model\Protocols, ProtocolsCollection>
  */
 class Protocols extends AbstractApiEndpoint
 {
