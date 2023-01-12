@@ -25,7 +25,7 @@ class Addresses extends AbstractCollection
     /**
      * Returns an PHP array representation of this collection.
      *
-     * @return array<int, array<string, null|bool|string>>
+     * @return array<int, array<string, null|bool|int|string>>
      */
     public function jsonSerialize(): array
     {

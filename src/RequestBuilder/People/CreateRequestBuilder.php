@@ -141,7 +141,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     /**
      * Adds a telephone number attribute.
      *
-     * @param string $type        The type of the telephone number (use one of Constants::CONTACT_TYPE_*)
+     * @param string $type        The type of the telephone number (use one of Constants::CONTACT_DETAILS_TYPE)
      * @param string $phoneNumber The telephone number
      *
      * @return CreateRequestBuilder
@@ -163,7 +163,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     /**
      * Adds an email address attribute.
      *
-     * @param string $type         The type of the email address (use one of Constants::CONTACT_TYPE_*)
+     * @param string $type         The type of the email address (use one of Constants::CONTACT_DETAILS_TYPE)
      * @param string $emailAddress The email address
      *
      * @return CreateRequestBuilder
@@ -185,7 +185,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     /**
      * Adds an address attribute.
      *
-     * @param string      $type        The type of address (use one of Constants::ADDRESS_TYPE_*)
+     * @param string      $type        The type of address (use one of Constants::ADDRESS_TYPE)
      * @param string      $street      The street name
      * @param null|string $zip         The zip code
      * @param null|string $city        The city name

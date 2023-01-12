@@ -132,6 +132,7 @@ class CreateTest extends TestCase
                     ],
                     'tels_attributes'          => [
                         [
+                            'id'              => null,
                             'name'            => '12345',
                             'atype'           => 'office',
                             'attachable_id'   => null,
@@ -140,6 +141,7 @@ class CreateTest extends TestCase
                     ],
                     'emails_attributes'        => [
                         [
+                            'id'              => null,
                             'name'            => 'max.mustermann@example.org',
                             'atype'           => 'private',
                             'attachable_id'   => null,
@@ -148,6 +150,7 @@ class CreateTest extends TestCase
                     ],
                     'addrs_attributes'         => [
                         [
+                            'id'           => null,
                             'street'       => 'Street 1',
                             'zip'          => null,
                             'city'         => 'New York',

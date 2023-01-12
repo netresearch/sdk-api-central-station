@@ -12,8 +12,14 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\People;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
+use Netresearch\Sdk\CentralStation\Request\Address;
+use Netresearch\Sdk\CentralStation\Request\Addresses;
+use Netresearch\Sdk\CentralStation\Request\ContactDetail;
+use Netresearch\Sdk\CentralStation\Request\ContactDetails;
 use Netresearch\Sdk\CentralStation\Request\People\Update as UpdateRequest;
 use Netresearch\Sdk\CentralStation\Request\Person;
+use Netresearch\Sdk\CentralStation\Request\Position;
+use Netresearch\Sdk\CentralStation\Request\Positions;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\People\UpdateValidator;
@@ -82,6 +88,129 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
+     * Adds a position attribute.
+     *
+     * @param string $companyName The name of the company
+     * @param string $position    The name of the position at the company
+     * @param bool   $primary     TRUE if the position is the primary one
+     *
+     * @return UpdateRequestBuilder
+     */
+    public function addPosition(
+        string $companyName,
+        string $position,
+        bool $primary = false
+    ): UpdateRequestBuilder {
+        if (!isset($this->data['positions'])) {
+            $this->data['positions'] = [];
+        }
+
+        $this->data['positions'][] = [
+            'companyName' => $companyName,
+            'position'    => $position,
+            'primary'     => $primary,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Adds a telephone number attribute.
+     *
+     * @param null|int    $id          The ID of the record to update
+     * @param null|string $type        The type of the telephone number (use one of Constants::CONTACT_TYPE_*)
+     * @param null|string $phoneNumber The telephone number
+     *
+     * @return UpdateRequestBuilder
+     */
+    public function addTelephone(
+        int $id = null,
+        string $type = null,
+        string $phoneNumber = null
+    ): UpdateRequestBuilder {
+        if (!isset($this->data['phoneNumbers'])) {
+            $this->data['phoneNumbers'] = [];
+        }
+
+        $this->data['phoneNumbers'][] = [
+            'id'          => $id,
+            'type'        => $type,
+            'phoneNumber' => $phoneNumber,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Adds an email address attribute.
+     *
+     * @param null|int    $id           The ID of the record to update
+     * @param null|string $type         The type of the email address (use one of Constants::CONTACT_TYPE_*)
+     * @param null|string $emailAddress The email address
+     *
+     * @return UpdateRequestBuilder
+     */
+    public function addEmailAddress(
+        int $id = null,
+        string $type = null,
+        string $emailAddress = null
+    ): UpdateRequestBuilder {
+        if (!isset($this->data['emailAddresses'])) {
+            $this->data['emailAddresses'] = [];
+        }
+
+        $this->data['emailAddresses'][] = [
+            'id'           => $id,
+            'type'         => $type,
+            'emailAddress' => $emailAddress,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Adds an address attribute.
+     *
+     * @param null|int    $id          The ID of the address to update
+     * @param null|string $type        The type of address (use one of Constants::ADDRESS_TYPE_*)
+     * @param null|string $street      The street name
+     * @param null|string $zip         The zip code
+     * @param null|string $city        The city name
+     * @param null|string $countryCode The two-letter country code
+     * @param null|string $stateCode   The two-letter state code
+     * @param bool        $primary     TRUE if the address is the primary one
+     *
+     * @return UpdateRequestBuilder
+     */
+    public function addAddress(
+        int $id = null,
+        string $type = null,
+        string $street = null,
+        string $zip = null,
+        string $city = null,
+        string $countryCode = null,
+        string $stateCode = null,
+        bool $primary = false
+    ): UpdateRequestBuilder {
+        if (!isset($this->data['addresses'])) {
+            $this->data['addresses'] = [];
+        }
+
+        $this->data['addresses'][] = [
+            'id'          => $id,
+            'type'        => $type,
+            'street'      => $street,
+            'zip'         => $zip,
+            'city'        => $city,
+            'countryCode' => $countryCode,
+            'stateCode'   => $stateCode,
+            'primary'     => $primary,
+        ];
+
+        return $this;
+    }
+
+    /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
      * @return UpdateRequest|RequestInterface
@@ -110,6 +239,75 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
 
             if (isset($this->data['person']['background'])) {
                 $person->setBackground($this->data['person']['background']);
+            }
+
+            // Add positions
+            if (isset($this->data['positions'])) {
+                $positions = [];
+
+                foreach ($this->data['positions'] as $item) {
+                    $position = new Position();
+                    $position->setCompanyName($item['companyName'])
+                        ->setName($item['position'])
+                        ->setPrimaryFunction($item['primary']);
+
+                    $positions[] = $position;
+                }
+
+                $person->setPositions(new Positions($positions));
+            }
+
+            // Add phone numbers
+            if (isset($this->data['phoneNumbers'])) {
+                $phoneNumbers = [];
+
+                foreach ($this->data['phoneNumbers'] as $item) {
+                    $phoneNumber = new ContactDetail();
+                    $phoneNumber->setId($item['id'])
+                        ->setType($item['type'])
+                        ->setName($item['phoneNumber']);
+
+                    $phoneNumbers[] = $phoneNumber;
+                }
+
+                $person->setPhoneNumbers(new ContactDetails($phoneNumbers));
+            }
+
+            // Add email addresses
+            if (isset($this->data['emailAddresses'])) {
+                $emailAddresses = [];
+
+                foreach ($this->data['emailAddresses'] as $item) {
+                    $emailAddress = new ContactDetail();
+                    $emailAddress->setId($item['id'])
+                        ->setType($item['type'])
+                        ->setName($item['emailAddress']);
+
+                    $emailAddresses[] = $emailAddress;
+                }
+
+                $person->setEmailAddresses(new ContactDetails($emailAddresses));
+            }
+
+            // Add addresses
+            if (isset($this->data['addresses'])) {
+                $addresses = [];
+
+                foreach ($this->data['addresses'] as $item) {
+                    $address = new Address();
+                    $address->setId($item['id'])
+                        ->setType($item['type'])
+                        ->setStreet($item['street'])
+                        ->setCity($item['city'])
+                        ->setCountryCode($item['countryCode'])
+                        ->setStateCode($item['stateCode'])
+                        ->setZip($item['zip'])
+                        ->setPrimary($item['primary']);
+
+                    $addresses[] = $address;
+                }
+
+                $person->setAddresses(new Addresses($addresses));
             }
 
             $request->setPerson($person);

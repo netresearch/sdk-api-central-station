@@ -23,6 +23,13 @@ use JsonSerializable;
 class ContactDetail implements JsonSerializable
 {
     /**
+     * The ID of the record.
+     *
+     * @var null|int
+     */
+    private $id;
+
+    /**
      * The ID of the record the contact detail belongs to.
      *
      * @var null|int
@@ -49,6 +56,17 @@ class ContactDetail implements JsonSerializable
      * @var null|string
      */
     private $type;
+
+    /**
+     * @param null|int $id
+     *
+     * @return ContactDetail
+     */
+    public function setId(?int $id): ContactDetail
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * @param null|int $attachableId
@@ -100,6 +118,7 @@ class ContactDetail implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
+            'id'              => $this->id,
             'name'            => $this->name,
             'atype'           => $this->type,
             'attachable_id'   => $this->attachableId,

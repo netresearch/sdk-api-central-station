@@ -11,10 +11,17 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model\People;
 
-use Netresearch\Sdk\CentralStation\Collection\AddressCollection;
-use Netresearch\Sdk\CentralStation\Collection\TagCollection;
+use MagicSunday\JsonMapper\Annotation\ReplaceProperty;
 use Netresearch\Sdk\CentralStation\Model\AbstractEntity;
 use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
+use Netresearch\Sdk\CentralStation\Model\Addresses\AddressCollection;
+use Netresearch\Sdk\CentralStation\Model\Collection;
+use Netresearch\Sdk\CentralStation\Model\Company;
+use Netresearch\Sdk\CentralStation\Model\ContactDetails\ContactDetail;
+use Netresearch\Sdk\CentralStation\Model\ContactDetails\ContactDetailCollection;
+use Netresearch\Sdk\CentralStation\Model\CustomFields\CustomField;
+use Netresearch\Sdk\CentralStation\Model\Position;
+use Netresearch\Sdk\CentralStation\Model\PositionCollection;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
 
 /**
@@ -23,6 +30,10 @@ use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @ReplaceProperty("addresses", replaces="addrs")
+ * @ReplaceProperty("companyAddresses", replaces="addrs_from_company")
+ * @ReplaceProperty("phoneNumbers", replaces="tels")
  */
 class Person extends AbstractEntity
 {
@@ -92,14 +103,63 @@ class Person extends AbstractEntity
     /**
      * A collection of tags assigned to the person.
      *
-     * @var TagCollection<Tag>
+     * @var Collection<Tag>|Tag[]
      */
     public $tags;
+
+    /**
+     * A collection of positions assigned to the person.
+     *
+     * @var PositionCollection<Position>
+     */
+    public $positions;
+
+    /**
+     * A collection of companies assigned to the person.
+     *
+     * @var Collection<Company>
+     */
+    public $companies;
 
     /**
      * A collection of addresses assigned to the person.
      *
      * @var AddressCollection<Address>
      */
-    public $addrs;
+    public $addresses;
+
+    /**
+     * A collection of company addresses assigned to the person.
+     *
+     * @var AddressCollection<Address>
+     */
+    public $companyAddresses;
+
+    /**
+     * A collection of telephone numbers assigned to the person.
+     *
+     * @var ContactDetailCollection<ContactDetail>
+     */
+    public $phoneNumbers;
+
+    /**
+     * A collection of email addresses assigned to the person.
+     *
+     * @var ContactDetailCollection<ContactDetail>
+     */
+    public $emails;
+
+    /**
+     * A collection of homepages assigned to the person.
+     *
+     * @var ContactDetailCollection<ContactDetail>
+     */
+    public $homepages;
+
+    /**
+     * A collection of custom fields assigned to the person.
+     *
+     * @var Collection<CustomField>|CustomField[]
+     */
+    public $customFields;
 }

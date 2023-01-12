@@ -23,6 +23,13 @@ use JsonSerializable;
 class Address implements JsonSerializable
 {
     /**
+     * The ID of the record.
+     *
+     * @var null|int
+     */
+    private $id;
+
+    /**
      * @var null|string
      */
     private $street;
@@ -56,6 +63,17 @@ class Address implements JsonSerializable
      * @var null|string
      */
     private $type;
+
+    /**
+     * @param null|int $id
+     *
+     * @return Address
+     */
+    public function setId(?int $id): Address
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * @param null|string $street
@@ -135,11 +153,12 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @return array<string, null|bool|string>
+     * @return array<string, null|bool|int|string>
      */
     public function jsonSerialize(): array
     {
         return [
+            'id'           => $this->id,
             'street'       => $this->street,
             'zip'          => $this->zip,
             'city'         => $this->city,
