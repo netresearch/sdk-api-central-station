@@ -242,4 +242,32 @@ class Constants
      * Custom fields include types.
      */
     public const CUSTOM_FIELDS_INCLUDE_CUSTOM_FIELDS_TYPE = 'custom_fields_type';
+
+    /**
+     * Contact types.
+     */
+    public const CONTACT_DETAILS_TYPE_OFFICE = 'office';
+    public const CONTACT_DETAILS_TYPE_OFFICE_HQ = 'office_hq';
+    public const CONTACT_DETAILS_TYPE_MOBILE = 'mobile';
+    public const CONTACT_DETAILS_TYPE_FAX = 'fax';
+    public const CONTACT_DETAILS_TYPE_PRIVATE = 'private';
+    public const CONTACT_DETAIL_STYPE_VOIP = 'voip';
+    public const CONTACT_DETAILS_TYPE_SKYPE = 'skype';
+    public const CONTACT_DETAILS_TYPE_OTHER = 'other';
+
+    /**
+     * List of contact detail types.
+     *
+     * @var string[]
+     */
+    public const CONTACT_DETAILS_TYPE = [
+        Constants::CONTACT_DETAILS_TYPE_OFFICE,
+        Constants::CONTACT_DETAILS_TYPE_OFFICE_HQ,
+        Constants::CONTACT_DETAILS_TYPE_MOBILE,
+        Constants::CONTACT_DETAILS_TYPE_FAX,
+        Constants::CONTACT_DETAILS_TYPE_PRIVATE,
+        Constants::CONTACT_DETAIL_STYPE_VOIP,
+        Constants::CONTACT_DETAILS_TYPE_SKYPE,
+        Constants::CONTACT_DETAILS_TYPE_OTHER,
+    ];
 }

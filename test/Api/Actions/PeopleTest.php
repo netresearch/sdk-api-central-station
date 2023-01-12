@@ -11,13 +11,13 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
-use Netresearch\Sdk\CentralStation\Collection\AddressCollection;
 use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
-use Netresearch\Sdk\CentralStation\Collection\TagCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
+use Netresearch\Sdk\CentralStation\Model\Addresses\AddressCollection;
+use Netresearch\Sdk\CentralStation\Model\Collection;
 use Netresearch\Sdk\CentralStation\Model\People;
 use Netresearch\Sdk\CentralStation\Model\People\Person;
 use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
@@ -207,10 +207,10 @@ class PeopleTest extends TestCase
         self::assertNull($person->userId);
         self::assertSame('29.11.2022', $person->createdAt->format('d.m.Y'));
         self::assertSame('14.12.2022 15:53:43', $person->updatedAt->format('d.m.Y H:i:s'));
-        self::assertInstanceOf(TagCollection::class, $person->tags);
+        self::assertInstanceOf(Collection::class, $person->tags);
         self::assertContainsOnlyInstancesOf(Tag::class, $person->tags);
-        self::assertInstanceOf(AddressCollection::class, $person->addrs);
-        self::assertContainsOnlyInstancesOf(Address::class, $person->addrs);
+        self::assertInstanceOf(AddressCollection::class, $person->addresses);
+        self::assertContainsOnlyInstancesOf(Address::class, $person->addresses);
     }
 
     /**

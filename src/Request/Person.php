@@ -58,6 +58,36 @@ class Person implements JsonSerializable
     private $background;
 
     /**
+     * @var null|Positions
+     */
+    private $positions;
+
+    /**
+     * @var null|Tags
+     */
+    private $tags;
+
+    /**
+     * @var null|ContactDetails
+     */
+    private $phoneNumbers;
+
+    /**
+     * @var null|ContactDetails
+     */
+    private $emailAddresses;
+
+    /**
+     * @var null|Addresses
+     */
+    private $addresses;
+
+    /**
+     * @var null|CustomFields
+     */
+    private $customFields;
+
+    /**
      * @param null|string $lastName
      *
      * @return Person
@@ -135,7 +165,73 @@ class Person implements JsonSerializable
     }
 
     /**
-     * @return array<string, null|string>
+     * @param null|Positions $positions
+     *
+     * @return Person
+     */
+    public function setPositions(?Positions $positions): Person
+    {
+        $this->positions = $positions;
+        return $this;
+    }
+
+    /**
+     * @param null|Tags $tags
+     *
+     * @return Person
+     */
+    public function setTags(?Tags $tags): Person
+    {
+        $this->tags = $tags;
+        return $this;
+    }
+
+    /**
+     * @param null|ContactDetails $phoneNumbers
+     *
+     * @return Person
+     */
+    public function setPhoneNumbers(?ContactDetails $phoneNumbers): Person
+    {
+        $this->phoneNumbers = $phoneNumbers;
+        return $this;
+    }
+
+    /**
+     * @param null|ContactDetails $emailAddresses
+     *
+     * @return Person
+     */
+    public function setEmailAddresses(?ContactDetails $emailAddresses): Person
+    {
+        $this->emailAddresses = $emailAddresses;
+        return $this;
+    }
+
+    /**
+     * @param null|Addresses $addresses
+     *
+     * @return Person
+     */
+    public function setAddresses(?Addresses $addresses): Person
+    {
+        $this->addresses = $addresses;
+        return $this;
+    }
+
+    /**
+     * @param null|CustomFields $customFields
+     *
+     * @return Person
+     */
+    public function setCustomFields(?CustomFields $customFields): Person
+    {
+        $this->customFields = $customFields;
+        return $this;
+    }
+
+    /**
+     * @return array<string, null|string|array<int, array<string, null|bool|int|string>>>
      */
     public function jsonSerialize(): array
     {
@@ -147,6 +243,13 @@ class Person implements JsonSerializable
             'salutation'   => $this->salutation,
             'country_code' => $this->countryCode,
             'background'   => $this->background,
+
+            'positions_attributes'     => $this->positions ? $this->positions->jsonSerialize() : null,
+            'tags_attributes'          => $this->tags ? $this->tags->jsonSerialize() : null,
+            'tels_attributes'          => $this->phoneNumbers ? $this->phoneNumbers->jsonSerialize() : null,
+            'emails_attributes'        => $this->emailAddresses ? $this->emailAddresses->jsonSerialize() : null,
+            'addrs_attributes'         => $this->addresses ? $this->addresses->jsonSerialize() : null,
+            'custom_fields_attributes' => $this->customFields ? $this->customFields->jsonSerialize() : null,
         ];
     }
 }

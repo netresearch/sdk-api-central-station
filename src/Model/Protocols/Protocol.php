@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Model\Protocols;
 
 use Netresearch\Sdk\CentralStation\Model\AbstractEntity;
+use Netresearch\Sdk\CentralStation\Model\Collection;
 
 /**
  * A protocol record.
@@ -86,7 +87,7 @@ class Protocol extends AbstractEntity
     public $type;
 
     /**
-     * The badge of the note (either "note", "call", "email", "meeting" or "other", "research" for companies)
+     * The badge of the note (either "note", "call", "email", "meeting" or "other", "research" for companies).
      *
      * @var string
      */

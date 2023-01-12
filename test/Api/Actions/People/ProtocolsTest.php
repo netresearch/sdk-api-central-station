@@ -17,6 +17,7 @@ use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
+use Netresearch\Sdk\CentralStation\Model\Collection;
 use Netresearch\Sdk\CentralStation\Model\Protocols;
 use Netresearch\Sdk\CentralStation\Model\Protocols\Protocol;
 use Netresearch\Sdk\CentralStation\Request\People\Protocols\Create;

@@ -71,7 +71,7 @@ class Tag implements JsonSerializable
     }
 
     /**
-     * @return array<string, null|int|bool|string>
+     * @return array<string, null|int|string>
      */
     public function jsonSerialize(): array
     {

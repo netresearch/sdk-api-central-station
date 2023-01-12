@@ -6,6 +6,63 @@
         "title": "Dr. Dr.",
         "salutation": "Herr",
         "country_code": "de",
-        "background": "background"
+        "background": "background",
+        "positions_attributes": [
+            {
+                "company_name": "Company 1",
+                "name": "CEO",
+                "primary_function": false,
+                "former": false
+            },
+            {
+                "company_name": "Company 2",
+                "name": "HoS",
+                "primary_function": true,
+                "former": false
+            }
+        ],
+        "tags_attributes": [
+            {
+                "name": "TAG-1"
+            },
+            {
+                "name": "TAG-2"
+            },
+            {
+                "name": "TAG-3"
+            }
+        ],
+        "tels_attributes": [
+            {
+                "name": "000-0000000",
+                "atype": "mobile"
+            }
+        ],
+        "emails_attributes": [
+            {
+                "name": "marian.miller@example.org",
+                "atype": "office"
+            }
+        ],
+        "addrs_attributes": [
+            {
+                "street": "Nowhere 1",
+                "zip": "12345",
+                "city": "City name",
+                "country_code": "DE",
+                "atype": "work_hq",
+                "primary": false
+            }
+        ],
+        "custom_fields_attributes": [
+            {
+                "name": "MY-CUSTOM-FIELD-VALUE-1",
+                "custom_fields_type_id": 1234567
+            },
+            {
+                "name": "MY-CUSTOM-FIELD-VALUE-2",
+                "custom_fields_type_id": 1234568
+            }
+        ]
     }
 }

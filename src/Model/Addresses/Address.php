@@ -101,6 +101,7 @@ class Address extends AbstractEntity
      * Type of address: work_hq, work, invoice, delivery, private or other.
      *
      * @var string
+     * @see Constants::ADDRESS_TYPE
      */
     public $type;
 
