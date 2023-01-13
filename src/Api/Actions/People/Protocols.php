@@ -12,11 +12,11 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Api\Actions\People;
 
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
-use Netresearch\Sdk\CentralStation\Collection\ProtocolsCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\ProtocolContainerCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\ProtocolContainer;
 use Netresearch\Sdk\CentralStation\Request\People\Protocols\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Index as IndexRequest;
 
@@ -50,18 +50,18 @@ class Protocols extends AbstractApiEndpoint
      *
      * @param IndexRequest $request The index request instance
      *
-     * @return ProtocolsCollection
+     * @return ProtocolContainerCollection
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function index(IndexRequest $request): ProtocolsCollection
+    public function index(IndexRequest $request): ProtocolContainerCollection
     {
         return $this->findAllEntities(
             $request,
-            Model\Protocols::class,
-            ProtocolsCollection::class
+            ProtocolContainer::class,
+            ProtocolContainerCollection::class
         );
     }
 
@@ -70,17 +70,17 @@ class Protocols extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/people/<PERSON-ID>/protocols/<PROTOCOL-ID>
      *
-     * @return null|Model\Protocols
+     * @return null|ProtocolContainer
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function show(): ?Model\Protocols
+    public function show(): ?ProtocolContainer
     {
         return $this->findEntity(
             null,
-            Model\Protocols::class
+            ProtocolContainer::class
         );
     }
 
@@ -91,17 +91,17 @@ class Protocols extends AbstractApiEndpoint
      *
      * @param CreateRequest $request The create request instance
      *
-     * @return null|Model\Protocols
+     * @return null|ProtocolContainer
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function create(CreateRequest $request): ?Model\Protocols
+    public function create(CreateRequest $request): ?ProtocolContainer
     {
         return $this->createNewEntity(
             $request,
-            Model\Protocols::class
+            ProtocolContainer::class
         );
     }
 }

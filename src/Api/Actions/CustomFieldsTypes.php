@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Api\Actions;
 
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
-use Netresearch\Sdk\CentralStation\Collection\CustomFieldsTypesCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model;
-use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes\CustomFieldsType;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\CustomFieldsTypeContainerCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\CustomFieldsTypeContainer;
+use Netresearch\Sdk\CentralStation\Model\CustomFieldsType;
 use Netresearch\Sdk\CentralStation\Request\CustomFieldsTypes\Create as CreateRequest;
 
 /**
@@ -48,18 +48,18 @@ class CustomFieldsTypes extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/custom_fields_types
      *
-     * @return CustomFieldsTypesCollection
+     * @return CustomFieldsTypeContainerCollection
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function index(): CustomFieldsTypesCollection
+    public function index(): CustomFieldsTypeContainerCollection
     {
         return $this->findAllEntities(
             null,
-            Model\CustomFieldsTypes::class,
-            CustomFieldsTypesCollection::class
+            CustomFieldsTypeContainer::class,
+            CustomFieldsTypeContainerCollection::class
         );
     }
 
@@ -78,7 +78,7 @@ class CustomFieldsTypes extends AbstractApiEndpoint
     {
         $result = $this->findEntity(
             null,
-            Model\CustomFieldsTypes::class
+            CustomFieldsTypeContainer::class
         );
 
         return $result ? ($result->customFieldsType ?? null) : null;
@@ -101,7 +101,7 @@ class CustomFieldsTypes extends AbstractApiEndpoint
     {
         $result = $this->createNewEntity(
             $request,
-            Model\CustomFieldsTypes::class
+            CustomFieldsTypeContainer::class
         );
 
         return $result ? ($result->customFieldsType ?? null) : null;

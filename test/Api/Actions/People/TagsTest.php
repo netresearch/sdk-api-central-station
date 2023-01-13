@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions\People;
 
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
-use Netresearch\Sdk\CentralStation\Collection\TagsCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model\Tags;
-use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\TagContainerCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\TagContainer;
+use Netresearch\Sdk\CentralStation\Model\Tag;
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Update;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index;
@@ -87,12 +87,12 @@ class TagsTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
         self::assertHttpHeaders($peopleApi);
-        self::assertInstanceOf(TagsCollection::class, $result);
-        self::assertContainsOnlyInstancesOf(Tags::class, $result);
+        self::assertInstanceOf(TagContainerCollection::class, $result);
+        self::assertContainsOnlyInstancesOf(TagContainer::class, $result);
 
         foreach ($result as $tags) {
-            self::assertInstanceOf(Tags::class, $tags);
-            self::assertInstanceOf(Tags\Tag::class, $tags->tag);
+            self::assertInstanceOf(TagContainer::class, $tags);
+            self::assertInstanceOf(Tag::class, $tags->tag);
         }
 
         $this->assertFirstTag($result->offsetGet(0)->tag);
@@ -166,7 +166,7 @@ class TagsTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
         self::assertHttpHeaders($peopleApi);
-        self::assertInstanceOf(Tags\Tag::class, $result);
+        self::assertInstanceOf(Tag::class, $result);
 
         $this->assertFirstTag($result);
     }
@@ -209,7 +209,7 @@ class TagsTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags', $peopleApi);
         self::assertHttpMethod('POST', $peopleApi);
         self::assertHttpHeaders($peopleApi);
-        self::assertInstanceOf(Tags\Tag::class, $result);
+        self::assertInstanceOf(Tag::class, $result);
 
         $this->assertCreatedTag($result);
     }

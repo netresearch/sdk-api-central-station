@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Api\Actions\People;
 
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
-use Netresearch\Sdk\CentralStation\Collection\AddressesCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model;
-use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
+use Netresearch\Sdk\CentralStation\Model\Address;
+use Netresearch\Sdk\CentralStation\Model\Container\AddressContainer;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\AddressContainerCollection;
 use Netresearch\Sdk\CentralStation\Request\People\Addresses\Create as CreateRequest;
 
 /**
@@ -48,18 +48,18 @@ class Addresses extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/people/<PERSON-ID>/addrs
      *
-     * @return AddressesCollection
+     * @return AddressContainerCollection
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function index(): AddressesCollection
+    public function index(): AddressContainerCollection
     {
         return $this->findAllEntities(
             null,
-            Model\Addresses::class,
-            AddressesCollection::class
+            AddressContainer::class,
+            AddressContainerCollection::class
         );
     }
 
@@ -78,7 +78,7 @@ class Addresses extends AbstractApiEndpoint
     {
         $result = $this->findEntity(
             null,
-            Model\Addresses::class
+            AddressContainer::class
         );
 
         return $result ? ($result->addr ?? null) : null;
@@ -101,7 +101,7 @@ class Addresses extends AbstractApiEndpoint
     {
         $result = $this->createNewEntity(
             $request,
-            Model\Addresses::class
+            AddressContainer::class
         );
 
         return $result ? ($result->addr ?? null) : null;

@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Api\Actions\People;
 
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
-use Netresearch\Sdk\CentralStation\Collection\TagsCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model;
-use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\TagContainerCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\TagContainer;
+use Netresearch\Sdk\CentralStation\Model\Tag;
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index as IndexRequest;
 
@@ -51,18 +51,18 @@ class Tags extends AbstractApiEndpoint
      *
      * @param IndexRequest $request The index request instance
      *
-     * @return TagsCollection
+     * @return TagContainerCollection
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function index(IndexRequest $request): TagsCollection
+    public function index(IndexRequest $request): TagContainerCollection
     {
         return $this->findAllEntities(
             $request,
-            Model\Tags::class,
-            TagsCollection::class
+            TagContainer::class,
+            TagContainerCollection::class
         );
     }
 
@@ -81,7 +81,7 @@ class Tags extends AbstractApiEndpoint
     {
         $result = $this->findEntity(
             null,
-            Model\Tags::class
+            TagContainer::class
         );
 
         return $result ? ($result->tag ?? null) : null;
@@ -104,7 +104,7 @@ class Tags extends AbstractApiEndpoint
     {
         $result = $this->createNewEntity(
             $request,
-            Model\Tags::class
+            TagContainer::class
         );
 
         return $result ? ($result->tag ?? null) : null;

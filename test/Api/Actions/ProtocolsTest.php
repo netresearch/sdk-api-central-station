@@ -11,13 +11,14 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
-use Netresearch\Sdk\CentralStation\Collection\ProtocolsCollection;
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model\Protocols;
-use Netresearch\Sdk\CentralStation\Model\Protocols\Protocol;
+use Netresearch\Sdk\CentralStation\Model\Comment;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\ProtocolContainerCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\ProtocolContainer;
+use Netresearch\Sdk\CentralStation\Model\Protocol;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Index;
 use Netresearch\Sdk\CentralStation\Test\Provider\ProtocolsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
@@ -85,12 +86,12 @@ class ProtocolsTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/protocols', $protocolsApi);
         self::assertHttpMethod('GET', $protocolsApi);
         self::assertHttpHeaders($protocolsApi);
-        self::assertInstanceOf(ProtocolsCollection::class, $result);
-        self::assertContainsOnlyInstancesOf(Protocols::class, $result);
+        self::assertInstanceOf(ProtocolContainerCollection::class, $result);
+        self::assertContainsOnlyInstancesOf(ProtocolContainer::class, $result);
 
         foreach ($result as $protocols) {
-            self::assertInstanceOf(Protocols::class, $protocols);
-            self::assertInstanceOf(Protocols\Protocol::class, $protocols->protocolObjectNote);
+            self::assertInstanceOf(ProtocolContainer::class, $protocols);
+            self::assertInstanceOf(Protocol::class, $protocols->protocolObjectNote);
         }
 
         $this->assertFirstProtocol($result->offsetGet(0)->protocolObjectNote);
@@ -111,7 +112,7 @@ class ProtocolsTest extends TestCase
         self::assertSame(0, $protocol->attachmentsCount);
         self::assertSame(0, $protocol->commentsCount);
         self::assertIsArray($protocol->comments);
-        self::assertContainsOnlyInstancesOf(Protocols\Comment::class, $protocol->comments);
+        self::assertContainsOnlyInstancesOf(Comment::class, $protocol->comments);
         self::assertSame([26125010], $protocol->personIds);
         self::assertSame([1799973197], $protocol->companyIds);
         self::assertFalse($protocol->confidential);
@@ -139,7 +140,7 @@ class ProtocolsTest extends TestCase
         self::assertSame(0, $protocol->attachmentsCount);
         self::assertSame(0, $protocol->commentsCount);
         self::assertIsArray($protocol->comments);
-        self::assertContainsOnlyInstancesOf(Protocols\Comment::class, $protocol->comments);
+        self::assertContainsOnlyInstancesOf(Comment::class, $protocol->comments);
         self::assertSame([26125043], $protocol->personIds);
         self::assertSame([1799973221], $protocol->companyIds);
         self::assertFalse($protocol->confidential);
@@ -184,7 +185,7 @@ class ProtocolsTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/protocols/123456', $protocolsApi);
         self::assertHttpMethod('GET', $protocolsApi);
         self::assertHttpHeaders($protocolsApi);
-        self::assertInstanceOf(Protocols\Protocol::class, $result->protocolObjectNote);
+        self::assertInstanceOf(Protocol::class, $result->protocolObjectNote);
 
         $this->assertThirdProtocol($result->protocolObjectNote);
     }
@@ -203,7 +204,7 @@ class ProtocolsTest extends TestCase
         self::assertSame(1, $protocol->attachmentsCount);
         self::assertSame(0, $protocol->commentsCount);
         self::assertIsArray($protocol->comments);
-        self::assertContainsOnlyInstancesOf(Protocols\Comment::class, $protocol->comments);
+        self::assertContainsOnlyInstancesOf(Comment::class, $protocol->comments);
         self::assertSame([30016185], $protocol->personIds);
         self::assertSame([], $protocol->companyIds);
         self::assertFalse($protocol->confidential);

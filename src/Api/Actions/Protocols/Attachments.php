@@ -12,11 +12,11 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Api\Actions\Protocols;
 
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
-use Netresearch\Sdk\CentralStation\Collection\AttachmentsCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model;
+use Netresearch\Sdk\CentralStation\Model\Container\AttachmentContainer;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\AttachmentContainerCollection;
 use Netresearch\Sdk\CentralStation\Request\Attachments\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Attachments\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
@@ -50,18 +50,18 @@ class Attachments extends AbstractApiEndpoint
      *
      * @param IndexRequest $request The index request instance
      *
-     * @return AttachmentsCollection
+     * @return AttachmentContainerCollection
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function index(IndexRequest $request): AttachmentsCollection
+    public function index(IndexRequest $request): AttachmentContainerCollection
     {
         return $this->findAllEntities(
             $request,
-            Model\Attachments::class,
-            AttachmentsCollection::class
+            AttachmentContainer::class,
+            AttachmentContainerCollection::class
         );
     }
 
@@ -71,17 +71,17 @@ class Attachments extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/protocols/<PROTOCOL-ID>/attachments/<ATTACHMENT-ID>
      *
-     * @return null|Model\Attachments
+     * @return null|AttachmentContainer
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function show(): ?Model\Attachments
+    public function show(): ?AttachmentContainer
     {
         return $this->findEntity(
             null,
-            Model\Attachments::class
+            AttachmentContainer::class
         );
     }
 
@@ -92,17 +92,17 @@ class Attachments extends AbstractApiEndpoint
      *
      * @param CreateRequest $request The create request instance
      *
-     * @return null|Model\Attachments
+     * @return null|AttachmentContainer
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function create(CreateRequest $request): ?Model\Attachments
+    public function create(CreateRequest $request): ?AttachmentContainer
     {
         return $this->createNewEntity(
             $request,
-            Model\Attachments::class
+            AttachmentContainer::class
         );
     }
 

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation;
 
+use Netresearch\Sdk\CentralStation\Api\Actions\CalendarEvents;
 use Netresearch\Sdk\CentralStation\Api\Actions\CustomFieldsTypes;
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
 use Netresearch\Sdk\CentralStation\Api\Actions\Protocols;
@@ -56,6 +57,13 @@ class Api
      * @var null|CustomFieldsTypes
      */
     private $customFieldsTypesApi;
+
+    /**
+     * Instance of the "cal_events" API for implementing lazy loading.
+     *
+     * @var null|CalendarEvents
+     */
+    private $calendarEventsApi;
 
     /**
      * @var ClientInterface
@@ -231,5 +239,37 @@ class Api
         }
 
         return $this->customFieldsTypesApi;
+    }
+
+    /**
+     * Returns the "customFieldsTypes" API by lazy loading.
+     *
+     * @param null|int $calendarEventsId A valid custom fields type ID
+     *
+     * @return CalendarEvents
+     */
+    public function calendarEvents(int $calendarEventsId = null): CalendarEvents
+    {
+        $this->urlBuilder
+            ->reset()
+            ->addPath('/' . CalendarEvents::PATH);
+
+        // Add calendar event type ID if available
+        if ($calendarEventsId) {
+            $this->urlBuilder
+                ->addPath('/' . $calendarEventsId);
+        }
+
+        if (!$this->calendarEventsApi) {
+            $this->calendarEventsApi = new CalendarEvents(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->calendarEventsApi;
     }
 }

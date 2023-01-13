@@ -12,12 +12,13 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Api\Actions;
 
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
-use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model;
-use Netresearch\Sdk\CentralStation\Model\People\Person;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\PersonContainerCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\PersonContainer;
+use Netresearch\Sdk\CentralStation\Model\Person;
+use Netresearch\Sdk\CentralStation\Model\Stats;
 use Netresearch\Sdk\CentralStation\Request\People\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\Request\People\Merge as MergeRequest;
@@ -214,18 +215,18 @@ class People extends AbstractApiEndpoint
      *
      * @param IndexRequest $request The index request instance
      *
-     * @return PeopleCollection
+     * @return PersonContainerCollection
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function index(IndexRequest $request): PeopleCollection
+    public function index(IndexRequest $request): PersonContainerCollection
     {
         return $this->findAllEntities(
             $request,
-            Model\People::class,
-            PeopleCollection::class
+            PersonContainer::class,
+            PersonContainerCollection::class
         );
     }
 
@@ -246,7 +247,7 @@ class People extends AbstractApiEndpoint
     {
         $result = $this->findEntity(
             $request,
-            Model\People::class
+            PersonContainer::class
         );
 
         return $result ? ($result->person ?? null) : null;
@@ -271,7 +272,7 @@ class People extends AbstractApiEndpoint
     {
         $result = $this->createNewEntity(
             $request,
-            Model\People::class
+            PersonContainer::class
         );
 
         return $result ? ($result->person ?? null) : null;
@@ -286,21 +287,21 @@ class People extends AbstractApiEndpoint
      *
      * @param SearchRequest $request The search request instance
      *
-     * @return PeopleCollection
+     * @return PersonContainerCollection
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function search(SearchRequest $request): PeopleCollection
+    public function search(SearchRequest $request): PersonContainerCollection
     {
         $this->urlBuilder
             ->addPath('/search');
 
         return $this->findAllEntities(
             $request,
-            Model\People::class,
-            PeopleCollection::class
+            PersonContainer::class,
+            PersonContainerCollection::class
         );
     }
 
@@ -325,7 +326,7 @@ class People extends AbstractApiEndpoint
 
         $result = $this->findEntity(
             $request,
-            Model\Stats::class
+            Stats::class
         );
 
         return $result->totalEntries ?? 0;

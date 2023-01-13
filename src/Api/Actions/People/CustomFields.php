@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Api\Actions\People;
 
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
-use Netresearch\Sdk\CentralStation\Collection\CustomFieldsCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model;
-use Netresearch\Sdk\CentralStation\Model\CustomFields\CustomField;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\CustomFieldContainerCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\CustomFieldContainer;
+use Netresearch\Sdk\CentralStation\Model\CustomField;
 use Netresearch\Sdk\CentralStation\Request\People\CustomFields\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\People\CustomFields\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\Request\People\CustomFields\Show as ShowRequest;
@@ -52,18 +52,18 @@ class CustomFields extends AbstractApiEndpoint
      *
      * @param IndexRequest $request The index request instance
      *
-     * @return CustomFieldsCollection
+     * @return CustomFieldContainerCollection
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function index(IndexRequest $request): CustomFieldsCollection
+    public function index(IndexRequest $request): CustomFieldContainerCollection
     {
         return $this->findAllEntities(
             $request,
-            Model\CustomFields::class,
-            CustomFieldsCollection::class
+            CustomFieldContainer::class,
+            CustomFieldContainerCollection::class
         );
     }
 
@@ -84,7 +84,7 @@ class CustomFields extends AbstractApiEndpoint
     {
         $result = $this->findEntity(
             $request,
-            Model\CustomFields::class
+            CustomFieldContainer::class
         );
 
         return $result ? ($result->customField ?? null) : null;
@@ -107,7 +107,7 @@ class CustomFields extends AbstractApiEndpoint
     {
         $result = $this->createNewEntity(
             $request,
-            Model\CustomFields::class
+            CustomFieldContainer::class
         );
 
         return $result ? ($result->customField ?? null) : null;

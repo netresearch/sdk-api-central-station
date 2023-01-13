@@ -14,8 +14,8 @@ namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes;
-use Netresearch\Sdk\CentralStation\Model\CustomFieldsTypes\CustomFieldsType;
+use Netresearch\Sdk\CentralStation\Model\Container\CustomFieldsTypeContainer;
+use Netresearch\Sdk\CentralStation\Model\CustomFieldsType;
 use Netresearch\Sdk\CentralStation\Test\Provider\CustomFieldsTypesProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
@@ -82,11 +82,11 @@ class CustomFieldsTypesTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/custom_fields_types', $customFieldsTypesApi);
         self::assertHttpMethod('GET', $customFieldsTypesApi);
         self::assertHttpHeaders($customFieldsTypesApi);
-        self::assertContainsOnlyInstancesOf(CustomFieldsTypes::class, $result);
+        self::assertContainsOnlyInstancesOf(CustomFieldsTypeContainer::class, $result);
 
         foreach ($result as $customFieldsTypes) {
-            self::assertInstanceOf(CustomFieldsTypes::class, $customFieldsTypes);
-            self::assertInstanceOf(CustomFieldsTypes\CustomFieldsType::class, $customFieldsTypes->customFieldsType);
+            self::assertInstanceOf(CustomFieldsTypeContainer::class, $customFieldsTypes);
+            self::assertInstanceOf(CustomFieldsType::class, $customFieldsTypes->customFieldsType);
         }
 
         self::assertFirstCustomFieldsType($result->offsetGet(0)->customFieldsType);
@@ -168,7 +168,7 @@ class CustomFieldsTypesTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/custom_fields_types/1000', $customFieldsTypesApi);
         self::assertHttpMethod('GET', $customFieldsTypesApi);
         self::assertHttpHeaders($customFieldsTypesApi);
-        self::assertInstanceOf(CustomFieldsTypes\CustomFieldsType::class, $result);
+        self::assertInstanceOf(CustomFieldsType::class, $result);
 
         self::assertFirstCustomFieldsType($result);
     }

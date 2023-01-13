@@ -11,16 +11,16 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
-use Netresearch\Sdk\CentralStation\Collection\PeopleCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
-use Netresearch\Sdk\CentralStation\Model\Addresses\AddressCollection;
-use Netresearch\Sdk\CentralStation\Model\Collection;
-use Netresearch\Sdk\CentralStation\Model\People;
-use Netresearch\Sdk\CentralStation\Model\People\Person;
-use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
+use Netresearch\Sdk\CentralStation\Model\Address;
+use Netresearch\Sdk\CentralStation\Model\Collection\AddressCollection;
+use Netresearch\Sdk\CentralStation\Model\Collection\TagCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\PersonContainerCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\PersonContainer;
+use Netresearch\Sdk\CentralStation\Model\Person;
+use Netresearch\Sdk\CentralStation\Model\Tag;
 use Netresearch\Sdk\CentralStation\Request\People\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
 use Netresearch\Sdk\CentralStation\Request\People\Merge;
@@ -93,12 +93,12 @@ class PeopleTest extends TestCase
 
         self::assertWebserviceUrl('https://www.example.org/people', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
-        self::assertInstanceOf(PeopleCollection::class, $result);
-        self::assertContainsOnlyInstancesOf(People::class, $result);
+        self::assertInstanceOf(PersonContainerCollection::class, $result);
+        self::assertContainsOnlyInstancesOf(PersonContainer::class, $result);
 
         foreach ($result as $people) {
-            self::assertInstanceOf(People::class, $people);
-            self::assertInstanceOf(People\Person::class, $people->person);
+            self::assertInstanceOf(PersonContainer::class, $people);
+            self::assertInstanceOf(Person::class, $people->person);
         }
 
         self::assertFirstPerson($result->offsetGet(0)->person);
@@ -181,7 +181,7 @@ class PeopleTest extends TestCase
 
         self::assertWebserviceUrl('https://www.example.org/people/123456', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
-        self::assertInstanceOf(People\Person::class, $result);
+        self::assertInstanceOf(Person::class, $result);
 
         self::assertThirdPerson($result);
     }
@@ -207,7 +207,7 @@ class PeopleTest extends TestCase
         self::assertNull($person->userId);
         self::assertSame('29.11.2022', $person->createdAt->format('d.m.Y'));
         self::assertSame('14.12.2022 15:53:43', $person->updatedAt->format('d.m.Y H:i:s'));
-        self::assertInstanceOf(Collection::class, $person->tags);
+        self::assertInstanceOf(TagCollection::class, $person->tags);
         self::assertContainsOnlyInstancesOf(Tag::class, $person->tags);
         self::assertInstanceOf(AddressCollection::class, $person->addresses);
         self::assertContainsOnlyInstancesOf(Address::class, $person->addresses);
@@ -250,7 +250,7 @@ class PeopleTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/people', $peopleApi);
         self::assertHttpMethod('POST', $peopleApi);
         self::assertHttpHeaders($peopleApi);
-        self::assertInstanceOf(People\Person::class, $result);
+        self::assertInstanceOf(Person::class, $result);
         self::assertCreatedPerson($result);
     }
 
@@ -379,12 +379,12 @@ class PeopleTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/people/search', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
         self::assertHttpHeaders($peopleApi);
-        self::assertInstanceOf(PeopleCollection::class, $result);
-        self::assertContainsOnlyInstancesOf(People::class, $result);
+        self::assertInstanceOf(PersonContainerCollection::class, $result);
+        self::assertContainsOnlyInstancesOf(PersonContainer::class, $result);
 
         foreach ($result as $people) {
-            self::assertInstanceOf(People::class, $people);
-            self::assertInstanceOf(People\Person::class, $people->person);
+            self::assertInstanceOf(PersonContainer::class, $people);
+            self::assertInstanceOf(Person::class, $people->person);
         }
 
         self::assertSearchedPerson($result->offsetGet(0)->person);

@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request;
 
-use Netresearch\Sdk\CentralStation\Collection\AbstractCollection;
+use Netresearch\Sdk\CentralStation\Model\Collection\AbstractCollection;
 
 /**
  * A list of tags.

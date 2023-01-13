@@ -12,13 +12,13 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Model;
 
 /**
- * A position record.
+ * A tag record.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class Position extends AbstractEntity
+class Tag extends AbstractEntity
 {
     /**
      * ID of account.
@@ -28,46 +28,25 @@ class Position extends AbstractEntity
     public $accountId;
 
     /**
-     * ID of the linked person.
+     * The ID of the record the tag belongs to, e.g. person, company, offer or project.
      *
      * @var int
      */
-    public $personId;
+    public $attachableId;
 
     /**
-     * ID of the linked company.
+     * The record type the tag belongs to. Must be either "Person", "Company", "Deal" or "Project".
      *
-     * @var int
+     * @var string
      */
-    public $companyId;
+    public $attachableType;
 
     /**
-     * Title of the item, e.g. Managing director, HR manager, etc.
+     * The name of the tag.
      *
      * @var string
      */
     public $name;
-
-    /**
-     * Department in which the person works.
-     *
-     * @var string
-     */
-    public $department;
-
-    /**
-     * Only one position may be set to primary. This will mark the primary position the person holds.
-     *
-     * @var bool
-     */
-    public $primaryFunction;
-
-    /**
-     * Positions that are no longer active may be marked as former.
-     *
-     * @var bool
-     */
-    public $former;
 
     /**
      * States whether the tag has been added via the API or some sort of integration.

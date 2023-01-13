@@ -15,9 +15,9 @@ use Netresearch\Sdk\CentralStation\Api\Actions\People;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model\CustomFields;
-use Netresearch\Sdk\CentralStation\Model\CustomFields\CustomField;
-use Netresearch\Sdk\CentralStation\Model\CustomFields\CustomFieldsType;
+use Netresearch\Sdk\CentralStation\Model\Container\CustomFieldContainer;
+use Netresearch\Sdk\CentralStation\Model\CustomField;
+use Netresearch\Sdk\CentralStation\Model\CustomFieldsType;
 use Netresearch\Sdk\CentralStation\Request\People\CustomFields\Create;
 use Netresearch\Sdk\CentralStation\Request\People\CustomFields\Index;
 use Netresearch\Sdk\CentralStation\Request\People\CustomFields\Show;
@@ -89,10 +89,10 @@ class CustomFieldsTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/people/12345678/custom_fields', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
         self::assertHttpHeaders($peopleApi);
-        self::assertContainsOnlyInstancesOf(CustomFields::class, $result);
+        self::assertContainsOnlyInstancesOf(CustomFieldContainer::class, $result);
 
         foreach ($result as $customFields) {
-            self::assertInstanceOf(CustomFields\CustomField::class, $customFields->customField);
+            self::assertInstanceOf(CustomField::class, $customFields->customField);
         }
 
         self::assertFirstCustomField($result->offsetGet(0)->customField);
@@ -223,7 +223,7 @@ class CustomFieldsTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/people/12345678/custom_fields', $peopleApi);
         self::assertHttpMethod('POST', $peopleApi);
         self::assertHttpHeaders($peopleApi);
-        self::assertInstanceOf(CustomFields\CustomField::class, $customField);
+        self::assertInstanceOf(CustomField::class, $customField);
 
         self::assertCreatedCustomField($customField);
     }

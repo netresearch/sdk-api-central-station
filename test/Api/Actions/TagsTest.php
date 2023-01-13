@@ -11,12 +11,12 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
-use Netresearch\Sdk\CentralStation\Collection\TagsCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model\Tags;
-use Netresearch\Sdk\CentralStation\Model\Tags\Tag;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\TagContainerCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\TagContainer;
+use Netresearch\Sdk\CentralStation\Model\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index;
 use Netresearch\Sdk\CentralStation\Test\Provider\TagsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
@@ -84,12 +84,12 @@ class TagsTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/tags', $tagsApi);
         self::assertHttpMethod('GET', $tagsApi);
         self::assertHttpHeaders($tagsApi);
-        self::assertInstanceOf(TagsCollection::class, $result);
-        self::assertContainsOnlyInstancesOf(Tags::class, $result);
+        self::assertInstanceOf(TagContainerCollection::class, $result);
+        self::assertContainsOnlyInstancesOf(TagContainer::class, $result);
 
         foreach ($result as $tags) {
-            self::assertInstanceOf(Tags::class, $tags);
-            self::assertInstanceOf(Tags\Tag::class, $tags->tag);
+            self::assertInstanceOf(TagContainer::class, $tags);
+            self::assertInstanceOf(Tag::class, $tags->tag);
         }
 
         $this->assertFirstTag($result->offsetGet(0)->tag);
@@ -163,7 +163,7 @@ class TagsTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/tags/123456', $tagsApi);
         self::assertHttpMethod('GET', $tagsApi);
         self::assertHttpHeaders($tagsApi);
-        self::assertInstanceOf(Tags\Tag::class, $result);
+        self::assertInstanceOf(Tag::class, $result);
 
         $this->assertFirstTag($result);
     }

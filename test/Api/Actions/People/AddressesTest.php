@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions\People;
 
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
-use Netresearch\Sdk\CentralStation\Collection\AddressesCollection;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
-use Netresearch\Sdk\CentralStation\Model\Addresses;
-use Netresearch\Sdk\CentralStation\Model\Addresses\Address;
+use Netresearch\Sdk\CentralStation\Model\Address;
+use Netresearch\Sdk\CentralStation\Model\Container\AddressContainer;
+use Netresearch\Sdk\CentralStation\Model\Container\Collection\AddressContainerCollection;
 use Netresearch\Sdk\CentralStation\Request\People\Addresses\Create;
 use Netresearch\Sdk\CentralStation\Request\People\Addresses\Update;
 use Netresearch\Sdk\CentralStation\Test\Provider\People\AddressesProvider;
@@ -86,11 +86,11 @@ class AddressesTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/people/30016185/addrs', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
         self::assertHttpHeaders($peopleApi);
-        self::assertInstanceOf(AddressesCollection::class, $result);
-        self::assertContainsOnlyInstancesOf(Addresses::class, $result);
+        self::assertInstanceOf(AddressContainerCollection::class, $result);
+        self::assertContainsOnlyInstancesOf(AddressContainer::class, $result);
 
         foreach ($result as $addresses) {
-            self::assertInstanceOf(Addresses\Address::class, $addresses->addr);
+            self::assertInstanceOf(Address::class, $addresses->addr);
         }
         $this->assertFirstAddress($result->offsetGet(0)->addr);
         $this->assertSecondAddress($result->offsetGet(1)->addr);
@@ -245,7 +245,7 @@ class AddressesTest extends TestCase
         self::assertWebserviceUrl('https://www.example.org/people/30016185/addrs', $peopleApi);
         self::assertHttpMethod('POST', $peopleApi);
         self::assertHttpHeaders($peopleApi);
-        self::assertInstanceOf(Addresses\Address::class, $address);
+        self::assertInstanceOf(Address::class, $address);
 
         $this->assertCreatedAddress($address);
     }
