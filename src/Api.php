@@ -244,11 +244,11 @@ class Api
     /**
      * Returns the "customFieldsTypes" API by lazy loading.
      *
-     * @param null|int $calendarEventsId A valid custom fields type ID
+     * @param null|string $calendarEventsId A valid custom fields type ID
      *
      * @return CalendarEvents
      */
-    public function calendarEvents(int $calendarEventsId = null): CalendarEvents
+    public function calendarEvents(string $calendarEventsId = null): CalendarEvents
     {
         $this->urlBuilder
             ->reset()
