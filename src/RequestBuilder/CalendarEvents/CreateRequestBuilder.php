@@ -14,6 +14,8 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\CalendarEvents;
 use DateTime;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\CalendarEvent;
+use Netresearch\Sdk\CentralStation\Request\CalendarEventAttendee;
+use Netresearch\Sdk\CentralStation\Request\CalendarEventAttendees;
 use Netresearch\Sdk\CentralStation\Request\CalendarEvents\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
@@ -155,6 +157,26 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
+     * Adds a calendar event attendee attribute.
+     *
+     * @param int $personId The ID of the person to attach to the event
+     *
+     * @return CreateRequestBuilder
+     */
+    public function addCalendarEventAttendee(int $personId): CreateRequestBuilder
+    {
+        if (!isset($this->data['calendarEvent']['calendarEventAttendees'])) {
+            $this->data['calendarEvent']['calendarEventAttendees'] = [];
+        }
+
+        if (!in_array($personId, $this->data['calendarEvent']['calendarEventAttendees'], true)) {
+            $this->data['calendarEvent']['calendarEventAttendees'][] = $personId;
+        }
+
+        return $this;
+    }
+
+    /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
      * @return CreateRequest|RequestInterface
@@ -198,6 +220,22 @@ class CreateRequestBuilder extends AbstractRequestBuilder
 
         if (isset($this->data['calendarEvent']['attachableType'])) {
             $calendarEvent->setAttachableType($this->data['calendarEvent']['attachableType']);
+        }
+
+        // Add calendar event attendees
+        if (isset($this->data['calendarEvent']['calendarEventAttendees'])) {
+            $calendarEventAttendees = [];
+
+            foreach ($this->data['calendarEvent']['calendarEventAttendees'] as $personId) {
+                $calendarEventAttendee = new CalendarEventAttendee();
+                $calendarEventAttendee->setPersonId($personId);
+
+                $calendarEventAttendees[] = $calendarEventAttendee;
+            }
+
+            $calendarEvent->setCalendarEventAttendees(
+                new CalendarEventAttendees($calendarEventAttendees)
+            );
         }
 
         // Assign values to request

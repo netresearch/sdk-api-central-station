@@ -101,6 +101,11 @@ class CalendarEvent implements JsonSerializable
     private $description;
 
     /**
+     * @var null|CalendarEventAttendees
+     */
+    private $calendarEventAttendees;
+
+    /**
      * @param null|int $attachableId
      *
      * @return CalendarEvent
@@ -222,6 +227,17 @@ class CalendarEvent implements JsonSerializable
     }
 
     /**
+     * @param null|CalendarEventAttendees $calendarEventAttendees
+     *
+     * @return CalendarEvent
+     */
+    public function setCalendarEventAttendees(?CalendarEventAttendees $calendarEventAttendees): CalendarEvent
+    {
+        $this->calendarEventAttendees = $calendarEventAttendees;
+        return $this;
+    }
+
+    /**
      * @return array<string, null|int|bool|string>
      */
     public function jsonSerialize(): array
@@ -238,6 +254,9 @@ class CalendarEvent implements JsonSerializable
             'all_day'           => $this->allDay,
             'email_invitations' => $this->emailInvitations,
             'description'       => $this->description,
+
+            'cal_event_attendees_attributes'
+                => $this->calendarEventAttendees ? $this->calendarEventAttendees->jsonSerialize() : null,
         ];
     }
 }
