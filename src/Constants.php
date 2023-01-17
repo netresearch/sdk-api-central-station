@@ -107,12 +107,24 @@ class Constants
     ];
 
     /**
-     * Tag attachable types.
+     * Attachable types.
      */
-    public const TAG_TYPE_PERSON = 'Person';
-    public const TAG_TYPE_COMPANY = 'Company';
-    public const TAG_TYPE_DEAL = 'Deal';
-    public const TAG_TYPE_PROJECT = 'Project';
+    public const ATTACHABLE_TYPE_PERSON = 'Person';
+    public const ATTACHABLE_TYPE_COMPANY = 'Company';
+    public const ATTACHABLE_TYPE_DEAL = 'Deal';
+    public const ATTACHABLE_TYPE_PROJECT = 'Project';
+
+    /**
+     * List of attachable types.
+     *
+     * @var string[]
+     */
+    public const ATTACHABLE_TYPE = [
+        Constants::ATTACHABLE_TYPE_PERSON,
+        Constants::ATTACHABLE_TYPE_COMPANY,
+        Constants::ATTACHABLE_TYPE_DEAL,
+        Constants::ATTACHABLE_TYPE_PROJECT,
+    ];
 
     /**
      * Protocol include types.
@@ -269,5 +281,49 @@ class Constants
         Constants::CONTACT_DETAIL_STYPE_VOIP,
         Constants::CONTACT_DETAILS_TYPE_SKYPE,
         Constants::CONTACT_DETAILS_TYPE_OTHER,
+    ];
+
+    /**
+     * Calendar event include types.
+     */
+    public const CALENDAR_EVENTS_INCLUDE_ALL = 'all';
+    public const CALENDAR_EVENTS_INCLUDE_USER = 'user';
+    public const CALENDAR_EVENTS_INCLUDE_USERS = 'users';
+    public const CALENDAR_EVENTS_INCLUDE_GROUP_CALENDAR = 'group_calendar';
+    public const CALENDAR_EVENTS_INCLUDE_PEOPLE = 'people';
+    public const CALENDAR_EVENTS_INCLUDE_ATTENDEES = 'cal_event_attendees';
+
+    /**
+     * List of calendar events include types.
+     *
+     * @var string[]
+     */
+    public const CALENDAR_EVENTS_INCLUDE = [
+        Constants::CALENDAR_EVENTS_INCLUDE_ALL,
+        Constants::CALENDAR_EVENTS_INCLUDE_USER,
+        Constants::CALENDAR_EVENTS_INCLUDE_USERS,
+        Constants::CALENDAR_EVENTS_INCLUDE_GROUP_CALENDAR,
+        Constants::CALENDAR_EVENTS_INCLUDE_PEOPLE,
+        Constants::CALENDAR_EVENTS_INCLUDE_ATTENDEES,
+    ];
+
+    /**
+     * Calendar event include types.
+     */
+    public const CALENDAR_EVENTS_STATUS_NEW = 'new';
+    public const CALENDAR_EVENTS_STATUS_CONFIRMED = 'confirmed';
+    public const CALENDAR_EVENTS_STATUS_TENTATIVE = 'tentative';
+    public const CALENDAR_EVENTS_STATUS_CANCELLED = 'cancelled';
+
+    /**
+     * List of calendar events status types.
+     *
+     * @var string[]
+     */
+    public const CALENDAR_EVENT_STATUS = [
+        Constants::CALENDAR_EVENTS_STATUS_NEW,
+        Constants::CALENDAR_EVENTS_STATUS_CONFIRMED,
+        Constants::CALENDAR_EVENTS_STATUS_TENTATIVE,
+        Constants::CALENDAR_EVENTS_STATUS_CANCELLED,
     ];
 }

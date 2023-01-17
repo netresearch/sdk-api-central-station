@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model\Container;
 
-use Netresearch\Sdk\CentralStation\Model\Person;
+use Netresearch\Sdk\CentralStation\Model\GroupCalendar;
 
 /**
- * A person container.
+ * A group calendar container.
  *
  * This is only used in "index" requests, because in this case the API returns a list of
  * objects with sub objects, for whatever reason.
@@ -23,12 +23,12 @@ use Netresearch\Sdk\CentralStation\Model\Person;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class PersonContainer
+class GroupCalendarContainer
 {
     /**
-     * A person.
+     * A group calendar.
      *
-     * @var Person
+     * @var GroupCalendar
      */
-    public $person;
+    public $groupCalendar;
 }

@@ -28,7 +28,7 @@ class CustomFieldsTypeContainer
     /**
      * A custom field type.
      *
-     * @var null|CustomFieldsType
+     * @var CustomFieldsType
      */
     public $customFieldsType;
 }

@@ -28,7 +28,7 @@ class AddressContainer
     /**
      * An address.
      *
-     * @var null|Address
+     * @var Address
      */
     public $addr;
 }

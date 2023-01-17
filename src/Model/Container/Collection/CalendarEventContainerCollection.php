@@ -9,26 +9,20 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Model\Container;
+namespace Netresearch\Sdk\CentralStation\Model\Container\Collection;
 
-use Netresearch\Sdk\CentralStation\Model\Person;
+use Netresearch\Sdk\CentralStation\Model\Collection\AbstractCollection;
+use Netresearch\Sdk\CentralStation\Model\Container\CalendarEventContainer;
 
 /**
- * A person container.
- *
- * This is only used in "index" requests, because in this case the API returns a list of
- * objects with sub objects, for whatever reason.
+ * A collection of calendar event containers.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @extends AbstractCollection<int, CalendarEventContainer>
  */
-class PersonContainer
+class CalendarEventContainerCollection extends AbstractCollection
 {
-    /**
-     * A person.
-     *
-     * @var Person
-     */
-    public $person;
 }

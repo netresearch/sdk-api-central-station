@@ -13,6 +13,7 @@ namespace Netresearch\Sdk\CentralStation;
 
 use Netresearch\Sdk\CentralStation\Api\Actions\CalendarEvents;
 use Netresearch\Sdk\CentralStation\Api\Actions\CustomFieldsTypes;
+use Netresearch\Sdk\CentralStation\Api\Actions\GroupCalendars;
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
 use Netresearch\Sdk\CentralStation\Api\Actions\Protocols;
 use Netresearch\Sdk\CentralStation\Api\Actions\Tags;
@@ -57,6 +58,13 @@ class Api
      * @var null|CustomFieldsTypes
      */
     private $customFieldsTypesApi;
+
+    /**
+     * Instance of the "group_calendars" API for implementing lazy loading.
+     *
+     * @var null|GroupCalendars
+     */
+    private $groupCalendarsApi;
 
     /**
      * Instance of the "cal_events" API for implementing lazy loading.
@@ -242,22 +250,54 @@ class Api
     }
 
     /**
-     * Returns the "customFieldsTypes" API by lazy loading.
+     * Returns the "groupCalendars" API by lazy loading.
      *
-     * @param null|int $calendarEventsId A valid custom fields type ID
+     * @param null|string $groupCalendarId A valid group calendar ID
+     *
+     * @return GroupCalendars
+     */
+    public function groupCalendars(string $groupCalendarId = null): GroupCalendars
+    {
+        $this->urlBuilder
+            ->reset()
+            ->addPath('/' . GroupCalendars::PATH);
+
+        // Add group calendar type ID if available
+        if ($groupCalendarId) {
+            $this->urlBuilder
+                ->addPath('/' . $groupCalendarId);
+        }
+
+        if (!$this->groupCalendarsApi) {
+            $this->groupCalendarsApi = new GroupCalendars(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->groupCalendarsApi;
+    }
+
+    /**
+     * Returns the "calendarEvents" API by lazy loading.
+     *
+     * @param null|string $calendarEventId A valid calendar event ID
      *
      * @return CalendarEvents
      */
-    public function calendarEvents(int $calendarEventsId = null): CalendarEvents
+    public function calendarEvents(string $calendarEventId = null): CalendarEvents
     {
         $this->urlBuilder
             ->reset()
             ->addPath('/' . CalendarEvents::PATH);
 
         // Add calendar event type ID if available
-        if ($calendarEventsId) {
+        if ($calendarEventId) {
             $this->urlBuilder
-                ->addPath('/' . $calendarEventsId);
+                ->addPath('/' . $calendarEventId);
         }
 
         if (!$this->calendarEventsApi) {

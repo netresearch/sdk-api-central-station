@@ -11,10 +11,11 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model\Container;
 
-use Netresearch\Sdk\CentralStation\Model\Person;
+use MagicSunday\JsonMapper\Annotation\ReplaceProperty;
+use Netresearch\Sdk\CentralStation\Model\CalendarEvent;
 
 /**
- * A person container.
+ * A calendar event container.
  *
  * This is only used in "index" requests, because in this case the API returns a list of
  * objects with sub objects, for whatever reason.
@@ -22,13 +23,15 @@ use Netresearch\Sdk\CentralStation\Model\Person;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @ReplaceProperty("calendarEvent", replaces="cal_event")
  */
-class PersonContainer
+class CalendarEventContainer
 {
     /**
-     * A person.
+     * A calendar event.
      *
-     * @var Person
+     * @var CalendarEvent
      */
-    public $person;
+    public $calendarEvent;
 }
