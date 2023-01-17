@@ -14,6 +14,7 @@ namespace Netresearch\Sdk\CentralStation\Model;
 use DateTime;
 use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
 use MagicSunday\JsonMapper\Annotation\ReplaceProperty;
+use Netresearch\Sdk\CentralStation\Model\Collection\CalendarEventAttendeeCollection;
 use Netresearch\Sdk\CentralStation\Model\Collection\PersonCollection;
 use Netresearch\Sdk\CentralStation\Model\Collection\UserCollection;
 
@@ -152,7 +153,7 @@ class CalendarEvent
     public $updatedAt;
 
     /**
-     * @var User
+     * @var null|User
      */
     public $user;
 
@@ -166,8 +167,18 @@ class CalendarEvent
      */
     public $people;
 
-//    /**
-//     * @var
-//     */
-//    public $eventAttendees;
+    /**
+     * @var CalendarEventAttendeeCollection<CalendarEventAttendee>
+     */
+    public $eventAttendees;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->users = new UserCollection();
+        $this->people = new PersonCollection();
+        $this->eventAttendees = new CalendarEventAttendeeCollection();
+    }
 }

@@ -157,4 +157,19 @@ class Person extends AbstractEntity
      * @var CustomFieldCollection<CustomField>
      */
     public $customFields;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->tags = new TagCollection();
+        $this->positions = new PositionCollection();
+        $this->companies = new CompanyCollection();
+        $this->addresses = new AddressCollection();
+        $this->companyAddresses = new AddressCollection();
+        $this->phoneNumbers = new ContactDetailCollection();
+        $this->emails = new ContactDetailCollection();
+        $this->customFields = new CustomFieldCollection();
+    }
 }

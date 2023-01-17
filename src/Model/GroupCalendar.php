@@ -77,4 +77,12 @@ class GroupCalendar
      * @var CalendarEventCollection<CalendarEvent>
      */
     public $calendarEvents;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->calendarEvents = new CalendarEventCollection();
+    }
 }
