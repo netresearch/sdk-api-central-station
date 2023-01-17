@@ -28,7 +28,7 @@ class CustomFieldContainer
     /**
      * A custom field.
      *
-     * @var null|CustomField
+     * @var CustomField
      */
     public $customField;
 }

@@ -40,14 +40,14 @@ class CalendarEvent implements JsonSerializable
     /**
      * The value of the contact detail according to the selected type.
      *
-     * @var string
+     * @var null|string
      */
     private $name;
 
     /**
      * The group calendar ID.
      *
-     * @var string
+     * @var null|string
      */
     private $groupCalendarId;
 
@@ -68,14 +68,14 @@ class CalendarEvent implements JsonSerializable
     /**
      * Start time of the event.
      *
-     * @var DateTime
+     * @var null|DateTime
      */
     private $startsAt;
 
     /**
      * End time of the event.
      *
-     * @var DateTime
+     * @var null|DateTime
      */
     private $endsAt;
 
@@ -128,22 +128,22 @@ class CalendarEvent implements JsonSerializable
     }
 
     /**
-     * @param string $name
+     * @param null|string $name
      *
      * @return CalendarEvent
      */
-    public function setName(string $name): CalendarEvent
+    public function setName(?string $name): CalendarEvent
     {
         $this->name = $name;
         return $this;
     }
 
     /**
-     * @param string $groupCalendarId
+     * @param null|string $groupCalendarId
      *
      * @return CalendarEvent
      */
-    public function setGroupCalendarId(string $groupCalendarId): CalendarEvent
+    public function setGroupCalendarId(?string $groupCalendarId): CalendarEvent
     {
         $this->groupCalendarId = $groupCalendarId;
         return $this;
@@ -172,22 +172,22 @@ class CalendarEvent implements JsonSerializable
     }
 
     /**
-     * @param DateTime $startsAt
+     * @param null|DateTime $startsAt
      *
      * @return CalendarEvent
      */
-    public function setStartsAt(DateTime $startsAt): CalendarEvent
+    public function setStartsAt(?DateTime $startsAt): CalendarEvent
     {
         $this->startsAt = $startsAt;
         return $this;
     }
 
     /**
-     * @param DateTime $endsAt
+     * @param null|DateTime $endsAt
      *
      * @return CalendarEvent
      */
-    public function setEndsAt(DateTime $endsAt): CalendarEvent
+    public function setEndsAt(?DateTime $endsAt): CalendarEvent
     {
         $this->endsAt = $endsAt;
         return $this;
@@ -238,7 +238,7 @@ class CalendarEvent implements JsonSerializable
     }
 
     /**
-     * @return array<string, null|int|bool|string>
+     * @return array<string, null|bool|int|string|array<int, array<string, null|int>>>
      */
     public function jsonSerialize(): array
     {
@@ -249,8 +249,8 @@ class CalendarEvent implements JsonSerializable
             'group_calendar_id' => $this->groupCalendarId,
             'location'          => $this->location,
             'status'            => $this->status,
-            'starts_at'         => $this->startsAt->format('c'),
-            'ends_at'           => $this->endsAt->format('c'),
+            'starts_at'         => $this->startsAt ? $this->startsAt->format('c') : null,
+            'ends_at'           => $this->endsAt ? $this->endsAt->format('c') : null,
             'all_day'           => $this->allDay,
             'email_invitations' => $this->emailInvitations,
             'description'       => $this->description,

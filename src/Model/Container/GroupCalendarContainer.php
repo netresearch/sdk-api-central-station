@@ -28,7 +28,7 @@ class GroupCalendarContainer
     /**
      * A group calendar.
      *
-     * @var null|GroupCalendar
+     * @var GroupCalendar
      */
     public $groupCalendar;
 }

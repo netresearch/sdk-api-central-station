@@ -28,7 +28,7 @@ class PersonContainer
     /**
      * A person.
      *
-     * @var null|Person
+     * @var Person
      */
     public $person;
 }

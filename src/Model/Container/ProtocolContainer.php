@@ -28,14 +28,14 @@ class ProtocolContainer
     /**
      * A note about a person, offer, or project.
      *
-     * @var null|Protocol
+     * @var Protocol
      */
     public $protocolObjectNote;
 
     /**
      * A note for status messages from a user.
      *
-     * @var null|Protocol
+     * @var Protocol
      */
     public $protocolUserNote;
 }

@@ -40,7 +40,7 @@ class Update implements RequestInterface
     }
 
     /**
-     * @return array<string, array<string, null|int|bool|string>>
+     * @return array<string, array<string, null|bool|int|string|array<int, array<string, null|int>>>>
      */
     public function jsonSerialize(): array
     {

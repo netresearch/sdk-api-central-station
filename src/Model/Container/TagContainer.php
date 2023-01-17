@@ -28,7 +28,7 @@ class TagContainer
     /**
      * A tag.
      *
-     * @var null|Tag
+     * @var Tag
      */
     public $tag;
 }

@@ -31,7 +31,7 @@ class CalendarEventContainer
     /**
      * A calendar event.
      *
-     * @var null|CalendarEvent
+     * @var CalendarEvent
      */
     public $calendarEvent;
 }
