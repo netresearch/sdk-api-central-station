@@ -21,6 +21,8 @@ use Netresearch\Sdk\CentralStation\Request\Person;
 use Netresearch\Sdk\CentralStation\Request\Position;
 use Netresearch\Sdk\CentralStation\Request\Positions;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
+use Netresearch\Sdk\CentralStation\Request\Tag;
+use Netresearch\Sdk\CentralStation\Request\Tags;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\People\UpdateValidator;
 
@@ -110,6 +112,26 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
             'position'    => $position,
             'primary'     => $primary,
         ];
+
+        return $this;
+    }
+
+    /**
+     * Adds a tag attribute.
+     *
+     * @param string $tagName The name of the tag
+     *
+     * @return UpdateRequestBuilder
+     */
+    public function addTag(string $tagName): UpdateRequestBuilder
+    {
+        if (!isset($this->data['tags'])) {
+            $this->data['tags'] = [];
+        }
+
+        if (!in_array($tagName, $this->data['tags'], true)) {
+            $this->data['tags'][] = $tagName;
+        }
 
         return $this;
     }
@@ -255,6 +277,20 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
                 }
 
                 $person->setPositions(new Positions($positions));
+            }
+
+            // Add tags
+            if (isset($this->data['tags'])) {
+                $tags = [];
+
+                foreach ($this->data['tags'] as $tagName) {
+                    $tag = new Tag();
+                    $tag->setName($tagName);
+
+                    $tags[] = $tag;
+                }
+
+                $person->setTags(new Tags($tags));
             }
 
             // Add phone numbers
