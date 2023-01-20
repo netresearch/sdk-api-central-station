@@ -26,25 +26,32 @@ use Netresearch\Sdk\CentralStation\Constants;
 class ContactDetail extends AbstractEntity
 {
     /**
-     * The ID of the record the tag belongs to, e.g. person, company, offer or project.
+     * The ID of the record the contact detail belongs to, e.g. person, company, offer or project.
      *
      * @var int
      */
     public $attachableId;
 
     /**
-     * The record type the tag belongs to. Must be either "Person", "Company", "Deal" or "Project".
+     * The record type the contact detail belongs to. Must be either "Person", "Company", "Deal" or "Project".
      *
      * @var string
      */
     public $attachableType;
 
     /**
-     * The name of the tag.
+     * The name (value) of the contact detail.
      *
      * @var string
      */
     public $name;
+
+    /**
+     * The clean name (value) of the contact detail.
+     *
+     * @var string
+     */
+    public $nameClean;
 
     /**
      * Another type of contact_details, e.g. for a phone number
@@ -63,7 +70,7 @@ class ContactDetail extends AbstractEntity
     public $type;
 
     /**
-     * States whether the tag has been added via the API or some sort of integration.
+     * States whether the contact detail has been added via the API or some sort of integration.
      *
      * @var bool
      */
