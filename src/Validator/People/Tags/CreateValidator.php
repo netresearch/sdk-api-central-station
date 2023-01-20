@@ -36,5 +36,12 @@ class CreateValidator
                 'Please provide at least the name of the tag to create'
             );
         }
+
+        // Tags are limited to 60 chars
+        if (strlen($data['tag']['name']) > 60) {
+            throw new RequestValidatorException(
+                'Tags are limited to 60 chars only'
+            );
+        }
     }
 }
