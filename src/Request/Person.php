@@ -78,6 +78,11 @@ class Person implements JsonSerializable
     private $emailAddresses;
 
     /**
+     * @var null|ContactDetails
+     */
+    private $homepages;
+
+    /**
      * @var null|Addresses
      */
     private $addresses;
@@ -209,6 +214,17 @@ class Person implements JsonSerializable
     }
 
     /**
+     * @param null|ContactDetails $homepages
+     *
+     * @return Person
+     */
+    public function setHomepages(?ContactDetails $homepages): Person
+    {
+        $this->homepages = $homepages;
+        return $this;
+    }
+
+    /**
      * @param null|Addresses $addresses
      *
      * @return Person
@@ -248,6 +264,7 @@ class Person implements JsonSerializable
             'tags_attributes'          => $this->tags ? $this->tags->jsonSerialize() : null,
             'tels_attributes'          => $this->phoneNumbers ? $this->phoneNumbers->jsonSerialize() : null,
             'emails_attributes'        => $this->emailAddresses ? $this->emailAddresses->jsonSerialize() : null,
+            'homepages_attributes'     => $this->homepages ? $this->homepages->jsonSerialize() : null,
             'addrs_attributes'         => $this->addresses ? $this->addresses->jsonSerialize() : null,
             'custom_fields_attributes' => $this->customFields ? $this->customFields->jsonSerialize() : null,
         ];

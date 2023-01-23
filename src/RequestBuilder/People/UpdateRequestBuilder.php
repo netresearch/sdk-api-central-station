@@ -140,7 +140,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
      * Adds a telephone number attribute.
      *
      * @param null|int    $id          The ID of the record to update
-     * @param null|string $type        The type of the telephone number (use one of Constants::CONTACT_TYPE_*)
+     * @param null|string $type        The type of the telephone number (use one of Constants::CONTACT_DETAILS_TYPE)
      * @param null|string $phoneNumber The telephone number
      *
      * @return UpdateRequestBuilder
@@ -167,7 +167,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
      * Adds an email address attribute.
      *
      * @param null|int    $id           The ID of the record to update
-     * @param null|string $type         The type of the email address (use one of Constants::CONTACT_TYPE_*)
+     * @param null|string $type         The type of the email address (use one of Constants::CONTACT_DETAILS_TYPE)
      * @param null|string $emailAddress The email address
      *
      * @return UpdateRequestBuilder
@@ -185,6 +185,33 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
             'id'           => $id,
             'type'         => $type,
             'emailAddress' => $emailAddress,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Adds a website attribute.
+     *
+     * @param null|int    $id      The ID of the record to update
+     * @param null|string $type    The type of the website (use one of Constants::CONTACT_DETAILS_TYPE)
+     * @param null|string $website The website address
+     *
+     * @return UpdateRequestBuilder
+     */
+    public function addWebsite(
+        int $id = null,
+        string $type = null,
+        string $website = null
+    ): UpdateRequestBuilder {
+        if (!isset($this->data['websites'])) {
+            $this->data['websites'] = [];
+        }
+
+        $this->data['websites'][] = [
+            'id'      => $id,
+            'type'    => $type,
+            'website' => $website,
         ];
 
         return $this;
@@ -323,6 +350,22 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
                 }
 
                 $person->setEmailAddresses(new ContactDetails($emailAddresses));
+            }
+
+            // Add websites
+            if (isset($this->data['websites'])) {
+                $homepages = [];
+
+                foreach ($this->data['websites'] as $item) {
+                    $homepage = new ContactDetail();
+                    $homepage->setId($item['id'])
+                        ->setType($item['type'])
+                        ->setName($item['website']);
+
+                    $homepages[] = $homepage;
+                }
+
+                $person->setHomepages(new ContactDetails($homepages));
             }
 
             // Add addresses

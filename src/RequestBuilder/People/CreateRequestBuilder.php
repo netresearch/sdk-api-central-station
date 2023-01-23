@@ -183,6 +183,28 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
+     * Adds a website attribute.
+     *
+     * @param string $type    The type of the website (use one of Constants::CONTACT_DETAILS_TYPE)
+     * @param string $website The website address
+     *
+     * @return CreateRequestBuilder
+     */
+    public function addWebsite(string $type, string $website): CreateRequestBuilder
+    {
+        if (!isset($this->data['websites'])) {
+            $this->data['websites'] = [];
+        }
+
+        $this->data['websites'][] = [
+            'type'    => $type,
+            'website' => $website,
+        ];
+
+        return $this;
+    }
+
+    /**
      * Adds an address attribute.
      *
      * @param string      $type        The type of address (use one of Constants::ADDRESS_TYPE)
@@ -328,6 +350,21 @@ class CreateRequestBuilder extends AbstractRequestBuilder
             }
 
             $person->setEmailAddresses(new ContactDetails($emailAddresses));
+        }
+
+        // Add websites
+        if (isset($this->data['websites'])) {
+            $homepages = [];
+
+            foreach ($this->data['websites'] as $item) {
+                $homepage = new ContactDetail();
+                $homepage->setType($item['type'])
+                    ->setName($item['website']);
+
+                $homepages[] = $homepage;
+            }
+
+            $person->setHomepages(new ContactDetails($homepages));
         }
 
         // Add addresses
