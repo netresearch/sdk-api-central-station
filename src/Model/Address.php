@@ -77,15 +77,19 @@ class Address extends AbstractEntity
      * The country code (eg. DE, AT).
      *
      * @var string
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $countryCode;
+    public $countryCode = '';
 
     /**
      * The country name.
      *
      * @var string
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $countryName;
+    public $countryName = '';
 
     /**
      * Decides about the order of addresses when the attachable (Person or Company) has multiple addresses.
