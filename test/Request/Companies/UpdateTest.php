@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Test\Request\People;
+namespace Netresearch\Test\Request\Companies;
 
 use Netresearch\Sdk\CentralStation\Constants;
-use Netresearch\Sdk\CentralStation\Request\People\Update;
-use Netresearch\Sdk\CentralStation\Request\Person;
+use Netresearch\Sdk\CentralStation\Request\Companies\Update;
+use Netresearch\Sdk\CentralStation\Request\Company;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -32,27 +32,17 @@ class UpdateTest extends TestCase
      */
     public function jsonSerialize(): void
     {
-        $person = new Person();
-        $person->setFirstName('Maxi')
-            ->setLastName('Musterfrau')
-            ->setGender(Constants::GENDER_FEMALE)
-            ->setTitle('Prof. Dr.')
-            ->setSalutation('Frau')
-            ->setCountryCode('de')
+        $company = new Company();
+        $company->setName('ABC company')
             ->setBackground('background');
 
         $request = new Update();
-        $request->setPerson($person);
+        $request->setCompany($company);
 
         self::assertSame(
             [
-                'person' => [
-                    'name'                     => 'Musterfrau',
-                    'first_name'               => 'Maxi',
-                    'gender'                   => Constants::GENDER_FEMALE,
-                    'title'                    => 'Prof. Dr.',
-                    'salutation'               => 'Frau',
-                    'country_code'             => 'de',
+                'company' => [
+                    'name'                     => 'ABC company',
                     'background'               => 'background',
                     'positions_attributes'     => null,
                     'tags_attributes'          => null,

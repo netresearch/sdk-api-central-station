@@ -9,48 +9,39 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Companies;
 
-use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\RequestBuilder\People\StatsRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Companies\SearchRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class StatsRequestBuilderTest
+ * Class SearchRequestBuilderTest
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
  */
-class StatsRequestBuilderTest extends RequestBuilderTestCase
+class SearchRequestBuilderTest extends RequestBuilderTestCase
 {
     /**
-     * Tests creating "stats" request URL.
+     * Tests creating a "search" request URL.
      *
      * @test
      * @throws RequestValidatorException
      */
-    public function stats(): void
+    public function search(): void
     {
-        $requestBuilder = new StatsRequestBuilder();
+        $requestBuilder = new SearchRequestBuilder();
         $requestBuilder
-            ->addFilter(
-                'first_name',
-                Constants::FILTER_EQUAL,
-                'Daniel'
-            )
-            ->addFilter(
-                'created_at',
-                Constants::FILTER_SMALLER_THAN,
-                '2022-10-25'
-            );
+            ->addQuery('name', 'ABC company')
+            ->addQuery('email', 'max.mustermann@example.org');
 
         $request    = $requestBuilder->create();
         $requestUrl = http_build_query($request->jsonSerialize());
 
         self::assertSame(
-            'filter[first_name][equal]=Daniel&filter[created_at][smaller_than]=2022-10-25',
+            'name=ABC company&email=max.mustermann@example.org',
             urldecode($requestUrl)
         );
     }

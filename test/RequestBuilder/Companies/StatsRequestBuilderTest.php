@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\People;
+namespace Netresearch\Sdk\CentralStation\Test\RequestBuilder\Companies;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\RequestBuilder\People\StatsRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Companies\StatsRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
@@ -36,9 +36,9 @@ class StatsRequestBuilderTest extends RequestBuilderTestCase
         $requestBuilder = new StatsRequestBuilder();
         $requestBuilder
             ->addFilter(
-                'first_name',
-                Constants::FILTER_EQUAL,
-                'Daniel'
+                'name',
+                Constants::FILTER_LIKE,
+                '%ABC company%'
             )
             ->addFilter(
                 'created_at',
@@ -50,7 +50,7 @@ class StatsRequestBuilderTest extends RequestBuilderTestCase
         $requestUrl = http_build_query($request->jsonSerialize());
 
         self::assertSame(
-            'filter[first_name][equal]=Daniel&filter[created_at][smaller_than]=2022-10-25',
+            'filter[name][like]=%ABC company%&filter[created_at][smaller_than]=2022-10-25',
             urldecode($requestUrl)
         );
     }

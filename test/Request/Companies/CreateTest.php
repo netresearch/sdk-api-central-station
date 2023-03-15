@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Test\Request\People;
+namespace Netresearch\Test\Request\Companies;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Request\Address;
@@ -18,8 +18,8 @@ use Netresearch\Sdk\CentralStation\Request\ContactDetail;
 use Netresearch\Sdk\CentralStation\Request\ContactDetails;
 use Netresearch\Sdk\CentralStation\Request\CustomField;
 use Netresearch\Sdk\CentralStation\Request\CustomFields;
-use Netresearch\Sdk\CentralStation\Request\People\Create;
-use Netresearch\Sdk\CentralStation\Request\Person;
+use Netresearch\Sdk\CentralStation\Request\Companies\Create;
+use Netresearch\Sdk\CentralStation\Request\Company;
 use Netresearch\Sdk\CentralStation\Request\Position;
 use Netresearch\Sdk\CentralStation\Request\Positions;
 use Netresearch\Sdk\CentralStation\Request\Tag;
@@ -42,15 +42,10 @@ class CreateTest extends TestCase
      */
     public function jsonSerialize(): void
     {
-        $person = new Person();
-        $person
-            ->setFirstName('Max')
-            ->setLastName('Mustermann')
-            ->setGender(Constants::GENDER_MALE)
-            ->setTitle('Dr. Dr.')
-            ->setSalutation('Herr')
+        $company = new Company();
+        $company
+            ->setName('ABC company')
             ->setBackground('background')
-            ->setCountryCode('de')
             ->setPositions(
                 new Positions([
                     (new Position())
@@ -95,17 +90,12 @@ class CreateTest extends TestCase
                 ])
             );
 
-        $request = new Create($person);
+        $request = new Create($company);
 
         self::assertSame(
             [
-                'person' => [
-                    'name'                     => 'Mustermann',
-                    'first_name'               => 'Max',
-                    'gender'                   => Constants::GENDER_MALE,
-                    'title'                    => 'Dr. Dr.',
-                    'salutation'               => 'Herr',
-                    'country_code'             => 'de',
+                'company' => [
+                    'name'                     => 'ABC company',
                     'background'               => 'background',
                     'positions_attributes'     => [
                         [

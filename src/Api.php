@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation;
 
 use Netresearch\Sdk\CentralStation\Api\Actions\CalendarEvents;
+use Netresearch\Sdk\CentralStation\Api\Actions\Companies;
 use Netresearch\Sdk\CentralStation\Api\Actions\CustomFieldsTypes;
 use Netresearch\Sdk\CentralStation\Api\Actions\GroupCalendars;
 use Netresearch\Sdk\CentralStation\Api\Actions\People;
@@ -37,6 +38,13 @@ class Api
      * @var null|People
      */
     private $peopleApi;
+
+    /**
+     * Instance of the "companies" API for implementing lazy loading.
+     *
+     * @var null|Companies
+     */
+    private $companiesApi;
 
     /**
      * Instance of the "tags" API for implementing lazy loading.
@@ -151,6 +159,38 @@ class Api
         }
 
         return $this->peopleApi;
+    }
+
+    /**
+     * Returns the "companies" API by lazy loading.
+     *
+     * @param null|int $companyId A valid company ID
+     *
+     * @return Companies
+     */
+    public function companies(int $companyId = null): Companies
+    {
+        $this->urlBuilder
+            ->reset()
+            ->addPath('/' . Companies::PATH);
+
+        // Add company ID if available
+        if ($companyId) {
+            $this->urlBuilder
+                ->addPath('/' . $companyId);
+        }
+
+        if (!$this->companiesApi) {
+            $this->companiesApi = new Companies(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->companiesApi;
     }
 
     /**

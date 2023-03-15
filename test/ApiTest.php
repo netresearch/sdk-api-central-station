@@ -135,6 +135,24 @@ class ApiTest extends TestCase
     }
 
     /**
+     * Tests if "companies"-method returns the right configured companies API instance.
+     *
+     * @test
+     */
+    public function companies(): void
+    {
+        $companiesApi = $this
+            ->getServiceFactoryMock()
+            ->api()
+            ->companies();
+
+        self::assertWebserviceUrl(
+            'https://www.example.org/companies',
+            $companiesApi
+        );
+    }
+
+    /**
      * Tests if "tags"-method returns the right configured people API instance.
      *
      * @test

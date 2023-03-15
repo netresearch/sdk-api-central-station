@@ -1,0 +1,112 @@
+{
+    "company": {
+        "id": 123456789,
+        "account_id": 12345,
+        "group_id": 12346,
+        "user_id": null,
+        "name": "ABC company",
+        "created_by_user_id": 12346,
+        "updated_by_user_id": null,
+        "background": null,
+        "created_at": "2022-01-24T11:17:02.000+01:00",
+        "updated_at": "2023-03-07T14:16:16.000+01:00",
+        "positions": [
+            {
+                "id": 19096517,
+                "account_id": 87444,
+                "person_id": 26152145,
+                "company_id": 1799988554,
+                "name": "",
+                "department": "",
+                "primary_function": true,
+                "former": false,
+                "api_input": false,
+                "created_at": "2022-01-24T11:25:00.000+01:00",
+                "updated_at": "2022-01-24T11:25:00.000+01:00"
+            }
+        ],
+        "deals": [],
+        "projects": [],
+        "tags": [
+            {
+                "id": 101011151,
+                "account_id": 87444,
+                "attachable_id": 1799988554,
+                "attachable_type": "Company",
+                "api_input": true,
+                "name": "Branche|Mobilität / Verkehr",
+                "created_at": "2022-01-24T11:25:00.000+01:00",
+                "updated_at": "2022-01-24T11:25:00.000+01:00"
+            },
+            {
+                "id": 101011154,
+                "account_id": 87444,
+                "attachable_id": 1799988554,
+                "attachable_type": "Company",
+                "api_input": true,
+                "name": "IMPORTED-VIA-API",
+                "created_at": "2022-01-24T11:25:00.000+01:00",
+                "updated_at": "2022-01-24T11:25:00.000+01:00"
+            },
+            {
+                "id": 101011157,
+                "account_id": 87444,
+                "attachable_id": 1799988554,
+                "attachable_type": "Company",
+                "api_input": true,
+                "name": "T3-COMPANY",
+                "created_at": "2022-01-24T11:25:00.000+01:00",
+                "updated_at": "2022-01-24T11:25:00.000+01:00"
+            },
+            {
+                "id": 101011160,
+                "account_id": 87444,
+                "attachable_id": 1799988554,
+                "attachable_type": "Company",
+                "api_input": true,
+                "name": "Teilnehmer Sächsischer Gründerpreis 2022 - Runde: 1",
+                "created_at": "2022-01-24T11:25:00.000+01:00",
+                "updated_at": "2022-01-24T11:25:00.000+01:00"
+            },
+            {
+                "id": 101011148,
+                "account_id": 87444,
+                "attachable_id": 1799988554,
+                "attachable_type": "Company",
+                "api_input": true,
+                "name": "xls Import 24. Jan 22 - 10:10",
+                "created_at": "2022-01-24T11:25:00.000+01:00",
+                "updated_at": "2022-01-24T11:25:00.000+01:00"
+            }
+        ],
+        "tasks": [],
+        "pending_tasks": [],
+        "cal_events": [],
+        "upcoming_cal_events": [],
+        "tels": [],
+        "emails": [],
+        "ims": [],
+        "sms": [],
+        "homepages": [],
+        "addrs": [
+            {
+                "id": 25052012,
+                "attachable_id": 1799988554,
+                "attachable_type": "Company",
+                "street": null,
+                "zip": "01326",
+                "city": "Dresden",
+                "state_code": "SN",
+                "country_code": "DE",
+                "primary": false,
+                "created_at": "2022-01-24T11:25:00.000+01:00",
+                "updated_at": "2022-01-24T11:25:00.000+01:00",
+                "atype": "work_hq",
+                "api_input": false,
+                "country_name": "Deutschland"
+            }
+        ],
+        "connections": [],
+        "custom_fields": []
+    }
+}

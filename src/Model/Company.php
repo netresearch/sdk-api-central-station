@@ -11,12 +11,22 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model;
 
+use MagicSunday\JsonMapper\Annotation\ReplaceProperty;
+use Netresearch\Sdk\CentralStation\Model\Collection\AddressCollection;
+use Netresearch\Sdk\CentralStation\Model\Collection\ContactDetailCollection;
+use Netresearch\Sdk\CentralStation\Model\Collection\CustomFieldCollection;
+use Netresearch\Sdk\CentralStation\Model\Collection\PositionCollection;
+use Netresearch\Sdk\CentralStation\Model\Collection\TagCollection;
+
 /**
  * A company record.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
+ * @ReplaceProperty("addresses", replaces="addrs")
+ * @ReplaceProperty("phoneNumbers", replaces="tels")
  */
 class Company extends AbstractEntity
 {
@@ -54,4 +64,67 @@ class Company extends AbstractEntity
      * @var null|string
      */
     public $background;
+
+    /**
+     * A collection of tags assigned to the person.
+     *
+     * @var TagCollection<Tag>
+     */
+    public $tags;
+
+    /**
+     * A collection of positions assigned to the person.
+     *
+     * @var PositionCollection<Position>
+     */
+    public $positions;
+
+    /**
+     * A collection of addresses assigned to the person.
+     *
+     * @var AddressCollection<Address>
+     */
+    public $addresses;
+
+    /**
+     * A collection of telephone numbers assigned to the person.
+     *
+     * @var ContactDetailCollection<ContactDetail>
+     */
+    public $phoneNumbers;
+
+    /**
+     * A collection of email addresses assigned to the person.
+     *
+     * @var ContactDetailCollection<ContactDetail>
+     */
+    public $emails;
+
+    /**
+     * A collection of homepages assigned to the person.
+     *
+     * @var ContactDetailCollection<ContactDetail>
+     */
+    public $homepages;
+
+    /**
+     * A collection of custom fields assigned to the person.
+     *
+     * @var CustomFieldCollection<CustomField>
+     */
+    public $customFields;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->tags = new TagCollection();
+        $this->positions = new PositionCollection();
+        $this->addresses = new AddressCollection();
+        $this->phoneNumbers = new ContactDetailCollection();
+        $this->emails = new ContactDetailCollection();
+        $this->homepages = new ContactDetailCollection();
+        $this->customFields = new CustomFieldCollection();
+    }
 }
