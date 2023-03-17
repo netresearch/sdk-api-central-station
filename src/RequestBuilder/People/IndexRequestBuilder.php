@@ -15,10 +15,12 @@ use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\CustomFieldRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\FilterRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\PaginationRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\SortRequestBuilderInterface;
+use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\CustomFieldTrait;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\FilterTrait;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\PaginationTrait;
@@ -37,8 +39,10 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
     FilterRequestBuilderInterface,
     IncludesRequestBuilderInterface,
     PaginationRequestBuilderInterface,
-    SortRequestBuilderInterface
+    SortRequestBuilderInterface,
+    CustomFieldRequestBuilderInterface
 {
+    use CustomFieldTrait;
     use FilterTrait;
     use IncludesTrait;
     use PaginationTrait;
@@ -83,6 +87,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
         $this->assignSortToRequest($request);
         $this->assignFilterToRequest($request);
         $this->assignIncludesToRequest($request);
+        $this->assignCustomFieldToRequest($request);
 
         if (isset($this->data['tag']['tagId'])) {
             $request->setTagId($this->data['tag']['tagId']);

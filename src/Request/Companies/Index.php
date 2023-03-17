@@ -11,10 +11,12 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Request\Companies;
 
+use Netresearch\Sdk\CentralStation\Request\CustomFieldRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\FilterRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
 use Netresearch\Sdk\CentralStation\Request\SortRequestInterface;
+use Netresearch\Sdk\CentralStation\Request\Traits\CustomFieldTrait;
 use Netresearch\Sdk\CentralStation\Request\Traits\FilterTrait;
 use Netresearch\Sdk\CentralStation\Request\Traits\IncludesTrait;
 use Netresearch\Sdk\CentralStation\Request\Traits\PaginationTrait;
@@ -31,8 +33,10 @@ class Index implements
     FilterRequestInterface,
     IncludesRequestInterface,
     PaginationRequestInterface,
-    SortRequestInterface
+    SortRequestInterface,
+    CustomFieldRequestInterface
 {
+    use CustomFieldTrait;
     use FilterTrait;
     use IncludesTrait;
     use PaginationTrait;
@@ -80,6 +84,7 @@ class Index implements
         $data = $this->addSortToSerializedData($data);
         $data = $this->addFilterToSerializedData($data);
         $data = $this->addIncludesToSerializedData($data);
+        $data = $this->addCustomFieldToSerializedData($data);
 
         if (!empty($this->tagId)) {
             $data['tag_id'] = $this->tagId;
