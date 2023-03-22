@@ -53,20 +53,6 @@ class People extends AbstractApiEndpoint
     public const PATH = 'people';
 
     /**
-     * Instance of the "tags" API for implementing lazy loading.
-     *
-     * @var null|People\Tags
-     */
-    private $tagsApi;
-
-    /**
-     * Instance of the "protocols" API for implementing lazy loading.
-     *
-     * @var null|People\Protocols
-     */
-    private $protocolsApi;
-
-    /**
      * Instance of the "addrs" API for implementing lazy loading.
      *
      * @var null|People\Addresses
@@ -81,68 +67,18 @@ class People extends AbstractApiEndpoint
     private $customFieldsApi;
 
     /**
-     * Returns the "tags" API used to process tags related to a specific person.
+     * Instance of the "protocols" API for implementing lazy loading.
      *
-     * @param null|int $tagId A valid tag ID
-     *
-     * @return People\Tags
+     * @var null|People\Protocols
      */
-    public function tags(int $tagId = null): People\Tags
-    {
-        $this->urlBuilder
-            ->setParams([])
-            ->addPath('/' . People\Tags::PATH);
-
-        // Add tag ID if available
-        if ($tagId) {
-            $this->urlBuilder
-                ->addPath('/' . $tagId);
-        }
-
-        if (!$this->tagsApi) {
-            $this->tagsApi = new People\Tags(
-                $this->client,
-                $this->requestFactory,
-                $this->streamFactory,
-                $this->serializer,
-                $this->urlBuilder
-            );
-        }
-
-        return $this->tagsApi;
-    }
+    private $protocolsApi;
 
     /**
-     * Returns the "protocols" API used to process protocols related to a specific person.
+     * Instance of the "tags" API for implementing lazy loading.
      *
-     * @param null|int $protocolId A valid protocol ID
-     *
-     * @return People\Protocols
+     * @var null|People\Tags
      */
-    public function protocols(int $protocolId = null): People\Protocols
-    {
-        $this->urlBuilder
-            ->setParams([])
-            ->addPath('/' . People\Protocols::PATH);
-
-        // Add protocol ID if available
-        if ($protocolId) {
-            $this->urlBuilder
-                ->addPath('/' . $protocolId);
-        }
-
-        if (!$this->protocolsApi) {
-            $this->protocolsApi = new People\Protocols(
-                $this->client,
-                $this->requestFactory,
-                $this->streamFactory,
-                $this->serializer,
-                $this->urlBuilder
-            );
-        }
-
-        return $this->protocolsApi;
-    }
+    private $tagsApi;
 
     /**
      * Returns the "addrs" API used to process addresses related to a specific person.
@@ -206,6 +142,70 @@ class People extends AbstractApiEndpoint
         }
 
         return $this->customFieldsApi;
+    }
+
+    /**
+     * Returns the "protocols" API used to process protocols related to a specific person.
+     *
+     * @param null|int $protocolId A valid protocol ID
+     *
+     * @return People\Protocols
+     */
+    public function protocols(int $protocolId = null): People\Protocols
+    {
+        $this->urlBuilder
+            ->setParams([])
+            ->addPath('/' . People\Protocols::PATH);
+
+        // Add protocol ID if available
+        if ($protocolId) {
+            $this->urlBuilder
+                ->addPath('/' . $protocolId);
+        }
+
+        if (!$this->protocolsApi) {
+            $this->protocolsApi = new People\Protocols(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->protocolsApi;
+    }
+
+    /**
+     * Returns the "tags" API used to process tags related to a specific person.
+     *
+     * @param null|int $tagId A valid tag ID
+     *
+     * @return People\Tags
+     */
+    public function tags(int $tagId = null): People\Tags
+    {
+        $this->urlBuilder
+            ->setParams([])
+            ->addPath('/' . People\Tags::PATH);
+
+        // Add tag ID if available
+        if ($tagId) {
+            $this->urlBuilder
+                ->addPath('/' . $tagId);
+        }
+
+        if (!$this->tagsApi) {
+            $this->tagsApi = new People\Tags(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->tagsApi;
     }
 
     /**

@@ -65,6 +65,13 @@ class Companies extends AbstractApiEndpoint
     private $customFieldsApi;
 
     /**
+     * Instance of the "tags" API for implementing lazy loading.
+     *
+     * @var null|Companies\Tags
+     */
+    private $tagsApi;
+
+    /**
      * Returns the "addrs" API used to process addresses related to a specific company.
      *
      * @param null|int $addressId A valid address ID
@@ -126,6 +133,38 @@ class Companies extends AbstractApiEndpoint
         }
 
         return $this->customFieldsApi;
+    }
+
+    /**
+     * Returns the "tags" API used to process tags related to a specific company.
+     *
+     * @param null|int $tagId A valid tag ID
+     *
+     * @return Companies\Tags
+     */
+    public function tags(int $tagId = null): Companies\Tags
+    {
+        $this->urlBuilder
+            ->setParams([])
+            ->addPath('/' . Companies\Tags::PATH);
+
+        // Add tag ID if available
+        if ($tagId) {
+            $this->urlBuilder
+                ->addPath('/' . $tagId);
+        }
+
+        if (!$this->tagsApi) {
+            $this->tagsApi = new Companies\Tags(
+                $this->client,
+                $this->requestFactory,
+                $this->streamFactory,
+                $this->serializer,
+                $this->urlBuilder
+            );
+        }
+
+        return $this->tagsApi;
     }
 
     /**
