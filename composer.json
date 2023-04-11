@@ -15,7 +15,7 @@
         "issues": "https://git.netresearch.de/futuresax/lib/sdk-api-central-station"
     },
     "require": {
-        "php": "^7.3 || ~8.0.0",
+        "php": "^8.0",
         "ext-json": "*",
         "psr/http-client-implementation": "^1.0",
         "psr/http-factory": "^1.0",
