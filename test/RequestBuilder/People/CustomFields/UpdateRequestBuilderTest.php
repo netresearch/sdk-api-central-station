@@ -29,7 +29,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
     /**
      * @return string[][]
      */
-    public function updateRequestDataProvider(): array
+    public static function updateRequestDataProvider(): array
     {
         return [
             'Request' => [

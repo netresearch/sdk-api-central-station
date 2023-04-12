@@ -59,7 +59,7 @@ class CustomFieldsTest extends TestCase
     /**
      * @return string[][]
      */
-    public function indexResponseDataProvider(): array
+    public static function indexResponseDataProvider(): array
     {
         return [
             'Response' => [
@@ -150,7 +150,7 @@ class CustomFieldsTest extends TestCase
     /**
      * @return string[][]
      */
-    public function showResponseDataProvider(): array
+    public static function showResponseDataProvider(): array
     {
         return [
             'Response' => [
@@ -187,7 +187,7 @@ class CustomFieldsTest extends TestCase
     /**
      * @return string[][]
      */
-    public function createResponseDataProvider(): array
+    public static function createResponseDataProvider(): array
     {
         return [
             'Response' => [

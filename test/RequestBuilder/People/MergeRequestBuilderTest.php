@@ -29,7 +29,7 @@ class MergeRequestBuilderTest extends RequestBuilderTestCase
     /**
      * @return string[][]
      */
-    public function mergeRequestDataProvider(): array
+    public static function mergeRequestDataProvider(): array
     {
         return [
             'Request' => [

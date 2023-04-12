@@ -28,7 +28,7 @@ class ApiTest extends TestCase
     /**
      * @return string[][]
      */
-    public function errorResponseDataProvider(): array
+    public static function errorResponseDataProvider(): array
     {
         return [
             'Unauthorized' => [
