@@ -26,4 +26,5 @@ composer update
 vendor/bin/phpcs src/ --standard=PSR12
 vendor/bin/phpunit
 vendor/bin/phpstan analyse -c phpstan.neon
+vendor/bin/rector process [--dry-run]
 ```
