@@ -36,7 +36,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @var TValue[]
      */
-    protected $elements = [];
+    protected array $elements = [];
 
     /**
      * Constructs a list of values.
@@ -55,8 +55,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @return null|TValue
      */
-    #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->elements[$offset] ?? null;
     }
@@ -129,8 +128,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @return false|TValue
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): mixed
     {
         return current($this->elements);
     }
@@ -140,8 +138,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @return null|int|string
      */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): null|int|string
     {
         return key($this->elements);
     }
@@ -151,8 +148,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @return false|TValue
      */
-    #[\ReturnTypeWillChange]
-    public function next()
+    public function next(): mixed
     {
         return next($this->elements);
     }
