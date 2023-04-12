@@ -148,7 +148,7 @@ class CreateTest extends TestCase
                             'attachable_type' => null,
                         ],
                     ],
-                    'homepages_attributes' => null,
+                    'homepages_attributes'     => null,
                     'addrs_attributes'         => [
                         [
                             'id'           => null,
