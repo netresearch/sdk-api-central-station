@@ -1,8 +1,7 @@
 stages:
     - preparation
-    - 'PHP 7.3'
-    - 'PHP 7.4'
-    - 'PHP 8.0'
+    - 'PHP 8.1'
+    - 'PHP 8.2'
 
 
 default:
@@ -73,109 +72,73 @@ default:
         expire_in: 30 days
 
 
-# PHP 7.3
-.php7.3:
-    image: php:7.3
-    stage: 'PHP 7.3'
-    before_script:
-        - !reference [ default, before_script ]
-        # Install & enable Xdebug for code coverage reports
-        - pecl install xdebug-3.1.6
-        - docker-php-ext-enable xdebug
-
-composer:7.3:
-    extends:
-        - .php7.3
-        - .composer
-
-.php7.3-test:
-    extends:
-        - .php7.3
-    needs: [ 'composer:7.3' ]
-
-phpcs:7.3:
-    extends:
-        - .php7.3-test
-        - .phpcs
-
-phpstan:7.3:
-    extends:
-        - .php7.3-test
-        - .phpstan
-
-phpunit:7.3:
-    extends:
-        - .php7.3-test
-        - .phpunit
-
-
-# PHP 7.4
-.php7.4:
-    image: php:7.4
-    stage: 'PHP 7.4'
-    before_script:
-        - !reference [ default, before_script ]
-        # Install & enable Xdebug for code coverage reports
-        - pecl install xdebug-3.1.6
-        - docker-php-ext-enable xdebug
-
-composer:7.4:
-    extends:
-        - .php7.4
-        - .composer
-
-.php7.4-test:
-    extends:
-        - .php7.4
-    needs: [ 'composer:7.4' ]
-
-phpcs:7.4:
-    extends:
-        - .php7.4-test
-        - .phpcs
-
-phpstan:7.4:
-    extends:
-        - .php7.4-test
-        - .phpstan
-
-phpunit:7.4:
-    extends:
-        - .php7.4-test
-        - .phpunit
-
-
-# PHP 8.0
-.php8.0:
-    image: php:8.0
-    stage: 'PHP 8.0'
+# PHP 8.1
+.php8.1:
+    image: php:8.1
+    stage: 'PHP 8.1'
     before_script:
         - !reference [ default, before_script ]
         # Install & enable Xdebug for code coverage reports
         - pecl install xdebug-3.2.1
         - docker-php-ext-enable xdebug
 
-composer:8.0:
+composer:8.1:
     extends:
-        - .php8.0
+        - .php8.1
         - .composer
 
-.php8.0-test:
+.php8.1-test:
     extends:
-        - .php8.0
-    needs: [ 'composer:8.0' ]
+        - .php8.1
+    needs: [ 'composer:8.1' ]
 
-phpcs:8.0:
+phpcs:8.1:
     extends:
-        - .php8.0-test
+        - .php8.1-test
         - .phpcs
 
-phpstan:8.0:
+phpstan:8.1:
     extends:
-        - .php8.0-test
+        - .php8.1-test
         - .phpstan
 
-phpunit:8.0:
+phpunit:8.1:
     extends:
-        - .php8.0-test
+        - .php8.1-test
+        - .phpunit
+
+
+# PHP 8.2
+.php8.2:
+    image: php:8.2
+    stage: 'PHP 8.2'
+    before_script:
+        - !reference [ default, before_script ]
+        # Install & enable Xdebug for code coverage reports
+        - pecl install xdebug-3.2.1
+        - docker-php-ext-enable xdebug
+
+composer:8.2:
+    extends:
+        - .php8.2
+        - .composer
+
+.php8.2-test:
+    extends:
+        - .php8.2
+    needs: [ 'composer:8.2' ]
+
+phpcs:8.2:
+    extends:
+        - .php8.2-test
+        - .phpcs
+
+phpstan:8.2:
+    extends:
+        - .php8.2-test
+        - .phpstan
+
+phpunit:8.2:
+    extends:
+        - .php8.2-test
         - .phpunit
