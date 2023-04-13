@@ -37,7 +37,7 @@ class ShowValidator
     {
         if (isset($data['includes'])) {
             foreach ($data['includes'] as $include) {
-                if (!in_array($include, Constants::CALENDAR_EVENTS_INCLUDE, true)) {
+                if (!\in_array($include, Constants::CALENDAR_EVENTS_INCLUDE, true)) {
                     throw new RequestValidatorException(
                         'The provided include parameter "' . $include . '" is not allowed'
                     );

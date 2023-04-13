@@ -33,7 +33,7 @@ class SearchValidator
     public static function validate(array $data): void
     {
         foreach ($data['search'] as $search => $value) {
-            if (!in_array($search, Constants::SORT_BY, true)) {
+            if (!\in_array($search, Constants::SORT_BY, true)) {
                 throw new RequestValidatorException(
                     'The provided search parameter "' . $search . '" is not allowed'
                 );

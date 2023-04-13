@@ -38,7 +38,7 @@ trait IncludesTrait
             $this->data['includes'] = [];
         }
 
-        if (!in_array($include, $this->data['includes'], true)) {
+        if (!\in_array($include, $this->data['includes'], true)) {
             $this->data['includes'][] = $include;
         }
 

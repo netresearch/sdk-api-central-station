@@ -168,7 +168,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
             $this->data['calendarEvent']['calendarEventAttendees'] = [];
         }
 
-        if (!in_array($personId, $this->data['calendarEvent']['calendarEventAttendees'], true)) {
+        if (!\in_array($personId, $this->data['calendarEvent']['calendarEventAttendees'], true)) {
             $this->data['calendarEvent']['calendarEventAttendees'][] = $personId;
         }
 

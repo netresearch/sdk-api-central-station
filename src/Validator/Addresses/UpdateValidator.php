@@ -34,7 +34,7 @@ class UpdateValidator
     {
         if (
             isset($data['type'])
-            && !in_array($data['type'], Constants::ADDRESS_TYPE, true)
+            && !\in_array($data['type'], Constants::ADDRESS_TYPE, true)
         ) {
             throw new RequestValidatorException(
                 'The provided address type parameter "' . $data['type'] . '" is not allowed'

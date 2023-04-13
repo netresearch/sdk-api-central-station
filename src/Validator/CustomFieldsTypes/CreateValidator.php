@@ -38,7 +38,7 @@ class CreateValidator
             );
         }
 
-        if (!in_array($data['category'], Constants::CUSTOM_FIELDS_TYPE_CATEGORY, true)) {
+        if (!\in_array($data['category'], Constants::CUSTOM_FIELDS_TYPE_CATEGORY, true)) {
             throw new RequestValidatorException(
                 'The provided category parameter "' . $data['category'] . '" is not allowed'
             );
@@ -46,7 +46,7 @@ class CreateValidator
 
         if (
             isset($data['type'])
-            && !in_array($data['type'], Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE, true)
+            && !\in_array($data['type'], Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE, true)
         ) {
             throw new RequestValidatorException(
                 'The provided field type parameter "' . $data['type'] . '" is not allowed'

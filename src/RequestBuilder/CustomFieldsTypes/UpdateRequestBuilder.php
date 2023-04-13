@@ -93,7 +93,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
             $this->data['options'] = [];
         }
 
-        if (!in_array($option, $this->data['options'], true)) {
+        if (!\in_array($option, $this->data['options'], true)) {
             $this->data['options'][] = $option;
         }
 

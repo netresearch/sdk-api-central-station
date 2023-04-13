@@ -38,7 +38,7 @@ class CreateValidator
         }
 
         // Tags are limited to 60 chars
-        if (strlen($data['tag']['name']) > 60) {
+        if (\strlen($data['tag']['name']) > 60) {
             throw new RequestValidatorException(
                 'Tags are limited to 60 chars only'
             );

@@ -130,7 +130,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
             $this->data['tags'] = [];
         }
 
-        if (!in_array($tagName, $this->data['tags'], true)) {
+        if (!\in_array($tagName, $this->data['tags'], true)) {
             $this->data['tags'][] = $tagName;
         }
 
