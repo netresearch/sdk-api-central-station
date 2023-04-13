@@ -30,5 +30,5 @@ class GroupCalendarContainer
      *
      * @var GroupCalendar
      */
-    public $groupCalendar;
+    public GroupCalendar $groupCalendar;
 }

@@ -26,14 +26,14 @@ class Update implements RequestInterface
     /**
      * @var null|CustomField
      */
-    private $customField;
+    private ?CustomField $customField = null;
 
     /**
-     * @param CustomField $customField
+     * @param null|CustomField $customField
      *
      * @return Update
      */
-    public function setCustomField(CustomField $customField): Update
+    public function setCustomField(?CustomField $customField): Update
     {
         $this->customField = $customField;
         return $this;
@@ -46,7 +46,7 @@ class Update implements RequestInterface
     {
         $data = [];
 
-        if ($this->customField) {
+        if ($this->customField instanceof CustomField) {
             $data['custom_field'] = $this->customField->jsonSerialize();
         }
 

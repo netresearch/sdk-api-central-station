@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model;
 
+use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
+
 /**
  * A tag record.
  *
@@ -25,33 +27,35 @@ class Tag extends AbstractEntity
      *
      * @var int
      */
-    public $accountId;
+    public int $accountId;
 
     /**
      * The ID of the record the tag belongs to, e.g. person, company, offer or project.
      *
      * @var int
      */
-    public $attachableId;
+    public int $attachableId;
 
     /**
      * The record type the tag belongs to. Must be either "Person", "Company", "Deal" or "Project".
      *
      * @var string
      */
-    public $attachableType;
+    public string $attachableType;
 
     /**
      * The name of the tag.
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * States whether the tag has been added via the API or some sort of integration.
      *
      * @var bool
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $apiInput;
+    public bool $apiInput = false;
 }

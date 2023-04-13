@@ -26,14 +26,14 @@ class Update implements RequestInterface
     /**
      * @var null|Person
      */
-    private $person;
+    private ?Person $person = null;
 
     /**
-     * @param Person $person
+     * @param null|Person $person
      *
      * @return Update
      */
-    public function setPerson(Person $person): Update
+    public function setPerson(?Person $person): Update
     {
         $this->person = $person;
         return $this;
@@ -46,7 +46,7 @@ class Update implements RequestInterface
     {
         $data = [];
 
-        if ($this->person) {
+        if ($this->person instanceof Person) {
             $data['person'] = $this->person->jsonSerialize();
         }
 

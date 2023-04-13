@@ -32,5 +32,9 @@ interface FilterRequestBuilderInterface extends RequestBuilderInterface
      *
      * @return self
      */
-    public function addFilter(string $field, string $comparison, $value): FilterRequestBuilderInterface;
+    public function addFilter(
+        string $field,
+        string $comparison,
+        int|string|DateTime $value
+    ): FilterRequestBuilderInterface;
 }

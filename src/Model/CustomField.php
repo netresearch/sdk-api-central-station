@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model;
 
+use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
+
 /**
  * A custom field record.
  *
@@ -25,68 +27,70 @@ class CustomField extends AbstractEntity
      *
      * @var int
      */
-    public $accountId;
+    public int $accountId;
 
     /**
      * The ID of the record the custom field belongs to, e.g. person, company, offer or project.
      *
      * @var int
      */
-    public $attachableId;
+    public int $attachableId;
 
     /**
      * The record type the custom field belongs to. Must be either "Person", "Company", "Deal" or "Project".
      *
      * @var string
      */
-    public $attachableType;
+    public string $attachableType;
 
     /**
      * States whether the tag has been added via the API or some sort of integration.
      *
      * @var bool
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $apiInput;
+    public bool $apiInput = false;
 
     /**
      * The value of the custom field (decimal and date types may store their values separately).
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * The value in decimal representation, if the type of the custom field is "decimal".
      *
      * @var null|string
      */
-    public $nameDecimal;
+    public ?string $nameDecimal = null;
 
     /**
      * The value in ISO-8601 date representation, if the type of the custom field is "date".
      *
      * @var null|string
      */
-    public $nameDate;
+    public ?string $nameDate = null;
 
     /**
      * The ID of the underlying custom fields type.
      *
      * @var int
      */
-    public $customFieldsTypeId;
+    public int $customFieldsTypeId;
 
     /**
      * The name of the underlying custom fields type.
      *
-     * @var string
+     * @var null|string
      */
-    public $customFieldsTypeName;
+    public ?string $customFieldsTypeName = null;
 
     /**
      * A custom fields type.
      *
      * @var null|CustomFieldsType
      */
-    public $customFieldsType;
+    public ?CustomFieldsType $customFieldsType = null;
 }

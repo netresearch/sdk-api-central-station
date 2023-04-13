@@ -30,14 +30,14 @@ class Address extends AbstractEntity
      *
      * @var int
      */
-    public $attachableId;
+    public int $attachableId;
 
     /**
      * The record type the address belongs to. Must be either "Person" or "Company".
      *
      * @var string
      */
-    public $attachableType;
+    public string $attachableType;
 
     /**
      * The street including the house number or other details (building, c/o).
@@ -46,7 +46,7 @@ class Address extends AbstractEntity
      *
      * @ReplaceNullWithDefaultValue
      */
-    public $street = '';
+    public string $street = '';
 
     /**
      * The zip code.
@@ -55,7 +55,7 @@ class Address extends AbstractEntity
      *
      * @ReplaceNullWithDefaultValue
      */
-    public $zip = '';
+    public string $zip = '';
 
     /**
      * The city name.
@@ -64,14 +64,14 @@ class Address extends AbstractEntity
      *
      * @ReplaceNullWithDefaultValue
      */
-    public $city = '';
+    public string $city = '';
 
     /**
      * The state code (eg. NW, BY). Must match the county code.
      *
      * @var null|string
      */
-    public $stateCode;
+    public ?string $stateCode = null;
 
     /**
      * The country code (eg. DE, AT).
@@ -80,7 +80,7 @@ class Address extends AbstractEntity
      *
      * @ReplaceNullWithDefaultValue
      */
-    public $countryCode = '';
+    public string $countryCode = '';
 
     /**
      * The country name.
@@ -89,7 +89,7 @@ class Address extends AbstractEntity
      *
      * @ReplaceNullWithDefaultValue
      */
-    public $countryName = '';
+    public string $countryName = '';
 
     /**
      * Decides about the order of addresses when the attachable (Person or Company) has multiple addresses.
@@ -98,7 +98,7 @@ class Address extends AbstractEntity
      *
      * @ReplaceNullWithDefaultValue
      */
-    public $primary = false;
+    public bool $primary = false;
 
     /**
      * Type of address: work_hq, work, invoice, delivery, private or other.
@@ -106,12 +106,14 @@ class Address extends AbstractEntity
      * @var string
      * @see Constants::ADDRESS_TYPE
      */
-    public $type;
+    public string $type;
 
     /**
      * States whether the address has been added via the API or some sort of integration.
      *
      * @var bool
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $apiInput;
+    public bool $apiInput = false;
 }

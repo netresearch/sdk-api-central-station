@@ -27,92 +27,92 @@ class Attachment
      *
      * @var string
      */
-    public $id;
+    public string $id;
 
     /**
      * ID of account.
      *
      * @var int
      */
-    public $accountId;
+    public int $accountId;
 
     /**
      * ID of the user which created the note.
      *
      * @var int
      */
-    public $userId;
+    public int $userId;
 
     /**
      * ID of the linked object, for example the protocol ID.
      *
      * @var int
      */
-    public $attachableId;
+    public int $attachableId;
 
     /**
      * Type of linked object, e.g. Protocol.
      *
      * @var string
      */
-    public $attachableType;
+    public string $attachableType;
 
     /**
      * The attachment category ID.
      *
      * @var null|int
      */
-    public $attachmentCategoryId;
+    public ?int $attachmentCategoryId = null;
 
     /**
      * @var null|User
      */
-    public $user;
+    public ?User $user = null;
 
     /**
      * @var null|AttachmentCategory
      */
-    public $attachmentCategory;
+    public ?AttachmentCategory $attachmentCategory = null;
 
     /**
      * The list of comments assigned to this attachment.
      *
      * @var Comment[]
      */
-    public $comments = [];
+    public array $comments = [];
 
     /**
      * The original filename.
      *
      * @var string
      */
-    public $filename;
+    public string $filename;
 
     /**
      * The content type.
      *
      * @var string
      */
-    public $contentType;
+    public string $contentType;
 
     /**
      * The file size in byte.
      *
      * @var int
      */
-    public $size;
+    public int $size;
 
     /**
      * Time of creation.
      *
      * @var DateTime
      */
-    public $createdAt;
+    public DateTime $createdAt;
 
     /**
      * Time of last update.
      *
      * @var DateTime
      */
-    public $updatedAt;
+    public DateTime $updatedAt;
 }

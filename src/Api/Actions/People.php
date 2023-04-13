@@ -57,28 +57,28 @@ class People extends AbstractApiEndpoint
      *
      * @var null|People\Addresses
      */
-    private $addressesApi;
+    private ?People\Addresses $addressesApi = null;
 
     /**
      * Instance of the "custom_fields" API for implementing lazy loading.
      *
      * @var null|People\CustomFields
      */
-    private $customFieldsApi;
+    private ?People\CustomFields $customFieldsApi = null;
 
     /**
      * Instance of the "protocols" API for implementing lazy loading.
      *
      * @var null|People\Protocols
      */
-    private $protocolsApi;
+    private ?People\Protocols $protocolsApi = null;
 
     /**
      * Instance of the "tags" API for implementing lazy loading.
      *
      * @var null|People\Tags
      */
-    private $tagsApi;
+    private ?People\Tags $tagsApi = null;
 
     /**
      * Returns the "addrs" API used to process addresses related to a specific person.

@@ -35,84 +35,84 @@ class Company extends AbstractEntity
      *
      * @var int
      */
-    public $accountId;
+    public int $accountId;
 
     /**
      * ID of group.
      *
      * @var int
      */
-    public $groupId;
+    public int $groupId;
 
     /**
      * ID of the user which created the entry.
      *
      * @var null|int
      */
-    public $userId;
+    public ?int $userId = null;
 
     /**
      * The name of the company.
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * Details about the company e.g. history.
      *
      * @var null|string
      */
-    public $background;
+    public ?string $background = null;
 
     /**
      * A collection of tags assigned to the person.
      *
      * @var TagCollection<Tag>
      */
-    public $tags;
+    public TagCollection $tags;
 
     /**
      * A collection of positions assigned to the person.
      *
      * @var PositionCollection<Position>
      */
-    public $positions;
+    public PositionCollection $positions;
 
     /**
      * A collection of addresses assigned to the person.
      *
      * @var AddressCollection<Address>
      */
-    public $addresses;
+    public AddressCollection $addresses;
 
     /**
      * A collection of telephone numbers assigned to the person.
      *
      * @var ContactDetailCollection<ContactDetail>
      */
-    public $phoneNumbers;
+    public ContactDetailCollection $phoneNumbers;
 
     /**
      * A collection of email addresses assigned to the person.
      *
      * @var ContactDetailCollection<ContactDetail>
      */
-    public $emails;
+    public ContactDetailCollection $emails;
 
     /**
      * A collection of homepages assigned to the person.
      *
      * @var ContactDetailCollection<ContactDetail>
      */
-    public $homepages;
+    public ContactDetailCollection $homepages;
 
     /**
      * A collection of custom fields assigned to the person.
      *
      * @var CustomFieldCollection<CustomField>
      */
-    public $customFields;
+    public CustomFieldCollection $customFields;
 
     /**
      * Constructor.

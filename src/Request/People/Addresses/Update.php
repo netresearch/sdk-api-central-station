@@ -26,7 +26,7 @@ class Update implements RequestInterface
     /**
      * @var null|Address
      */
-    private $address;
+    private ?Address $address = null;
 
     /**
      * @param null|Address $address
@@ -46,7 +46,7 @@ class Update implements RequestInterface
     {
         $data = [];
 
-        if ($this->address) {
+        if ($this->address instanceof Address) {
             $data['addr'] = $this->address->jsonSerialize();
         }
 

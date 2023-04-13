@@ -30,5 +30,5 @@ class CustomFieldContainer
      *
      * @var CustomField
      */
-    public $customField;
+    public CustomField $customField;
 }

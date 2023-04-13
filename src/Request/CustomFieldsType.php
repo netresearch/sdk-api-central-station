@@ -27,35 +27,35 @@ class CustomFieldsType implements JsonSerializable
      *
      * @var null|int
      */
-    private $position;
+    private ?int $position = null;
 
     /**
      * The name of the custom field type.
      *
      * @var null|string
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * The category (one of Constants::CUSTOM_FIELDS_TYPE_CATEGORY_*).
      *
      * @var null|string
      */
-    private $category;
+    private ?string $category = null;
 
     /**
      * The type of the custom field (one of Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_*).
      *
      * @var null|string
      */
-    private $type;
+    private ?string $type = null;
 
     /**
      * The options for field type "select".
      *
      * @var null|string[]
      */
-    private $options;
+    private ?array $options = null;
 
     /**
      * @param null|int $position

@@ -27,49 +27,49 @@ class Position implements JsonSerializable
      *
      * @var null|int
      */
-    private $personId;
+    private ?int $personId = null;
 
     /**
      * ID of the linked company.
      *
      * @var null|int
      */
-    private $companyId;
+    private ?int $companyId = null;
 
     /**
      * Name of the linked company.
      *
      * @var null|string
      */
-    private $companyName;
+    private ?string $companyName = null;
 
     /**
      * Title of the item, e.g. Managing director, HR manager, etc.
      *
      * @var null|string
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * Department in which the person works.
      *
      * @var null|string
      */
-    private $department;
+    private ?string $department = null;
 
     /**
      * Only one position may be set to primary. This will mark the primary position the person holds.
      *
      * @var bool
      */
-    private $primaryFunction = false;
+    private bool $primaryFunction = false;
 
     /**
      * Positions that are no longer active may be marked as former.
      *
      * @var bool
      */
-    private $former = false;
+    private bool $former = false;
 
     /**
      * @param null|int $personId

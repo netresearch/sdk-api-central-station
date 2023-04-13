@@ -25,14 +25,14 @@ class Merge implements RequestInterface
     /**
      * @var int
      */
-    private $personId;
+    private int $personId;
 
     /**
      * A list of person IDs used to merge into the $personId record.
      *
      * @var int[]
      */
-    public $mergeIds;
+    public array $mergeIds;
 
     /**
      * Constructor.

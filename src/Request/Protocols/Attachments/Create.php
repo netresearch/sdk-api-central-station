@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var Attachment
      */
-    private $attachment;
+    private Attachment $attachment;
 
     /**
      * Constructor.

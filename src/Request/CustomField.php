@@ -27,24 +27,24 @@ class CustomField implements JsonSerializable
      *
      * @var null|string
      */
-    private $content;
+    private ?string $content = null;
 
     /**
      * @var null|int
      */
-    private $attachableId;
+    private ?int $attachableId = null;
 
     /**
      * @var null|string
      */
-    private $attachableType;
+    private ?string $attachableType = null;
 
     /**
      * The ID of the underlying custom fields type.
      *
      * @var null|int
      */
-    private $customFieldsTypeId;
+    private ?int $customFieldsTypeId = null;
 
     /**
      * @param null|string $content

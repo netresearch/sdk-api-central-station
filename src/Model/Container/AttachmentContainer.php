@@ -27,12 +27,12 @@ class AttachmentContainer
      *
      * @var Attachment
      */
-    public $attachment;
+    public Attachment $attachment;
 
     /**
      * The base64 encoded data of the attachment.
      *
      * @var string
      */
-    public $data;
+    public string $data;
 }

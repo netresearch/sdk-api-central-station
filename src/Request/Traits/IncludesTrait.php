@@ -25,7 +25,7 @@ trait IncludesTrait
     /**
      * @var null|string[]
      */
-    private $includes;
+    private ?array $includes = null;
 
     /**
      * @param string ...$includes

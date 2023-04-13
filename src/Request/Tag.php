@@ -25,17 +25,17 @@ class Tag implements JsonSerializable
     /**
      * @var null|string
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * @var null|int
      */
-    private $attachableId;
+    private ?int $attachableId = null;
 
     /**
      * @var null|string
      */
-    private $attachableType;
+    private ?string $attachableType = null;
 
     /**
      * @param null|string $name

@@ -46,7 +46,7 @@ class Protocols extends AbstractApiEndpoint
      *
      * @var null|Protocols\Attachments
      */
-    private $attachmentsApi;
+    private ?Protocols\Attachments $attachmentsApi = null;
 
     /**
      * Returns the "attachments" API used to process attachments related to a specific person.

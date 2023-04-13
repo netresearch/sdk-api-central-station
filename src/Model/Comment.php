@@ -25,26 +25,26 @@ class Comment extends AbstractEntity
      *
      * @var int
      */
-    public $attachableId;
+    public int $attachableId;
 
     /**
      * Type of linked object, e.g. Protocol.
      *
      * @var string
      */
-    public $attachableType;
+    public string $attachableType;
 
     /**
      * ID of the user which created the comment.
      *
      * @var int
      */
-    public $userId;
+    public int $userId;
 
     /**
      * The comment.
      *
      * @var string
      */
-    public $name;
+    public string $name;
 }

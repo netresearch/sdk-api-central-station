@@ -25,26 +25,26 @@ class User
      *
      * @var int
      */
-    public $id;
+    public int $id;
 
     /**
      * The first name.
      *
      * @var string
      */
-    public $first;
+    public string $first;
 
     /**
      * The last name.
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * The login name.
      *
      * @var string
      */
-    public $login;
+    public string $login;
 }

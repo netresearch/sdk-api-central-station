@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var CustomField
      */
-    private $customField;
+    private CustomField $customField;
 
     /**
      * Constructor.

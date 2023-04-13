@@ -27,19 +27,19 @@ abstract class AbstractEntity
      *
      * @var int
      */
-    public $id;
+    public int $id;
 
     /**
      * Time of creation.
      *
      * @var DateTime
      */
-    public $createdAt;
+    public DateTime $createdAt;
 
     /**
      * Time of last update.
      *
      * @var DateTime
      */
-    public $updatedAt;
+    public DateTime $updatedAt;
 }

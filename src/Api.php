@@ -37,7 +37,7 @@ class Api
      *
      * @var null|People
      */
-    private $peopleApi;
+    private ?People $peopleApi = null;
 
     /**
      * Instance of the "companies" API for implementing lazy loading.
@@ -51,60 +51,60 @@ class Api
      *
      * @var null|Tags
      */
-    private $tagsApi;
+    private ?Tags $tagsApi = null;
 
     /**
      * Instance of the "protocols" API for implementing lazy loading.
      *
      * @var null|Protocols
      */
-    private $protocolsApi;
+    private ?Protocols $protocolsApi = null;
 
     /**
      * Instance of the "custom_fields_types" API for implementing lazy loading.
      *
      * @var null|CustomFieldsTypes
      */
-    private $customFieldsTypesApi;
+    private ?CustomFieldsTypes $customFieldsTypesApi = null;
 
     /**
      * Instance of the "group_calendars" API for implementing lazy loading.
      *
      * @var null|GroupCalendars
      */
-    private $groupCalendarsApi;
+    private ?GroupCalendars $groupCalendarsApi = null;
 
     /**
      * Instance of the "cal_events" API for implementing lazy loading.
      *
      * @var null|CalendarEvents
      */
-    private $calendarEventsApi;
+    private ?CalendarEvents $calendarEventsApi = null;
 
     /**
      * @var ClientInterface
      */
-    private $client;
+    private ClientInterface $client;
 
     /**
      * @var RequestFactoryInterface
      */
-    private $requestFactory;
+    private RequestFactoryInterface $requestFactory;
 
     /**
      * @var StreamFactoryInterface
      */
-    private $streamFactory;
+    private StreamFactoryInterface $streamFactory;
 
     /**
      * @var JsonSerializer
      */
-    private $serializer;
+    private JsonSerializer $serializer;
 
     /**
      * @var UrlBuilder
      */
-    private $urlBuilder;
+    private UrlBuilder $urlBuilder;
 
     /**
      * Api constructor.

@@ -25,5 +25,5 @@ class AttachmentCategory extends AbstractEntity
      *
      * @var string
      */
-    public $name;
+    public string $name;
 }

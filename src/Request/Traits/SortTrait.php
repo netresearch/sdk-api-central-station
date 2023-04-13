@@ -25,12 +25,12 @@ trait SortTrait
     /**
      * @var null|string
      */
-    private $orderBy;
+    private ?string $orderBy = null;
 
     /**
      * @var null|string
      */
-    private $orderDirection = 'asc';
+    private ?string $orderDirection = 'asc';
 
     /**
      * @param null|string $orderBy

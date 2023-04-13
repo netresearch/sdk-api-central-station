@@ -30,5 +30,5 @@ class TagContainer
      *
      * @var Tag
      */
-    public $tag;
+    public Tag $tag;
 }

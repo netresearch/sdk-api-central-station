@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model;
 
+use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
 use MagicSunday\JsonMapper\Annotation\ReplaceProperty;
 use Netresearch\Sdk\CentralStation\Constants;
 
@@ -30,28 +31,28 @@ class ContactDetail extends AbstractEntity
      *
      * @var int
      */
-    public $attachableId;
+    public int $attachableId;
 
     /**
      * The record type the contact detail belongs to. Must be either "Person", "Company", "Deal" or "Project".
      *
      * @var string
      */
-    public $attachableType;
+    public string $attachableType;
 
     /**
      * The name (value) of the contact detail.
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * The clean name (value) of the contact detail.
      *
      * @var string
      */
-    public $nameClean;
+    public string $nameClean;
 
     /**
      * Another type of contact_details, e.g. for a phone number
@@ -60,19 +61,21 @@ class ContactDetail extends AbstractEntity
      * @var string
      * @see Constants::CONTACT_DETAILS_TYPE
      */
-    public $contactType;
+    public string $contactType;
 
     /**
      * Type of contact_details, e.g. Email, Im (instant messenger), Sm (social media), Tel or Homepage.
      *
      * @var string
      */
-    public $type;
+    public string $type;
 
     /**
      * States whether the contact detail has been added via the API or some sort of integration.
      *
      * @var bool
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $apiInput;
+    public bool $apiInput = false;
 }

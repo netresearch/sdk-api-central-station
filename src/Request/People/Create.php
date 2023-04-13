@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var Person
      */
-    private $person;
+    private Person $person;
 
     /**
      * Constructor.

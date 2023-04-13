@@ -29,82 +29,82 @@ class CalendarEvent implements JsonSerializable
      *
      * @var null|int
      */
-    private $attachableId;
+    private ?int $attachableId = null;
 
     /**
      * The record type the contact detail belongs to. Must be either Person or Company.
      *
      * @var null|string
      */
-    private $attachableType;
+    private ?string $attachableType = null;
 
     /**
      * The value of the contact detail according to the selected type.
      *
      * @var null|string
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * The group calendar ID.
      *
      * @var null|string
      */
-    private $groupCalendarId;
+    private ?string $groupCalendarId = null;
 
     /**
      * Description of the location, can be an address, a Meeting room id or left blank.
      *
      * @var null|string
      */
-    private $location;
+    private ?string $location = null;
 
     /**
      * Can be new, confirmed, tentative or cancelled.
      *
      * @var null|string
      */
-    private $status;
+    private ?string $status = null;
 
     /**
      * Start time of the event.
      *
      * @var null|DateTime
      */
-    private $startsAt;
+    private ?DateTime $startsAt = null;
 
     /**
      * End time of the event.
      *
      * @var null|DateTime
      */
-    private $endsAt;
+    private ?DateTime $endsAt = null;
 
     /**
      * Set to true for events that last the whole day (eg. holidays).
      *
      * @var bool
      */
-    private $allDay = false;
+    private bool $allDay = false;
 
     /**
      * Set to true and CSCRM will send out email invitations to all attendees.
      *
      * @var bool
      */
-    private $emailInvitations = false;
+    private bool $emailInvitations = false;
 
     /**
      * Details regarding the event, eg. agenda.
      *
      * @var null|string
      */
-    private $description;
+    private ?string $description = null;
 
     /**
      * @var null|CalendarEventAttendees
      */
-    private $calendarEventAttendees;
+    private ?CalendarEventAttendees $calendarEventAttendees = null;
 
     /**
      * @param null|int $attachableId

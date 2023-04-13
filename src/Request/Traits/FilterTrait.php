@@ -25,7 +25,7 @@ trait FilterTrait
     /**
      * @var null|string[][]
      */
-    private $filter;
+    private ?array $filter = null;
 
     /**
      * Sets a list of filters:

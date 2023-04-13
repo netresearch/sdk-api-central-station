@@ -25,5 +25,5 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
      *
      * @var array<string, mixed>
      */
-    protected $data = [];
+    protected array $data = [];
 }

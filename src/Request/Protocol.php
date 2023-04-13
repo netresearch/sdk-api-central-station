@@ -27,49 +27,49 @@ class Protocol implements JsonSerializable
      *
      * @var null|int[]
      */
-    private $personIds;
+    private ?array $personIds = null;
 
     /**
      * IDs of the linked companies.
      *
      * @var null|int[]
      */
-    private $companyIds;
+    private ?array $companyIds = null;
 
     /**
      * The sketch of the note.
      *
      * @var null|string
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * The content of the note.
      *
      * @var null|string
      */
-    private $content;
+    private ?string $content = null;
 
     /**
      * Whether if the note is confidential or not.
      *
      * @var bool
      */
-    private $confidential = false;
+    private bool $confidential = false;
 
     /**
      * The format of the note (one of Constants::PROTOCOL_FORMAT_*).
      *
      * @var null|string
      */
-    private $format;
+    private ?string $format = null;
 
     /**
      * The badge of the note (one of Constants::PROTOCOL_BADGE_*).
      *
      * @var null|string
      */
-    private $badge;
+    private ?string $badge = null;
 
     /**
      * @param null|string $name

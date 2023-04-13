@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var CalendarEvent
      */
-    private $calendarEvent;
+    private CalendarEvent $calendarEvent;
 
     /**
      * Constructor.

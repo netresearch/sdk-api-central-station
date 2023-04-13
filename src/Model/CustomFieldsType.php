@@ -30,40 +30,42 @@ class CustomFieldsType extends AbstractEntity
      *
      * @var int
      */
-    public $accountId;
+    public int $accountId;
 
     /**
      * Arrangement of the individual field type in the display.
      *
      * @var int
      */
-    public $position;
+    public int $position;
 
     /**
      * @var bool
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $visibleForAllGroups;
+    public bool $visibleForAllGroups = false;
 
     /**
      * Range of the individual field type (e.g. Person, Company, Deal or Project).
      *
      * @var string
      */
-    public $category;
+    public string $category;
 
     /**
      * Type of custom field (e.g. string, date, select, decimal or url).
      *
      * @var string
      */
-    public $type;
+    public string $type;
 
     /**
      * The name of the custom field type.
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * The options if type is "select".
@@ -72,12 +74,14 @@ class CustomFieldsType extends AbstractEntity
      *
      * @ReplaceNullWithDefaultValue
      */
-    public $options = [];
+    public array $options = [];
 
     /**
      * API only created or used field?
      *
      * @var bool
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $apiOnly;
+    public bool $apiOnly = false;
 }

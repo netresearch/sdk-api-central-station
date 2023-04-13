@@ -30,5 +30,5 @@ class AddressContainer
      *
      * @var Address
      */
-    public $addr;
+    public Address $addr;
 }

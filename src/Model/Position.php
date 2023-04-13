@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model;
 
+use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
+
 /**
  * A position record.
  *
@@ -25,54 +27,60 @@ class Position extends AbstractEntity
      *
      * @var int
      */
-    public $accountId;
+    public int $accountId;
 
     /**
      * ID of the linked person.
      *
      * @var int
      */
-    public $personId;
+    public int $personId;
 
     /**
      * ID of the linked company.
      *
      * @var int
      */
-    public $companyId;
+    public int $companyId;
 
     /**
      * Title of the item, e.g. Managing director, HR manager, etc.
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * Department in which the person works.
      *
      * @var string
      */
-    public $department;
+    public string $department;
 
     /**
      * Only one position may be set to primary. This will mark the primary position the person holds.
      *
      * @var bool
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $primaryFunction;
+    public bool $primaryFunction = false;
 
     /**
      * Positions that are no longer active may be marked as former.
      *
      * @var bool
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $former;
+    public bool $former = false;
 
     /**
      * States whether the tag has been added via the API or some sort of integration.
      *
      * @var bool
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $apiInput;
+    public bool $apiInput = false;
 }

@@ -32,21 +32,21 @@ class GroupCalendar
      *
      * @var string
      */
-    public $id;
+    public string $id;
 
     /**
      * The name of the group calendar.
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * Color options from one, two...twelve.
      *
      * @var string
      */
-    public $colorType;
+    public string $colorType;
 
     /**
      * True for standard calendars that cannot be deleted.
@@ -55,28 +55,28 @@ class GroupCalendar
      *
      * @ReplaceNullWithDefaultValue
      */
-    public $readOnly = false;
+    public bool $readOnly = false;
 
     /**
      * Time of creation.
      *
      * @var DateTime
      */
-    public $createdAt;
+    public DateTime $createdAt;
 
     /**
      * Time of last update.
      *
      * @var DateTime
      */
-    public $updatedAt;
+    public DateTime $updatedAt;
 
     /**
      * A collection of all assigned calendar events.
      *
      * @var CalendarEventCollection<CalendarEvent>
      */
-    public $calendarEvents;
+    public CalendarEventCollection $calendarEvents;
 
     /**
      * Constructor.

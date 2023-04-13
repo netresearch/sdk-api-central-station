@@ -27,35 +27,35 @@ class ContactDetail implements JsonSerializable
      *
      * @var null|int
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * The ID of the record the contact detail belongs to.
      *
      * @var null|int
      */
-    private $attachableId;
+    private ?int $attachableId = null;
 
     /**
      * The record type the contact detail belongs to. Must be either Person or Company.
      *
      * @var null|string
      */
-    private $attachableType;
+    private ?string $attachableType = null;
 
     /**
      * The value of the contact detail according to the selected type.
      *
      * @var null|string
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * Must be one of office, office_hq, mobile, fax, private, voip, skype or other.
      *
      * @var null|string
      */
-    private $type;
+    private ?string $type = null;
 
     /**
      * @param null|int $id

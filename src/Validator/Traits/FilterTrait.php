@@ -28,7 +28,7 @@ trait FilterTrait
      *
      * @var string[]
      */
-    private static $allowedFilters = [
+    private static array $allowedFilters = [
         'id',
         'account_id',
         'salutation',

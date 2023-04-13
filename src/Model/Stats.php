@@ -25,5 +25,5 @@ class Stats
      *
      * @var int
      */
-    public $totalEntries;
+    public int $totalEntries;
 }

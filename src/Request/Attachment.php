@@ -27,37 +27,37 @@ class Attachment implements JsonSerializable
      *
      * @var null|string
      */
-    private $filename;
+    private ?string $filename = null;
 
     /**
      * @var null|string
      */
-    private $contentType;
+    private ?string $contentType = null;
 
     /**
      * @var null|string
      */
-    private $data;
+    private ?string $data = null;
 
     /**
      * @var null|int
      */
-    private $attachableId;
+    private ?int $attachableId = null;
 
     /**
      * @var null|string
      */
-    private $attachableType;
+    private ?string $attachableType = null;
 
     /**
      * @var null|int
      */
-    private $attachmentCategoryId;
+    private ?int $attachmentCategoryId = null;
 
     /**
      * @var null|string
      */
-    private $attachmentCategoryName;
+    private ?string $attachmentCategoryName = null;
 
     /**
      * @param null|string $filename

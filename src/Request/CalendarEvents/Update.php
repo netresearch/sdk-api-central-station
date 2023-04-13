@@ -26,7 +26,7 @@ class Update implements RequestInterface
     /**
      * @var null|CalendarEvent
      */
-    private $calendarEvent;
+    private ?CalendarEvent $calendarEvent = null;
 
     /**
      * @param null|CalendarEvent $calendarEvent
@@ -46,7 +46,7 @@ class Update implements RequestInterface
     {
         $data = [];
 
-        if ($this->calendarEvent) {
+        if ($this->calendarEvent instanceof CalendarEvent) {
             $data['cal_event'] = $this->calendarEvent->jsonSerialize();
         }
 

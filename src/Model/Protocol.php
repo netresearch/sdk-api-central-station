@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Model;
 
+use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
+
 /**
  * A protocol record.
  *
@@ -25,89 +27,91 @@ class Protocol extends AbstractEntity
      *
      * @var int
      */
-    public $accountId;
+    public int $accountId;
 
     /**
      * ID of the user which created the note.
      *
      * @var int
      */
-    public $userId;
+    public int $userId;
 
     /**
      * IDs of the linked persons.
      *
      * @var int[]
      */
-    public $personIds;
+    public array $personIds;
 
     /**
      * IDs of the linked companies.
      *
      * @var int[]
      */
-    public $companyIds;
+    public array $companyIds;
 
     /**
      * The sketch of the note.
      *
      * @var null|string
      */
-    public $name;
+    public ?string $name = null;
 
     /**
      * The content of the note.
      *
      * @var null|string
      */
-    public $content;
+    public ?string $content = null;
 
     /**
      * Whether if the note is confidential or not.
      *
      * @var bool
+     *
+     * @ReplaceNullWithDefaultValue
      */
-    public $confidential;
+    public bool $confidential = false;
 
     /**
      * The format of the note (either "plaintext", "markdown", "textile" or "html" (default)).
      *
      * @var string
      */
-    public $format;
+    public string $format;
 
     /**
      * The type of the note (either "ProtocolObjectNote", "ProtocolUserNote", or "ProtocolAttachment").
      *
      * @var string
      */
-    public $type;
+    public string $type;
 
     /**
      * The badge of the note (either "note", "call", "email", "meeting" or "other", "research" for companies).
      *
      * @var string
      */
-    public $badge;
+    public string $badge;
 
     /**
      * The number of assigned attachment to this note.
      *
      * @var int
      */
-    public $attachmentsCount;
+    public int $attachmentsCount;
 
     /**
      * The number of assigned comments to this note.
      *
      * @var int
      */
-    public $commentsCount;
+    public int $commentsCount;
 
     /**
      * The list of comments assigned to this note.
      *
      * @var Comment[]
      */
-    public $comments = [];
+    public array $comments = [];
 }

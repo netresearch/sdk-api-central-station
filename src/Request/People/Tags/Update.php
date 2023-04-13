@@ -26,14 +26,14 @@ class Update implements RequestInterface
     /**
      * @var null|Tag
      */
-    private $tag;
+    private ?Tag $tag = null;
 
     /**
-     * @param Tag $tag
+     * @param null|Tag $tag
      *
      * @return Update
      */
-    public function setTag(Tag $tag): Update
+    public function setTag(?Tag $tag): Update
     {
         $this->tag = $tag;
         return $this;
@@ -46,7 +46,7 @@ class Update implements RequestInterface
     {
         $data = [];
 
-        if ($this->tag) {
+        if ($this->tag instanceof Tag) {
             $data['tag'] = $this->tag->jsonSerialize();
         }
 

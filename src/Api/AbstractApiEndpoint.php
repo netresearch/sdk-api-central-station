@@ -46,29 +46,29 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * @var ClientInterface
      */
-    protected $client;
+    protected ClientInterface $client;
 
     /**
      * @var RequestFactoryInterface
      */
-    protected $requestFactory;
+    protected RequestFactoryInterface $requestFactory;
 
     /**
      * @var StreamFactoryInterface
      */
-    protected $streamFactory;
+    protected StreamFactoryInterface $streamFactory;
 
     /**
      * The JSON serializer instance.
      *
      * @var JsonSerializer
      */
-    protected $serializer;
+    protected JsonSerializer $serializer;
 
     /**
      * @var UrlBuilder
      */
-    protected $urlBuilder;
+    protected UrlBuilder $urlBuilder;
 
     /**
      * Constructor.

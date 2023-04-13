@@ -25,72 +25,72 @@ class Person implements JsonSerializable
     /**
      * @var null|string
      */
-    private $lastName;
+    private ?string $lastName = null;
 
     /**
      * @var null|string
      */
-    private $firstName;
+    private ?string $firstName = null;
 
     /**
      * @var null|string
      */
-    private $gender;
+    private ?string $gender = null;
 
     /**
      * @var null|string
      */
-    private $title;
+    private ?string $title = null;
 
     /**
      * @var null|string
      */
-    private $salutation;
+    private ?string $salutation = null;
 
     /**
      * @var null|string
      */
-    private $countryCode;
+    private ?string $countryCode = null;
 
     /**
      * @var null|string
      */
-    private $background;
+    private ?string $background = null;
 
     /**
      * @var null|Positions
      */
-    private $positions;
+    private ?Positions $positions = null;
 
     /**
      * @var null|Tags
      */
-    private $tags;
+    private ?Tags $tags = null;
 
     /**
      * @var null|ContactDetails
      */
-    private $phoneNumbers;
+    private ?ContactDetails $phoneNumbers = null;
 
     /**
      * @var null|ContactDetails
      */
-    private $emailAddresses;
+    private ?ContactDetails $emailAddresses = null;
 
     /**
      * @var null|ContactDetails
      */
-    private $homepages;
+    private ?ContactDetails $homepages = null;
 
     /**
      * @var null|Addresses
      */
-    private $addresses;
+    private ?Addresses $addresses = null;
 
     /**
      * @var null|CustomFields
      */
-    private $customFields;
+    private ?CustomFields $customFields = null;
 
     /**
      * @param null|string $lastName

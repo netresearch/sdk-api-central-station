@@ -30,12 +30,12 @@ class ProtocolContainer
      *
      * @var Protocol
      */
-    public $protocolObjectNote;
+    public Protocol $protocolObjectNote;
 
     /**
      * A note for status messages from a user.
      *
      * @var Protocol
      */
-    public $protocolUserNote;
+    public Protocol $protocolUserNote;
 }

@@ -39,31 +39,31 @@ class CentralStation
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * @var UrlBuilder
      */
-    private $urlBuilder;
+    private UrlBuilder $urlBuilder;
 
     /**
      * @var JsonSerializer
      */
-    private $serializer;
+    private JsonSerializer $serializer;
 
     /**
      * The API key.
      *
      * @var string
      */
-    private $apiKey;
+    private string $apiKey;
 
     /**
      * Api instance for implementing lazy loading.
      *
      * @var null|Api
      */
-    private $api;
+    private ?Api $api;
 
     /**
      * CentralStation constructor.

@@ -27,42 +27,42 @@ class Address implements JsonSerializable
      *
      * @var null|int
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @var null|string
      */
-    private $street;
+    private ?string $street = null;
 
     /**
      * @var null|string
      */
-    private $zip;
+    private ?string $zip = null;
 
     /**
      * @var null|string
      */
-    private $city;
+    private ?string $city = null;
 
     /**
      * @var null|string
      */
-    private $stateCode;
+    private ?string $stateCode = null;
 
     /**
      * @var null|string
      */
-    private $countryCode;
+    private ?string $countryCode = null;
 
     /**
      * @var bool
      */
-    private $primary = false;
+    private bool $primary = false;
 
     /**
      * @var null|string
      */
-    private $type;
+    private ?string $type = null;
 
     /**
      * @param null|int $id

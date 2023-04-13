@@ -23,17 +23,17 @@ class UrlBuilder
     /**
      * @var string
      */
-    private $baseUrl;
+    private string $baseUrl;
 
     /**
      * @var string[]
      */
-    private $paths = [];
+    private array $paths = [];
 
     /**
      * @var mixed[]
      */
-    private $parameters = [];
+    private array $parameters = [];
 
     /**
      * Reset the list of path parts.

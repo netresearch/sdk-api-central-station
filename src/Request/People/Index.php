@@ -45,12 +45,12 @@ class Index implements
     /**
      * @var null|int
      */
-    private $tagId;
+    private ?int $tagId = null;
 
     /**
      * @var null|string
      */
-    private $tagName;
+    private ?string $tagName = null;
 
     /**
      * @param null|int $tagId
@@ -86,11 +86,11 @@ class Index implements
         $data = $this->addIncludesToSerializedData($data);
         $data = $this->addCustomFieldToSerializedData($data);
 
-        if (!empty($this->tagId)) {
+        if ($this->tagId !== null) {
             $data['tag_id'] = $this->tagId;
         }
 
-        if (!empty($this->tagName)) {
+        if ($this->tagName !== null) {
             $data['tag_name'] = $this->tagName;
         }
 

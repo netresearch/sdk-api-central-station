@@ -34,8 +34,11 @@ trait FilterTrait
      *
      * @return self
      */
-    public function addFilter(string $field, string $comparison, $value): FilterRequestBuilderInterface
-    {
+    public function addFilter(
+        string $field,
+        string $comparison,
+        int|string|DateTime $value
+    ): FilterRequestBuilderInterface {
         if (!isset($this->data['filter'])) {
             $this->data['filter'] = [];
         }

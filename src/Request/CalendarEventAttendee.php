@@ -27,7 +27,7 @@ class CalendarEventAttendee implements JsonSerializable
      *
      * @var null|int
      */
-    private $personId;
+    private ?int $personId = null;
 
     /**
      * @param null|int $personId

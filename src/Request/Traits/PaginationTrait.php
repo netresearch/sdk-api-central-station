@@ -25,12 +25,12 @@ trait PaginationTrait
     /**
      * @var null|int
      */
-    private $perPage;
+    private ?int $perPage = null;
 
     /**
      * @var null|int
      */
-    private $page;
+    private ?int $page = null;
 
     /**
      * @param null|int $perPage

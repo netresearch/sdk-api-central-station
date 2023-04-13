@@ -32,16 +32,16 @@ class TagList implements PaginationRequestInterface, SortRequestInterface
     use SortTrait;
 
     /**
-     * @var string
+     * @var null|string
      */
-    private $attachableType;
+    private ?string $attachableType = null;
 
     /**
-     * @param string $attachableType
+     * @param null|string $attachableType
      *
      * @return TagList
      */
-    public function setAttachableType(string $attachableType): TagList
+    public function setAttachableType(?string $attachableType): TagList
     {
         $this->attachableType = $attachableType;
         return $this;
@@ -56,7 +56,7 @@ class TagList implements PaginationRequestInterface, SortRequestInterface
         $data = $this->addPaginationToSerializedData($data);
         $data = $this->addSortToSerializedData($data);
 
-        if (!empty($this->attachableType)) {
+        if ($this->attachableType !== null) {
             $data['attachable_type'] = $this->attachableType;
         }
 

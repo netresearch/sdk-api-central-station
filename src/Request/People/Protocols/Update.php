@@ -26,14 +26,14 @@ class Update implements RequestInterface
     /**
      * @var null|Protocol
      */
-    private $protocol;
+    private ?Protocol $protocol = null;
 
     /**
-     * @param Protocol $protocol
+     * @param null|Protocol $protocol
      *
      * @return Update
      */
-    public function setProtocol(Protocol $protocol): Update
+    public function setProtocol(?Protocol $protocol): Update
     {
         $this->protocol = $protocol;
         return $this;
@@ -46,7 +46,7 @@ class Update implements RequestInterface
     {
         $data = [];
 
-        if ($this->protocol) {
+        if ($this->protocol instanceof Protocol) {
             $data['protocol'] = $this->protocol->jsonSerialize();
         }
 

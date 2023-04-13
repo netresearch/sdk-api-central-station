@@ -34,84 +34,84 @@ class CalendarEvent
      *
      * @var string
      */
-    public $id;
+    public string $id;
 
     /**
      * ID of account.
      *
      * @var int
      */
-    public $accountId;
+    public int $accountId;
 
     /**
      * ID of the user which created the calendar event.
      *
      * @var int
      */
-    public $userId;
+    public int $userId;
 
     /**
      * ID of the linked object, for example the person ID.
      *
      * @var null|int
      */
-    public $attachableId;
+    public ?int $attachableId = null;
 
     /**
      * Type of linked object, e.g. Person.
      *
      * @var null|string
      */
-    public $attachableType;
+    public ?string $attachableType = null;
 
     /**
      * ID of group entity.
      *
      * @var string
      */
-    public $groupCalendarId;
+    public string $groupCalendarId;
 
     /**
      * The number of assigned comments to this calendar event.
      *
      * @var int
      */
-    public $commentsCount;
+    public int $commentsCount;
 
     /**
      * The name of the calendar event.
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * The location of the calendar event.
      *
      * @var null|string
      */
-    public $location;
+    public ?string $location = null;
 
     /**
      * Start time of the event.
      *
      * @var DateTime
      */
-    public $startsAt;
+    public DateTime $startsAt;
 
     /**
      * End time of the event.
      *
      * @var DateTime
      */
-    public $endsAt;
+    public DateTime $endsAt;
 
     /**
      * Status of the event: new or confirmed.
      *
      * @var string
      */
-    public $status;
+    public string $status;
 
     /**
      * True for events that last the whole day.
@@ -120,7 +120,7 @@ class CalendarEvent
      *
      * @ReplaceNullWithDefaultValue
      */
-    public $allDay = false;
+    public bool $allDay = false;
 
     /**
      * True if e-mail invitations should be sent automatically via the system.
@@ -129,48 +129,48 @@ class CalendarEvent
      *
      * @ReplaceNullWithDefaultValue
      */
-    public $emailInvitations = false;
+    public bool $emailInvitations = false;
 
     /**
      * Description of the event.
      *
      * @var string
      */
-    public $description;
+    public string $description;
 
     /**
      * Time of creation.
      *
      * @var DateTime
      */
-    public $createdAt;
+    public DateTime $createdAt;
 
     /**
      * Time of last update.
      *
      * @var DateTime
      */
-    public $updatedAt;
+    public DateTime $updatedAt;
 
     /**
      * @var null|User
      */
-    public $user;
+    public ?User $user = null;
 
     /**
      * @var UserCollection<User>
      */
-    public $users;
+    public UserCollection $users;
 
     /**
      * @var PersonCollection<Person>
      */
-    public $people;
+    public PersonCollection $people;
 
     /**
      * @var CalendarEventAttendeeCollection<CalendarEventAttendee>
      */
-    public $eventAttendees;
+    public CalendarEventAttendeeCollection $eventAttendees;
 
     /**
      * Constructor.

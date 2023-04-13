@@ -31,7 +31,7 @@ class Search implements IncludesRequestInterface, PaginationRequestInterface
     /**
      * @var string[]
      */
-    private $query;
+    private array $query = [];
 
     /**
      * @param string[] $query
@@ -53,10 +53,8 @@ class Search implements IncludesRequestInterface, PaginationRequestInterface
         $data = $this->addPaginationToSerializedData($data);
         $data = $this->addIncludesToSerializedData($data);
 
-        if (!empty($this->query)) {
-            foreach ($this->query as $key => $value) {
-                $data[$key] = $value;
-            }
+        foreach ($this->query as $key => $value) {
+            $data[$key] = $value;
         }
 
         return $data;

@@ -42,7 +42,7 @@ class JsonSerializer
     /**
      * @var string[]|Closure[]
      */
-    private $classMap;
+    private array $classMap;
 
     /**
      * JsonSerializer constructor.

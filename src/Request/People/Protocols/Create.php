@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var Protocol
      */
-    private $protocol;
+    private Protocol $protocol;
 
     /**
      * Constructor.

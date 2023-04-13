@@ -30,5 +30,5 @@ class PersonContainer
      *
      * @var Person
      */
-    public $person;
+    public Person $person;
 }

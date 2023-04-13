@@ -37,126 +37,126 @@ class Person extends AbstractEntity
      *
      * @var int
      */
-    public $accountId;
+    public int $accountId;
 
     /**
      * The salutation of the person.
      *
      * @var null|string
      */
-    public $salutation;
+    public ?string $salutation = null;
 
     /**
      * The title of the person.
      *
      * @var null|string
      */
-    public $title;
+    public ?string $title = null;
 
     /**
      * The title of the person.
      *
      * @var null|string
      */
-    public $gender;
+    public ?string $gender = null;
 
     /**
      * The language of the person as ISO-639-1 code (e.g. de, en, fr or NULL).
      *
      * @var null|string
      */
-    public $countryCode;
+    public ?string $countryCode = null;
 
     /**
      * The first name of the person.
      *
      * @var null|string
      */
-    public $firstName;
+    public ?string $firstName = null;
 
     /**
      * The last name of the person.
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * Background information about the person.
      *
      * @var null|string
      */
-    public $background;
+    public ?string $background = null;
 
     /**
      * ID of the user if the person belongs to a user.
      *
      * @var null|int
      */
-    public $userId;
+    public ?int $userId = null;
 
     /**
      * A collection of tags assigned to the person.
      *
      * @var TagCollection<Tag>
      */
-    public $tags;
+    public TagCollection $tags;
 
     /**
      * A collection of positions assigned to the person.
      *
      * @var PositionCollection<Position>
      */
-    public $positions;
+    public PositionCollection $positions;
 
     /**
      * A collection of companies assigned to the person.
      *
      * @var CompanyCollection<Company>
      */
-    public $companies;
+    public CompanyCollection $companies;
 
     /**
      * A collection of addresses assigned to the person.
      *
      * @var AddressCollection<Address>
      */
-    public $addresses;
+    public AddressCollection $addresses;
 
     /**
      * A collection of company addresses assigned to the person.
      *
      * @var AddressCollection<Address>
      */
-    public $companyAddresses;
+    public AddressCollection $companyAddresses;
 
     /**
      * A collection of telephone numbers assigned to the person.
      *
      * @var ContactDetailCollection<ContactDetail>
      */
-    public $phoneNumbers;
+    public ContactDetailCollection $phoneNumbers;
 
     /**
      * A collection of email addresses assigned to the person.
      *
      * @var ContactDetailCollection<ContactDetail>
      */
-    public $emails;
+    public ContactDetailCollection $emails;
 
     /**
      * A collection of homepages assigned to the person.
      *
      * @var ContactDetailCollection<ContactDetail>
      */
-    public $homepages;
+    public ContactDetailCollection $homepages;
 
     /**
      * A collection of custom fields assigned to the person.
      *
      * @var CustomFieldCollection<CustomField>
      */
-    public $customFields;
+    public CustomFieldCollection $customFields;
 
     /**
      * Constructor.

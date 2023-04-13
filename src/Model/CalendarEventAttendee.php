@@ -29,40 +29,40 @@ class CalendarEventAttendee
      *
      * @var string
      */
-    public $id;
+    public string $id;
 
     /**
      * The calendard event ID.
      *
      * @var string
      */
-    public $calendarEventId;
+    public string $calendarEventId;
 
     /**
      * ID of the user which created the calendar event.
      *
      * @var int
      */
-    public $userId;
+    public int $userId;
 
     /**
      * ID of the linked person.
      *
      * @var int
      */
-    public $personId;
+    public int $personId;
 
     /**
      * The email address of the linked person.
      *
      * @var string
      */
-    public $email;
+    public string $email;
 
     /**
      * Status of the event: new or confirmed.
      *
      * @var string
      */
-    public $status;
+    public string $status;
 }
