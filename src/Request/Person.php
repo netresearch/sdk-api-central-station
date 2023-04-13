@@ -260,13 +260,20 @@ class Person implements JsonSerializable
             'country_code' => $this->countryCode,
             'background'   => $this->background,
 
-            'positions_attributes'     => $this->positions ? $this->positions->jsonSerialize() : null,
-            'tags_attributes'          => $this->tags ? $this->tags->jsonSerialize() : null,
-            'tels_attributes'          => $this->phoneNumbers ? $this->phoneNumbers->jsonSerialize() : null,
-            'emails_attributes'        => $this->emailAddresses ? $this->emailAddresses->jsonSerialize() : null,
-            'homepages_attributes'     => $this->homepages ? $this->homepages->jsonSerialize() : null,
-            'addrs_attributes'         => $this->addresses ? $this->addresses->jsonSerialize() : null,
-            'custom_fields_attributes' => $this->customFields ? $this->customFields->jsonSerialize() : null,
+            'positions_attributes'
+                => $this->positions instanceof Positions ? $this->positions->jsonSerialize() : null,
+            'tags_attributes'
+                => $this->tags instanceof Tags ? $this->tags->jsonSerialize() : null,
+            'tels_attributes'
+                => $this->phoneNumbers instanceof ContactDetails ? $this->phoneNumbers->jsonSerialize() : null,
+            'emails_attributes'
+                => $this->emailAddresses instanceof ContactDetails ? $this->emailAddresses->jsonSerialize() : null,
+            'homepages_attributes'
+                => $this->homepages instanceof ContactDetails ? $this->homepages->jsonSerialize() : null,
+            'addrs_attributes'
+                => $this->addresses instanceof Addresses ? $this->addresses->jsonSerialize() : null,
+            'custom_fields_attributes'
+                => $this->customFields instanceof CustomFields ? $this->customFields->jsonSerialize() : null,
         ];
     }
 }
