@@ -17,6 +17,7 @@ use Netresearch\Sdk\CentralStation\Request\CustomFieldsType;
 use Netresearch\Sdk\CentralStation\Request\CustomFieldsTypes\Update as UpdateRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\CustomFieldsTypes\UpdateValidator;
+
 use function in_array;
 
 /**

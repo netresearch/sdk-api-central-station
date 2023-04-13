@@ -19,6 +19,7 @@ use Netresearch\Sdk\CentralStation\Request\CalendarEventAttendees;
 use Netresearch\Sdk\CentralStation\Request\CalendarEvents\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\CalendarEvents\CreateValidator;
+
 use function in_array;
 
 /**

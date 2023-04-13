@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Model\Collection;
 
 use JsonSerializable;
-
 use ReturnTypeWillChange;
+
 use function array_key_exists;
 use function array_slice;
 use function count;

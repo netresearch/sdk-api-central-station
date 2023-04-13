@@ -13,6 +13,7 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\Traits;
 
 use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
+
 use function in_array;
 
 /**

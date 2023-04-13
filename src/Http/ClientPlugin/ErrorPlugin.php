@@ -20,6 +20,7 @@ use Netresearch\Sdk\CentralStation\Exception\AuthenticationErrorException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedErrorException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+
 use function is_array;
 
 /**

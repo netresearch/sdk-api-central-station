@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Validator\Traits;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
+
 use function in_array;
 
 /**
