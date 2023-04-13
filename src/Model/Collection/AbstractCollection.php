@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Model\Collection;
 
 use JsonSerializable;
-use ReturnTypeWillChange;
 
+use ReturnTypeWillChange;
 use function array_key_exists;
 use function array_slice;
 use function count;
@@ -56,7 +56,8 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @return null|TValue
      */
-    public function offsetGet($offset): mixed
+    #[ReturnTypeWillChange]
+    public function offsetGet($offset)
     {
         return $this->elements[$offset] ?? null;
     }
@@ -129,6 +130,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @return false|TValue
      */
+    #[ReturnTypeWillChange]
     public function current(): mixed
     {
         return current($this->elements);
