@@ -13,7 +13,6 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Update as UpdateRequest;
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\Request\Tag;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\People\Tags\UpdateValidator;
@@ -44,11 +43,11 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return UpdateRequest|RequestInterface
+     * @return UpdateRequest
      *
      * @throws RequestValidatorException
      */
-    public function create(): RequestInterface
+    public function create(): UpdateRequest
     {
         // Validate the input
         UpdateValidator::validate($this->data);

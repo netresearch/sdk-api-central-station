@@ -14,7 +14,6 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\People\Protocols;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Protocols\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\Protocol;
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\People\Protocols\CreateValidator;
 
@@ -96,11 +95,11 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return CreateRequest|RequestInterface
+     * @return CreateRequest
      *
      * @throws RequestValidatorException
      */
-    public function create(): RequestInterface
+    public function create(): CreateRequest
     {
         // Validate the input
         CreateValidator::validate($this->data);

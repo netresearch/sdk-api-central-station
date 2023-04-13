@@ -15,7 +15,6 @@ use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\CustomFieldsType;
 use Netresearch\Sdk\CentralStation\Request\CustomFieldsTypes\Update as UpdateRequest;
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\CustomFieldsTypes\UpdateValidator;
 
@@ -104,11 +103,11 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return UpdateRequest|RequestInterface
+     * @return UpdateRequest
      *
      * @throws RequestValidatorException
      */
-    public function create(): RequestInterface
+    public function create(): UpdateRequest
     {
         // Validate the input
         UpdateValidator::validate($this->data);

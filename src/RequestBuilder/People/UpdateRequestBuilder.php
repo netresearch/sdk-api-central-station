@@ -20,7 +20,6 @@ use Netresearch\Sdk\CentralStation\Request\People\Update as UpdateRequest;
 use Netresearch\Sdk\CentralStation\Request\Person;
 use Netresearch\Sdk\CentralStation\Request\Position;
 use Netresearch\Sdk\CentralStation\Request\Positions;
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\Request\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
@@ -262,11 +261,11 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return UpdateRequest|RequestInterface
+     * @return UpdateRequest
      *
      * @throws RequestValidatorException
      */
-    public function create(): RequestInterface
+    public function create(): UpdateRequest
     {
         // Validate the input
         UpdateValidator::validate($this->data);

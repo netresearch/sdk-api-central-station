@@ -13,7 +13,6 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\GroupCalendars;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\GroupCalendars\Show as ShowRequest;
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
@@ -35,11 +34,11 @@ class ShowRequestBuilder extends AbstractRequestBuilder implements
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return ShowRequest|RequestInterface
+     * @return ShowRequest
      *
      * @throws RequestValidatorException
      */
-    public function create(): RequestInterface
+    public function create(): ShowRequest
     {
         // Validate the input
 //        ShowValidator::validate($this->data);

@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\Tags;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\Request\Tags\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\RequestBuilder\FilterRequestBuilderInterface;
@@ -43,11 +42,11 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return IndexRequest|RequestInterface
+     * @return IndexRequest
      *
      * @throws RequestValidatorException
      */
-    public function create(): RequestInterface
+    public function create(): IndexRequest
     {
         // Validate the input
         IndexValidator::validate($this->data);

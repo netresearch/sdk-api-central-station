@@ -13,7 +13,6 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\People;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Search as SearchRequest;
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\PaginationRequestBuilderInterface;
@@ -56,11 +55,11 @@ class SearchRequestBuilder extends AbstractRequestBuilder implements
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return SearchRequest|RequestInterface
+     * @return SearchRequest
      *
      * @throws RequestValidatorException
      */
-    public function create(): RequestInterface
+    public function create(): SearchRequest
     {
         // Validate the input
         SearchValidator::validate($this->data);

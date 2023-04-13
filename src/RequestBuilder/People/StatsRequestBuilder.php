@@ -13,7 +13,6 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\People;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
-use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\RequestBuilder\FilterRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\FilterTrait;
@@ -35,11 +34,11 @@ class StatsRequestBuilder extends AbstractRequestBuilder implements
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return StatsRequest|RequestInterface
+     * @return StatsRequest
      *
      * @throws RequestValidatorException
      */
-    public function create(): RequestInterface
+    public function create(): StatsRequest
     {
         // Validate the input
         StatsValidator::validate($this->data);
