@@ -17,6 +17,7 @@ use Netresearch\Sdk\CentralStation\Request\CustomFieldsType;
 use Netresearch\Sdk\CentralStation\Request\CustomFieldsTypes\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\CustomFieldsTypes\CreateValidator;
+use function in_array;
 
 /**
  * The request builder to create a valid "create" request.
@@ -93,7 +94,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
             $this->data['options'] = [];
         }
 
-        if (!\in_array($option, $this->data['options'], true)) {
+        if (!in_array($option, $this->data['options'], true)) {
             $this->data['options'][] = $option;
         }
 

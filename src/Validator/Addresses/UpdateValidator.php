@@ -13,6 +13,7 @@ namespace Netresearch\Sdk\CentralStation\Validator\Addresses;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
+use function in_array;
 
 /**
  * Class UpdateValidator.
@@ -34,7 +35,7 @@ class UpdateValidator
     {
         if (
             isset($data['type'])
-            && !\in_array($data['type'], Constants::ADDRESS_TYPE, true)
+            && !in_array($data['type'], Constants::ADDRESS_TYPE, true)
         ) {
             throw new RequestValidatorException(
                 'The provided address type parameter "' . $data['type'] . '" is not allowed'

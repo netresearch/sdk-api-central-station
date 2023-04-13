@@ -13,6 +13,7 @@ namespace Netresearch\Sdk\CentralStation\Validator\CalendarEvents;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
+use function in_array;
 
 /**
  * Class IndexValidator.
@@ -34,7 +35,7 @@ class IndexValidator
     {
         if (isset($data['includes'])) {
             foreach ($data['includes'] as $include) {
-                if (!\in_array($include, Constants::CALENDAR_EVENTS_INCLUDE, true)) {
+                if (!in_array($include, Constants::CALENDAR_EVENTS_INCLUDE, true)) {
                     throw new RequestValidatorException(
                         'The provided include parameter "' . $include . '" is not allowed'
                     );

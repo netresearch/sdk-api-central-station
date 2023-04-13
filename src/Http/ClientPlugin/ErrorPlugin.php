@@ -20,6 +20,7 @@ use Netresearch\Sdk\CentralStation\Exception\AuthenticationErrorException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedErrorException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use function is_array;
 
 /**
  * Class ErrorPlugin
@@ -112,7 +113,7 @@ final class ErrorPlugin implements Plugin
         $errorMessage = sprintf(
             'The entity "%s" failed with "%s".',
             $errorKey,
-            \is_array($errorValue) ? implode('" or "', $errorValue) : $errorValue
+            is_array($errorValue) ? implode('" or "', $errorValue) : $errorValue
         );
 
         throw new DetailedErrorException(

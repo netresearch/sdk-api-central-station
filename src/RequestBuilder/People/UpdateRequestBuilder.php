@@ -24,6 +24,7 @@ use Netresearch\Sdk\CentralStation\Request\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\People\UpdateValidator;
+use function in_array;
 
 /**
  * The request builder to create a valid "update" request.
@@ -128,7 +129,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
             $this->data['tags'] = [];
         }
 
-        if (!\in_array($tagName, $this->data['tags'], true)) {
+        if (!in_array($tagName, $this->data['tags'], true)) {
             $this->data['tags'][] = $tagName;
         }
 

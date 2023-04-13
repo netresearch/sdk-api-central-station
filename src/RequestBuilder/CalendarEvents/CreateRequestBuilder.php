@@ -19,6 +19,7 @@ use Netresearch\Sdk\CentralStation\Request\CalendarEventAttendees;
 use Netresearch\Sdk\CentralStation\Request\CalendarEvents\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\CalendarEvents\CreateValidator;
+use function in_array;
 
 /**
  * The request builder to create a valid "create" request.
@@ -168,7 +169,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
             $this->data['calendarEvent']['calendarEventAttendees'] = [];
         }
 
-        if (!\in_array($personId, $this->data['calendarEvent']['calendarEventAttendees'], true)) {
+        if (!in_array($personId, $this->data['calendarEvent']['calendarEventAttendees'], true)) {
             $this->data['calendarEvent']['calendarEventAttendees'][] = $personId;
         }
 

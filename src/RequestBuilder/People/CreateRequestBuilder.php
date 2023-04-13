@@ -26,6 +26,7 @@ use Netresearch\Sdk\CentralStation\Request\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\People\CreateValidator;
+use function in_array;
 
 /**
  * The request builder to create a valid "create" request.
@@ -130,7 +131,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
             $this->data['tags'] = [];
         }
 
-        if (!\in_array($tagName, $this->data['tags'], true)) {
+        if (!in_array($tagName, $this->data['tags'], true)) {
             $this->data['tags'][] = $tagName;
         }
 

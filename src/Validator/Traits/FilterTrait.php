@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Validator\Traits;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
+use function in_array;
 
 /**
  * Validator to validate the "filter" parameter.
@@ -53,7 +54,7 @@ trait FilterTrait
     public static function validateFilters(array $filters): void
     {
         foreach ($filters as $filter => $values) {
-            if (!\in_array($filter, self::$allowedFilters, true)) {
+            if (!in_array($filter, self::$allowedFilters, true)) {
                 throw new RequestValidatorException(
                     'The provided filter parameter "' . $filter . '" is not allowed'
                 );

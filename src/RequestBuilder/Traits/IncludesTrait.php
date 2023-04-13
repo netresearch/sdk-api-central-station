@@ -13,6 +13,7 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\Traits;
 
 use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
+use function in_array;
 
 /**
  * Trait providing methods to add includes to request builder.
@@ -38,7 +39,7 @@ trait IncludesTrait
             $this->data['includes'] = [];
         }
 
-        if (!\in_array($include, $this->data['includes'], true)) {
+        if (!in_array($include, $this->data['includes'], true)) {
             $this->data['includes'][] = $include;
         }
 

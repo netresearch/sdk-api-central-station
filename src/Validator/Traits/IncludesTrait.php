@@ -13,6 +13,7 @@ namespace Netresearch\Sdk\CentralStation\Validator\Traits;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
+use function in_array;
 
 /**
  * Validator to validate the "includes" parameter.
@@ -33,7 +34,7 @@ trait IncludesTrait
     public static function validateIncludes(array $includes): void
     {
         foreach ($includes as $include) {
-            if (!\in_array($include, Constants::PEOPLE_INCLUDE, true)) {
+            if (!in_array($include, Constants::PEOPLE_INCLUDE, true)) {
                 throw new RequestValidatorException(
                     'The provided include parameter "' . $include . '" is not allowed'
                 );
