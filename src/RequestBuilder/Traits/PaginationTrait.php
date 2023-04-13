@@ -26,12 +26,12 @@ trait PaginationTrait
     /**
      * Sets the limitations of the response.
      *
-     * @param null|int $perPage The number of elements to return (default: 25)
-     * @param null|int $page    The page number for which to return the results
+     * @param int $perPage The number of elements to return (default: 25)
+     * @param int $page    The page number for which to return the results
      *
      * @return self
      */
-    public function setLimit(?int $perPage = 25, ?int $page = 1): PaginationRequestBuilderInterface
+    public function setLimit(int $perPage = 25, int $page = 1): PaginationRequestBuilderInterface
     {
         $this->data['limit'] = [
             'perPage' => $perPage,
@@ -51,11 +51,11 @@ trait PaginationTrait
     private function assignPaginationToRequest(PaginationRequestInterface $request): void
     {
         if (isset($this->data['limit'])) {
-            if (($this->data['limit']['perPage'] !== null) && ($this->data['limit']['perPage'] > 0)) {
+            if ($this->data['limit']['perPage'] > 0) {
                 $request->setPerPage($this->data['limit']['perPage']);
             }
 
-            if (($this->data['limit']['page'] !== null) && ($this->data['limit']['page'] > 0)) {
+            if ($this->data['limit']['page'] > 0) {
                 $request->setPage($this->data['limit']['page']);
             }
         }
