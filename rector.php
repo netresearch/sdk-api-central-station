@@ -8,11 +8,14 @@ use Rector\CodingStyle\Rector\ClassMethod\UnSpreadOperatorRector;
 use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
+use Rector\DeadCode\Rector\Property\RemoveUselessVarTagRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php80\Rector\FunctionLike\MixedTypeRector;
 use Rector\Php80\Rector\FunctionLike\UnionTypesRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
+use Rector\TypeDeclaration\Rector\ClassMethod\ArrayShapeFromConstantArrayReturnRector;
+use Rector\TypeDeclaration\Rector\Closure\AddClosureReturnTypeRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -44,13 +47,15 @@ return static function (RectorConfig $rectorConfig): void {
 
     // Skip some rules
     $rectorConfig->skip([
+        AddClosureReturnTypeRector::class,
+        ArrayShapeFromConstantArrayReturnRector::class,
+        CatchExceptionNameMatchingTypeRector::class,
+        ClassPropertyAssignToConstructorPromotionRector::class,
+        MixedTypeRector::class,
         RemoveUselessParamTagRector::class,
         RemoveUselessReturnTagRector::class,
-        CatchExceptionNameMatchingTypeRector::class,
-        UnionTypesRector::class,
-        MixedTypeRector::class,
         SimplifyBoolIdenticalTrueRector::class,
-        ClassPropertyAssignToConstructorPromotionRector::class,
         UnSpreadOperatorRector::class,
+        UnionTypesRector::class,
     ]);
 };
