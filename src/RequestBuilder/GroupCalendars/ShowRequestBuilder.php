@@ -16,7 +16,6 @@ use Netresearch\Sdk\CentralStation\Request\GroupCalendars\Show as ShowRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
-use Netresearch\Sdk\CentralStation\Validator\GroupCalendars\ShowValidator;
 
 /**
  * The request builder to create a valid "show" request.

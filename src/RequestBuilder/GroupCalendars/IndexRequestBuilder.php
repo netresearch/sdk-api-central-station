@@ -16,7 +16,6 @@ use Netresearch\Sdk\CentralStation\Request\GroupCalendars\Index as IndexRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\RequestBuilder\IncludesRequestBuilderInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
-use Netresearch\Sdk\CentralStation\Validator\GroupCalendars\IndexValidator;
 
 /**
  * The request builder to create a valid "index" request.

@@ -18,7 +18,7 @@ use Netresearch\Sdk\CentralStation\Request\CalendarEventAttendee;
 use Netresearch\Sdk\CentralStation\Request\CalendarEventAttendees;
 use Netresearch\Sdk\CentralStation\Request\CalendarEvents\Update as UpdateRequest;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
-use Netresearch\Sdk\CentralStation\Validator\CalendarEvents\UpdateValidator;
+
 use function in_array;
 
 /**
