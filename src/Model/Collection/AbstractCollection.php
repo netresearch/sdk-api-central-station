@@ -13,6 +13,7 @@ namespace Netresearch\Sdk\CentralStation\Model\Collection;
 
 use JsonSerializable;
 
+use ReturnTypeWillChange;
 use function array_key_exists;
 use function array_slice;
 use function count;
@@ -148,6 +149,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @return false|TValue
      */
+    #[ReturnTypeWillChange]
     public function next(): mixed
     {
         return next($this->elements);
