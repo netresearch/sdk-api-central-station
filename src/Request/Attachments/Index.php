@@ -35,8 +35,7 @@ class Index implements IncludesRequestInterface, PaginationRequestInterface
     {
         $data = [];
         $data = $this->addPaginationToSerializedData($data);
-        $data = $this->addIncludesToSerializedData($data);
 
-        return $data;
+        return $this->addIncludesToSerializedData($data);
     }
 }

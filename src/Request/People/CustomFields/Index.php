@@ -31,8 +31,7 @@ class Index implements IncludesRequestInterface
     public function jsonSerialize(): array
     {
         $data = [];
-        $data = $this->addIncludesToSerializedData($data);
 
-        return $data;
+        return $this->addIncludesToSerializedData($data);
     }
 }

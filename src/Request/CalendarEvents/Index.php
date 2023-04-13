@@ -47,8 +47,7 @@ class Index implements
         $data = $this->addPaginationToSerializedData($data);
         $data = $this->addSortToSerializedData($data);
         $data = $this->addFilterToSerializedData($data);
-        $data = $this->addIncludesToSerializedData($data);
 
-        return $data;
+        return $this->addIncludesToSerializedData($data);
     }
 }
