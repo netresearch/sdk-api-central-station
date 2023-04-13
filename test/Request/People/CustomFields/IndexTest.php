@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Test\Request\People\CustomFields;
+namespace Netresearch\Sdk\CentralStation\Test\Request\People\CustomFields;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Request\People\CustomFields\Index;

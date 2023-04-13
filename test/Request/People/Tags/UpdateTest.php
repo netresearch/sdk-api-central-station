@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Test\Request\People\Tags;
+namespace Netresearch\Sdk\CentralStation\Test\Request\People\Tags;
 
 use Netresearch\Sdk\CentralStation\Request\People\Tags\Update;
 use Netresearch\Sdk\CentralStation\Request\Tag;

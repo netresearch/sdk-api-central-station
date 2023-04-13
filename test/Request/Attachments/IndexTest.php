@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Test\Request\Attachments;
+namespace Netresearch\Sdk\CentralStation\Test\Request\Attachments;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Request\Attachments\Index;

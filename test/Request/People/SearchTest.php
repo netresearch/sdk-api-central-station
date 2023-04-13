@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Test\Request\People;
+namespace Netresearch\Sdk\CentralStation\Test\Request\People;
 
 use Netresearch\Sdk\CentralStation\Request\People\Search;
 use PHPUnit\Framework\TestCase;

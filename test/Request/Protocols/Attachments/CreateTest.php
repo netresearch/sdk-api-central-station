@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Test\Request\Protocols\Attachments;
+namespace Netresearch\Sdk\CentralStation\Test\Request\Protocols\Attachments;
 
 use Netresearch\Sdk\CentralStation\Request\Attachment;
 use Netresearch\Sdk\CentralStation\Request\Protocols\Attachments\Create;

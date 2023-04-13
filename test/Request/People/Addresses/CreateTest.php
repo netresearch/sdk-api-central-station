@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Netresearch\Test\Request\People\Addresses;
+namespace Netresearch\Sdk\CentralStation\Test\Request\People\Addresses;
 
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Request\Address;
