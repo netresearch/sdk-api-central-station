@@ -1,79 +1,181 @@
-image: php:7.3
-
-before_script:
-  - apt-get update -yqq
-  - apt-get install -yqq git libxml2-dev libzip-dev zip unzip
-
-  # Install PHP extensions
-  - docker-php-ext-install xml zip
-
-  # Install & enable Xdebug for code coverage reports
-  - pecl install xdebug-3.1.5
-  - docker-php-ext-enable xdebug
-
-
 stages:
-  - preparation
-  - testing
+    - preparation
+    - 'PHP 7.3'
+    - 'PHP 7.4'
+    - 'PHP 8.0'
 
 
-composer:
-  stage: preparation
-  script:
-    - php --version
-    # Install composer
-    - curl -sS https://getcomposer.org/installer | php
-    # Install all project dependencies
-    - php composer.phar install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
-  artifacts:
-    paths:
-      - vendor/
-    expire_in: 1 days
-    when: always
-  cache:
-    paths:
-      - vendor/
+default:
+    before_script:
+        - apt-get update -yqq
+        - apt-get install -yqq git libxml2-dev libzip-dev zip unzip
+
+        # Install PHP extensions
+        - docker-php-ext-install xml zip
 
 
-# Run code sniffer
-phpcs:
-  stage: testing
-  script:
-    - php --version
-    - vendor/bin/phpcs src/ --standard=PSR12 --extensions=php --report=junit > phpcs-report.xml
-  artifacts:
-    reports:
-      junit:
-        - phpcs-report.xml
+# Job template
+.composer:
+    stage: preparation
+    script:
+        - php --version
+        # Install composer
+        - curl -sS https://getcomposer.org/installer | php
+        # Install all project dependencies
+        - php composer.phar install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    artifacts:
+        paths:
+            - vendor/
+        expire_in: 1 days
+        when: always
+    cache:
+        paths:
+            - vendor/
 
-# Run static analysis
-phpstan:
-  stage: testing
-  script:
-    - php --version
-    - vendor/bin/phpstan analyse --error-format=junit --no-progress -c ./phpstan.neon > phpstan-report.xml
-  artifacts:
-    reports:
-      junit:
-        - phpstan-report.xml
 
-# Run tests
-phpunit:
-  # Set any variables we need
-  variables:
-    XDEBUG_MODE: coverage
-  stage: testing
-  dependencies:
-    - composer
-  # If Xdebug was installed you can generate a coverage report and see code coverage metrics.
-  script:
-    - php --version
-    - vendor/bin/phpunit --configuration phpunit.xml --log-junit phpunit-report.xml --coverage-text --colors=never --coverage-html=coverage/
-  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
-  artifacts:
-    reports:
-      junit: phpunit-report.xml
-    when: always
-    paths:
-      - coverage
-    expire_in: 30 days
+# Job template: Run code sniffer
+.phpcs:
+    script:
+        - php --version
+        - vendor/bin/phpcs src/ --standard=PSR12 --extensions=php --report=junit > phpcs-report.xml
+    artifacts:
+        reports:
+            junit:
+                - phpcs-report.xml
+
+
+# Job template: Run static analysis
+.phpstan:
+    script:
+        - php --version
+        - vendor/bin/phpstan analyse --error-format=junit --no-progress -c ./phpstan.neon > phpstan-report.xml
+    artifacts:
+        reports:
+            junit:
+                - phpstan-report.xml
+
+# Job template: Run tests
+.phpunit:
+    # Set any variables we need
+    variables:
+        XDEBUG_MODE: coverage
+    # If Xdebug was installed you can generate a coverage report and see code coverage metrics.
+    script:
+        - php --version
+        - vendor/bin/phpunit --configuration phpunit.xml --log-junit phpunit-report.xml --coverage-text --colors=never --coverage-html=coverage/
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    artifacts:
+        reports:
+            junit: phpunit-report.xml
+        when: always
+        paths:
+            - coverage
+        expire_in: 30 days
+
+
+# PHP 7.3
+.php7.3:
+    image: php:7.3
+    stage: 'PHP 7.3'
+    before_script:
+        - !reference [ default, before_script ]
+        # Install & enable Xdebug for code coverage reports
+        - pecl install xdebug-3.1.6
+        - docker-php-ext-enable xdebug
+
+composer:7.3:
+    extends:
+        - .php7.3
+        - .composer
+
+.php7.3-test:
+    extends:
+        - .php7.3
+    needs: [ 'composer:7.3' ]
+
+phpcs:7.3:
+    extends:
+        - .php7.3-test
+        - .phpcs
+
+phpstan:7.3:
+    extends:
+        - .php7.3-test
+        - .phpstan
+
+phpunit:7.3:
+    extends:
+        - .php7.3-test
+        - .phpunit
+
+
+# PHP 7.4
+.php7.4:
+    image: php:7.4
+    stage: 'PHP 7.4'
+    before_script:
+        - !reference [ default, before_script ]
+        # Install & enable Xdebug for code coverage reports
+        - pecl install xdebug-3.1.6
+        - docker-php-ext-enable xdebug
+
+composer:7.4:
+    extends:
+        - .php7.4
+        - .composer
+
+.php7.4-test:
+    extends:
+        - .php7.4
+    needs: [ 'composer:7.4' ]
+
+phpcs:7.4:
+    extends:
+        - .php7.4-test
+        - .phpcs
+
+phpstan:7.4:
+    extends:
+        - .php7.4-test
+        - .phpstan
+
+phpunit:7.4:
+    extends:
+        - .php7.4-test
+        - .phpunit
+
+
+# PHP 8.0
+.php8.0:
+    image: php:8.0
+    stage: 'PHP 8.0'
+    before_script:
+        - !reference [ default, before_script ]
+        # Install & enable Xdebug for code coverage reports
+        - pecl install xdebug-3.2.1
+        - docker-php-ext-enable xdebug
+
+composer:8.0:
+    extends:
+        - .php8.0
+        - .composer
+
+.php8.0-test:
+    extends:
+        - .php8.0
+    needs: [ 'composer:8.0' ]
+
+phpcs:8.0:
+    extends:
+        - .php8.0-test
+        - .phpcs
+
+phpstan:8.0:
+    extends:
+        - .php8.0-test
+        - .phpstan
+
+phpunit:8.0:
+    extends:
+        - .php8.0-test
+        - .phpunit

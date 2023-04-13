@@ -2,5 +2,6 @@
 /vendor
 /test/coverage
 /coverage
+/.phpunit.cache
 composer.lock
 .phpunit.result.cache
