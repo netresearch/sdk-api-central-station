@@ -26,13 +26,13 @@ interface SortRequestBuilderInterface extends RequestBuilderInterface
     /**
      * Sets the sort order of the response.
      *
-     * @param null|string $orderBy        The order type (use one of Constants::ORDER_BY_*)
-     * @param null|string $orderDirection The order direction (use one of Constants::ORDER_DIRECTION_*)
+     * @param string $orderBy        The order type (use one of Constants::ORDER_BY_*)
+     * @param string $orderDirection The order direction (use one of Constants::ORDER_DIRECTION_*)
      *
      * @return self
      */
     public function setOrder(
-        ?string $orderBy = Constants::ORDER_BY_NAME,
-        ?string $orderDirection = Constants::ORDER_DIRECTION_ASC
+        string $orderBy = Constants::ORDER_BY_NAME,
+        string $orderDirection = Constants::ORDER_DIRECTION_ASC
     ): SortRequestBuilderInterface;
 }

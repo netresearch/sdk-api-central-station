@@ -27,14 +27,14 @@ trait SortTrait
     /**
      * Sets the sort order of the response.
      *
-     * @param null|string $orderBy        The order type (use one of Constants::ORDER_BY_*)
-     * @param null|string $orderDirection The order direction (use one of Constants::ORDER_DIRECTION_*)
+     * @param string $orderBy        The order type (use one of Constants::ORDER_BY_*)
+     * @param string $orderDirection The order direction (use one of Constants::ORDER_DIRECTION_*)
      *
      * @return self
      */
     public function setOrder(
-        ?string $orderBy = Constants::ORDER_BY_NAME,
-        ?string $orderDirection = Constants::ORDER_DIRECTION_ASC
+        string $orderBy = Constants::ORDER_BY_NAME,
+        string $orderDirection = Constants::ORDER_DIRECTION_ASC
     ): SortRequestBuilderInterface {
         $this->data['order'] = [
             'orderBy'   => $orderBy,
@@ -54,13 +54,8 @@ trait SortTrait
     private function assignSortToRequest(SortRequestInterface $request): void
     {
         if (isset($this->data['order'])) {
-            if ($this->data['order']['orderBy'] !== null) {
-                $request->setOrderBy($this->data['order']['orderBy']);
-            }
-
-            if ($this->data['order']['direction'] !== null) {
-                $request->setOrderDirection($this->data['order']['direction']);
-            }
+            $request->setOrderBy($this->data['order']['orderBy']);
+            $request->setOrderDirection($this->data['order']['direction']);
         }
     }
 }
