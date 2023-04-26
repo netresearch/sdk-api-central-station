@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\CustomFieldRequestInterface;
 trait CustomFieldTrait
 {
     /**
-     * @var string[][]
+     * @var array<array<string>|int|string>
      */
     private $customFieldFilter;
 
