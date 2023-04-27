@@ -41,7 +41,7 @@ class CustomFieldsTypes extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'custom_fields_types';
+    final public const PATH = 'custom_fields_types';
 
     /**
      * Returns a list of all custom field types in an account.

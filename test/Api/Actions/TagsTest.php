@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Api\Actions\Tags;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
@@ -38,13 +39,13 @@ class TagsTest extends TestCase
      * @param string   $responseJsonFile
      * @param int|null $tagId
      *
-     * @return \Netresearch\Sdk\CentralStation\Api\Actions\Tags
+     * @return Tags
      * @throws ServiceException
      */
     private function getTagsApi(
         string $responseJsonFile = '',
         int $tagId = null
-    ): \Netresearch\Sdk\CentralStation\Api\Actions\Tags {
+    ): Tags {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
         return $serviceFactoryMock
@@ -105,9 +106,9 @@ class TagsTest extends TestCase
      */
     private function assertFirstTag(Tag $tag): void
     {
-        self::assertSame(45067258, $tag->id);
+        self::assertSame(45_067_258, $tag->id);
         self::assertSame(47143, $tag->accountId);
-        self::assertSame(8439487, $tag->attachableId);
+        self::assertSame(8_439_487, $tag->attachableId);
         self::assertSame('Company', $tag->attachableType);
         self::assertSame('Branche|Mobilität / Verkehr', $tag->name);
         self::assertSame('13.10.2019', $tag->createdAt->format('d.m.Y'));
@@ -123,9 +124,9 @@ class TagsTest extends TestCase
      */
     private function assertSecondTag(Tag $tag): void
     {
-        self::assertSame(45067261, $tag->id);
+        self::assertSame(45_067_261, $tag->id);
         self::assertSame(47143, $tag->accountId);
-        self::assertSame(8439487, $tag->attachableId);
+        self::assertSame(8_439_487, $tag->attachableId);
         self::assertSame('Company', $tag->attachableType);
         self::assertSame('Branche|Mess- / Verfahrenstechnik / Sensorik', $tag->name);
         self::assertSame('13.10.2019', $tag->createdAt->format('d.m.Y'));

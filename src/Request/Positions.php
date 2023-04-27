@@ -31,9 +31,7 @@ class Positions extends AbstractCollection
     {
         return array_values(
             array_map(
-                static function (Position $position): array {
-                    return $position->jsonSerialize();
-                },
+                static fn(Position $position): array => $position->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

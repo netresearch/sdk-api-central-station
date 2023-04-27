@@ -43,7 +43,7 @@ class CustomFields extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'custom_fields';
+    final public const PATH = 'custom_fields';
 
     /**
      * Returns a list of all custom field in an account.

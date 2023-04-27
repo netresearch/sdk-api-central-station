@@ -22,50 +22,23 @@ use JsonSerializable;
  */
 class Company implements JsonSerializable
 {
-    /**
-     * @var null|string
-     */
-    private $name;
+    private ?string $name = null;
 
-    /**
-     * @var null|string
-     */
-    private $background;
+    private ?string $background = null;
 
-    /**
-     * @var null|Positions
-     */
-    private $positions;
+    private ?Positions $positions = null;
 
-    /**
-     * @var null|Tags
-     */
-    private $tags;
+    private ?Tags $tags = null;
 
-    /**
-     * @var null|ContactDetails
-     */
-    private $phoneNumbers;
+    private ?ContactDetails $phoneNumbers = null;
 
-    /**
-     * @var null|ContactDetails
-     */
-    private $emailAddresses;
+    private ?ContactDetails $emailAddresses = null;
 
-    /**
-     * @var null|ContactDetails
-     */
-    private $homepages;
+    private ?ContactDetails $homepages = null;
 
-    /**
-     * @var null|Addresses
-     */
-    private $addresses;
+    private ?Addresses $addresses = null;
 
-    /**
-     * @var null|CustomFields
-     */
-    private $customFields;
+    private ?CustomFields $customFields = null;
 
     /**
      * @param null|string $name
@@ -172,16 +145,15 @@ class Company implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'name'       => $this->name,
-            'background' => $this->background,
-
-            'positions_attributes'     => $this->positions ? $this->positions->jsonSerialize() : null,
-            'tags_attributes'          => $this->tags ? $this->tags->jsonSerialize() : null,
-            'tels_attributes'          => $this->phoneNumbers ? $this->phoneNumbers->jsonSerialize() : null,
-            'emails_attributes'        => $this->emailAddresses ? $this->emailAddresses->jsonSerialize() : null,
-            'homepages_attributes'     => $this->homepages ? $this->homepages->jsonSerialize() : null,
-            'addrs_attributes'         => $this->addresses ? $this->addresses->jsonSerialize() : null,
-            'custom_fields_attributes' => $this->customFields ? $this->customFields->jsonSerialize() : null,
+            'name'                     => $this->name,
+            'background'               => $this->background,
+            'positions_attributes'     => $this->positions?->jsonSerialize(),
+            'tags_attributes'          => $this->tags?->jsonSerialize(),
+            'tels_attributes'          => $this->phoneNumbers?->jsonSerialize(),
+            'emails_attributes'        => $this->emailAddresses?->jsonSerialize(),
+            'homepages_attributes'     => $this->homepages?->jsonSerialize(),
+            'addrs_attributes'         => $this->addresses?->jsonSerialize(),
+            'custom_fields_attributes' => $this->customFields?->jsonSerialize(),
         ];
     }
 }

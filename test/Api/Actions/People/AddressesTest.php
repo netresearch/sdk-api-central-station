@@ -80,7 +80,7 @@ class AddressesTest extends TestCase
      */
     public function index(string $responseJsonFile): void
     {
-        $peopleApi = $this->getPeopleApi($responseJsonFile, 30016185);
+        $peopleApi = $this->getPeopleApi($responseJsonFile, 30_016_185);
         $result    = $peopleApi->addresses()->index();
 
         self::assertWebserviceUrl('https://www.example.org/people/30016185/addrs', $peopleApi);
@@ -92,6 +92,7 @@ class AddressesTest extends TestCase
         foreach ($result as $addresses) {
             self::assertInstanceOf(Address::class, $addresses->addr);
         }
+
         $this->assertFirstAddress($result->offsetGet(0)->addr);
         $this->assertSecondAddress($result->offsetGet(1)->addr);
     }
@@ -105,8 +106,8 @@ class AddressesTest extends TestCase
      */
     private function assertFirstAddress(Address $address): void
     {
-        self::assertSame(28752100, $address->id);
-        self::assertSame(30016185, $address->attachableId);
+        self::assertSame(28_752_100, $address->id);
+        self::assertSame(30_016_185, $address->attachableId);
         self::assertSame('Person', $address->attachableType);
         self::assertSame('work_hq', $address->type);
         self::assertSame('', $address->street);
@@ -130,8 +131,8 @@ class AddressesTest extends TestCase
      */
     private function assertSecondAddress(Address $address): void
     {
-        self::assertSame(28762507, $address->id);
-        self::assertSame(30016185, $address->attachableId);
+        self::assertSame(28_762_507, $address->id);
+        self::assertSame(30_016_185, $address->attachableId);
         self::assertSame('Person', $address->attachableType);
         self::assertSame('other', $address->type);
         self::assertSame('Mustergasse 1', $address->street);
@@ -171,7 +172,7 @@ class AddressesTest extends TestCase
      */
     public function show(string $responseJsonFile): void
     {
-        $peopleApi = $this->getPeopleApi($responseJsonFile, 26146820);
+        $peopleApi = $this->getPeopleApi($responseJsonFile, 26_146_820);
         $address   = $peopleApi->addresses()->show();
 
         self::assertWebserviceUrl('https://www.example.org/people/26146820/addrs', $peopleApi);
@@ -191,8 +192,8 @@ class AddressesTest extends TestCase
      */
     private function assertThirdAddress(Address $address): void
     {
-        self::assertSame(25045244, $address->id);
-        self::assertSame(26146820, $address->attachableId);
+        self::assertSame(25_045_244, $address->id);
+        self::assertSame(26_146_820, $address->attachableId);
         self::assertSame('Person', $address->attachableType);
         self::assertSame('work', $address->type);
         self::assertSame('', $address->street);
@@ -232,7 +233,7 @@ class AddressesTest extends TestCase
      */
     public function create(string $responseJsonFile): void
     {
-        $peopleApi = $this->getPeopleApi($responseJsonFile, 30016185);
+        $peopleApi = $this->getPeopleApi($responseJsonFile, 30_016_185);
 
         $address = $peopleApi
             ->addresses()
@@ -259,8 +260,8 @@ class AddressesTest extends TestCase
      */
     private function assertCreatedAddress(Address $address): void
     {
-        self::assertSame(28763152, $address->id);
-        self::assertSame(30016185, $address->attachableId);
+        self::assertSame(28_763_152, $address->id);
+        self::assertSame(30_016_185, $address->attachableId);
         self::assertSame('Person', $address->attachableType);
         self::assertSame('private', $address->type);
         self::assertSame('Mustergasse 1', $address->street);
@@ -282,8 +283,8 @@ class AddressesTest extends TestCase
      */
     public function update(): void
     {
-        $peopleApi = $this->getPeopleApi('', 30016185);
-        $result    = $peopleApi->addresses(25045244)->update(new Update());
+        $peopleApi = $this->getPeopleApi('', 30_016_185);
+        $result    = $peopleApi->addresses(25_045_244)->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/30016185/addrs/25045244', $peopleApi);
         self::assertHttpMethod('PUT', $peopleApi);
@@ -298,8 +299,8 @@ class AddressesTest extends TestCase
      */
     public function delete(): void
     {
-        $peopleApi = $this->getPeopleApi('', 30016185);
-        $result    = $peopleApi->addresses(25045244)->delete();
+        $peopleApi = $this->getPeopleApi('', 30_016_185);
+        $result    = $peopleApi->addresses(25_045_244)->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/30016185/addrs/25045244', $peopleApi);
         self::assertHttpMethod('DELETE', $peopleApi);

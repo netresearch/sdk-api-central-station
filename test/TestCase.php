@@ -48,7 +48,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @return CentralStation|MockObject
      */
-    public function getServiceFactoryMock(string $responseData = '', int $statusCode = 200)
+    public function getServiceFactoryMock(string $responseData = '', int $statusCode = 200): MockObject|CentralStation
     {
         // Response
         if ($responseData !== '') {
@@ -128,7 +128,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             $urlBuilder = $urlBuilderProperty->getValue($actual);
 
             self::assertSame($expected, $urlBuilder->getFullUrl(), $message);
-        } catch (ReflectionException $exception) {
+        } catch (ReflectionException) {
             self::fail('Reflection failed');
         }
     }
@@ -161,7 +161,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             $mockClient = $clientProperty->getValue($pluginClient);
 
             self::assertSame($expected, $mockClient->getLastRequest()->getMethod(), $message);
-        } catch (ReflectionException $exception) {
+        } catch (ReflectionException) {
             self::fail('Reflection failed');
         }
     }
@@ -202,7 +202,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                 $mockClient->getLastRequest()->getHeaderLine('X-apikey'),
                 $message
             );
-        } catch (ReflectionException $exception) {
+        } catch (ReflectionException) {
             self::fail('Reflection failed');
         }
     }
@@ -214,7 +214,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param $actual
      * @param string $message
      */
-    public static function assertIsNullOrInstanceOf(string $expected, $actual, string $message = ''): void
+    public static function assertIsNullOrInstanceOf(string $expected, mixed $actual, string $message = ''): void
     {
         self::assertThat(
             $actual,
@@ -232,7 +232,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param $actual
      * @param string $message
      */
-    public static function assertIsNullOrArray($actual, string $message = ''): void
+    public static function assertIsNullOrArray(mixed $actual, string $message = ''): void
     {
         self::assertThat(
             $actual,
@@ -250,7 +250,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param $actual
      * @param string $message
      */
-    public static function assertIsNullOrBool($actual, string $message = ''): void
+    public static function assertIsNullOrBool(mixed $actual, string $message = ''): void
     {
         self::assertThat(
             $actual,
@@ -268,7 +268,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param $actual
      * @param string $message
      */
-    public static function assertIsNullOrInt($actual, string $message = ''): void
+    public static function assertIsNullOrInt(mixed $actual, string $message = ''): void
     {
         self::assertThat(
             $actual,
@@ -286,7 +286,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param $actual
      * @param string $message
      */
-    public static function assertIsNullOrFloat($actual, string $message = ''): void
+    public static function assertIsNullOrFloat(mixed $actual, string $message = ''): void
     {
         self::assertThat(
             $actual,
@@ -304,7 +304,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param $actual
      * @param string $message
      */
-    public static function assertIsNullOrString($actual, string $message = ''): void
+    public static function assertIsNullOrString(mixed $actual, string $message = ''): void
     {
         self::assertThat(
             $actual,

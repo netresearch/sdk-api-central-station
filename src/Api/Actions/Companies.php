@@ -11,6 +11,9 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Api\Actions\Companies\Addresses;
+use Netresearch\Sdk\CentralStation\Api\Actions\Companies\CustomFields;
+use Netresearch\Sdk\CentralStation\Api\Actions\Companies\Tags;
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
@@ -48,28 +51,22 @@ class Companies extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'companies';
+    final public const PATH = 'companies';
 
     /**
      * Instance of the "addrs" API for implementing lazy loading.
-     *
-     * @var null|Companies\Addresses
      */
-    private $addressesApi;
+    private ?Addresses $addressesApi = null;
 
     /**
      * Instance of the "custom_fields" API for implementing lazy loading.
-     *
-     * @var null|Companies\CustomFields
      */
-    private $customFieldsApi;
+    private ?CustomFields $customFieldsApi = null;
 
     /**
      * Instance of the "tags" API for implementing lazy loading.
-     *
-     * @var null|Companies\Tags
      */
-    private $tagsApi;
+    private ?Tags $tagsApi = null;
 
     /**
      * Returns the "addrs" API used to process addresses related to a specific company.
@@ -78,11 +75,11 @@ class Companies extends AbstractApiEndpoint
      *
      * @return Companies\Addresses
      */
-    public function addresses(int $addressId = null): Companies\Addresses
+    public function addresses(int $addressId = null): Addresses
     {
         $this->urlBuilder
             ->setParams([])
-            ->addPath('/' . Companies\Addresses::PATH);
+            ->addPath('/' . Addresses::PATH);
 
         // Add address ID if available
         if ($addressId) {
@@ -90,8 +87,8 @@ class Companies extends AbstractApiEndpoint
                 ->addPath('/' . $addressId);
         }
 
-        if (!$this->addressesApi) {
-            $this->addressesApi = new Companies\Addresses(
+        if (!($this->addressesApi instanceof Addresses)) {
+            $this->addressesApi = new Addresses(
                 $this->client,
                 $this->requestFactory,
                 $this->streamFactory,
@@ -110,11 +107,11 @@ class Companies extends AbstractApiEndpoint
      *
      * @return Companies\CustomFields
      */
-    public function customFields(int $customFieldId = null): Companies\CustomFields
+    public function customFields(int $customFieldId = null): CustomFields
     {
         $this->urlBuilder
             ->setParams([])
-            ->addPath('/' . Companies\CustomFields::PATH);
+            ->addPath('/' . CustomFields::PATH);
 
         // Add custom field ID if available
         if ($customFieldId) {
@@ -122,8 +119,8 @@ class Companies extends AbstractApiEndpoint
                 ->addPath('/' . $customFieldId);
         }
 
-        if (!$this->customFieldsApi) {
-            $this->customFieldsApi = new Companies\CustomFields(
+        if (!($this->customFieldsApi instanceof CustomFields)) {
+            $this->customFieldsApi = new CustomFields(
                 $this->client,
                 $this->requestFactory,
                 $this->streamFactory,
@@ -142,11 +139,11 @@ class Companies extends AbstractApiEndpoint
      *
      * @return Companies\Tags
      */
-    public function tags(int $tagId = null): Companies\Tags
+    public function tags(int $tagId = null): Tags
     {
         $this->urlBuilder
             ->setParams([])
-            ->addPath('/' . Companies\Tags::PATH);
+            ->addPath('/' . Tags::PATH);
 
         // Add tag ID if available
         if ($tagId) {
@@ -154,8 +151,8 @@ class Companies extends AbstractApiEndpoint
                 ->addPath('/' . $tagId);
         }
 
-        if (!$this->tagsApi) {
-            $this->tagsApi = new Companies\Tags(
+        if (!($this->tagsApi instanceof Tags)) {
+            $this->tagsApi = new Tags(
                 $this->client,
                 $this->requestFactory,
                 $this->streamFactory,

@@ -25,7 +25,7 @@ trait CustomFieldTrait
     /**
      * @var array<array<string>|int|string>
      */
-    private $customFieldFilter;
+    private array $customFieldFilter;
 
     /**
      * Sets a custom field filter.
@@ -33,9 +33,9 @@ trait CustomFieldTrait
      * @param string     $name  The name of the custom field used to filter
      * @param int|string $value The value used to filter the field by
      *
-     * @return self
+     * @return CustomFieldRequestInterface
      */
-    public function setCustomFieldFilter(string $name, $value): CustomFieldRequestInterface
+    public function setCustomFieldFilter(string $name, int|string $value): CustomFieldRequestInterface
     {
         $this->customFieldFilter[$name] = $value;
         return $this;

@@ -35,7 +35,7 @@ class CreateTest extends TestCase
         $customField
             ->setContent('CUSTOM-FIELD-CONTENT')
             ->setCustomFieldsTypeId(1003)
-            ->setAttachableId(12345678)
+            ->setAttachableId(12_345_678)
             ->setAttachableType('Person');
 
         $request = new Create($customField);
@@ -44,7 +44,7 @@ class CreateTest extends TestCase
             [
                 'custom_field' => [
                     'name'                  => 'CUSTOM-FIELD-CONTENT',
-                    'attachable_id'         => 12345678,
+                    'attachable_id'         => 12_345_678,
                     'attachable_type'       => 'Person',
                     'custom_fields_type_id' => 1003,
                 ],

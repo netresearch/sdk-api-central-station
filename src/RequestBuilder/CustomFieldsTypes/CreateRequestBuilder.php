@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\CustomFieldsTypes;
 
-use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\CustomFieldsType;
 use Netresearch\Sdk\CentralStation\Request\CustomFieldsTypes\Create as CreateRequest;

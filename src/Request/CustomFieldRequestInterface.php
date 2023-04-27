@@ -28,5 +28,5 @@ interface CustomFieldRequestInterface extends RequestInterface
      *
      * @return self
      */
-    public function setCustomFieldFilter(string $name, $value): CustomFieldRequestInterface;
+    public function setCustomFieldFilter(string $name, int|string $value): CustomFieldRequestInterface;
 }

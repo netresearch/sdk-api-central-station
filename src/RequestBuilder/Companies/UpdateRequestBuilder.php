@@ -26,6 +26,8 @@ use Netresearch\Sdk\CentralStation\Request\Tags;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\Companies\UpdateValidator;
 
+use function in_array;
+
 /**
  * The request builder to create a valid "update" request.
  *
@@ -236,7 +238,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return UpdateRequest|RequestInterface
+     * @return UpdateRequest
      *
      * @throws RequestValidatorException
      */

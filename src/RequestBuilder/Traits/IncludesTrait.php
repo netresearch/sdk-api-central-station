@@ -32,7 +32,7 @@ trait IncludesTrait
      *                        response (use one of Constants::INCLUDE_*). Use Constants::INCLUDE_ALL to return
      *                        all at once.
      *
-     * @return self
+     * @return IncludesRequestBuilderInterface
      */
     public function addInclude(string $include): IncludesRequestBuilderInterface
     {

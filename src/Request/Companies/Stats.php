@@ -31,8 +31,7 @@ class Stats implements FilterRequestInterface
     public function jsonSerialize(): array
     {
         $data = [];
-        $data = $this->addFilterToSerializedData($data);
 
-        return $data;
+        return $this->addFilterToSerializedData($data);
     }
 }

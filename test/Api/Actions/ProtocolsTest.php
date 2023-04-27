@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Api\Actions\Protocols;
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
@@ -40,13 +41,13 @@ class ProtocolsTest extends TestCase
      * @param string   $responseJsonFile
      * @param int|null $protocolId
      *
-     * @return \Netresearch\Sdk\CentralStation\Api\Actions\Protocols
+     * @return Protocols
      * @throws ServiceException
      */
     private function getProtocolsApi(
         string $responseJsonFile = '',
         int $protocolId = null
-    ): \Netresearch\Sdk\CentralStation\Api\Actions\Protocols {
+    ): Protocols {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
         return $serviceFactoryMock
@@ -107,14 +108,14 @@ class ProtocolsTest extends TestCase
      */
     private function assertFirstProtocol(Protocol $protocol): void
     {
-        self::assertSame(36085763, $protocol->id);
+        self::assertSame(36_085_763, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
         self::assertSame(0, $protocol->attachmentsCount);
         self::assertSame(0, $protocol->commentsCount);
         self::assertIsArray($protocol->comments);
         self::assertContainsOnlyInstancesOf(Comment::class, $protocol->comments);
-        self::assertSame([26125010], $protocol->personIds);
-        self::assertSame([1799973197], $protocol->companyIds);
+        self::assertSame([26_125_010], $protocol->personIds);
+        self::assertSame([1_799_973_197], $protocol->companyIds);
         self::assertFalse($protocol->confidential);
         self::assertSame('Interview Text 2015 - 1', $protocol->name);
         self::assertSame('Interview Text 2015 - 2', $protocol->content);
@@ -135,14 +136,14 @@ class ProtocolsTest extends TestCase
      */
     private function assertSecondProtocol(Protocol $protocol): void
     {
-        self::assertSame(36085781, $protocol->id);
+        self::assertSame(36_085_781, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
         self::assertSame(0, $protocol->attachmentsCount);
         self::assertSame(0, $protocol->commentsCount);
         self::assertIsArray($protocol->comments);
         self::assertContainsOnlyInstancesOf(Comment::class, $protocol->comments);
-        self::assertSame([26125043], $protocol->personIds);
-        self::assertSame([1799973221], $protocol->companyIds);
+        self::assertSame([26_125_043], $protocol->personIds);
+        self::assertSame([1_799_973_221], $protocol->companyIds);
         self::assertFalse($protocol->confidential);
         self::assertSame('Investoren-Interview - 1', $protocol->name);
         self::assertSame('Investoren-Interview - 2', $protocol->content);
@@ -199,13 +200,13 @@ class ProtocolsTest extends TestCase
      */
     private function assertThirdProtocol(Protocol $protocol): void
     {
-        self::assertSame(43342275, $protocol->id);
+        self::assertSame(43_342_275, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
         self::assertSame(1, $protocol->attachmentsCount);
         self::assertSame(0, $protocol->commentsCount);
         self::assertIsArray($protocol->comments);
         self::assertContainsOnlyInstancesOf(Comment::class, $protocol->comments);
-        self::assertSame([30016185], $protocol->personIds);
+        self::assertSame([30_016_185], $protocol->personIds);
         self::assertSame([], $protocol->companyIds);
         self::assertFalse($protocol->confidential);
         self::assertSame('Testdatei', $protocol->name);

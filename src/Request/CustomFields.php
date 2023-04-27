@@ -31,9 +31,7 @@ class CustomFields extends AbstractCollection
     {
         return array_values(
             array_map(
-                static function (CustomField $customField): array {
-                    return $customField->jsonSerialize();
-                },
+                static fn(CustomField $customField): array => $customField->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

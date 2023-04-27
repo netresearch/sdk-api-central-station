@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\Companies\Addresses;
 
-use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\Address;
 use Netresearch\Sdk\CentralStation\Request\Companies\Addresses\Create as CreateRequest;
@@ -84,7 +83,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return CreateRequest|RequestInterface
+     * @return CreateRequest
      *
      * @throws RequestValidatorException
      */

@@ -25,12 +25,17 @@ use PHPUnit\Framework\TestCase;
 class RequestBuilderTestCase extends TestCase
 {
     /**
-     * @var JsonSerializer
+     * @var null|JsonSerializer
      */
-    protected $serializer;
+    protected ?JsonSerializer $serializer = null;
 
+    /**
+     * @return void
+     */
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->serializer = new JsonSerializer();
     }
 

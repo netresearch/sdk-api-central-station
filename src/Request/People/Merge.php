@@ -25,14 +25,14 @@ class Merge implements RequestInterface
     /**
      * @var int
      */
-    private int $personId;
+    private readonly int $personId;
 
     /**
      * A list of person IDs used to merge into the $personId record.
      *
      * @var int[]
      */
-    public array $mergeIds;
+    public array $mergeIds = [];
 
     /**
      * Constructor.
@@ -68,11 +68,6 @@ class Merge implements RequestInterface
      */
     public function jsonSerialize(): array
     {
-        $data = [];
-
-        $data['id']         = $this->personId;
-        $data['looser_ids'] = $this->mergeIds;
-
-        return $data;
+        return ['id' => $this->personId, 'looser_ids' => $this->mergeIds];
     }
 }

@@ -31,9 +31,7 @@ class ContactDetails extends AbstractCollection
     {
         return array_values(
             array_map(
-                static function (ContactDetail $contactDetail): array {
-                    return $contactDetail->jsonSerialize();
-                },
+                static fn(ContactDetail $contactDetail): array => $contactDetail->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

@@ -41,10 +41,8 @@ class Api
 
     /**
      * Instance of the "companies" API for implementing lazy loading.
-     *
-     * @var null|Companies
      */
-    private $companiesApi;
+    private ?Companies $companiesApi = null;
 
     /**
      * Instance of the "tags" API for implementing lazy loading.
@@ -84,27 +82,27 @@ class Api
     /**
      * @var ClientInterface
      */
-    private ClientInterface $client;
+    private readonly ClientInterface $client;
 
     /**
      * @var RequestFactoryInterface
      */
-    private RequestFactoryInterface $requestFactory;
+    private readonly RequestFactoryInterface $requestFactory;
 
     /**
      * @var StreamFactoryInterface
      */
-    private StreamFactoryInterface $streamFactory;
+    private readonly StreamFactoryInterface $streamFactory;
 
     /**
      * @var JsonSerializer
      */
-    private JsonSerializer $serializer;
+    private readonly JsonSerializer $serializer;
 
     /**
      * @var UrlBuilder
      */
-    private UrlBuilder $urlBuilder;
+    private readonly UrlBuilder $urlBuilder;
 
     /**
      * Api constructor.
@@ -148,7 +146,7 @@ class Api
                 ->addPath('/' . $personId);
         }
 
-        if (!$this->peopleApi) {
+        if (!($this->peopleApi instanceof People)) {
             $this->peopleApi = new People(
                 $this->client,
                 $this->requestFactory,
@@ -180,7 +178,7 @@ class Api
                 ->addPath('/' . $companyId);
         }
 
-        if (!$this->companiesApi) {
+        if (!($this->companiesApi instanceof Companies)) {
             $this->companiesApi = new Companies(
                 $this->client,
                 $this->requestFactory,
@@ -212,7 +210,7 @@ class Api
                 ->addPath('/' . $tagId);
         }
 
-        if (!$this->tagsApi) {
+        if (!($this->tagsApi instanceof Tags)) {
             $this->tagsApi = new Tags(
                 $this->client,
                 $this->requestFactory,
@@ -244,7 +242,7 @@ class Api
                 ->addPath('/' . $protocolId);
         }
 
-        if (!$this->protocolsApi) {
+        if (!($this->protocolsApi instanceof Protocols)) {
             $this->protocolsApi = new Protocols(
                 $this->client,
                 $this->requestFactory,
@@ -276,7 +274,7 @@ class Api
                 ->addPath('/' . $customFieldsTypeId);
         }
 
-        if (!$this->customFieldsTypesApi) {
+        if (!($this->customFieldsTypesApi instanceof CustomFieldsTypes)) {
             $this->customFieldsTypesApi = new CustomFieldsTypes(
                 $this->client,
                 $this->requestFactory,
@@ -308,7 +306,7 @@ class Api
                 ->addPath('/' . $groupCalendarId);
         }
 
-        if (!$this->groupCalendarsApi) {
+        if (!($this->groupCalendarsApi instanceof GroupCalendars)) {
             $this->groupCalendarsApi = new GroupCalendars(
                 $this->client,
                 $this->requestFactory,
@@ -340,7 +338,7 @@ class Api
                 ->addPath('/' . $calendarEventId);
         }
 
-        if (!$this->calendarEventsApi) {
+        if (!($this->calendarEventsApi instanceof CalendarEvents)) {
             $this->calendarEventsApi = new CalendarEvents(
                 $this->client,
                 $this->requestFactory,

@@ -35,7 +35,7 @@ trait PaginationTrait
     /**
      * @param null|int $perPage
      *
-     * @return self
+     * @return PaginationRequestInterface
      */
     public function setPerPage(?int $perPage): PaginationRequestInterface
     {
@@ -46,7 +46,7 @@ trait PaginationTrait
     /**
      * @param null|int $page
      *
-     * @return self
+     * @return PaginationRequestInterface
      */
     public function setPage(?int $page): PaginationRequestInterface
     {

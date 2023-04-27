@@ -29,7 +29,7 @@ trait PaginationTrait
      * @param int $perPage The number of elements to return (default: 25)
      * @param int $page    The page number for which to return the results
      *
-     * @return self
+     * @return PaginationRequestBuilderInterface
      */
     public function setLimit(int $perPage = 25, int $page = 1): PaginationRequestBuilderInterface
     {

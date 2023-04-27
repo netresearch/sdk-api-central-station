@@ -108,9 +108,9 @@ class TagsTest extends TestCase
      */
     private function assertFirstTag(Tag $tag): void
     {
-        self::assertSame(45067258, $tag->id);
+        self::assertSame(45_067_258, $tag->id);
         self::assertSame(47143, $tag->accountId);
-        self::assertSame(8439487, $tag->attachableId);
+        self::assertSame(8_439_487, $tag->attachableId);
         self::assertSame('Company', $tag->attachableType);
         self::assertSame('Branche|Mobilität / Verkehr', $tag->name);
         self::assertSame('13.10.2019', $tag->createdAt->format('d.m.Y'));
@@ -126,9 +126,9 @@ class TagsTest extends TestCase
      */
     private function assertSecondTag(Tag $tag): void
     {
-        self::assertSame(45067261, $tag->id);
+        self::assertSame(45_067_261, $tag->id);
         self::assertSame(47143, $tag->accountId);
-        self::assertSame(8439487, $tag->attachableId);
+        self::assertSame(8_439_487, $tag->attachableId);
         self::assertSame('Company', $tag->attachableType);
         self::assertSame('Branche|Mess- / Verfahrenstechnik / Sensorik', $tag->name);
         self::assertSame('13.10.2019', $tag->createdAt->format('d.m.Y'));
@@ -223,9 +223,9 @@ class TagsTest extends TestCase
      */
     private function assertCreatedTag(Tag $tag): void
     {
-        self::assertSame(45067258, $tag->id);
+        self::assertSame(45_067_258, $tag->id);
         self::assertSame(47143, $tag->accountId);
-        self::assertSame(8439487, $tag->attachableId);
+        self::assertSame(8_439_487, $tag->attachableId);
         self::assertSame('Company', $tag->attachableType);
         self::assertSame('Branche|Mobilität / Verkehr', $tag->name);
         self::assertSame('13.10.2019', $tag->createdAt->format('d.m.Y'));

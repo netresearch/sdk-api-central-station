@@ -39,31 +39,31 @@ class CentralStation
     /**
      * @var LoggerInterface
      */
-    private LoggerInterface $logger;
+    private readonly LoggerInterface $logger;
 
     /**
      * @var UrlBuilder
      */
-    private UrlBuilder $urlBuilder;
+    private readonly UrlBuilder $urlBuilder;
 
     /**
      * @var JsonSerializer
      */
-    private JsonSerializer $serializer;
+    private readonly JsonSerializer $serializer;
 
     /**
      * The API key.
      *
      * @var string
      */
-    private string $apiKey;
+    private readonly string $apiKey;
 
     /**
      * Api instance for implementing lazy loading.
      *
      * @var null|Api
      */
-    private ?Api $api;
+    private ?Api $api = null;
 
     /**
      * CentralStation constructor.
@@ -127,7 +127,7 @@ class CentralStation
      */
     public function api(): Api
     {
-        if (!$this->api) {
+        if (!($this->api instanceof Api)) {
             try {
                 $requestFactory = Psr17FactoryDiscovery::findRequestFactory();
                 $streamFactory = Psr17FactoryDiscovery::findStreamFactory();

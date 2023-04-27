@@ -83,7 +83,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return UpdateRequest|RequestInterface
+     * @return UpdateRequest
      *
      * @throws RequestValidatorException
      */

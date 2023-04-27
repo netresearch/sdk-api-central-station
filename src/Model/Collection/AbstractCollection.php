@@ -57,7 +57,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      * @return null|TValue
      */
     #[ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->elements[$offset] ?? null;
     }

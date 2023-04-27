@@ -42,7 +42,7 @@ class Tags extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'tags';
+    final public const PATH = 'tags';
 
     /**
      * Returns a list of all tags assigned to a company.

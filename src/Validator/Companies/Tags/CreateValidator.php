@@ -13,6 +13,8 @@ namespace Netresearch\Sdk\CentralStation\Validator\Companies\Tags;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 
+use function strlen;
+
 /**
  * Class CreateValidator.
  *
@@ -38,7 +40,7 @@ class CreateValidator
         }
 
         // Tags are limited to 60 chars
-        if (strlen($data['tag']['name']) > 60) {
+        if (strlen((string)$data['tag']['name']) > 60) {
             throw new RequestValidatorException(
                 'Tags are limited to 60 chars only'
             );

@@ -81,7 +81,7 @@ class UrlBuilder
     {
         $url = $this->baseUrl . implode('', $this->paths);
 
-        if (!empty($this->parameters)) {
+        if ($this->parameters !== []) {
             $url .= '?' . http_build_query(array_filter($this->parameters));
         }
 

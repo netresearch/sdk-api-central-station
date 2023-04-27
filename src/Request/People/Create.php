@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var Person
      */
-    private Person $person;
+    private readonly Person $person;
 
     /**
      * Constructor.
@@ -43,10 +43,6 @@ class Create implements RequestInterface
      */
     public function jsonSerialize(): array
     {
-        $data = [];
-
-        $data['person'] = $this->person->jsonSerialize();
-
-        return $data;
+        return ['person' => $this->person->jsonSerialize()];
     }
 }

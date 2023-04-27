@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Rector\CodeQuality\Rector\Identical\SimplifyBoolIdenticalTrueRector;
 use Rector\CodingStyle\Rector\Catch_\CatchExceptionNameMatchingTypeRector;
 use Rector\CodingStyle\Rector\ClassMethod\UnSpreadOperatorRector;
 use Rector\Config\RectorConfig;
@@ -15,7 +14,6 @@ use Rector\Php80\Rector\FunctionLike\UnionTypesRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\TypeDeclaration\Rector\ClassMethod\ArrayShapeFromConstantArrayReturnRector;
-use Rector\TypeDeclaration\Rector\Closure\AddClosureReturnTypeRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -37,7 +35,7 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::PSR_4,
         SetList::EARLY_RETURN,
         SetList::ACTION_INJECTION_TO_CONSTRUCTOR_INJECTION,
-        SetList::NAMING,
+        //SetList::NAMING,
         SetList::TYPE_DECLARATION,
         SetList::CODING_STYLE,
         SetList::CODE_QUALITY,
@@ -47,15 +45,14 @@ return static function (RectorConfig $rectorConfig): void {
 
     // Skip some rules
     $rectorConfig->skip([
-        AddClosureReturnTypeRector::class,
-        ArrayShapeFromConstantArrayReturnRector::class,
-        CatchExceptionNameMatchingTypeRector::class,
         ClassPropertyAssignToConstructorPromotionRector::class,
         MixedTypeRector::class,
+        UnionTypesRector::class,
+        ArrayShapeFromConstantArrayReturnRector::class,
+        CatchExceptionNameMatchingTypeRector::class,
         RemoveUselessParamTagRector::class,
         RemoveUselessReturnTagRector::class,
-        SimplifyBoolIdenticalTrueRector::class,
+        RemoveUselessVarTagRector::class,
         UnSpreadOperatorRector::class,
-        UnionTypesRector::class,
     ]);
 };

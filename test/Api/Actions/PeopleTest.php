@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Api\Actions\People;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
@@ -48,13 +49,13 @@ class PeopleTest extends TestCase
      * @param string   $responseJsonFile
      * @param int|null $personId
      *
-     * @return \Netresearch\Sdk\CentralStation\Api\Actions\People
+     * @return People
      * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
         int $personId = null
-    ): \Netresearch\Sdk\CentralStation\Api\Actions\People {
+    ): People {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
         return $serviceFactoryMock
@@ -195,7 +196,7 @@ class PeopleTest extends TestCase
      */
     private static function assertThirdPerson(Person $person): void
     {
-        self::assertSame(30016185, $person->id);
+        self::assertSame(30_016_185, $person->id);
         self::assertSame(87444, $person->accountId);
         self::assertSame('Frau', $person->salutation);
         self::assertSame('Dr. Dr.', $person->title);
@@ -263,7 +264,7 @@ class PeopleTest extends TestCase
      */
     private static function assertCreatedPerson(Person $person): void
     {
-        self::assertSame(1545412, $person->id);
+        self::assertSame(1_545_412, $person->id);
         self::assertSame(21, $person->accountId);
         self::assertNull($person->salutation);
         self::assertNull($person->title);

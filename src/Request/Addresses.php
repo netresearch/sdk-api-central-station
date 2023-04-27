@@ -31,9 +31,7 @@ class Addresses extends AbstractCollection
     {
         return array_values(
             array_map(
-                static function (Address $address): array {
-                    return $address->jsonSerialize();
-                },
+                static fn(Address $address): array => $address->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

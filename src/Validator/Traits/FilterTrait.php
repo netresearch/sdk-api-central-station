@@ -54,7 +54,7 @@ trait FilterTrait
      */
     public static function validateFilters(array $filters): void
     {
-        foreach ($filters as $filter => $values) {
+        foreach (array_keys($filters) as $filter) {
             if (!in_array($filter, self::$allowedFilters, true)) {
                 throw new RequestValidatorException(
                     'The provided filter parameter "' . $filter . '" is not allowed'

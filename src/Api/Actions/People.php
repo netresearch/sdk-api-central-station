@@ -11,6 +11,10 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Api\Actions\People\Addresses;
+use Netresearch\Sdk\CentralStation\Api\Actions\People\CustomFields;
+use Netresearch\Sdk\CentralStation\Api\Actions\People\Protocols;
+use Netresearch\Sdk\CentralStation\Api\Actions\People\Tags;
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
@@ -50,35 +54,35 @@ class People extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'people';
+    final public const PATH = 'people';
 
     /**
      * Instance of the "addrs" API for implementing lazy loading.
      *
      * @var null|People\Addresses
      */
-    private ?People\Addresses $addressesApi = null;
+    private ?Addresses $addressesApi = null;
 
     /**
      * Instance of the "custom_fields" API for implementing lazy loading.
      *
      * @var null|People\CustomFields
      */
-    private ?People\CustomFields $customFieldsApi = null;
+    private ?CustomFields $customFieldsApi = null;
 
     /**
      * Instance of the "protocols" API for implementing lazy loading.
      *
      * @var null|People\Protocols
      */
-    private ?People\Protocols $protocolsApi = null;
+    private ?Protocols $protocolsApi = null;
 
     /**
      * Instance of the "tags" API for implementing lazy loading.
      *
      * @var null|People\Tags
      */
-    private ?People\Tags $tagsApi = null;
+    private ?Tags $tagsApi = null;
 
     /**
      * Returns the "addrs" API used to process addresses related to a specific person.
@@ -87,11 +91,11 @@ class People extends AbstractApiEndpoint
      *
      * @return People\Addresses
      */
-    public function addresses(int $addressId = null): People\Addresses
+    public function addresses(int $addressId = null): Addresses
     {
         $this->urlBuilder
             ->setParams([])
-            ->addPath('/' . People\Addresses::PATH);
+            ->addPath('/' . Addresses::PATH);
 
         // Add address ID if available
         if ($addressId) {
@@ -99,8 +103,8 @@ class People extends AbstractApiEndpoint
                 ->addPath('/' . $addressId);
         }
 
-        if (!$this->addressesApi) {
-            $this->addressesApi = new People\Addresses(
+        if (!($this->addressesApi instanceof Addresses)) {
+            $this->addressesApi = new Addresses(
                 $this->client,
                 $this->requestFactory,
                 $this->streamFactory,
@@ -119,11 +123,11 @@ class People extends AbstractApiEndpoint
      *
      * @return People\CustomFields
      */
-    public function customFields(int $customFieldId = null): People\CustomFields
+    public function customFields(int $customFieldId = null): CustomFields
     {
         $this->urlBuilder
             ->setParams([])
-            ->addPath('/' . People\CustomFields::PATH);
+            ->addPath('/' . CustomFields::PATH);
 
         // Add custom field ID if available
         if ($customFieldId) {
@@ -131,8 +135,8 @@ class People extends AbstractApiEndpoint
                 ->addPath('/' . $customFieldId);
         }
 
-        if (!$this->customFieldsApi) {
-            $this->customFieldsApi = new People\CustomFields(
+        if (!($this->customFieldsApi instanceof CustomFields)) {
+            $this->customFieldsApi = new CustomFields(
                 $this->client,
                 $this->requestFactory,
                 $this->streamFactory,
@@ -151,11 +155,11 @@ class People extends AbstractApiEndpoint
      *
      * @return People\Protocols
      */
-    public function protocols(int $protocolId = null): People\Protocols
+    public function protocols(int $protocolId = null): Protocols
     {
         $this->urlBuilder
             ->setParams([])
-            ->addPath('/' . People\Protocols::PATH);
+            ->addPath('/' . Protocols::PATH);
 
         // Add protocol ID if available
         if ($protocolId) {
@@ -163,8 +167,8 @@ class People extends AbstractApiEndpoint
                 ->addPath('/' . $protocolId);
         }
 
-        if (!$this->protocolsApi) {
-            $this->protocolsApi = new People\Protocols(
+        if (!($this->protocolsApi instanceof Protocols)) {
+            $this->protocolsApi = new Protocols(
                 $this->client,
                 $this->requestFactory,
                 $this->streamFactory,
@@ -183,11 +187,11 @@ class People extends AbstractApiEndpoint
      *
      * @return People\Tags
      */
-    public function tags(int $tagId = null): People\Tags
+    public function tags(int $tagId = null): Tags
     {
         $this->urlBuilder
             ->setParams([])
-            ->addPath('/' . People\Tags::PATH);
+            ->addPath('/' . Tags::PATH);
 
         // Add tag ID if available
         if ($tagId) {
@@ -195,8 +199,8 @@ class People extends AbstractApiEndpoint
                 ->addPath('/' . $tagId);
         }
 
-        if (!$this->tagsApi) {
-            $this->tagsApi = new People\Tags(
+        if (!($this->tagsApi instanceof Tags)) {
+            $this->tagsApi = new Tags(
                 $this->client,
                 $this->requestFactory,
                 $this->streamFactory,

@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var CustomFieldsType
      */
-    private CustomFieldsType $customFieldsType;
+    private readonly CustomFieldsType $customFieldsType;
 
     /**
      * Constructor.
@@ -43,10 +43,6 @@ class Create implements RequestInterface
      */
     public function jsonSerialize(): array
     {
-        $data = [];
-
-        $data['custom_fields_type'] = $this->customFieldsType->jsonSerialize();
-
-        return $data;
+        return ['custom_fields_type' => $this->customFieldsType->jsonSerialize()];
     }
 }

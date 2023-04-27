@@ -46,13 +46,16 @@ class CreateValidator
             );
         }
 
-        if (
-            isset($data['type'])
-            && !in_array($data['type'], Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE, true)
-        ) {
-            throw new RequestValidatorException(
-                'The provided field type parameter "' . $data['type'] . '" is not allowed'
-            );
+        if (!isset($data['type'])) {
+            return;
         }
+
+        if (in_array($data['type'], Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE, true)) {
+            return;
+        }
+
+        throw new RequestValidatorException(
+            'The provided field type parameter "' . $data['type'] . '" is not allowed'
+        );
     }
 }

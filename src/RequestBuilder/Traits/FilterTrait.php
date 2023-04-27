@@ -32,7 +32,7 @@ trait FilterTrait
      * @param int|string|DateTime $value      The value used to filter the field by, add "%" around value to
      *                                        the LIKE filter to filter for partial value
      *
-     * @return self
+     * @return FilterRequestBuilderInterface
      */
     public function addFilter(
         string $field,

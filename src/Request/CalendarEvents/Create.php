@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var CalendarEvent
      */
-    private CalendarEvent $calendarEvent;
+    private readonly CalendarEvent $calendarEvent;
 
     /**
      * Constructor.
@@ -43,10 +43,6 @@ class Create implements RequestInterface
      */
     public function jsonSerialize(): array
     {
-        $data = [];
-
-        $data['cal_event'] = $this->calendarEvent->jsonSerialize();
-
-        return $data;
+        return ['cal_event' => $this->calendarEvent->jsonSerialize()];
     }
 }

@@ -43,7 +43,7 @@ class CalendarEvents extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'cal_events';
+    final public const PATH = 'cal_events';
 
     /**
      * Returns a list of all calendar events in an account.

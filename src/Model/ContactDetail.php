@@ -13,7 +13,6 @@ namespace Netresearch\Sdk\CentralStation\Model;
 
 use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
 use MagicSunday\JsonMapper\Annotation\ReplaceProperty;
-use Netresearch\Sdk\CentralStation\Constants;
 
 /**
  * A contact detail record.

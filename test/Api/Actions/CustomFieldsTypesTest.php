@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Api\Actions\CustomFieldsTypes;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
@@ -36,13 +37,13 @@ class CustomFieldsTypesTest extends TestCase
      * @param string   $responseJsonFile
      * @param int|null $customFieldsTypesId
      *
-     * @return \Netresearch\Sdk\CentralStation\Api\Actions\CustomFieldsTypes
+     * @return CustomFieldsTypes
      * @throws ServiceException
      */
     private function getCustomFieldsTypesApi(
         string $responseJsonFile = '',
         int $customFieldsTypesId = null
-    ): \Netresearch\Sdk\CentralStation\Api\Actions\CustomFieldsTypes {
+    ): CustomFieldsTypes {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
         return $serviceFactoryMock

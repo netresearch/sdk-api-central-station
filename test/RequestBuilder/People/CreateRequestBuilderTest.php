@@ -77,8 +77,8 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
                 'City name',
                 'DE'
             )
-            ->addCustomField('MY-CUSTOM-FIELD-VALUE-1', 1234567)
-            ->addCustomField('MY-CUSTOM-FIELD-VALUE-2', 1234568);
+            ->addCustomField('MY-CUSTOM-FIELD-VALUE-1', 1_234_567)
+            ->addCustomField('MY-CUSTOM-FIELD-VALUE-2', 1_234_568);
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);

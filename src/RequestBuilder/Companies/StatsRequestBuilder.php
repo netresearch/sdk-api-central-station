@@ -35,7 +35,7 @@ class StatsRequestBuilder extends AbstractRequestBuilder implements
     /**
      * This method creates the actual request object and fills it with the data set in the request builder.
      *
-     * @return StatsRequest|RequestInterface
+     * @return StatsRequest
      *
      * @throws RequestValidatorException
      */

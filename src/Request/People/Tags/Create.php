@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var Tag
      */
-    private Tag $tag;
+    private readonly Tag $tag;
 
     /**
      * Constructor.
@@ -43,10 +43,6 @@ class Create implements RequestInterface
      */
     public function jsonSerialize(): array
     {
-        $data = [];
-
-        $data['tag'] = $this->tag->jsonSerialize();
-
-        return $data;
+        return ['tag' => $this->tag->jsonSerialize()];
     }
 }

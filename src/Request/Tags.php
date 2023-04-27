@@ -31,9 +31,7 @@ class Tags extends AbstractCollection
     {
         return array_values(
             array_map(
-                static function (Tag $tag): array {
-                    return $tag->jsonSerialize();
-                },
+                static fn(Tag $tag): array => $tag->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

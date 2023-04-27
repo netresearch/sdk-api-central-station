@@ -213,8 +213,8 @@ abstract class AbstractApiEndpoint implements EndpointInterface
         string $className,
         string $collectionClassName
     ) {
-        $requestClosure = function () use ($request, $className, $collectionClassName) {
-            if ($request) {
+        $requestClosure = function () use ($request, $className, $collectionClassName): mixed {
+            if ($request instanceof RequestInterface) {
                 $this->urlBuilder->setParams($request->jsonSerialize());
             }
 
@@ -241,8 +241,8 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      */
     protected function findEntity(?RequestInterface $request, string $className)
     {
-        $requestClosure = function () use ($request, $className) {
-            if ($request) {
+        $requestClosure = function () use ($request, $className): mixed {
+            if ($request instanceof RequestInterface) {
                 $this->urlBuilder->setParams($request->jsonSerialize());
             }
 
@@ -269,7 +269,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      */
     protected function createNewEntity(RequestInterface $request, string $className)
     {
-        $requestClosure = function () use ($request, $className) {
+        $requestClosure = function () use ($request, $className): mixed {
             $response = $this->httpPost($request);
 
             return $this->serializer

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Api\Actions\Protocols\Attachments;
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
@@ -39,14 +40,14 @@ class Protocols extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'protocols';
+    final public const PATH = 'protocols';
 
     /**
      * Instance of the "attachments" API for implementing lazy loading.
      *
      * @var null|Protocols\Attachments
      */
-    private ?Protocols\Attachments $attachmentsApi = null;
+    private ?Attachments $attachmentsApi = null;
 
     /**
      * Returns the "attachments" API used to process attachments related to a specific person.
@@ -55,11 +56,11 @@ class Protocols extends AbstractApiEndpoint
      *
      * @return Protocols\Attachments
      */
-    public function attachments(string $attachmentId = null): Protocols\Attachments
+    public function attachments(string $attachmentId = null): Attachments
     {
         $this->urlBuilder
             ->setParams([])
-            ->addPath('/' . Protocols\Attachments::PATH);
+            ->addPath('/' . Attachments::PATH);
 
         // Add attachment ID if available
         if ($attachmentId) {
@@ -67,8 +68,8 @@ class Protocols extends AbstractApiEndpoint
                 ->addPath('/' . $attachmentId);
         }
 
-        if (!$this->attachmentsApi) {
-            $this->attachmentsApi = new Protocols\Attachments(
+        if (!($this->attachmentsApi instanceof Attachments)) {
+            $this->attachmentsApi = new Attachments(
                 $this->client,
                 $this->requestFactory,
                 $this->streamFactory,

@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var Protocol
      */
-    private Protocol $protocol;
+    private readonly Protocol $protocol;
 
     /**
      * Constructor.
@@ -43,10 +43,6 @@ class Create implements RequestInterface
      */
     public function jsonSerialize(): array
     {
-        $data = [];
-
-        $data['protocol'] = $this->protocol->jsonSerialize();
-
-        return $data;
+        return ['protocol' => $this->protocol->jsonSerialize()];
     }
 }

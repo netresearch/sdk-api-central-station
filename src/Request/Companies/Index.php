@@ -42,15 +42,9 @@ class Index implements
     use PaginationTrait;
     use SortTrait;
 
-    /**
-     * @var null|int
-     */
-    private $tagId;
+    private ?int $tagId = null;
 
-    /**
-     * @var null|string
-     */
-    private $tagName;
+    private ?string $tagName = null;
 
     /**
      * @param null|int $tagId

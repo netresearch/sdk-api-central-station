@@ -42,7 +42,7 @@ class JsonSerializer
     /**
      * @var string[]|Closure[]
      */
-    private array $classMap;
+    private readonly array $classMap;
 
     /**
      * JsonSerializer constructor.
@@ -66,7 +66,7 @@ class JsonSerializer
     public function encode(RequestInterface $object): string
     {
         // Remove empty entries from serialized data (after all objects were converted to array)
-        $payload = (string) json_encode($object, JSON_THROW_ON_ERROR);
+        $payload = json_encode($object, JSON_THROW_ON_ERROR);
         $payload = (array) json_decode($payload, true, 512, JSON_THROW_ON_ERROR);
         $payload = $this->removeNullValuesRecursive($payload);
 
@@ -88,12 +88,10 @@ class JsonSerializer
             }
         }
 
+        // Remove all NULL values
         return array_filter(
             $data,
-            static function ($value): bool {
-                // Remove all NULL values
-                return ($value !== null);
-            }
+            static fn($value): bool => $value !== null
         );
     }
 
@@ -135,9 +133,7 @@ class JsonSerializer
         // Add handler for DateTime elements
         $decoder->addType(
             DateTime::class,
-            static function ($value): ?DateTime {
-                return $value ? new DateTime($value) : null;
-            }
+            static fn($value): ?DateTime => $value ? new DateTime($value) : null
         );
 
         $json = json_decode($jsonResponse, true, 512, JSON_THROW_ON_ERROR);

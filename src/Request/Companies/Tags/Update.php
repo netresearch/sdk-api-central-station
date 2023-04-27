@@ -23,10 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\Tag;
  */
 class Update implements RequestInterface
 {
-    /**
-     * @var null|Tag
-     */
-    private $tag;
+    private ?Tag $tag = null;
 
     /**
      * @param Tag $tag
@@ -46,7 +43,7 @@ class Update implements RequestInterface
     {
         $data = [];
 
-        if ($this->tag) {
+        if ($this->tag instanceof Tag) {
             $data['tag'] = $this->tag->jsonSerialize();
         }
 

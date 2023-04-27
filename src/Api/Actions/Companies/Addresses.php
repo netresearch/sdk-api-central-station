@@ -41,7 +41,7 @@ class Addresses extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'addrs';
+    final public const PATH = 'addrs';
 
     /**
      * Returns a list of all addrs assigned to a company.

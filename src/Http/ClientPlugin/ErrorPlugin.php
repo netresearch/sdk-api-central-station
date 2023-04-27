@@ -36,14 +36,43 @@ final class ErrorPlugin implements Plugin
 {
     /**
      * HTTP response codes.
+     * @var int
      */
     private const HTTP_BAD_REQUEST            = 400;
+
+    /**
+     * @var int
+     */
     private const HTTP_UNAUTHORIZED           = 401;
+
+    /**
+     * @var int
+     */
     private const HTTP_FORBIDDEN              = 403;
+
+    /**
+     * @var int
+     */
     private const HTTP_CONFLICT               = 409;
+
+    /**
+     * @var int
+     */
     private const HTTP_UNSUPPORTED_MEDIA_TYPE = 415;
+
+    /**
+     * @var int
+     */
     private const HTTP_UNPROCESSABLE_ENTITY   = 422;
+
+    /**
+     * @var int
+     */
     private const HTTP_INTERNAL_SERVER_ERROR  = 500;
+
+    /**
+     * @var int
+     */
     private const HTTP_INSUFFICIENT_STORAGE   = 507;
 
     /**
@@ -66,7 +95,7 @@ final class ErrorPlugin implements Plugin
                 512,
                 JSON_THROW_ON_ERROR
             );
-        } catch (JsonException $exception) {
+        } catch (JsonException) {
             throw new ClientErrorException($response->getReasonPhrase(), $request, $response);
         }
 
@@ -104,7 +133,7 @@ final class ErrorPlugin implements Plugin
                 512,
                 JSON_THROW_ON_ERROR
             );
-        } catch (JsonException $exception) {
+        } catch (JsonException) {
             throw new ClientErrorException($response->getReasonPhrase(), $request, $response);
         }
 
@@ -219,7 +248,7 @@ final class ErrorPlugin implements Plugin
         /** @var Promise $promise */
         $promise = $next($request);
 
-        $fnFulfilled = function (ResponseInterface $response) use ($request) {
+        $fnFulfilled = function (ResponseInterface $response) use ($request): ResponseInterface {
             $statusCode = $response->getStatusCode();
 
             // Handle errors

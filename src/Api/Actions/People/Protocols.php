@@ -41,7 +41,7 @@ class Protocols extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'protocols';
+    final public const PATH = 'protocols';
 
     /**
      * Returns a list of all protocols assigned to a person.

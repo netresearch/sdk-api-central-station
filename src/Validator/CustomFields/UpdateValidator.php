@@ -31,13 +31,16 @@ class UpdateValidator
      */
     public static function validate(array $data): void
     {
-        if (
-            !isset($data['content'])
-            && !isset($data['customFieldsTypeId'])
-        ) {
-            throw new RequestValidatorException(
-                'Please provide at least one value to update'
-            );
+        if (isset($data['content'])) {
+            return;
         }
+
+        if (isset($data['customFieldsTypeId'])) {
+            return;
+        }
+
+        throw new RequestValidatorException(
+            'Please provide at least one value to update'
+        );
     }
 }

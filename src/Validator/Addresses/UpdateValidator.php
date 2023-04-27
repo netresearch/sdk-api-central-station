@@ -34,13 +34,16 @@ class UpdateValidator
      */
     public static function validate(array $data): void
     {
-        if (
-            isset($data['type'])
-            && !in_array($data['type'], Constants::ADDRESS_TYPE, true)
-        ) {
-            throw new RequestValidatorException(
-                'The provided address type parameter "' . $data['type'] . '" is not allowed'
-            );
+        if (!isset($data['type'])) {
+            return;
         }
+
+        if (in_array($data['type'], Constants::ADDRESS_TYPE, true)) {
+            return;
+        }
+
+        throw new RequestValidatorException(
+            'The provided address type parameter "' . $data['type'] . '" is not allowed'
+        );
     }
 }

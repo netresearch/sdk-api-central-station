@@ -26,7 +26,7 @@ class Create implements RequestInterface
     /**
      * @var Attachment
      */
-    private Attachment $attachment;
+    private readonly Attachment $attachment;
 
     /**
      * Constructor.
@@ -43,10 +43,6 @@ class Create implements RequestInterface
      */
     public function jsonSerialize(): array
     {
-        $data = [];
-
-        $data['attachment'] = $this->attachment->jsonSerialize();
-
-        return $data;
+        return ['attachment' => $this->attachment->jsonSerialize()];
     }
 }

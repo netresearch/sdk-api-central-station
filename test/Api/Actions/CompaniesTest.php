@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Api\Actions\Companies;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
@@ -47,13 +48,13 @@ class CompaniesTest extends TestCase
      * @param string   $responseJsonFile
      * @param int|null $companyId
      *
-     * @return \Netresearch\Sdk\CentralStation\Api\Actions\Companies
+     * @return Companies
      * @throws ServiceException
      */
     private function getCompaniesApi(
         string $responseJsonFile = '',
         int $companyId = null
-    ): \Netresearch\Sdk\CentralStation\Api\Actions\Companies {
+    ): Companies {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
         return $serviceFactoryMock
@@ -64,7 +65,7 @@ class CompaniesTest extends TestCase
     /**
      * @return string[][]
      */
-    public function indexResponseDataProvider(): array
+    public static function indexResponseDataProvider(): array
     {
         return [
             'Response' => [
@@ -113,7 +114,7 @@ class CompaniesTest extends TestCase
      */
     private static function assertFirstCompany(Company $company): void
     {
-        self::assertSame(123456789, $company->id);
+        self::assertSame(123_456_789, $company->id);
         self::assertSame(12345, $company->accountId);
         self::assertSame(12346, $company->groupId);
         self::assertSame('ABC company', $company->name);
@@ -132,7 +133,7 @@ class CompaniesTest extends TestCase
      */
     private static function assertSecondCompany(Company $company): void
     {
-        self::assertSame(123456790, $company->id);
+        self::assertSame(123_456_790, $company->id);
         self::assertSame(12345, $company->accountId);
         self::assertSame(12346, $company->groupId);
         self::assertSame('DEF company', $company->name);
@@ -145,7 +146,7 @@ class CompaniesTest extends TestCase
     /**
      * @return string[][]
      */
-    public function showResponseDataProvider(): array
+    public static function showResponseDataProvider(): array
     {
         return [
             'Response' => [
@@ -186,7 +187,7 @@ class CompaniesTest extends TestCase
      */
     private static function assertThirdCompany(Company $company): void
     {
-        self::assertSame(123456789, $company->id);
+        self::assertSame(123_456_789, $company->id);
         self::assertSame(12345, $company->accountId);
         self::assertSame(12346, $company->groupId);
         self::assertSame('ABC company', $company->name);
@@ -203,7 +204,7 @@ class CompaniesTest extends TestCase
     /**
      * @return string[][]
      */
-    public function createResponseDataProvider(): array
+    public static function createResponseDataProvider(): array
     {
         return [
             'Response' => [
@@ -250,7 +251,7 @@ class CompaniesTest extends TestCase
      */
     private static function assertCreatedCompany(Company $company): void
     {
-        self::assertSame(123456791, $company->id);
+        self::assertSame(123_456_791, $company->id);
         self::assertSame(12345, $company->accountId);
         self::assertSame(12346, $company->groupId);
         self::assertSame('GHI company', $company->name);
@@ -279,7 +280,7 @@ class CompaniesTest extends TestCase
     /**
      * @return string[][]
      */
-    public function statsResponseDataProvider(): array
+    public static function statsResponseDataProvider(): array
     {
         return [
             'Response' => [
@@ -313,7 +314,7 @@ class CompaniesTest extends TestCase
     /**
      * @return string[][]
      */
-    public function searchResponseDataProvider(): array
+    public static function searchResponseDataProvider(): array
     {
         return [
             'Response' => [
@@ -361,7 +362,7 @@ class CompaniesTest extends TestCase
      */
     private static function assertSearchedCompany(Company $company): void
     {
-        self::assertSame(123456789, $company->id);
+        self::assertSame(123_456_789, $company->id);
         self::assertSame(12345, $company->accountId);
         self::assertSame(12346, $company->groupId);
         self::assertSame('ABC company', $company->name);

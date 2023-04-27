@@ -23,39 +23,82 @@ class Constants
 {
     /**
      * Valid gender options.
+     *
+     * @var string
      */
-    public const GENDER_MALE = 'male_user';
-    public const GENDER_FEMALE = 'female_user';
-    public const GENDER_UNKNOWN = 'gender_unknown';
+    final public const GENDER_MALE = 'male_user';
+
+    /**
+     * @var string
+     */
+    final public const GENDER_FEMALE = 'female_user';
+
+    /**
+     * @var string
+     */
+    final public const GENDER_UNKNOWN = 'gender_unknown';
 
     /**
      * Order by types.
+     * @var string
      */
-    public const ORDER_BY_CREATED_AT = 'created_at';
-    public const ORDER_BY_UPDATED_AT = 'updated_at';
-    public const ORDER_BY_ACTIVITY = 'activity';
-    public const ORDER_BY_NAME = 'name';
+    final public const ORDER_BY_CREATED_AT = 'created_at';
+
+    /**
+     * @var string
+     */
+    final public const ORDER_BY_UPDATED_AT = 'updated_at';
+
+    /**
+     * @var string
+     */
+    final public const ORDER_BY_ACTIVITY = 'activity';
+
+    /**
+     * @var string
+     */
+    final public const ORDER_BY_NAME = 'name';
 
     /**
      * Order types.
+     *
+     * @var string
      */
-    public const ORDER_DIRECTION_ASC = 'asc';
-    public const ORDER_DIRECTION_DESC = 'desc';
+    final public const ORDER_DIRECTION_ASC = 'asc';
+
+    /**
+     * @var string
+     */
+    final public const ORDER_DIRECTION_DESC = 'desc';
 
     /**
      * Order types.
+     *
+     * @var string
      */
-    public const SORT_BY_NAME = 'name';
-    public const SORT_BY_FIRST_NAME = 'first_name';
-    public const SORT_BY_PHONE = 'phone';
-    public const SORT_BY_EMAIL = 'email';
+    final public const SORT_BY_NAME = 'name';
+
+    /**
+     * @var string
+     */
+    final public const SORT_BY_FIRST_NAME = 'first_name';
+
+    /**
+     * @var string
+     */
+    final public const SORT_BY_PHONE = 'phone';
+
+    /**
+     * @var string
+     */
+    final public const SORT_BY_EMAIL = 'email';
 
     /**
      * List of allowed "search" fields.
      *
      * @var string[]
      */
-    public const SORT_BY = [
+    final public const SORT_BY = [
         Constants::SORT_BY_NAME,
         Constants::SORT_BY_FIRST_NAME,
         Constants::SORT_BY_PHONE,
@@ -64,35 +107,99 @@ class Constants
 
     /**
      * Filter comparison methods.
+     *
+     * @var string
      */
-    public const FILTER_LARGER_THAN = 'larger_than';
-    public const FILTER_SMALLER_THAN = 'smaller_than';
-    public const FILTER_EQUAL = 'equal';
-    public const FILTER_IN = 'in';
-    public const FILTER_BETWEEN = 'between';
-    public const FILTER_LIKE = 'like';
+    final public const FILTER_LARGER_THAN = 'larger_than';
+
+    /**
+     * @var string
+     */
+    final public const FILTER_SMALLER_THAN = 'smaller_than';
+
+    /**
+     * @var string
+     */
+    final public const FILTER_EQUAL = 'equal';
+
+    /**
+     * @var string
+     */
+    final public const FILTER_IN = 'in';
+
+    /**
+     * @var string
+     */
+    final public const FILTER_BETWEEN = 'between';
+
+    /**
+     * @var string
+     */
+    final public const FILTER_LIKE = 'like';
 
     /**
      * Include types.
+     *
+     * @var string
      */
-    public const INCLUDE_POSITIONS = 'positions';
-    public const INCLUDE_COMPANIES = 'companies';
-    public const INCLUDE_TAGS = 'tags';
-    public const INCLUDE_AVATAR = 'avatar';
-    public const INCLUDE_PHONE_NUMBERS = 'tels';
-    public const INCLUDE_EMAILS = 'emails';
-    public const INCLUDE_HOMEPAGES = 'homepages';
-    public const INCLUDE_ADDRESSES = 'addrs';
-    public const INCLUDE_CUSTOM_FIELDS = 'custom_fields';
-    public const INCLUDE_CONNECTIONS = 'connections';
-    public const INCLUDE_ALL = 'all';
+    final public const INCLUDE_POSITIONS = 'positions';
+
+    /**
+     * @var string
+     */
+    final public const INCLUDE_COMPANIES = 'companies';
+
+    /**
+     * @var string
+     */
+    final public const INCLUDE_TAGS = 'tags';
+
+    /**
+     * @var string
+     */
+    final public const INCLUDE_AVATAR = 'avatar';
+
+    /**
+     * @var string
+     */
+    final public const INCLUDE_PHONE_NUMBERS = 'tels';
+
+    /**
+     * @var string
+     */
+    final public const INCLUDE_EMAILS = 'emails';
+
+    /**
+     * @var string
+     */
+    final public const INCLUDE_HOMEPAGES = 'homepages';
+
+    /**
+     * @var string
+     */
+    final public const INCLUDE_ADDRESSES = 'addrs';
+
+    /**
+     * @var string
+     */
+    final public const INCLUDE_CUSTOM_FIELDS = 'custom_fields';
+
+    /**
+     * @var string
+     */
+    final public const INCLUDE_CONNECTIONS = 'connections';
+
+    /**
+     * @var string
+     */
+    final public const INCLUDE_ALL = 'all';
 
     /**
      * List of include types.
      *
      * @var string[]
      */
-    public const PEOPLE_INCLUDE = [
+    final public const PEOPLE_INCLUDE = [
         Constants::INCLUDE_POSITIONS,
         Constants::INCLUDE_COMPANIES,
         Constants::INCLUDE_TAGS,
@@ -108,18 +215,32 @@ class Constants
 
     /**
      * Attachable types.
+     *
+     * @var string
      */
-    public const ATTACHABLE_TYPE_PERSON = 'Person';
-    public const ATTACHABLE_TYPE_COMPANY = 'Company';
-    public const ATTACHABLE_TYPE_DEAL = 'Deal';
-    public const ATTACHABLE_TYPE_PROJECT = 'Project';
+    final public const ATTACHABLE_TYPE_PERSON = 'Person';
+
+    /**
+     * @var string
+     */
+    final public const ATTACHABLE_TYPE_COMPANY = 'Company';
+
+    /**
+     * @var string
+     */
+    final public const ATTACHABLE_TYPE_DEAL = 'Deal';
+
+    /**
+     * @var string
+     */
+    final public const ATTACHABLE_TYPE_PROJECT = 'Project';
 
     /**
      * List of attachable types.
      *
      * @var string[]
      */
-    public const ATTACHABLE_TYPE = [
+    final public const ATTACHABLE_TYPE = [
         Constants::ATTACHABLE_TYPE_PERSON,
         Constants::ATTACHABLE_TYPE_COMPANY,
         Constants::ATTACHABLE_TYPE_DEAL,
@@ -128,24 +249,44 @@ class Constants
 
     /**
      * Protocol include types.
+     *
+     * @var string
      */
-    public const PROTOCOL_INCLUDE_COMMENTS = 'comments';
-    public const PROTOCOL_INCLUDE_ALL = 'all';
+    final public const PROTOCOL_INCLUDE_COMMENTS = 'comments';
+
+    /**
+     * @var string
+     */
+    final public const PROTOCOL_INCLUDE_ALL = 'all';
 
     /**
      * Protocol format types.
+     *
+     * @var string
      */
-    public const PROTOCOL_FORMAT_PLAINTEXT = 'plaintext';
-    public const PROTOCOL_FORMAT_MARKDOWN = 'markdown';
-    public const PROTOCOL_FORMAT_TEXTILE = 'textile';
-    public const PROTOCOL_FORMAT_HTML = 'html';
+    final public const PROTOCOL_FORMAT_PLAINTEXT = 'plaintext';
+
+    /**
+     * @var string
+     */
+    final public const PROTOCOL_FORMAT_MARKDOWN = 'markdown';
+
+    /**
+     * @var string
+     */
+    final public const PROTOCOL_FORMAT_TEXTILE = 'textile';
+
+    /**
+     * @var string
+     */
+    final public const PROTOCOL_FORMAT_HTML = 'html';
 
     /**
      * List of protocol format types.
      *
      * @var string[]
      */
-    public const PROTOCOL_FORMAT = [
+    final public const PROTOCOL_FORMAT = [
         Constants::PROTOCOL_FORMAT_HTML,
         Constants::PROTOCOL_FORMAT_MARKDOWN,
         Constants::PROTOCOL_FORMAT_PLAINTEXT,
@@ -154,20 +295,41 @@ class Constants
 
     /**
      * Protocol badge types.
+     *
+     * @var string
      */
-    public const PROTOCOL_BADGE_NOTE = 'note';
-    public const PROTOCOL_BADGE_CALL = 'call';
-    public const PROTOCOL_BADGE_EMAIL = 'email';
-    public const PROTOCOL_BADGE_MEETING = 'meeting';
-    public const PROTOCOL_BADGE_OTHER = 'other';
-    public const PROTOCOL_BADGE_RESEARCH = 'research'; // Companies only
+    final public const PROTOCOL_BADGE_NOTE = 'note';
 
+    /**
+     * @var string
+     */
+    final public const PROTOCOL_BADGE_CALL = 'call';
+
+    /**
+     * @var string
+     */
+    final public const PROTOCOL_BADGE_EMAIL = 'email';
+
+    /**
+     * @var string
+     */
+    final public const PROTOCOL_BADGE_MEETING = 'meeting';
+
+    /**
+     * @var string
+     */
+    final public const PROTOCOL_BADGE_OTHER = 'other';
+
+    /**
+     * @var string
+     */
+    final public const PROTOCOL_BADGE_RESEARCH = 'research'; // Companies only
     /**
      * List of protocol badge types.
      *
      * @var string[]
      */
-    public const PROTOCOL_BADGE = [
+    final public const PROTOCOL_BADGE = [
         Constants::PROTOCOL_BADGE_CALL,
         Constants::PROTOCOL_BADGE_EMAIL,
         Constants::PROTOCOL_BADGE_MEETING,
@@ -178,28 +340,64 @@ class Constants
 
     /**
      * Protocol include types.
+     *
+     * @var string
      */
-    public const ATTACHMENT_INCLUDE_COMMENTS = 'comments';
-    public const ATTACHMENT_INCLUDE_USER = 'user';
-    public const ATTACHMENT_INCLUDE_CATEGORY = 'attachment_category';
-    public const ATTACHMENT_INCLUDE_ALL = 'all';
+    final public const ATTACHMENT_INCLUDE_COMMENTS = 'comments';
+
+    /**
+     * @var string
+     */
+    final public const ATTACHMENT_INCLUDE_USER = 'user';
+
+    /**
+     * @var string
+     */
+    final public const ATTACHMENT_INCLUDE_CATEGORY = 'attachment_category';
+
+    /**
+     * @var string
+     */
+    final public const ATTACHMENT_INCLUDE_ALL = 'all';
 
     /**
      * Address types.
+     *
+     * @var string
      */
-    public const ADDRESS_TYPE_WORK_HQ = 'work_hq';
-    public const ADDRESS_TYPE_WORK = 'work';
-    public const ADDRESS_TYPE_INVOICE = 'invoice';
-    public const ADDRESS_TYPE_DELIVERY = 'delivery';
-    public const ADDRESS_TYPE_PRIVATE = 'private';
-    public const ADDRESS_TYPE_OTHER = 'other';
+    final public const ADDRESS_TYPE_WORK_HQ = 'work_hq';
+
+    /**
+     * @var string
+     */
+    final public const ADDRESS_TYPE_WORK = 'work';
+
+    /**
+     * @var string
+     */
+    final public const ADDRESS_TYPE_INVOICE = 'invoice';
+
+    /**
+     * @var string
+     */
+    final public const ADDRESS_TYPE_DELIVERY = 'delivery';
+
+    /**
+     * @var string
+     */
+    final public const ADDRESS_TYPE_PRIVATE = 'private';
+
+    /**
+     * @var string
+     */
+    final public const ADDRESS_TYPE_OTHER = 'other';
 
     /**
      * List of address types.
      *
      * @var string[]
      */
-    public const ADDRESS_TYPE = [
+    final public const ADDRESS_TYPE = [
         Constants::ADDRESS_TYPE_WORK_HQ,
         Constants::ADDRESS_TYPE_WORK,
         Constants::ADDRESS_TYPE_DELIVERY,
@@ -210,18 +408,32 @@ class Constants
 
     /**
      * Custom field type categories.
+     *
+     * @var string
      */
-    public const CUSTOM_FIELDS_TYPE_CATEGORY_PERSON = 'Person';
-    public const CUSTOM_FIELDS_TYPE_CATEGORY_COMPANY = 'Company';
-    public const CUSTOM_FIELDS_TYPE_CATEGORY_DEAL = 'Deal';
-    public const CUSTOM_FIELDS_TYPE_CATEGORY_PROJECT = 'Project';
+    final public const CUSTOM_FIELDS_TYPE_CATEGORY_PERSON = 'Person';
+
+    /**
+     * @var string
+     */
+    final public const CUSTOM_FIELDS_TYPE_CATEGORY_COMPANY = 'Company';
+
+    /**
+     * @var string
+     */
+    final public const CUSTOM_FIELDS_TYPE_CATEGORY_DEAL = 'Deal';
+
+    /**
+     * @var string
+     */
+    final public const CUSTOM_FIELDS_TYPE_CATEGORY_PROJECT = 'Project';
 
     /**
      * List of custom field types categories.
      *
      * @var string[]
      */
-    public const CUSTOM_FIELDS_TYPE_CATEGORY = [
+    final public const CUSTOM_FIELDS_TYPE_CATEGORY = [
         Constants::CUSTOM_FIELDS_TYPE_CATEGORY_PERSON,
         Constants::CUSTOM_FIELDS_TYPE_CATEGORY_COMPANY,
         Constants::CUSTOM_FIELDS_TYPE_CATEGORY_DEAL,
@@ -230,19 +442,37 @@ class Constants
 
     /**
      * Custom field type field types.
+     *
+     * @var string
      */
-    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_STRING = 'string';
-    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_SELECT = 'select';
-    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_DECIMAL = 'decimal';
-    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_DATE = 'date';
-    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_URL = 'url';
+    final public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_STRING = 'string';
+
+    /**
+     * @var string
+     */
+    final public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_SELECT = 'select';
+
+    /**
+     * @var string
+     */
+    final public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_DECIMAL = 'decimal';
+
+    /**
+     * @var string
+     */
+    final public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_DATE = 'date';
+
+    /**
+     * @var string
+     */
+    final public const CUSTOM_FIELDS_TYPE_FIELD_TYPE_URL = 'url';
 
     /**
      * List of field types for custom field types.
      *
      * @var string[]
      */
-    public const CUSTOM_FIELDS_TYPE_FIELD_TYPE = [
+    final public const CUSTOM_FIELDS_TYPE_FIELD_TYPE = [
         Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_STRING,
         Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_SELECT,
         Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_DECIMAL,
@@ -252,27 +482,59 @@ class Constants
 
     /**
      * Custom fields include types.
+     *
+     * @var string
      */
-    public const CUSTOM_FIELDS_INCLUDE_CUSTOM_FIELDS_TYPE = 'custom_fields_type';
+    final public const CUSTOM_FIELDS_INCLUDE_CUSTOM_FIELDS_TYPE = 'custom_fields_type';
 
     /**
      * Contact types.
+     *
+     * @var string
      */
-    public const CONTACT_DETAILS_TYPE_OFFICE = 'office';
-    public const CONTACT_DETAILS_TYPE_OFFICE_HQ = 'office_hq';
-    public const CONTACT_DETAILS_TYPE_MOBILE = 'mobile';
-    public const CONTACT_DETAILS_TYPE_FAX = 'fax';
-    public const CONTACT_DETAILS_TYPE_PRIVATE = 'private';
-    public const CONTACT_DETAIL_STYPE_VOIP = 'voip';
-    public const CONTACT_DETAILS_TYPE_SKYPE = 'skype';
-    public const CONTACT_DETAILS_TYPE_OTHER = 'other';
+    final public const CONTACT_DETAILS_TYPE_OFFICE = 'office';
+
+    /**
+     * @var string
+     */
+    final public const CONTACT_DETAILS_TYPE_OFFICE_HQ = 'office_hq';
+
+    /**
+     * @var string
+     */
+    final public const CONTACT_DETAILS_TYPE_MOBILE = 'mobile';
+
+    /**
+     * @var string
+     */
+    final public const CONTACT_DETAILS_TYPE_FAX = 'fax';
+
+    /**
+     * @var string
+     */
+    final public const CONTACT_DETAILS_TYPE_PRIVATE = 'private';
+
+    /**
+     * @var string
+     */
+    final public const CONTACT_DETAIL_STYPE_VOIP = 'voip';
+
+    /**
+     * @var string
+     */
+    final public const CONTACT_DETAILS_TYPE_SKYPE = 'skype';
+
+    /**
+     * @var string
+     */
+    final public const CONTACT_DETAILS_TYPE_OTHER = 'other';
 
     /**
      * List of contact detail types.
      *
      * @var string[]
      */
-    public const CONTACT_DETAILS_TYPE = [
+    final public const CONTACT_DETAILS_TYPE = [
         Constants::CONTACT_DETAILS_TYPE_OFFICE,
         Constants::CONTACT_DETAILS_TYPE_OFFICE_HQ,
         Constants::CONTACT_DETAILS_TYPE_MOBILE,
@@ -285,20 +547,42 @@ class Constants
 
     /**
      * Calendar event include types.
+     *
+     * @var string
      */
-    public const CALENDAR_EVENTS_INCLUDE_ALL = 'all';
-    public const CALENDAR_EVENTS_INCLUDE_USER = 'user';
-    public const CALENDAR_EVENTS_INCLUDE_USERS = 'users';
-    public const CALENDAR_EVENTS_INCLUDE_GROUP_CALENDAR = 'group_calendar';
-    public const CALENDAR_EVENTS_INCLUDE_PEOPLE = 'people';
-    public const CALENDAR_EVENTS_INCLUDE_ATTENDEES = 'cal_event_attendees';
+    final public const CALENDAR_EVENTS_INCLUDE_ALL = 'all';
+
+    /**
+     * @var string
+     */
+    final public const CALENDAR_EVENTS_INCLUDE_USER = 'user';
+
+    /**
+     * @var string
+     */
+    final public const CALENDAR_EVENTS_INCLUDE_USERS = 'users';
+
+    /**
+     * @var string
+     */
+    final public const CALENDAR_EVENTS_INCLUDE_GROUP_CALENDAR = 'group_calendar';
+
+    /**
+     * @var string
+     */
+    final public const CALENDAR_EVENTS_INCLUDE_PEOPLE = 'people';
+
+    /**
+     * @var string
+     */
+    final public const CALENDAR_EVENTS_INCLUDE_ATTENDEES = 'cal_event_attendees';
 
     /**
      * List of calendar events include types.
      *
      * @var string[]
      */
-    public const CALENDAR_EVENTS_INCLUDE = [
+    final public const CALENDAR_EVENTS_INCLUDE = [
         Constants::CALENDAR_EVENTS_INCLUDE_ALL,
         Constants::CALENDAR_EVENTS_INCLUDE_USER,
         Constants::CALENDAR_EVENTS_INCLUDE_USERS,
@@ -309,18 +593,32 @@ class Constants
 
     /**
      * Calendar event include types.
+     *
+     * @var string
      */
-    public const CALENDAR_EVENTS_STATUS_NEW = 'new';
-    public const CALENDAR_EVENTS_STATUS_CONFIRMED = 'confirmed';
-    public const CALENDAR_EVENTS_STATUS_TENTATIVE = 'tentative';
-    public const CALENDAR_EVENTS_STATUS_CANCELLED = 'cancelled';
+    final public const CALENDAR_EVENTS_STATUS_NEW = 'new';
+
+    /**
+     * @var string
+     */
+    final public const CALENDAR_EVENTS_STATUS_CONFIRMED = 'confirmed';
+
+    /**
+     * @var string
+     */
+    final public const CALENDAR_EVENTS_STATUS_TENTATIVE = 'tentative';
+
+    /**
+     * @var string
+     */
+    final public const CALENDAR_EVENTS_STATUS_CANCELLED = 'cancelled';
 
     /**
      * List of calendar events status types.
      *
      * @var string[]
      */
-    public const CALENDAR_EVENT_STATUS = [
+    final public const CALENDAR_EVENT_STATUS = [
         Constants::CALENDAR_EVENTS_STATUS_NEW,
         Constants::CALENDAR_EVENTS_STATUS_CONFIRMED,
         Constants::CALENDAR_EVENTS_STATUS_TENTATIVE,

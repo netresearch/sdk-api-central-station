@@ -42,7 +42,7 @@ class Tags extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'tags';
+    final public const PATH = 'tags';
 
     /**
      * Returns a list of all tags in an account.
@@ -102,7 +102,7 @@ class Tags extends AbstractApiEndpoint
      */
     public function list(ListRequest $request): array
     {
-        $requestClosure = function () use ($request) {
+        $requestClosure = function () use ($request): mixed {
             $this->urlBuilder
                 ->addPath('/list')
                 ->setParams($request->jsonSerialize());

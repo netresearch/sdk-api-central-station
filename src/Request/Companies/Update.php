@@ -23,10 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
  */
 class Update implements RequestInterface
 {
-    /**
-     * @var null|Company
-     */
-    private $company;
+    private ?Company $company = null;
 
     /**
      * @param Company $company
@@ -46,7 +43,7 @@ class Update implements RequestInterface
     {
         $data = [];
 
-        if ($this->company) {
+        if ($this->company instanceof Company) {
             $data['company'] = $this->company->jsonSerialize();
         }
 

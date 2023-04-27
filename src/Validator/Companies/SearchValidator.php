@@ -14,6 +14,8 @@ namespace Netresearch\Sdk\CentralStation\Validator\Companies;
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 
+use function in_array;
+
 /**
  * Class SearchValidator.
  *

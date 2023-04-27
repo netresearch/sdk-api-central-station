@@ -23,10 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
  */
 class Update implements RequestInterface
 {
-    /**
-     * @var null|CustomField
-     */
-    private $customField;
+    private ?CustomField $customField = null;
 
     /**
      * @param CustomField $customField
@@ -46,7 +43,7 @@ class Update implements RequestInterface
     {
         $data = [];
 
-        if ($this->customField) {
+        if ($this->customField instanceof CustomField) {
             $data['custom_field'] = $this->customField->jsonSerialize();
         }
 

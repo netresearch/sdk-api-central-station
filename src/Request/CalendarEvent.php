@@ -243,31 +243,19 @@ class CalendarEvent implements JsonSerializable
      */
     public function jsonSerialize(): array
     {
-        $startsAt = $this->startsAt instanceof DateTime
-            ? $this->startsAt->format(DateTimeInterface::ATOM)
-            : null;
-
-        $endsAt = $this->endsAt instanceof DateTime
-            ? $this->endsAt->format(DateTimeInterface::ATOM)
-            : null;
-
         return [
-            'attachable_id'     => $this->attachableId,
-            'attachable_type'   => $this->attachableType,
-            'name'              => $this->name,
-            'group_calendar_id' => $this->groupCalendarId,
-            'location'          => $this->location,
-            'status'            => $this->status,
-            'starts_at'         => $startsAt,
-            'ends_at'           => $endsAt,
-            'all_day'           => $this->allDay,
-            'email_invitations' => $this->emailInvitations,
-            'description'       => $this->description,
-
-            'cal_event_attendees_attributes'
-                => $this->calendarEventAttendees instanceof CalendarEventAttendees
-                    ? $this->calendarEventAttendees->jsonSerialize()
-                    : null,
+            'attachable_id'                  => $this->attachableId,
+            'attachable_type'                => $this->attachableType,
+            'name'                           => $this->name,
+            'group_calendar_id'              => $this->groupCalendarId,
+            'location'                       => $this->location,
+            'status'                         => $this->status,
+            'starts_at'                      => $this->startsAt?->format(DateTimeInterface::ATOM),
+            'ends_at'                        => $this->endsAt?->format(DateTimeInterface::ATOM),
+            'all_day'                        => $this->allDay,
+            'email_invitations'              => $this->emailInvitations,
+            'description'                    => $this->description,
+            'cal_event_attendees_attributes' => $this->calendarEventAttendees?->jsonSerialize(),
         ];
     }
 }

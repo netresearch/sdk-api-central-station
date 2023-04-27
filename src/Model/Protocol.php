@@ -41,14 +41,14 @@ class Protocol extends AbstractEntity
      *
      * @var int[]
      */
-    public array $personIds;
+    public array $personIds = [];
 
     /**
      * IDs of the linked companies.
      *
      * @var int[]
      */
-    public array $companyIds;
+    public array $companyIds = [];
 
     /**
      * The sketch of the note.

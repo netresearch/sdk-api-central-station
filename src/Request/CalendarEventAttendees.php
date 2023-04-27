@@ -31,9 +31,8 @@ class CalendarEventAttendees extends AbstractCollection
     {
         return array_values(
             array_map(
-                static function (CalendarEventAttendee $calendarEventAttendee): array {
-                    return $calendarEventAttendee->jsonSerialize();
-                },
+                static fn(CalendarEventAttendee $calendarEventAttendee): array
+                    => $calendarEventAttendee->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

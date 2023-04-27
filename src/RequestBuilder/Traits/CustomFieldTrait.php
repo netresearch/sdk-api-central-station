@@ -31,7 +31,7 @@ trait CustomFieldTrait
      *
      * @return CustomFieldRequestBuilderInterface
      */
-    public function setCustomFieldFilter(string $name, $value): CustomFieldRequestBuilderInterface
+    public function setCustomFieldFilter(string $name, int|string $value): CustomFieldRequestBuilderInterface
     {
         $this->data['customField'] = [
             'name'  => $name,

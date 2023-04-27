@@ -30,5 +30,5 @@ class CompanyContainer
      *
      * @var Company
      */
-    public $company;
+    public Company $company;
 }

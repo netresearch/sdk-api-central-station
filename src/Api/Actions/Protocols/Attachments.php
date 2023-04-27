@@ -41,7 +41,7 @@ class Attachments extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'attachments';
+    final public const PATH = 'attachments';
 
     /**
      * Returns a list of all attachments assigned to a protocol.

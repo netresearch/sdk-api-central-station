@@ -83,7 +83,7 @@ class CustomFieldsTest extends TestCase
     public function index(string $responseJsonFile): void
     {
         $peopleApi = $this->getPeopleApi($responseJsonFile,
-            12345678);
+            12_345_678);
         $result    = $peopleApi->customFields()->index(new Index());
 
         self::assertWebserviceUrl('https://www.example.org/people/12345678/custom_fields', $peopleApi);
@@ -109,7 +109,7 @@ class CustomFieldsTest extends TestCase
     private static function assertFirstCustomField(CustomField $customField): void
     {
         self::assertSame(2000, $customField->id);
-        self::assertSame(12345678, $customField->attachableId);
+        self::assertSame(12_345_678, $customField->attachableId);
         self::assertSame('Person', $customField->attachableType);
         self::assertSame(10000, $customField->accountId);
         self::assertFalse($customField->apiInput);
@@ -133,7 +133,7 @@ class CustomFieldsTest extends TestCase
     private static function assertSecondCustomField(CustomField $customField): void
     {
         self::assertSame(2001, $customField->id);
-        self::assertSame(12345678, $customField->attachableId);
+        self::assertSame(12_345_678, $customField->attachableId);
         self::assertSame('Person', $customField->attachableType);
         self::assertSame(10000, $customField->accountId);
         self::assertTrue($customField->apiInput);
@@ -173,7 +173,7 @@ class CustomFieldsTest extends TestCase
     public function show(string $responseJsonFile): void
     {
         $peopleApi   = $this->getPeopleApi($responseJsonFile,
-            12345678);
+            12_345_678);
         $customField = $peopleApi->customFields(2000)->show(new Show());
 
         self::assertWebserviceUrl('https://www.example.org/people/12345678/custom_fields/2000', $peopleApi);
@@ -210,7 +210,7 @@ class CustomFieldsTest extends TestCase
     public function create(string $responseJsonFile): void
     {
         $peopleApi = $this->getPeopleApi($responseJsonFile,
-            12345678);
+            12_345_678);
 
         $customField = $peopleApi
             ->customFields()
@@ -238,7 +238,7 @@ class CustomFieldsTest extends TestCase
     private static function assertCreatedCustomField(CustomField $customField): void
     {
         self::assertSame(2002, $customField->id);
-        self::assertSame(12345678, $customField->attachableId);
+        self::assertSame(12_345_678, $customField->attachableId);
         self::assertSame('Person', $customField->attachableType);
         self::assertSame(10000, $customField->accountId);
         self::assertTrue($customField->apiInput);
@@ -260,7 +260,7 @@ class CustomFieldsTest extends TestCase
     public function update(): void
     {
         $peopleApi = $this->getPeopleApi('',
-            12345678);
+            12_345_678);
         $result    = $peopleApi->customFields(2002)->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/12345678/custom_fields/2002', $peopleApi);
@@ -277,7 +277,7 @@ class CustomFieldsTest extends TestCase
     public function delete(): void
     {
         $peopleApi = $this->getPeopleApi('',
-            12345678);
+            12_345_678);
         $result    = $peopleApi->customFields(2002)->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/12345678/custom_fields/2002', $peopleApi);

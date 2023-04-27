@@ -30,7 +30,7 @@ trait SortTrait
      * @param string $orderBy        The order type (use one of Constants::ORDER_BY_*)
      * @param string $orderDirection The order direction (use one of Constants::ORDER_DIRECTION_*)
      *
-     * @return self
+     * @return SortRequestBuilderInterface
      */
     public function setOrder(
         string $orderBy = Constants::ORDER_BY_NAME,

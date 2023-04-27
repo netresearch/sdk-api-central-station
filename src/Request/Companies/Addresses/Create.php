@@ -23,10 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
  */
 class Create implements RequestInterface
 {
-    /**
-     * @var Address
-     */
-    private $address;
+    private readonly Address $address;
 
     /**
      * Constructor.
@@ -43,10 +40,6 @@ class Create implements RequestInterface
      */
     public function jsonSerialize(): array
     {
-        $data = [];
-
-        $data['addr'] = $this->address->jsonSerialize();
-
-        return $data;
+        return ['addr' => $this->address->jsonSerialize()];
     }
 }

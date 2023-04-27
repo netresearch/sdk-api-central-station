@@ -29,5 +29,5 @@ interface CustomFieldRequestBuilderInterface extends RequestBuilderInterface
      *
      * @return CustomFieldRequestBuilderInterface
      */
-    public function setCustomFieldFilter(string $name, $value): CustomFieldRequestBuilderInterface;
+    public function setCustomFieldFilter(string $name, int|string $value): CustomFieldRequestBuilderInterface;
 }

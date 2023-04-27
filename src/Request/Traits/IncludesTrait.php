@@ -30,7 +30,7 @@ trait IncludesTrait
     /**
      * @param string ...$includes
      *
-     * @return self
+     * @return IncludesRequestInterface
      */
     public function setIncludes(string ...$includes): IncludesRequestInterface
     {

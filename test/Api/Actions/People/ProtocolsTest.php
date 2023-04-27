@@ -110,13 +110,13 @@ class ProtocolsTest extends TestCase
      */
     private function assertFirstProtocol(Protocol $protocol): void
     {
-        self::assertSame(43342215, $protocol->id);
+        self::assertSame(43_342_215, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
         self::assertSame(0, $protocol->attachmentsCount);
         self::assertSame(1, $protocol->commentsCount);
         self::assertIsArray($protocol->comments);
         self::assertContainsOnlyInstancesOf(Comment::class, $protocol->comments);
-        self::assertSame([30016185], $protocol->personIds);
+        self::assertSame([30_016_185], $protocol->personIds);
         self::assertSame([], $protocol->companyIds);
         self::assertTrue($protocol->confidential);
         self::assertSame('E-Mail', $protocol->name);
@@ -138,13 +138,13 @@ class ProtocolsTest extends TestCase
      */
     private function assertSecondProtocol(Protocol $protocol): void
     {
-        self::assertSame(43342275, $protocol->id);
+        self::assertSame(43_342_275, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
         self::assertSame(1, $protocol->attachmentsCount);
         self::assertSame(0, $protocol->commentsCount);
         self::assertIsArray($protocol->comments);
         self::assertContainsOnlyInstancesOf(Comment::class, $protocol->comments);
-        self::assertSame([30016185], $protocol->personIds);
+        self::assertSame([30_016_185], $protocol->personIds);
         self::assertSame([], $protocol->companyIds);
         self::assertFalse($protocol->confidential);
         self::assertSame('Testdatei', $protocol->name);
@@ -202,13 +202,13 @@ class ProtocolsTest extends TestCase
      */
     private function assertThirdProtocol(Protocol $protocol): void
     {
-        self::assertSame(42483967, $protocol->id);
+        self::assertSame(42_483_967, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
         self::assertSame(1, $protocol->attachmentsCount);
         self::assertSame(0, $protocol->commentsCount);
         self::assertIsArray($protocol->comments);
         self::assertContainsOnlyInstancesOf(Comment::class, $protocol->comments);
-        self::assertSame([27325165], $protocol->personIds);
+        self::assertSame([27_325_165], $protocol->personIds);
         self::assertSame([], $protocol->companyIds);
         self::assertFalse($protocol->confidential);
         self::assertSame('ISB Call 9', $protocol->name);
@@ -273,7 +273,7 @@ class ProtocolsTest extends TestCase
      */
     private function assertCreatedProtocol(Protocol $protocol): void
     {
-        self::assertSame(43388190, $protocol->id);
+        self::assertSame(43_388_190, $protocol->id);
         self::assertSame(87444, $protocol->accountId);
         self::assertSame(0, $protocol->attachmentsCount);
         self::assertSame(0, $protocol->commentsCount);

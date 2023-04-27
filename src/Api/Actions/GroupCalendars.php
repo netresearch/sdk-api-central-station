@@ -43,7 +43,7 @@ class GroupCalendars extends AbstractApiEndpoint
      *
      * @var string
      */
-    public const PATH = 'group_calendars';
+    final public const PATH = 'group_calendars';
 
     /**
      * Returns a list of all group calendars in an account.
@@ -97,13 +97,11 @@ class GroupCalendars extends AbstractApiEndpoint
      *
      * @param RequestInterface $request The create request instance
      *
-     * @return null|GroupCalendar
+     * @return never
      *
-     * @throws AuthenticationException
      * @throws DetailedServiceException
-     * @throws ServiceException
      */
-    public function create(RequestInterface $request): ?GroupCalendar
+    public function create(RequestInterface $request): never
     {
         throw new DetailedServiceException('Create not implemented for group calendars');
     }

@@ -252,28 +252,20 @@ class Person implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'name'         => $this->lastName,
-            'first_name'   => $this->firstName,
-            'gender'       => $this->gender,
-            'title'        => $this->title,
-            'salutation'   => $this->salutation,
-            'country_code' => $this->countryCode,
-            'background'   => $this->background,
-
-            'positions_attributes'
-                => $this->positions instanceof Positions ? $this->positions->jsonSerialize() : null,
-            'tags_attributes'
-                => $this->tags instanceof Tags ? $this->tags->jsonSerialize() : null,
-            'tels_attributes'
-                => $this->phoneNumbers instanceof ContactDetails ? $this->phoneNumbers->jsonSerialize() : null,
-            'emails_attributes'
-                => $this->emailAddresses instanceof ContactDetails ? $this->emailAddresses->jsonSerialize() : null,
-            'homepages_attributes'
-                => $this->homepages instanceof ContactDetails ? $this->homepages->jsonSerialize() : null,
-            'addrs_attributes'
-                => $this->addresses instanceof Addresses ? $this->addresses->jsonSerialize() : null,
-            'custom_fields_attributes'
-                => $this->customFields instanceof CustomFields ? $this->customFields->jsonSerialize() : null,
+            'name'                     => $this->lastName,
+            'first_name'               => $this->firstName,
+            'gender'                   => $this->gender,
+            'title'                    => $this->title,
+            'salutation'               => $this->salutation,
+            'country_code'             => $this->countryCode,
+            'background'               => $this->background,
+            'positions_attributes'     => $this->positions?->jsonSerialize(),
+            'tags_attributes'          => $this->tags?->jsonSerialize(),
+            'tels_attributes'          => $this->phoneNumbers?->jsonSerialize(),
+            'emails_attributes'        => $this->emailAddresses?->jsonSerialize(),
+            'homepages_attributes'     => $this->homepages?->jsonSerialize(),
+            'addrs_attributes'         => $this->addresses?->jsonSerialize(),
+            'custom_fields_attributes' => $this->customFields?->jsonSerialize(),
         ];
     }
 }
