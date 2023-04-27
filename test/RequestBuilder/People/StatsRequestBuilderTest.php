@@ -26,7 +26,7 @@ use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 class StatsRequestBuilderTest extends RequestBuilderTestCase
 {
     /**
-     * Tests creating  "stats" request URL.
+     * Tests creating "stats" request URL.
      *
      * @test
      * @throws RequestValidatorException

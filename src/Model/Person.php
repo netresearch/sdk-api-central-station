@@ -170,6 +170,7 @@ class Person extends AbstractEntity
         $this->companyAddresses = new AddressCollection();
         $this->phoneNumbers = new ContactDetailCollection();
         $this->emails = new ContactDetailCollection();
+        $this->homepages = new ContactDetailCollection();
         $this->customFields = new CustomFieldCollection();
     }
 }

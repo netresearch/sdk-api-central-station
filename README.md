@@ -12,10 +12,19 @@ The SDK implements only the endpoints and data structures required at the time o
 - [Requirements & Installation](doc/Requirements.md)
 - [Basic usage & Limitations](doc/Basic.md)
 - [Endpoints](doc/Endpoints.md)
-- [People](doc/People.md)
-   - [Tags](doc/People/Tags.md)
-   - [Addresses](doc/People/Addresses.md)
-   - [Protocols](doc/People/Protocols.md)
-     - [Attachments](doc/People/Protocols/Attachments.md)
-- [Tags](doc/Tags.md)
+  - [Companies](doc/Companies.md)
+    - [Addresses](doc/Companies/Addresses.md)
+    - [Custom Fields](doc/Companies/CustomFields.md)
+  - [People](doc/People.md)
+    - [Addresses](doc/People/Addresses.md)
+    - [Custom Fields](doc/People/CustomFields.md)
+    - [Protocols](doc/People/Protocols.md)
+      - [Attachments](doc/People/Protocols/Attachments.md)
+    - [Tags](doc/People/Tags.md)
+  - Calendar Events
+  - Group Calendars
+  - Custom Fields Types
+  - Protocols
+    - Attachments
+  - [Tags](doc/Tags.md)
 - [Error handling](doc/ErrorHandling.md)

@@ -29,7 +29,8 @@ trait FilterTrait
      *
      * @param string              $field      The name of the field to filter
      * @param string              $comparison The comparison type (use one of Constants::FILTER_*)
-     * @param int|string|DateTime $value      The value used to filter the field by
+     * @param int|string|DateTime $value      The value used to filter the field by, add "%" around value to
+     *                                        the LIKE filter to filter for partial value
      *
      * @return self
      */

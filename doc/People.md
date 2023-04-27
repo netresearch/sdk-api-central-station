@@ -34,16 +34,20 @@ The following methods are available to interact with the endpoint:
 In addition to the methods for people listed above, this endpoint also provides additional methods for 
 person-dependent queries, e.g. addresses, tags and notes (protocols).
 
-- [tags()](People/Tags.md)
-    - Returns the tags API endpoint used to process tags related to a specific person. Pass the
-      person ID as a parameter to the `people()`-method.
-
 - [addresses()](People/Addresses.md)
     - Returns the addresses API endpoint used to process addresses related to a specific person. Pass the
       person ID as a parameter to the `people()`-method.
 
+- [customFields()](People/CustomFields.md)
+    - Returns the custom fields API endpoint used to process custom fields related to a specific person. Pass the
+      person ID as a parameter to the `people()`-method.
+
 - [protocols()](People/Protocols.md)
     - Returns the protocols API endpoint used to process protocols (notes) related to a specific person. Pass the
+      person ID as a parameter to the `people()`-method.
+- 
+- [tags()](People/Tags.md)
+    - Returns the tags API endpoint used to process tags related to a specific person. Pass the
       person ID as a parameter to the `people()`-method.
 
 

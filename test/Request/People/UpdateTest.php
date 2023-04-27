@@ -58,6 +58,7 @@ class UpdateTest extends TestCase
                     'tags_attributes'          => null,
                     'tels_attributes'          => null,
                     'emails_attributes'        => null,
+                    'homepages_attributes'     => null,
                     'addrs_attributes'         => null,
                     'custom_fields_attributes' => null,
                 ],

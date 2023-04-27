@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Request;
 
 use DateTime;
+use DateTimeInterface;
 use JsonSerializable;
 
 /**
@@ -249,8 +250,8 @@ class CalendarEvent implements JsonSerializable
             'group_calendar_id' => $this->groupCalendarId,
             'location'          => $this->location,
             'status'            => $this->status,
-            'starts_at'         => $this->startsAt ? $this->startsAt->format('c') : null,
-            'ends_at'           => $this->endsAt ? $this->endsAt->format('c') : null,
+            'starts_at'         => $this->startsAt ? $this->startsAt->format(DateTimeInterface::ATOM) : null,
+            'ends_at'           => $this->endsAt ? $this->endsAt->format(DateTimeInterface::ATOM) : null,
             'all_day'           => $this->allDay,
             'email_invitations' => $this->emailInvitations,
             'description'       => $this->description,
