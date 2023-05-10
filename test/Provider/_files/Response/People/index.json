@@ -1,36 +1,227 @@
 [
     {
         "person": {
-            "id": 455637,
-            "account_id": 21,
+            "id": 12345678,
+            "account_id": 12345,
+            "group_id": 123456,
             "user_id": 64,
-            "title": "",
-            "gender": "female_user",
-            "first_name": "Marion",
-            "name": "Beber",
+            "country_code": "de",
+            "salutation": "Herr",
+            "title": null,
+            "gender": "male_user",
+            "first_name": "Max",
+            "name": "Mustermann",
             "background": "",
-            "created_by_user_id": 64,
-            "updated_by_user_id": 2797,
-            "created_at": "2013-06-27T06:58:14.000Z",
-            "updated_at": "2015-05-21T14:06:00.000Z",
-            "responsible_user_natural_name": "Axel von Leitner"
+            "created_by_user_id": 1,
+            "updated_by_user_id": 1,
+            "created_at": "2022-02-28T16:59:22.000+01:00",
+            "updated_at": "2023-04-03T11:17:20.000+02:00",
+            "positions": [],
+            "companies": [],
+            "deals": [],
+            "projects": [],
+            "tags": [
+                {
+                    "id": 1,
+                    "account_id": 12345,
+                    "attachable_id": 12345678,
+                    "attachable_type": "Person",
+                    "api_input": false,
+                    "name": "fSAXPlus-Login",
+                    "created_at": "2022-02-28T16:59:22.000+01:00",
+                    "updated_at": "2022-02-28T16:59:22.000+01:00"
+                },
+                {
+                    "id": 2,
+                    "account_id": 12345,
+                    "attachable_id": 12345678,
+                    "attachable_type": "Person",
+                    "api_input": true,
+                    "name": "Hahaha",
+                    "created_at": "2022-12-02T14:05:35.000+01:00",
+                    "updated_at": "2022-12-02T14:05:35.000+01:00"
+                },
+                {
+                    "id": 3,
+                    "account_id": 12345,
+                    "attachable_id": 12345678,
+                    "attachable_type": "Person",
+                    "api_input": false,
+                    "name": "IMPORTED-VIA-API",
+                    "created_at": "2022-02-28T16:59:22.000+01:00",
+                    "updated_at": "2022-02-28T16:59:22.000+01:00"
+                }
+            ],
+            "tasks": [],
+            "tasks_pending": [],
+            "pending_tasks": [],
+            "upcoming_cal_events": [],
+            "tels": [],
+            "emails": [
+                {
+                    "id": 1,
+                    "type": "Email",
+                    "attachable_type": "Person",
+                    "attachable_id": 12345678,
+                    "atype": "office",
+                    "primary": null,
+                    "name": "max@mustermann.de",
+                    "name_clean": null,
+                    "created_at": "2022-02-28T16:59:22.000+01:00",
+                    "updated_at": "2022-02-28T16:59:22.000+01:00",
+                    "api_input": false
+                }
+            ],
+            "ims": [],
+            "sms": [],
+            "homepages": [],
+            "addrs": [
+                {
+                    "id": 1,
+                    "attachable_id": 12345678,
+                    "attachable_type": "Person",
+                    "street": "Mustergasse 1",
+                    "zip": "12345",
+                    "city": "Musterhausen",
+                    "state_code": null,
+                    "country_code": "DE",
+                    "primary": null,
+                    "created_at": "2023-01-24T08:31:43.000+01:00",
+                    "updated_at": "2023-01-24T08:31:43.000+01:00",
+                    "atype": "work",
+                    "api_input": false,
+                    "country_name": "Deutschland"
+                },
+                {
+                    "id": 2,
+                    "attachable_id": 12345678,
+                    "attachable_type": "Person",
+                    "street": "Teststraße 1",
+                    "zip": "98765",
+                    "city": "Musterstadt",
+                    "state_code": "SN",
+                    "country_code": "DE",
+                    "primary": false,
+                    "created_at": "2022-02-28T16:59:22.000+01:00",
+                    "updated_at": "2023-01-30T16:28:35.000+01:00",
+                    "atype": "work_hq",
+                    "api_input": false,
+                    "country_name": "Deutschland"
+                }
+            ],
+            "addrs_from_company": [],
+            "custom_fields": [
+                {
+                    "id": 1,
+                    "attachable_type": "Person",
+                    "attachable_id": 12345678,
+                    "custom_fields_type_id": 95225,
+                    "api_input": false,
+                    "name": "|1|",
+                    "created_at": "2022-02-28T16:59:22.000+01:00",
+                    "updated_at": "2022-02-28T16:59:22.000+01:00",
+                    "custom_fields_type_name": "typo3_uid"
+                }
+            ],
+            "historic_events": [],
+            "assis": [],
+            "connections": []
         }
     },
     {
         "person": {
-            "id": 455636,
-            "account_id": 21,
-            "user_id": 64,
+            "id": 12345679,
+            "account_id": 12345,
+            "group_id": 123456,
+            "user_id": null,
+            "country_code": null,
+            "salutation": null,
             "title": "",
-            "gender": "male_user",
-            "first_name": "Karl-Heinz",
-            "name": "Becker",
-            "background": "",
-            "created_by_user_id": 64,
+            "gender": "female_user",
+            "first_name": "Maxi",
+            "name": "Musterfrau",
+            "background": null,
+            "created_by_user_id": 1,
             "updated_by_user_id": null,
-            "created_at": "2013-06-27T06:58:07.000Z",
-            "updated_at": "2015-04-27T09:17:00.000Z",
-            "responsible_user_natural_name": "Axel von Leitner"
+            "created_at": "2022-01-24T10:43:45.000+01:00",
+            "updated_at": "2022-01-24T11:43:21.000+01:00",
+            "positions": [],
+            "companies": [],
+            "deals": [],
+            "projects": [],
+            "tags": [
+                {
+                    "id": 4,
+                    "account_id": 12345,
+                    "attachable_id": 12345679,
+                    "attachable_type": "Person",
+                    "api_input": true,
+                    "name": "fSAXPlus-Login",
+                    "created_at": "2022-01-24T10:43:45.000+01:00",
+                    "updated_at": "2022-01-24T10:43:45.000+01:00"
+                },
+                {
+                    "id": 5,
+                    "account_id": 12345,
+                    "attachable_id": 12345679,
+                    "attachable_type": "Person",
+                    "api_input": true,
+                    "name": "IMPORTED-VIA-API",
+                    "created_at": "2022-01-24T10:43:45.000+01:00",
+                    "updated_at": "2022-01-24T10:43:45.000+01:00"
+                },
+                {
+                    "id": 6,
+                    "account_id": 12345,
+                    "attachable_id": 12345679,
+                    "attachable_type": "Person",
+                    "api_input": true,
+                    "name": "xls Import 24. Jan 22 - 10:10",
+                    "created_at": "2022-01-24T10:43:45.000+01:00",
+                    "updated_at": "2022-01-24T10:43:45.000+01:00"
+                }
+            ],
+            "tasks": [],
+            "tasks_pending": [],
+            "pending_tasks": [],
+            "upcoming_cal_events": [],
+            "tels": [],
+            "emails": [
+                {
+                    "id": 2,
+                    "type": "Email",
+                    "attachable_type": "Person",
+                    "attachable_id": 12345679,
+                    "atype": "office",
+                    "primary": false,
+                    "name": "maxi@musterfrau.de",
+                    "name_clean": null,
+                    "created_at": "2022-01-24T10:43:45.000+01:00",
+                    "updated_at": "2022-01-24T10:43:45.000+01:00",
+                    "api_input": false
+                }
+            ],
+            "ims": [],
+            "sms": [],
+            "homepages": [],
+            "addrs": [],
+            "addrs_from_company": [],
+            "custom_fields": [
+                {
+                    "id": 2,
+                    "attachable_type": "Person",
+                    "attachable_id": 12345679,
+                    "custom_fields_type_id": 95225,
+                    "api_input": false,
+                    "name": "|2|",
+                    "created_at": "2022-01-24T10:43:45.000+01:00",
+                    "updated_at": "2022-01-24T10:43:45.000+01:00",
+                    "custom_fields_type_name": "typo3_uid"
+                }
+            ],
+            "historic_events": [],
+            "assis": [],
+            "connections": []
         }
     }
 ]

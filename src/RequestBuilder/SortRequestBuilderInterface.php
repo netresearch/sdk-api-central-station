@@ -34,5 +34,5 @@ interface SortRequestBuilderInterface extends RequestBuilderInterface
     public function setOrder(
         string $orderBy = Constants::ORDER_BY_NAME,
         string $orderDirection = Constants::ORDER_DIRECTION_ASC
-    ): SortRequestBuilderInterface;
+    ): self;
 }

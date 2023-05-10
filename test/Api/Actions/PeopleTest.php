@@ -17,6 +17,8 @@ use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Address;
 use Netresearch\Sdk\CentralStation\Model\Collection\AddressCollection;
+use Netresearch\Sdk\CentralStation\Model\Collection\ContactDetailCollection;
+use Netresearch\Sdk\CentralStation\Model\Collection\CustomFieldCollection;
 use Netresearch\Sdk\CentralStation\Model\Collection\TagCollection;
 use Netresearch\Sdk\CentralStation\Model\Container\Collection\PersonContainerCollection;
 use Netresearch\Sdk\CentralStation\Model\Container\PersonContainer;
@@ -115,18 +117,36 @@ class PeopleTest extends TestCase
      */
     private static function assertFirstPerson(Person $person): void
     {
-        self::assertSame(455637, $person->id);
-        self::assertSame(21, $person->accountId);
-        self::assertNull($person->salutation);
-        self::assertSame('', $person->title);
-        self::assertSame('female_user', $person->gender);
-        self::assertNull($person->countryCode);
-        self::assertSame('Marion', $person->firstName);
-        self::assertSame('Beber', $person->name);
+        self::assertSame(12345678, $person->id);
+        self::assertSame(12345, $person->accountId);
+        self::assertSame('Herr', $person->salutation);
+        self::assertNull($person->title);
+        self::assertSame('male_user', $person->gender);
+        self::assertSame('de', $person->countryCode);
+        self::assertSame('Max', $person->firstName);
+        self::assertSame('Mustermann', $person->name);
         self::assertSame('', $person->background);
         self::assertSame(64, $person->userId);
-        self::assertSame('27.06.2013', $person->createdAt->format('d.m.Y'));
-        self::assertSame('21.05.2015 14:06:00', $person->updatedAt->format('d.m.Y H:i:s'));
+        self::assertSame('28.02.2022', $person->createdAt->format('d.m.Y'));
+        self::assertSame('03.04.2023 11:17:20', $person->updatedAt->format('d.m.Y H:i:s'));
+
+        self::assertInstanceOf(AddressCollection::class, $person->addresses);
+        self::assertSame(2, $person->addresses->count());
+
+        /** @var Address $firstAddress */
+        $firstAddress = $person->addresses->offsetGet(0);
+
+        self::assertInstanceOf(Address::class, $firstAddress);
+        self::assertSame('DE', $firstAddress->countryCode);
+
+        self::assertInstanceOf(TagCollection::class, $person->tags);
+        self::assertSame(3, $person->tags->count());
+
+        self::assertInstanceOf(ContactDetailCollection::class, $person->emails);
+        self::assertSame(1, $person->emails->count());
+
+        self::assertInstanceOf(CustomFieldCollection::class, $person->customFields);
+        self::assertSame(1, $person->customFields->count());
     }
 
     /**
@@ -138,18 +158,30 @@ class PeopleTest extends TestCase
      */
     private static function assertSecondPerson(Person $person): void
     {
-        self::assertSame(455636, $person->id);
-        self::assertSame(21, $person->accountId);
+        self::assertSame(12345679, $person->id);
+        self::assertSame(12345, $person->accountId);
         self::assertNull($person->salutation);
         self::assertSame('', $person->title);
-        self::assertSame('male_user', $person->gender);
+        self::assertSame('female_user', $person->gender);
         self::assertNull($person->countryCode);
-        self::assertSame('Karl-Heinz', $person->firstName);
-        self::assertSame('Becker', $person->name);
-        self::assertSame('', $person->background);
-        self::assertSame(64, $person->userId);
-        self::assertSame('27.06.2013', $person->createdAt->format('d.m.Y'));
-        self::assertSame('27.04.2015 09:17:00', $person->updatedAt->format('d.m.Y H:i:s'));
+        self::assertSame('Maxi', $person->firstName);
+        self::assertSame('Musterfrau', $person->name);
+        self::assertNull($person->background);
+        self::assertNull($person->userId);
+        self::assertSame('24.01.2022', $person->createdAt->format('d.m.Y'));
+        self::assertSame('24.01.2022 11:43:21', $person->updatedAt->format('d.m.Y H:i:s'));
+
+        self::assertInstanceOf(AddressCollection::class, $person->addresses);
+        self::assertSame(0, $person->addresses->count());
+
+        self::assertInstanceOf(TagCollection::class, $person->tags);
+        self::assertSame(3, $person->tags->count());
+
+        self::assertInstanceOf(ContactDetailCollection::class, $person->emails);
+        self::assertSame(1, $person->emails->count());
+
+        self::assertInstanceOf(CustomFieldCollection::class, $person->customFields);
+        self::assertSame(1, $person->customFields->count());
     }
 
     /**
