@@ -30,7 +30,7 @@ interface FilterRequestBuilderInterface extends RequestBuilderInterface
      * @param string              $comparison The comparison type (use one of Constants::FILTER_*)
      * @param int|string|DateTime $value      The value used to filter the field by
      *
-     * @return self
+     * @return static
      */
     public function addFilter(
         string $field,

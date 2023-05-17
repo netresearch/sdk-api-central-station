@@ -27,7 +27,7 @@ interface CustomFieldRequestBuilderInterface extends RequestBuilderInterface
      * @param string     $name  The name of the custom field used to filter
      * @param int|string $value The value used to filter the field by
      *
-     * @return self
+     * @return static
      */
     public function setCustomFieldFilter(string $name, int|string $value): CustomFieldRequestBuilderInterface;
 }
