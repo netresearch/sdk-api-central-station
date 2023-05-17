@@ -1,7 +1,7 @@
 # Requirements
 
 ## System Requirements
-- PHP 7.3+ with JSON extension
+- PHP 8.1+ with JSON extension
 
 
 # Installation
