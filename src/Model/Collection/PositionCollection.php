@@ -24,4 +24,37 @@ use Netresearch\Sdk\CentralStation\Model\Position;
  */
 class PositionCollection extends AbstractCollection
 {
+    /**
+     * Returns the position from the collection matching the given name.
+     *
+     * @param string $positionName
+     *
+     * @return null|Position
+     */
+    public function getByName(string $positionName): ?Position
+    {
+        foreach ($this as $position) {
+            if ($position->name === $positionName) {
+                return $position;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns TRUE if the collection contains a position which is the primary position of the person.
+     *
+     * @return bool
+     */
+    public function hasPrimaryFunction(): bool
+    {
+        foreach ($this as $position) {
+            if ($position->primaryFunction) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

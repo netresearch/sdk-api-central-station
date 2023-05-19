@@ -24,4 +24,21 @@ use Netresearch\Sdk\CentralStation\Model\Company;
  */
 class CompanyCollection extends AbstractCollection
 {
+    /**
+     * Returns the company from the collection matching the given company ID.
+     *
+     * @param int $companyId
+     *
+     * @return null|Company
+     */
+    public function getById(int $companyId): ?Company
+    {
+        foreach ($this as $company) {
+            if ($company->id === $companyId) {
+                return $company;
+            }
+        }
+
+        return null;
+    }
 }
