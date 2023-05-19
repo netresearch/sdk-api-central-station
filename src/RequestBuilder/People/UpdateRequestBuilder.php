@@ -93,15 +93,17 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * Adds a position attribute.
      *
-     * @param string $companyName The name of the company
-     * @param string $position    The name of the position at the company
-     * @param bool   $primary     TRUE if the position is the primary one
+     * @param string      $position    The name of the position at the company
+     * @param null|int    $id          The ID of the position to update
+     * @param null|string $companyName The name of the company
+     * @param bool        $primary     TRUE if the position is the primary one
      *
      * @return UpdateRequestBuilder
      */
     public function addPosition(
-        string $companyName,
         string $position,
+        int $id = null,
+        string $companyName = null,
         bool $primary = false
     ): UpdateRequestBuilder {
         if (!isset($this->data['positions'])) {
@@ -109,6 +111,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
         }
 
         $this->data['positions'][] = [
+            'id'          => $id,
             'companyName' => $companyName,
             'position'    => $position,
             'primary'     => $primary,
@@ -297,7 +300,8 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
 
                 foreach ($this->data['positions'] as $item) {
                     $position = new Position();
-                    $position->setCompanyName($item['companyName'])
+                    $position->setId($item['id'])
+                        ->setCompanyName($item['companyName'])
                         ->setName($item['position'])
                         ->setPrimaryFunction($item['primary']);
 

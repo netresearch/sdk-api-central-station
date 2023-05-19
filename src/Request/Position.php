@@ -23,6 +23,13 @@ use JsonSerializable;
 class Position implements JsonSerializable
 {
     /**
+     * The ID of the record.
+     *
+     * @var null|int
+     */
+    private ?int $id = null;
+
+    /**
      * ID of the linked person.
      *
      * @var null|int
@@ -70,6 +77,25 @@ class Position implements JsonSerializable
      * @var bool
      */
     private bool $former = false;
+
+    /**
+     * @return null|int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param null|int $id
+     *
+     * @return Position
+     */
+    public function setId(?int $id): Position
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * @param null|int $personId
@@ -154,6 +180,7 @@ class Position implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
+            'id'               => $this->id,
             'person_id'        => $this->personId,
             'company_id'       => $this->companyId,
             'company_name'     => $this->companyName,

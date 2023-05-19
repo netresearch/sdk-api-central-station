@@ -95,15 +95,15 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     /**
      * Adds a position attribute.
      *
-     * @param string $companyName The name of the company
      * @param string $position    The name of the position at the company
+     * @param string $companyName The name of the company
      * @param bool   $primary     TRUE if the position is the primary one
      *
      * @return CreateRequestBuilder
      */
     public function addPosition(
-        string $companyName,
         string $position,
+        string $companyName,
         bool $primary = false
     ): CreateRequestBuilder {
         if (!isset($this->data['positions'])) {
