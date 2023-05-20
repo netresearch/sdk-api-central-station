@@ -34,7 +34,8 @@ class PositionCollection extends AbstractCollection
     public function getByName(string $positionName): ?Position
     {
         foreach ($this as $position) {
-            if ($position->name === $positionName) {
+            // Use multibyte strtolower in order to correctly convert German umlauts
+            if (mb_strtolower($position->name, 'UTF-8') === mb_strtolower($positionName, 'UTF-8')) {
                 return $position;
             }
         }

@@ -41,4 +41,23 @@ class CompanyCollection extends AbstractCollection
 
         return null;
     }
+
+    /**
+     * Returns the company from the collection matching the given name.
+     *
+     * @param string $companyName
+     *
+     * @return null|Company
+     */
+    public function getByName(string $companyName): ?Company
+    {
+        foreach ($this as $company) {
+            // Use multibyte strtolower in order to correctly convert German umlauts
+            if (mb_strtolower($company->name, 'UTF-8') === mb_strtolower($companyName, 'UTF-8')) {
+                return $company;
+            }
+        }
+
+        return null;
+    }
 }
