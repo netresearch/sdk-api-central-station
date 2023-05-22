@@ -24,4 +24,22 @@ use Netresearch\Sdk\CentralStation\Model\Address;
  */
 class AddressCollection extends AbstractCollection
 {
+    /**
+     * Returns the first address item matching the given address type.
+     *
+     * @param string $type
+     *
+     * @return null|Address
+     */
+    public function getByType(string $type): ?Address
+    {
+        /** @var Address $address */
+        foreach ($this as $address) {
+            if ($address->type === $type) {
+                return $address;
+            }
+        }
+
+        return null;
+    }
 }

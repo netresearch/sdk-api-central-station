@@ -24,4 +24,22 @@ use Netresearch\Sdk\CentralStation\Model\ContactDetail;
  */
 class ContactDetailCollection extends AbstractCollection
 {
+    /**
+     * Returns the first contact detail item matching the given contact type.
+     *
+     * @param string $contactType
+     *
+     * @return null|ContactDetail
+     */
+    public function getByContactType(string $contactType): ?ContactDetail
+    {
+        /** @var ContactDetail $contactDetail */
+        foreach ($this as $contactDetail) {
+            if ($contactDetail->contactType === $contactType) {
+                return $contactDetail;
+            }
+        }
+
+        return null;
+    }
 }

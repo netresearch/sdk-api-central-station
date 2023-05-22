@@ -25,17 +25,16 @@ use Netresearch\Sdk\CentralStation\Model\Position;
 class PositionCollection extends AbstractCollection
 {
     /**
-     * Returns the position from the collection matching the given name.
+     * Returns the position from the collection matching the given position ID.
      *
-     * @param string $positionName
+     * @param int $positionId
      *
      * @return null|Position
      */
-    public function getByName(string $positionName): ?Position
+    public function getById(int $positionId): ?Position
     {
         foreach ($this as $position) {
-            // Use multibyte strtolower in order to correctly convert German umlauts
-            if (mb_strtolower($position->name, 'UTF-8') === mb_strtolower($positionName, 'UTF-8')) {
+            if ($position->id === $positionId) {
                 return $position;
             }
         }

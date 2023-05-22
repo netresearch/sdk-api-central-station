@@ -24,4 +24,39 @@ use Netresearch\Sdk\CentralStation\Model\Tag;
  */
 class TagCollection extends AbstractCollection
 {
+    /**
+     * Returns TRUE if the tag collection contains a tag of specified name.
+     *
+     * @param string $name The tag name to search for
+     *
+     * @return bool
+     */
+    public function hasTag(string $name): bool
+    {
+        /** @var Tag $tag */
+        foreach ($this as $tag) {
+            if ($tag->name === $name) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    /**
+     * Returns TRUE if the tag collection contains one of the specified tag names.
+     *
+     * @param string[] $names The list of tag names to search for
+     *
+     * @return bool
+     */
+    public function hasOneFromList(array $names): bool
+    {
+        foreach ($names as $name) {
+            if ($this->hasTag($name) === true) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
