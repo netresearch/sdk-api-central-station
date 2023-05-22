@@ -1,6 +1,7 @@
 /.idea
 /vendor
 /test/coverage
+/test/Api*Test.php
 /coverage
 /.phpunit.cache
 composer.lock

@@ -109,6 +109,7 @@ class CreateTest extends TestCase
                     'background'               => 'background',
                     'positions_attributes'     => [
                         [
+                            'id'               => null,
                             'person_id'        => null,
                             'company_id'       => null,
                             'company_name'     => 'Company-1',
