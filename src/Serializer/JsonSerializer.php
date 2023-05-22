@@ -74,7 +74,7 @@ class JsonSerializer
     }
 
     /**
-     * Recursive filters an array, removing all entries evaluating to FALSE.
+     * Recursively filters an array, removing all entries evaluating to FALSE.
      *
      * @param mixed[] $data Input array to filter
      *

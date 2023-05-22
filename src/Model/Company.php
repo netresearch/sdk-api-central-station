@@ -31,14 +31,14 @@ use Netresearch\Sdk\CentralStation\Model\Collection\TagCollection;
 class Company extends AbstractEntity
 {
     /**
-     * ID of account.
+     * ID of an account.
      *
      * @var int
      */
     public int $accountId;
 
     /**
-     * ID of group.
+     * ID of a group.
      *
      * @var int
      */
@@ -59,7 +59,7 @@ class Company extends AbstractEntity
     public string $name;
 
     /**
-     * Details about the company e.g. history.
+     * Details about the company, e.g. history.
      *
      * @var null|string
      */

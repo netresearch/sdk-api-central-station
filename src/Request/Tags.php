@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Model\Collection\AbstractCollection;
 class Tags extends AbstractCollection
 {
     /**
-     * Returns an PHP array representation of this collection.
+     * Returns a PHP array representation of this collection.
      *
      * @return array<int, array<string, null|int|string>>
      */

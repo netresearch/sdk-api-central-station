@@ -235,9 +235,9 @@ class Companies extends AbstractApiEndpoint
     }
 
     /**
-     * To search for one or more companies, the parameters name, first_name, phone or email can be passed.
+     * To search for one or more companies, the parameter name, first_name, phone or email can be passed.
      * If one or more hits are found, the return is in the same form as with the index function. If no matches
-     * are found we return an empty array.
+     * are found, we return an empty array.
      *
      * GET https://<BASE-URL>/api/companies/search
      *
@@ -263,7 +263,7 @@ class Companies extends AbstractApiEndpoint
 
     /**
      * The stats can be used to query pure count or sum calculations for all or filtered companys. The companies
-     * can be filtered like the index action, i.e. by tags or any fields.
+     * can be filtered like the index action, i.e., by tags or any fields.
      *
      * GET https://<BASE-URL>/api/companies/stats
      *

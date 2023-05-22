@@ -21,7 +21,7 @@ namespace Netresearch\Sdk\CentralStation\Model;
 class Comment extends AbstractEntity
 {
     /**
-     * ID of the linked object, for example the protocol ID.
+     * ID of the linked object, for example, the protocol ID.
      *
      * @var int
      */

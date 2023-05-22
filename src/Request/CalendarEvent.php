@@ -53,14 +53,14 @@ class CalendarEvent implements JsonSerializable
     private ?string $groupCalendarId = null;
 
     /**
-     * Description of the location, can be an address, a Meeting room id or left blank.
+     * Description of the location. Can be an address, a meeting room id or left blank.
      *
      * @var null|string
      */
     private ?string $location = null;
 
     /**
-     * Can be new, confirmed, tentative or cancelled.
+     * Can be new, confirmed, tentative or canceled.
      *
      * @var null|string
      */

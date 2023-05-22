@@ -14,7 +14,7 @@ namespace Netresearch\Sdk\CentralStation\Exception;
 use Exception;
 
 /**
- * Generic SDK exception, can be used to catch any SDK exception in cases where the exact type does not matter.
+ * Generic SDK exception can be used to catch any SDK exception in cases where the exact type does not matter.
  * Exception messages are suitable for logging.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>

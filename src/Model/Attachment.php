@@ -30,7 +30,7 @@ class Attachment
     public string $id;
 
     /**
-     * ID of account.
+     * ID of an account.
      *
      * @var int
      */
@@ -44,7 +44,7 @@ class Attachment
     public int $userId;
 
     /**
-     * ID of the linked object, for example the protocol ID.
+     * ID of the linked object, for example, the protocol ID.
      *
      * @var int
      */

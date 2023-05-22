@@ -26,7 +26,7 @@ use MagicSunday\JsonMapper\Annotation\ReplaceProperty;
 class CustomFieldsType extends AbstractEntity
 {
     /**
-     * ID of account.
+     * ID of an account.
      *
      * @var int
      */
@@ -68,7 +68,7 @@ class CustomFieldsType extends AbstractEntity
     public string $name;
 
     /**
-     * The options if type is "select".
+     * The options if a type is "select".
      *
      * @var string[]
      *

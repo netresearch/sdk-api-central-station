@@ -578,7 +578,7 @@ class Constants
     final public const CALENDAR_EVENTS_INCLUDE_ATTENDEES = 'cal_event_attendees';
 
     /**
-     * List of calendar events include types.
+     * The list of calendar events include types.
      *
      * @var string[]
      */

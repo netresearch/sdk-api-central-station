@@ -30,7 +30,7 @@ use Netresearch\Sdk\CentralStation\Validator\People\CreateValidator;
 use function in_array;
 
 /**
- * The request builder to create a valid "create" request.
+ * The request builder to create a valid create-request.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de

@@ -37,7 +37,7 @@ class CalendarEvent
     public string $id;
 
     /**
-     * ID of account.
+     * ID of an account.
      *
      * @var int
      */
@@ -51,7 +51,7 @@ class CalendarEvent
     public int $userId;
 
     /**
-     * ID of the linked object, for example the person ID.
+     * ID of the linked object, for example, the person ID.
      *
      * @var null|int
      */

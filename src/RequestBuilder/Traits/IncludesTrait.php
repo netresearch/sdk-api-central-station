@@ -26,11 +26,10 @@ use function in_array;
 trait IncludesTrait
 {
     /**
-     * Adds an include.
+     * Adds an include parameter value.
      *
-     * @param string $include The name of an additional data to include in the
-     *                        response (use one of Constants::INCLUDE_*). Use Constants::INCLUDE_ALL to return
-     *                        all at once.
+     * @param string $include The name of an additional data to include in the response
+     *                        (use one of Constants::INCLUDE_*). Use Constants::INCLUDE_ALL to return all at once.
      *
      * @return static
      */

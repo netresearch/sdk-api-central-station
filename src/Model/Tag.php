@@ -23,7 +23,7 @@ use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
 class Tag extends AbstractEntity
 {
     /**
-     * ID of account.
+     * ID of an account.
      *
      * @var int
      */

@@ -26,7 +26,7 @@ use function is_array;
 /**
  * Class ErrorPlugin
  *
- * On request errors, throw an HTTP exception with message extracted from response.
+ * On request errors, throw an HTTP exception with a message extracted from response.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -241,7 +241,7 @@ final class ErrorPlugin implements Plugin
      * @param callable         $next    Next middleware in the chain, the request is passed as the first argument
      * @param callable         $first   First middleware in the chain, used to restart a request
      *
-     * @return Promise Resolves a PSR-7 Response or fails with a Http\Client\Exception (The same as HttpAsyncClient).
+     * @return Promise Resolves a PSR-7 Response or fails with an Http\Client\Exception (The same as HttpAsyncClient).
      */
     public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
     {

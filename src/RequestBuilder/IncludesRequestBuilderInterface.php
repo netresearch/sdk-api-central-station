@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\RequestBuilder;
 
 /**
- * The includes request builder interface.
+ * The includes-request builder interface.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -22,11 +22,10 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder;
 interface IncludesRequestBuilderInterface extends RequestBuilderInterface
 {
     /**
-     * Adds an include.
+     * Adds an include parameter value.
      *
-     * @param string $include The name of an additional data to include in the
-     *                        response (use one of Constants::INCLUDE_*). Use Constants::INCLUDE_ALL to return
-     *                        all at once.
+     * @param string $include The name of an additional data to include in the response
+     *                        (use one of Constants::INCLUDE_*). Use Constants::INCLUDE_ALL to return all at once.
      *
      * @return static
      */

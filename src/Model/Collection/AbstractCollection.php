@@ -147,7 +147,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
     }
 
     /**
-     * Move forward to next element.
+     * Move forward to the next element.
      *
      * @return false|TValue
      */
@@ -174,7 +174,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
     }
 
     /**
-     * Returns the collection as plain array.
+     * Returns the collection as a plain array.
      *
      * @return TValue[]
      */
@@ -222,10 +222,10 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
     /**
      * Extract a slice of the array.
      *
-     * @param int      $offset If offset is non-negative, the sequence will start at that offset in the array. If
+     * @param int      $offset If the offset is non-negative, the sequence will start at that offset in the array. If
      *                         offset is negative, the sequence will start that far from the end of the array.
      * @param null|int $length If length is given and is positive, then the sequence will have that many elements
-     *                         in it. If length is given and is negative then the sequence will stop that many
+     *                         in it. If length is given and is negative, then the sequence will stop that many
      *                         elements from the end of the array. If it is omitted, then the sequence will have
      *                         everything from offset up until the end of the array.
      *

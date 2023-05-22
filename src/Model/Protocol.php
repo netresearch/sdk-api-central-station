@@ -23,7 +23,7 @@ use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
 class Protocol extends AbstractEntity
 {
     /**
-     * ID of account.
+     * ID of an account.
      *
      * @var int
      */
@@ -95,7 +95,7 @@ class Protocol extends AbstractEntity
     public string $badge;
 
     /**
-     * The number of assigned attachment to this note.
+     * The number of assigned attachments to this note.
      *
      * @var int
      */

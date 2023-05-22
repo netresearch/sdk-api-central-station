@@ -46,7 +46,7 @@ class CustomFields extends AbstractApiEndpoint
     final public const PATH = 'custom_fields';
 
     /**
-     * Returns a list of all custom field in an account.
+     * Returns a list of all custom fields in an account.
      *
      * GET https://<BASE-URL>/api/companies/<COMPANY-ID>/custom_fields
      *

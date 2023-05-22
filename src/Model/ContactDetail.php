@@ -54,7 +54,7 @@ class ContactDetail extends AbstractEntity
     public ?string $nameClean = null;
 
     /**
-     * Another type of contact_details, e.g. for a phone number
+     * Another type of contact_details, e.g., for a phone number
      * (office, office_hq, mobile, fax, private, voip, skype, other).
      *
      * @var string

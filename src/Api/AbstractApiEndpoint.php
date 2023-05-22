@@ -30,7 +30,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Throwable;
 
 /**
- * An abstract class for each API endpoint, containing the methods which performs
+ * An abstract class for each API endpoint, containing the methods, which performs
  * the actual request/response handling.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
@@ -281,7 +281,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
 
     /**
      * Updates an existing entity. The route must contain the ID of the entity to be processed.
-     * Returns TRUE on success, FALSE otherwise.
+     * Returns TRUE if successful, FALSE otherwise.
      *
      * @param RequestInterface $request The update request instance
      *
@@ -301,7 +301,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     }
 
     /**
-     * Deletes an existing entity. Returns TRUE on success, FALSE otherwise.
+     * Deletes an existing entity. Returns TRUE if successful, FALSE otherwise.
      *
      * @return bool
      *

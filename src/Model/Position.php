@@ -23,7 +23,7 @@ use MagicSunday\JsonMapper\Annotation\ReplaceNullWithDefaultValue;
 class Position extends AbstractEntity
 {
     /**
-     * ID of account.
+     * ID of an account.
      *
      * @var int
      */
@@ -44,18 +44,18 @@ class Position extends AbstractEntity
     public int $companyId;
 
     /**
-     * Title of the item, e.g. Managing director, HR manager, etc.
+     * Title of the item, e.g., Managing director, HR manager, etc.
      *
-     * @var string
+     * @var null|string
      */
-    public string $name;
+    public ?string $name = null;
 
     /**
      * Department in which the person works.
      *
-     * @var string
+     * @var null|string
      */
-    public string $department;
+    public ?string $department = null;
 
     /**
      * Only one position may be set to primary. This will mark the primary position the person holds.

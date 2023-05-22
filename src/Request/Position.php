@@ -51,7 +51,7 @@ class Position implements JsonSerializable
     private ?string $companyName = null;
 
     /**
-     * Title of the item, e.g. Managing director, HR manager, etc.
+     * Title of the item, e.g., Managing director, HR manager, etc.
      *
      * @var null|string
      */

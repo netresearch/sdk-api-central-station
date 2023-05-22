@@ -283,7 +283,7 @@ class People extends AbstractApiEndpoint
     }
 
     /**
-     * To search for one or more people, the parameters name, first_name, phone or email can be passed.
+     * To search for one or more people, the parameter name, first_name, phone or email can be passed.
      * If one or more hits are found, the return is in the same form as with the index function. If no matches
      * are found we return an empty array.
      *
@@ -311,7 +311,7 @@ class People extends AbstractApiEndpoint
 
     /**
      * The stats can be used to query pure count or sum calculations for all or filtered persons. The people
-     * can be filtered like the index action, i.e. by tags or any fields.
+     * can be filtered like the index action, i.e., by tags or any fields.
      *
      * GET https://<BASE-URL>/api/people/stats
      *
@@ -338,13 +338,13 @@ class People extends AbstractApiEndpoint
 
     /**
      * Several people can be brought together using the merge function. The person IDs passed as looser_ids
-     * are merged with the person passed as id. The logic is similar to a merger via the CentralStationCRM interface.
+     * is merged with the person passed as id. The logic is similar to a merger via the CentralStationCRM interface.
      * After the merge request, the merged person records no longer exists.
      *
      * POST https://<BASE-URL>/api/people/<PERSON-ID>/merge
      *
-     * @notice Merging takes some time. An index/show request should not be made directly after a merge,
-     *         since the returned data may be invalid or incorrect. As a guide, during API testing, the merged
+     * @notice Merging takes some time. An index/show request should not be made directly after a merge since
+     *         the returned data may be invalid or incorrect. As a guide, during API testing, the merged
      *         data was mostly available within 5 seconds at most.
      *
      * @param MergeRequest $request The merge request instance

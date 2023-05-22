@@ -33,7 +33,7 @@ use Netresearch\Sdk\CentralStation\Model\Collection\TagCollection;
 class Person extends AbstractEntity
 {
     /**
-     * ID of account.
+     * ID of an account.
      *
      * @var int
      */

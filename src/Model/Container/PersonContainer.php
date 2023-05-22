@@ -16,7 +16,7 @@ use Netresearch\Sdk\CentralStation\Model\Person;
 /**
  * A person container.
  *
- * This is only used in "index" requests, because in this case the API returns a list of
+ * This is only used in "index" requests, because in this case, the API returns a list of
  * objects with sub objects, for whatever reason.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>

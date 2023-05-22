@@ -35,7 +35,7 @@ class ShowRequestBuilder extends AbstractRequestBuilder implements
     /**
      * Whether to include the custom fields type or not.
      *
-     * @param bool $includeCustomFieldsType TRUE to include custom fields type in the result
+     * @param bool $includeCustomFieldsType TRUE to include a custom fields type in the result
      *
      * @return ShowRequestBuilder
      */
