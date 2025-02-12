@@ -92,8 +92,8 @@ class CustomFieldsTypesTest extends TestCase
             self::assertInstanceOf(CustomFieldsType::class, $customFieldsTypes->customFieldsType);
         }
 
-        self::assertFirstCustomFieldsType($result->offsetGet(0)->customFieldsType);
-        self::assertSecondCustomFieldsType($result->offsetGet(1)->customFieldsType);
+        $this->assertFirstCustomFieldsType($result->offsetGet(0)->customFieldsType);
+        $this->assertSecondCustomFieldsType($result->offsetGet(1)->customFieldsType);
     }
 
     /**
@@ -103,7 +103,7 @@ class CustomFieldsTypesTest extends TestCase
      *
      * @return void
      */
-    private static function assertFirstCustomFieldsType(CustomFieldsType $customFieldsType): void
+    private function assertFirstCustomFieldsType(CustomFieldsType $customFieldsType): void
     {
         self::assertSame(1000, $customFieldsType->id);
         self::assertSame(10000, $customFieldsType->accountId);
@@ -125,7 +125,7 @@ class CustomFieldsTypesTest extends TestCase
      *
      * @return void
      */
-    private static function assertSecondCustomFieldsType(CustomFieldsType $customFieldsType): void
+    private function assertSecondCustomFieldsType(CustomFieldsType $customFieldsType): void
     {
         self::assertSame(1001, $customFieldsType->id);
         self::assertSame(10000, $customFieldsType->accountId);
@@ -175,6 +175,6 @@ class CustomFieldsTypesTest extends TestCase
         self::assertHttpHeaders($customFieldsTypesApi);
         self::assertInstanceOf(CustomFieldsType::class, $result);
 
-        self::assertFirstCustomFieldsType($result);
+        $this->assertFirstCustomFieldsType($result);
     }
 }

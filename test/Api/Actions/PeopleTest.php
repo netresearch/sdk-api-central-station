@@ -106,8 +106,8 @@ class PeopleTest extends TestCase
             self::assertInstanceOf(Person::class, $people->person);
         }
 
-        self::assertFirstPerson($result->offsetGet(0)->person);
-        self::assertSecondPerson($result->offsetGet(1)->person);
+        $this->assertFirstPerson($result->offsetGet(0)->person);
+        $this->assertSecondPerson($result->offsetGet(1)->person);
     }
 
     /**
@@ -117,7 +117,7 @@ class PeopleTest extends TestCase
      *
      * @return void
      */
-    private static function assertFirstPerson(Person $person): void
+    private function assertFirstPerson(Person $person): void
     {
         self::assertSame(12345678, $person->id);
         self::assertSame(12345, $person->accountId);
@@ -158,7 +158,7 @@ class PeopleTest extends TestCase
      *
      * @return void
      */
-    private static function assertSecondPerson(Person $person): void
+    private function assertSecondPerson(Person $person): void
     {
         self::assertSame(12345679, $person->id);
         self::assertSame(12345, $person->accountId);
@@ -220,7 +220,7 @@ class PeopleTest extends TestCase
         self::assertHttpMethod('GET', $peopleApi);
         self::assertInstanceOf(Person::class, $result);
 
-        self::assertThirdPerson($result);
+        $this->assertThirdPerson($result);
     }
 
     /**
@@ -230,7 +230,7 @@ class PeopleTest extends TestCase
      *
      * @return void
      */
-    private static function assertThirdPerson(Person $person): void
+    private function assertThirdPerson(Person $person): void
     {
         self::assertSame(30_016_185, $person->id);
         self::assertSame(87444, $person->accountId);
@@ -290,7 +290,7 @@ class PeopleTest extends TestCase
         self::assertHttpMethod('POST', $peopleApi);
         self::assertHttpHeaders($peopleApi);
         self::assertInstanceOf(Person::class, $result);
-        self::assertCreatedPerson($result);
+        $this->assertCreatedPerson($result);
     }
 
     /**
@@ -300,7 +300,7 @@ class PeopleTest extends TestCase
      *
      * @return void
      */
-    private static function assertCreatedPerson(Person $person): void
+    private function assertCreatedPerson(Person $person): void
     {
         self::assertSame(1_545_412, $person->id);
         self::assertSame(21, $person->accountId);
@@ -430,7 +430,7 @@ class PeopleTest extends TestCase
             self::assertInstanceOf(Person::class, $people->person);
         }
 
-        self::assertSearchedPerson($result->offsetGet(0)->person);
+        $this->assertSearchedPerson($result->offsetGet(0)->person);
     }
 
     /**
@@ -440,7 +440,7 @@ class PeopleTest extends TestCase
      *
      * @return void
      */
-    private static function assertSearchedPerson(Person $person): void
+    private function assertSearchedPerson(Person $person): void
     {
         self::assertSame(235321, $person->id);
         self::assertSame(21, $person->accountId);

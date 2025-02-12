@@ -97,8 +97,8 @@ class CustomFieldsTest extends TestCase
             self::assertInstanceOf(CustomField::class, $customFields->customField);
         }
 
-        self::assertFirstCustomField($result->offsetGet(0)->customField);
-        self::assertSecondCustomField($result->offsetGet(1)->customField);
+        $this->assertFirstCustomField($result->offsetGet(0)->customField);
+        $this->assertSecondCustomField($result->offsetGet(1)->customField);
     }
 
     /**
@@ -108,7 +108,7 @@ class CustomFieldsTest extends TestCase
      *
      * @return void
      */
-    private static function assertFirstCustomField(CustomField $customField): void
+    private function assertFirstCustomField(CustomField $customField): void
     {
         self::assertSame(2000, $customField->id);
         self::assertSame(12_345_678, $customField->attachableId);
@@ -132,7 +132,7 @@ class CustomFieldsTest extends TestCase
      *
      * @return void
      */
-    private static function assertSecondCustomField(CustomField $customField): void
+    private function assertSecondCustomField(CustomField $customField): void
     {
         self::assertSame(2001, $customField->id);
         self::assertSame(12_345_678, $customField->attachableId);
@@ -185,7 +185,7 @@ class CustomFieldsTest extends TestCase
         self::assertHttpHeaders($peopleApi);
         self::assertInstanceOf(CustomField::class, $customField);
 
-        self::assertFirstCustomField($customField);
+        $this->assertFirstCustomField($customField);
     }
 
     /**
@@ -231,7 +231,7 @@ class CustomFieldsTest extends TestCase
         self::assertHttpHeaders($peopleApi);
         self::assertInstanceOf(CustomField::class, $customField);
 
-        self::assertCreatedCustomField($customField);
+        $this->assertCreatedCustomField($customField);
     }
 
     /**
@@ -241,7 +241,7 @@ class CustomFieldsTest extends TestCase
      *
      * @return void
      */
-    private static function assertCreatedCustomField(CustomField $customField): void
+    private function assertCreatedCustomField(CustomField $customField): void
     {
         self::assertSame(2002, $customField->id);
         self::assertSame(12_345_678, $customField->attachableId);

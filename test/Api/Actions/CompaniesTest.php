@@ -103,8 +103,8 @@ class CompaniesTest extends TestCase
             self::assertInstanceOf(Company::class, $companies->company);
         }
 
-        self::assertFirstCompany($result->offsetGet(0)->company);
-        self::assertSecondCompany($result->offsetGet(1)->company);
+        $this->assertFirstCompany($result->offsetGet(0)->company);
+        $this->assertSecondCompany($result->offsetGet(1)->company);
     }
 
     /**
@@ -114,7 +114,7 @@ class CompaniesTest extends TestCase
      *
      * @return void
      */
-    private static function assertFirstCompany(Company $company): void
+    private function assertFirstCompany(Company $company): void
     {
         self::assertSame(123_456_789, $company->id);
         self::assertSame(12345, $company->accountId);
@@ -133,7 +133,7 @@ class CompaniesTest extends TestCase
      *
      * @return void
      */
-    private static function assertSecondCompany(Company $company): void
+    private function assertSecondCompany(Company $company): void
     {
         self::assertSame(123_456_790, $company->id);
         self::assertSame(12345, $company->accountId);
@@ -179,7 +179,7 @@ class CompaniesTest extends TestCase
         self::assertHttpMethod('GET', $companiesApi);
         self::assertInstanceOf(Company::class, $result);
 
-        self::assertThirdCompany($result);
+        $this->assertThirdCompany($result);
     }
 
     /**
@@ -189,7 +189,7 @@ class CompaniesTest extends TestCase
      *
      * @return void
      */
-    private static function assertThirdCompany(Company $company): void
+    private function assertThirdCompany(Company $company): void
     {
         self::assertSame(123_456_789, $company->id);
         self::assertSame(12345, $company->accountId);
@@ -245,7 +245,7 @@ class CompaniesTest extends TestCase
         self::assertHttpMethod('POST', $companiesApi);
         self::assertHttpHeaders($companiesApi);
         self::assertInstanceOf(Company::class, $result);
-        self::assertCreatedCompany($result);
+        $this->assertCreatedCompany($result);
     }
 
     /**
@@ -255,7 +255,7 @@ class CompaniesTest extends TestCase
      *
      * @return void
      */
-    private static function assertCreatedCompany(Company $company): void
+    private function assertCreatedCompany(Company $company): void
     {
         self::assertSame(123_456_791, $company->id);
         self::assertSame(12345, $company->accountId);
@@ -360,7 +360,7 @@ class CompaniesTest extends TestCase
             self::assertInstanceOf(Company::class, $companies->company);
         }
 
-        self::assertSearchedCompany($result->offsetGet(0)->company);
+        $this->assertSearchedCompany($result->offsetGet(0)->company);
     }
 
     /**
@@ -370,7 +370,7 @@ class CompaniesTest extends TestCase
      *
      * @return void
      */
-    private static function assertSearchedCompany(Company $company): void
+    private function assertSearchedCompany(Company $company): void
     {
         self::assertSame(123_456_789, $company->id);
         self::assertSame(12345, $company->accountId);
