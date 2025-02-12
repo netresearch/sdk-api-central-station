@@ -17,3 +17,5 @@ parameters:
     excludePaths:
         - %currentWorkingDirectory%/test/
         - %currentWorkingDirectory%/.build/
+
+    treatPhpDocTypesAsCertain: false
