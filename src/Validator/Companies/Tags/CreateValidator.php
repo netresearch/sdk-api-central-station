@@ -33,7 +33,7 @@ class CreateValidator
      */
     public static function validate(array $data): void
     {
-        if (empty($data['tag']['name'])) {
+        if (!isset($data['tag']['name'])) {
             throw new RequestValidatorException(
                 'Please provide at least the name of the tag to create'
             );

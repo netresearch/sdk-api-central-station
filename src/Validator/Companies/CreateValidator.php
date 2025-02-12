@@ -31,7 +31,7 @@ class CreateValidator
      */
     public static function validate(array $data): void
     {
-        if (empty($data['company']['name'])) {
+        if (!isset($data['company']['name'])) {
             throw new RequestValidatorException(
                 'Please provide at least the name of the company to create'
             );

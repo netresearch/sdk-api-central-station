@@ -34,11 +34,12 @@ class CreateValidator
      */
     public static function validate(array $data): void
     {
-        if (empty($data['address']['street'])) {
+        if (!isset($data['address']['street'])) {
             throw new RequestValidatorException(
                 'Please provide at least the street name of the address to create'
             );
         }
+
         if (!isset($data['type'])) {
             return;
         }

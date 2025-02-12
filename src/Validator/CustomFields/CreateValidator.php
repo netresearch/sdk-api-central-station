@@ -31,13 +31,13 @@ class CreateValidator
      */
     public static function validate(array $data): void
     {
-        if (empty($data['content'])) {
+        if (!isset($data['content'])) {
             throw new RequestValidatorException(
                 'Please provide the content of the custom field'
             );
         }
 
-        if (empty($data['customFieldsTypeId'])) {
+        if (!isset($data['customFieldsTypeId'])) {
             throw new RequestValidatorException(
                 'Please provide the ID of the underlying custom fields type'
             );

@@ -34,7 +34,7 @@ class CreateValidator
      */
     public static function validate(array $data): void
     {
-        if (empty($data['protocol']['content'])) {
+        if (!isset($data['protocol']['content'])) {
             throw new RequestValidatorException(
                 'Please provide at least the content of the protocol to create'
             );

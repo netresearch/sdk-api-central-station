@@ -31,7 +31,7 @@ class CreateValidator
      */
     public static function validate(array $data): void
     {
-        if (empty($data['person']['lastName'])) {
+        if (!isset($data['person']['lastName'])) {
             throw new RequestValidatorException(
                 'Please provide at least the last name of the person to create'
             );

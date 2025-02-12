@@ -31,7 +31,7 @@ class UpdateValidator
      */
     public static function validate(array $data): void
     {
-        if (empty($data['tag']['name'])) {
+        if (!isset($data['tag']['name'])) {
             throw new RequestValidatorException(
                 'Please provide at least the updated name of the tag'
             );

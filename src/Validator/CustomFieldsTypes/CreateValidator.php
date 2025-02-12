@@ -34,7 +34,7 @@ class CreateValidator
      */
     public static function validate(array $data): void
     {
-        if (empty($data['name'])) {
+        if (!isset($data['name'])) {
             throw new RequestValidatorException(
                 'Please provide the name of the custom fields type'
             );
