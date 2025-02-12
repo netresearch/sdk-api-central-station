@@ -24,23 +24,24 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 class Update implements RequestInterface
 {
     /**
-     * @var null|CalendarEvent
+     * @var CalendarEvent|null
      */
     private ?CalendarEvent $calendarEvent = null;
 
     /**
-     * @param null|CalendarEvent $calendarEvent
+     * @param CalendarEvent|null $calendarEvent
      *
      * @return Update
      */
     public function setCalendarEvent(?CalendarEvent $calendarEvent): Update
     {
         $this->calendarEvent = $calendarEvent;
+
         return $this;
     }
 
     /**
-     * @return array<string, array<string, null|bool|int|string|array<int, array<string, null|int>>>>
+     * @return array<string, array<string, bool|int|string|array<int, array<string, int|null>>|null>>
      */
     public function jsonSerialize(): array
     {

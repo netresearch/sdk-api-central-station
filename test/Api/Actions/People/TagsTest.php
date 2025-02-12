@@ -25,7 +25,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\People\TagsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
- * Class TagsTest
+ * Class TagsTest.
  *
  * Tests the mapping of the JSON response to the proper models.
  *
@@ -42,11 +42,12 @@ class TagsTest extends TestCase
      * @param int|null $personId
      *
      * @return People
+     *
      * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null
+        ?int $personId = null,
     ): People {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
@@ -71,6 +72,7 @@ class TagsTest extends TestCase
      * Tests "index" method.
      *
      * @dataProvider indexResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
@@ -82,7 +84,7 @@ class TagsTest extends TestCase
     public function index(string $responseJsonFile): void
     {
         $peopleApi = $this->getPeopleApi($responseJsonFile, 123456);
-        $result  = $peopleApi->tags()->index(new Index());
+        $result    = $peopleApi->tags()->index(new Index());
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
@@ -151,9 +153,11 @@ class TagsTest extends TestCase
      * Tests "show" method.
      *
      * @dataProvider showResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -161,7 +165,7 @@ class TagsTest extends TestCase
     public function show(string $responseJsonFile): void
     {
         $peopleApi = $this->getPeopleApi($responseJsonFile, 123456);
-        $result  = $peopleApi->tags()->show();
+        $result    = $peopleApi->tags()->show();
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
@@ -187,9 +191,11 @@ class TagsTest extends TestCase
      * Tests "create" method.
      *
      * @dataProvider createResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -240,7 +246,7 @@ class TagsTest extends TestCase
     public function update(): void
     {
         $peopleApi = $this->getPeopleApi('', 123456);
-        $result  = $peopleApi->tags(987654)->update(new Update());
+        $result    = $peopleApi->tags(987654)->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags/987654', $peopleApi);
         self::assertHttpMethod('PUT', $peopleApi);
@@ -256,7 +262,7 @@ class TagsTest extends TestCase
     public function delete(): void
     {
         $peopleApi = $this->getPeopleApi('', 123456);
-        $result  = $peopleApi->tags(987654)->delete();
+        $result    = $peopleApi->tags(987654)->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/tags/987654', $peopleApi);
         self::assertHttpMethod('DELETE', $peopleApi);

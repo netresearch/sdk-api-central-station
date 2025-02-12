@@ -33,11 +33,12 @@ class Update implements RequestInterface
     public function setCompany(Company $company): Update
     {
         $this->company = $company;
+
         return $this;
     }
 
     /**
-     * @return array<string, array<string, null|string|array<int, array<string, null|bool|int|string>>>>
+     * @return array<string, array<string, string|array<int, array<string, bool|int|string|null>>|null>>
      */
     public function jsonSerialize(): array
     {

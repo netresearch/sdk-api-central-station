@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Api\Actions;
 
-use Netresearch\Sdk\CentralStation\Api\Actions\Protocols\Attachments;
 use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
+use Netresearch\Sdk\CentralStation\Api\Actions\Protocols\Attachments;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
@@ -31,6 +31,7 @@ use Netresearch\Sdk\CentralStation\Request\Protocols\Index as IndexRequest;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class Protocols extends AbstractApiEndpoint
@@ -45,18 +46,18 @@ class Protocols extends AbstractApiEndpoint
     /**
      * Instance of the "attachments" API for implementing lazy loading.
      *
-     * @var null|Protocols\Attachments
+     * @var Attachments|null
      */
     private ?Attachments $attachmentsApi = null;
 
     /**
      * Returns the "attachments" API used to process attachments related to a specific person.
      *
-     * @param null|string $attachmentId A valid attachment ID
+     * @param string|null $attachmentId A valid attachment ID
      *
-     * @return Protocols\Attachments
+     * @return Attachments
      */
-    public function attachments(string $attachmentId = null): Attachments
+    public function attachments(?string $attachmentId = null): Attachments
     {
         $this->urlBuilder
             ->setParams([])
@@ -108,7 +109,7 @@ class Protocols extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/protocols/<PROTOCOL-ID>
      *
-     * @return null|ProtocolContainer
+     * @return ProtocolContainer|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

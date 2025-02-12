@@ -45,7 +45,7 @@ class CreateTest extends TestCase
         self::assertSame(
             [
                 'protocol' => [
-                    'person_ids'   => [
+                    'person_ids' => [
                         123456,
                         987654,
                     ],

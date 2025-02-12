@@ -17,7 +17,7 @@ use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Request\People\Index;
 
 /**
- * Class ApiTest
+ * Class ApiTest.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -82,6 +82,7 @@ class ApiTest extends TestCase
      * Tests processing of error responses.
      *
      * @dataProvider errorResponseDataProvider
+     *
      * @test
      *
      * @param int    $expectedStatusCode     The expected status code
@@ -95,7 +96,7 @@ class ApiTest extends TestCase
     public function errorResponse(
         int $expectedStatusCode,
         string $expectedExceptionClass,
-        string $expectedErrorMessage
+        string $expectedErrorMessage,
     ): void {
         // Create mock
         $serviceFactoryMock = $this->getServiceFactoryMock(

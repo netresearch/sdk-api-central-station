@@ -35,6 +35,7 @@ use function in_array;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class CreateRequestBuilder extends AbstractRequestBuilder
@@ -43,24 +44,24 @@ class CreateRequestBuilder extends AbstractRequestBuilder
      * Sets the person's data.
      *
      * @param string      $lastName   The last name
-     * @param null|string $firstName  The first name
-     * @param null|string $gender     The gender (use one of Constants::GENDER_*)
-     * @param null|string $title      The title
-     * @param null|string $salutation The salutation
+     * @param string|null $firstName  The first name
+     * @param string|null $gender     The gender (use one of Constants::GENDER_*)
+     * @param string|null $title      The title
+     * @param string|null $salutation The salutation
      *
      * @return CreateRequestBuilder
      */
     public function setPerson(
         string $lastName,
-        string $firstName = null,
-        string $gender = null,
-        string $title = null,
-        string $salutation = null
+        ?string $firstName = null,
+        ?string $gender = null,
+        ?string $title = null,
+        ?string $salutation = null,
     ): CreateRequestBuilder {
-        $this->data['person']['lastName'] = $lastName;
-        $this->data['person']['firstName'] = $firstName;
-        $this->data['person']['gender'] = $gender;
-        $this->data['person']['title'] = $title;
+        $this->data['person']['lastName']   = $lastName;
+        $this->data['person']['firstName']  = $firstName;
+        $this->data['person']['gender']     = $gender;
+        $this->data['person']['title']      = $title;
         $this->data['person']['salutation'] = $salutation;
 
         return $this;
@@ -76,6 +77,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function setLanguage(string $languageCode): CreateRequestBuilder
     {
         $this->data['person']['languageCode'] = $languageCode;
+
         return $this;
     }
 
@@ -89,6 +91,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function setBackground(string $background): CreateRequestBuilder
     {
         $this->data['person']['background'] = $background;
+
         return $this;
     }
 
@@ -104,7 +107,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function addPosition(
         string $position,
         string $companyName,
-        bool $primary = false
+        bool $primary = false,
     ): CreateRequestBuilder {
         if (!isset($this->data['positions'])) {
             $this->data['positions'] = [];
@@ -210,10 +213,10 @@ class CreateRequestBuilder extends AbstractRequestBuilder
      *
      * @param string      $type        The type of address (use one of Constants::ADDRESS_TYPE)
      * @param string      $street      The street name
-     * @param null|string $zip         The zip code
-     * @param null|string $city        The city name
-     * @param null|string $countryCode The two-letter country code
-     * @param null|string $stateCode   The two-letter state code
+     * @param string|null $zip         The zip code
+     * @param string|null $city        The city name
+     * @param string|null $countryCode The two-letter country code
+     * @param string|null $stateCode   The two-letter state code
      * @param bool        $primary     TRUE if the address is the primary one
      *
      * @return CreateRequestBuilder
@@ -221,11 +224,11 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function addAddress(
         string $type,
         string $street,
-        string $zip = null,
-        string $city = null,
-        string $countryCode = null,
-        string $stateCode = null,
-        bool $primary = false
+        ?string $zip = null,
+        ?string $city = null,
+        ?string $countryCode = null,
+        ?string $stateCode = null,
+        bool $primary = false,
     ): CreateRequestBuilder {
         if (!isset($this->data['addresses'])) {
             $this->data['addresses'] = [];

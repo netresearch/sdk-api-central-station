@@ -23,10 +23,10 @@ use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
-class ShowRequestBuilder extends AbstractRequestBuilder implements
-    IncludesRequestBuilderInterface
+class ShowRequestBuilder extends AbstractRequestBuilder implements IncludesRequestBuilderInterface
 {
     use IncludesTrait;
 
@@ -40,7 +40,7 @@ class ShowRequestBuilder extends AbstractRequestBuilder implements
     public function create(): ShowRequest
     {
         // Validate the input
-//        ShowValidator::validate($this->data);
+        //        ShowValidator::validate($this->data);
 
         // Assign values to request
         $request = new ShowRequest();

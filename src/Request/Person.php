@@ -23,231 +23,245 @@ use JsonSerializable;
 class Person implements JsonSerializable
 {
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $lastName = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $firstName = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $gender = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $title = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $salutation = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $countryCode = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $background = null;
 
     /**
-     * @var null|Positions
+     * @var Positions|null
      */
     private ?Positions $positions = null;
 
     /**
-     * @var null|Tags
+     * @var Tags|null
      */
     private ?Tags $tags = null;
 
     /**
-     * @var null|ContactDetails
+     * @var ContactDetails|null
      */
     private ?ContactDetails $phoneNumbers = null;
 
     /**
-     * @var null|ContactDetails
+     * @var ContactDetails|null
      */
     private ?ContactDetails $emailAddresses = null;
 
     /**
-     * @var null|ContactDetails
+     * @var ContactDetails|null
      */
     private ?ContactDetails $homepages = null;
 
     /**
-     * @var null|Addresses
+     * @var Addresses|null
      */
     private ?Addresses $addresses = null;
 
     /**
-     * @var null|CustomFields
+     * @var CustomFields|null
      */
     private ?CustomFields $customFields = null;
 
     /**
-     * @param null|string $lastName
+     * @param string|null $lastName
      *
      * @return Person
      */
     public function setLastName(?string $lastName): Person
     {
         $this->lastName = $lastName;
+
         return $this;
     }
 
     /**
-     * @param null|string $firstName
+     * @param string|null $firstName
      *
      * @return Person
      */
     public function setFirstName(?string $firstName): Person
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
     /**
-     * @param null|string $gender
+     * @param string|null $gender
      *
      * @return Person
      */
     public function setGender(?string $gender): Person
     {
         $this->gender = $gender;
+
         return $this;
     }
 
     /**
-     * @param null|string $title
+     * @param string|null $title
      *
      * @return Person
      */
     public function setTitle(?string $title): Person
     {
         $this->title = $title;
+
         return $this;
     }
 
     /**
-     * @param null|string $salutation
+     * @param string|null $salutation
      *
      * @return Person
      */
     public function setSalutation(?string $salutation): Person
     {
         $this->salutation = $salutation;
+
         return $this;
     }
 
     /**
-     * @param null|string $countryCode
+     * @param string|null $countryCode
      *
      * @return Person
      */
     public function setCountryCode(?string $countryCode): Person
     {
         $this->countryCode = $countryCode;
+
         return $this;
     }
 
     /**
-     * @param null|string $background
+     * @param string|null $background
      *
      * @return Person
      */
     public function setBackground(?string $background): Person
     {
         $this->background = $background;
+
         return $this;
     }
 
     /**
-     * @param null|Positions $positions
+     * @param Positions|null $positions
      *
      * @return Person
      */
     public function setPositions(?Positions $positions): Person
     {
         $this->positions = $positions;
+
         return $this;
     }
 
     /**
-     * @param null|Tags $tags
+     * @param Tags|null $tags
      *
      * @return Person
      */
     public function setTags(?Tags $tags): Person
     {
         $this->tags = $tags;
+
         return $this;
     }
 
     /**
-     * @param null|ContactDetails $phoneNumbers
+     * @param ContactDetails|null $phoneNumbers
      *
      * @return Person
      */
     public function setPhoneNumbers(?ContactDetails $phoneNumbers): Person
     {
         $this->phoneNumbers = $phoneNumbers;
+
         return $this;
     }
 
     /**
-     * @param null|ContactDetails $emailAddresses
+     * @param ContactDetails|null $emailAddresses
      *
      * @return Person
      */
     public function setEmailAddresses(?ContactDetails $emailAddresses): Person
     {
         $this->emailAddresses = $emailAddresses;
+
         return $this;
     }
 
     /**
-     * @param null|ContactDetails $homepages
+     * @param ContactDetails|null $homepages
      *
      * @return Person
      */
     public function setHomepages(?ContactDetails $homepages): Person
     {
         $this->homepages = $homepages;
+
         return $this;
     }
 
     /**
-     * @param null|Addresses $addresses
+     * @param Addresses|null $addresses
      *
      * @return Person
      */
     public function setAddresses(?Addresses $addresses): Person
     {
         $this->addresses = $addresses;
+
         return $this;
     }
 
     /**
-     * @param null|CustomFields $customFields
+     * @param CustomFields|null $customFields
      *
      * @return Person
      */
     public function setCustomFields(?CustomFields $customFields): Person
     {
         $this->customFields = $customFields;
+
         return $this;
     }
 
     /**
-     * @return array<string, null|string|array<int, array<string, null|bool|int|string>>>
+     * @return array<string, string|array<int, array<string, bool|int|string|null>>|null>
      */
     public function jsonSerialize(): array
     {

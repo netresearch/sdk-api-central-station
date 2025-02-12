@@ -23,6 +23,7 @@ use Netresearch\Sdk\CentralStation\Validator\Addresses\UpdateValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class UpdateRequestBuilder extends AbstractRequestBuilder
@@ -30,26 +31,27 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * Sets the address.
      *
-     * @param null|string $street      The street name
-     * @param null|string $zip         The zip code
-     * @param null|string $city        The city name
-     * @param null|string $countryCode The two-letter country code
-     * @param null|string $stateCode   The two-letter state code
+     * @param string|null $street      The street name
+     * @param string|null $zip         The zip code
+     * @param string|null $city        The city name
+     * @param string|null $countryCode The two-letter country code
+     * @param string|null $stateCode   The two-letter state code
      *
      * @return UpdateRequestBuilder
      */
     public function setAddress(
-        string $street = null,
-        string $zip = null,
-        string $city = null,
-        string $countryCode = null,
-        string $stateCode = null
+        ?string $street = null,
+        ?string $zip = null,
+        ?string $city = null,
+        ?string $countryCode = null,
+        ?string $stateCode = null,
     ): UpdateRequestBuilder {
-        $this->data['address']['street'] = $street;
-        $this->data['address']['zip'] = $zip;
-        $this->data['address']['city'] = $city;
+        $this->data['address']['street']      = $street;
+        $this->data['address']['zip']         = $zip;
+        $this->data['address']['city']        = $city;
         $this->data['address']['countryCode'] = $countryCode;
-        $this->data['address']['stateCode'] = $stateCode;
+        $this->data['address']['stateCode']   = $stateCode;
+
         return $this;
     }
 
@@ -63,6 +65,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setType(string $type): UpdateRequestBuilder
     {
         $this->data['type'] = $type;
+
         return $this;
     }
 
@@ -76,6 +79,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setPrimary(bool $primary): UpdateRequestBuilder
     {
         $this->data['primary'] = $primary;
+
         return $this;
     }
 

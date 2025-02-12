@@ -32,6 +32,7 @@ use Netresearch\Sdk\CentralStation\Request\Companies\Addresses\Create as CreateR
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class Addresses extends AbstractApiEndpoint
@@ -68,7 +69,7 @@ class Addresses extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/companies/<COMPANY-ID>/addrs/<ADDRESS-ID>
      *
-     * @return null|Address
+     * @return Address|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -91,7 +92,7 @@ class Addresses extends AbstractApiEndpoint
      *
      * @param CreateRequest $request The create request instance
      *
-     * @return null|Address
+     * @return Address|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

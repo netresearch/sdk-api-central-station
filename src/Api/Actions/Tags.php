@@ -33,6 +33,7 @@ use Netresearch\Sdk\CentralStation\Request\Tags\TagList as ListRequest;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class Tags extends AbstractApiEndpoint
@@ -71,7 +72,7 @@ class Tags extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/tags/<TAG-ID>
      *
-     * @return null|Tag
+     * @return Tag|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

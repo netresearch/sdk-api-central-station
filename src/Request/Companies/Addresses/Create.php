@@ -36,7 +36,7 @@ class Create implements RequestInterface
     }
 
     /**
-     * @return array<string, array<string, null|bool|int|string>>
+     * @return array<string, array<string, bool|int|string|null>>
      */
     public function jsonSerialize(): array
     {

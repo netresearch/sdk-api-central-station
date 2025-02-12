@@ -23,6 +23,7 @@ use Netresearch\Sdk\CentralStation\Validator\People\Protocols\UpdateValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class UpdateRequestBuilder extends AbstractRequestBuilder
@@ -37,6 +38,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setContent(string $content): UpdateRequestBuilder
     {
         $this->data['protocol']['content'] = $content;
+
         return $this;
     }
 
@@ -50,6 +52,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setName(string $name): UpdateRequestBuilder
     {
         $this->data['protocol']['name'] = $name;
+
         return $this;
     }
 
@@ -63,6 +66,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setConfidential(bool $confidential): UpdateRequestBuilder
     {
         $this->data['protocol']['confidential'] = $confidential;
+
         return $this;
     }
 
@@ -76,6 +80,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setFormat(string $format): UpdateRequestBuilder
     {
         $this->data['protocol']['format'] = $format;
+
         return $this;
     }
 
@@ -89,6 +94,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setBadge(string $badge): UpdateRequestBuilder
     {
         $this->data['protocol']['badge'] = $badge;
+
         return $this;
     }
 

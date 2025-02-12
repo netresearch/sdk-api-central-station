@@ -14,12 +14,12 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\Companies;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\Address;
 use Netresearch\Sdk\CentralStation\Request\Addresses;
+use Netresearch\Sdk\CentralStation\Request\Companies\Create as CreateRequest;
+use Netresearch\Sdk\CentralStation\Request\Company;
 use Netresearch\Sdk\CentralStation\Request\ContactDetail;
 use Netresearch\Sdk\CentralStation\Request\ContactDetails;
 use Netresearch\Sdk\CentralStation\Request\CustomField;
 use Netresearch\Sdk\CentralStation\Request\CustomFields;
-use Netresearch\Sdk\CentralStation\Request\Companies\Create as CreateRequest;
-use Netresearch\Sdk\CentralStation\Request\Company;
 use Netresearch\Sdk\CentralStation\Request\Position;
 use Netresearch\Sdk\CentralStation\Request\Positions;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
@@ -36,6 +36,7 @@ use function in_array;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class CreateRequestBuilder extends AbstractRequestBuilder
@@ -64,6 +65,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function setBackground(string $background): CreateRequestBuilder
     {
         $this->data['company']['background'] = $background;
+
         return $this;
     }
 
@@ -79,7 +81,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function addPosition(
         string $companyName,
         string $position,
-        bool $primary = false
+        bool $primary = false,
     ): CreateRequestBuilder {
         if (!isset($this->data['positions'])) {
             $this->data['positions'] = [];
@@ -185,10 +187,10 @@ class CreateRequestBuilder extends AbstractRequestBuilder
      *
      * @param string      $type        The type of address (use one of Constants::ADDRESS_TYPE)
      * @param string      $street      The street name
-     * @param null|string $zip         The zip code
-     * @param null|string $city        The city name
-     * @param null|string $countryCode The two-letter country code
-     * @param null|string $stateCode   The two-letter state code
+     * @param string|null $zip         The zip code
+     * @param string|null $city        The city name
+     * @param string|null $countryCode The two-letter country code
+     * @param string|null $stateCode   The two-letter state code
      * @param bool        $primary     TRUE if the address is the primary one
      *
      * @return CreateRequestBuilder
@@ -196,11 +198,11 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function addAddress(
         string $type,
         string $street,
-        string $zip = null,
-        string $city = null,
-        string $countryCode = null,
-        string $stateCode = null,
-        bool $primary = false
+        ?string $zip = null,
+        ?string $city = null,
+        ?string $countryCode = null,
+        ?string $stateCode = null,
+        bool $primary = false,
     ): CreateRequestBuilder {
         if (!isset($this->data['addresses'])) {
             $this->data['addresses'] = [];

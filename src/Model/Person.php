@@ -42,35 +42,35 @@ class Person extends AbstractEntity
     /**
      * The salutation of the person.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $salutation = null;
 
     /**
      * The title of the person.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $title = null;
 
     /**
      * The title of the person.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $gender = null;
 
     /**
      * The language of the person as ISO-639-1 code (e.g. de, en, fr or NULL).
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $countryCode = null;
 
     /**
      * The first name of the person.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $firstName = null;
 
@@ -84,14 +84,14 @@ class Person extends AbstractEntity
     /**
      * Background information about the person.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $background = null;
 
     /**
      * ID of the user if the person belongs to a user.
      *
-     * @var null|int
+     * @var int|null
      */
     public ?int $userId = null;
 
@@ -163,14 +163,14 @@ class Person extends AbstractEntity
      */
     public function __construct()
     {
-        $this->tags = new TagCollection();
-        $this->positions = new PositionCollection();
-        $this->companies = new CompanyCollection();
-        $this->addresses = new AddressCollection();
+        $this->tags             = new TagCollection();
+        $this->positions        = new PositionCollection();
+        $this->companies        = new CompanyCollection();
+        $this->addresses        = new AddressCollection();
         $this->companyAddresses = new AddressCollection();
-        $this->phoneNumbers = new ContactDetailCollection();
-        $this->emails = new ContactDetailCollection();
-        $this->homepages = new ContactDetailCollection();
-        $this->customFields = new CustomFieldCollection();
+        $this->phoneNumbers     = new ContactDetailCollection();
+        $this->emails           = new ContactDetailCollection();
+        $this->homepages        = new ContactDetailCollection();
+        $this->customFields     = new CustomFieldCollection();
     }
 }

@@ -21,7 +21,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\CustomFieldsTypesProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
- * Class CustomFieldsTypesTest
+ * Class CustomFieldsTypesTest.
  *
  * Tests the mapping of the JSON response to the proper models.
  *
@@ -38,11 +38,12 @@ class CustomFieldsTypesTest extends TestCase
      * @param int|null $customFieldsTypesId
      *
      * @return CustomFieldsTypes
+     *
      * @throws ServiceException
      */
     private function getCustomFieldsTypesApi(
         string $responseJsonFile = '',
-        int $customFieldsTypesId = null
+        ?int $customFieldsTypesId = null,
     ): CustomFieldsTypes {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
@@ -67,6 +68,7 @@ class CustomFieldsTypesTest extends TestCase
      * Tests "index" method.
      *
      * @dataProvider indexResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
@@ -154,9 +156,11 @@ class CustomFieldsTypesTest extends TestCase
      * Tests "show" method.
      *
      * @dataProvider showResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException

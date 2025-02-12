@@ -25,32 +25,32 @@ class Address implements JsonSerializable
     /**
      * The ID of the record.
      *
-     * @var null|int
+     * @var int|null
      */
     private ?int $id = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $street = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $zip = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $city = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $stateCode = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $countryCode = null;
 
@@ -60,73 +60,79 @@ class Address implements JsonSerializable
     private bool $primary = false;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $type = null;
 
     /**
-     * @param null|int $id
+     * @param int|null $id
      *
      * @return Address
      */
     public function setId(?int $id): Address
     {
         $this->id = $id;
+
         return $this;
     }
 
     /**
-     * @param null|string $street
+     * @param string|null $street
      *
      * @return Address
      */
     public function setStreet(?string $street): Address
     {
         $this->street = $street;
+
         return $this;
     }
 
     /**
-     * @param null|string $zip
+     * @param string|null $zip
      *
      * @return Address
      */
     public function setZip(?string $zip): Address
     {
         $this->zip = $zip;
+
         return $this;
     }
 
     /**
-     * @param null|string $city
+     * @param string|null $city
      *
      * @return Address
      */
     public function setCity(?string $city): Address
     {
         $this->city = $city;
+
         return $this;
     }
 
     /**
-     * @param null|string $stateCode
+     * @param string|null $stateCode
      *
      * @return Address
      */
     public function setStateCode(?string $stateCode): Address
     {
         $this->stateCode = $stateCode;
+
         return $this;
     }
 
     /**
-     * @param null|string $countryCode
+     * @param string|null $countryCode
      *
      * @return Address
      */
     public function setCountryCode(?string $countryCode): Address
     {
         $this->countryCode = $countryCode;
+
         return $this;
     }
 
@@ -138,22 +144,24 @@ class Address implements JsonSerializable
     public function setPrimary(bool $primary): Address
     {
         $this->primary = $primary;
+
         return $this;
     }
 
     /**
-     * @param null|string $type
+     * @param string|null $type
      *
      * @return Address
      */
     public function setType(?string $type): Address
     {
         $this->type = $type;
+
         return $this;
     }
 
     /**
-     * @return array<string, null|bool|int|string>
+     * @return array<string, bool|int|string|null>
      */
     public function jsonSerialize(): array
     {

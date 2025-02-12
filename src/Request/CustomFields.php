@@ -25,13 +25,13 @@ class CustomFields extends AbstractCollection
     /**
      * Returns a PHP array representation of this collection.
      *
-     * @return array<int, array<string, null|int|string>>
+     * @return array<int, array<string, int|string|null>>
      */
     public function jsonSerialize(): array
     {
         return array_values(
             array_map(
-                static fn(CustomField $customField): array => $customField->jsonSerialize(),
+                static fn (CustomField $customField): array => $customField->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

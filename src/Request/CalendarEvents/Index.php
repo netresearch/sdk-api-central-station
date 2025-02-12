@@ -27,11 +27,7 @@ use Netresearch\Sdk\CentralStation\Request\Traits\SortTrait;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Index implements
-    FilterRequestInterface,
-    IncludesRequestInterface,
-    PaginationRequestInterface,
-    SortRequestInterface
+class Index implements FilterRequestInterface, IncludesRequestInterface, PaginationRequestInterface, SortRequestInterface
 {
     use FilterTrait;
     use IncludesTrait;

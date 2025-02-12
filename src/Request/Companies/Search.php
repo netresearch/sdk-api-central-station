@@ -41,6 +41,7 @@ class Search implements IncludesRequestInterface, PaginationRequestInterface
     public function setQuery(array $query): Search
     {
         $this->query = $query;
+
         return $this;
     }
 

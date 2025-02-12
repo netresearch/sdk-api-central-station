@@ -24,7 +24,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\People\AddressesProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
- * Class AddressesTest
+ * Class AddressesTest.
  *
  * Tests the mapping of the JSON response to the proper models.
  *
@@ -41,11 +41,12 @@ class AddressesTest extends TestCase
      * @param int|null $personId
      *
      * @return People
+     *
      * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null
+        ?int $personId = null,
     ): People {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
@@ -70,6 +71,7 @@ class AddressesTest extends TestCase
      * Tests "index" method.
      *
      * @dataProvider indexResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
@@ -163,9 +165,11 @@ class AddressesTest extends TestCase
      * Tests "show" method.
      *
      * @dataProvider showResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -224,9 +228,11 @@ class AddressesTest extends TestCase
      * Tests "create" method.
      *
      * @dataProvider createResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException

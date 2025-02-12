@@ -38,18 +38,18 @@ class IndexTest extends TestCase
             ->setOrderDirection('desc')
             ->setFilter([
                 'created_at' => [
-                    Constants::FILTER_SMALLER_THAN => '2022-10-25'
-                ]
+                    Constants::FILTER_SMALLER_THAN => '2022-10-25',
+                ],
             ]);
 
         self::assertSame(
             [
-                'perpage'  => 10,
-                'page'     => 2,
-                'order'    => 'name-desc',
-                'filter'   => [
+                'perpage' => 10,
+                'page'    => 2,
+                'order'   => 'name-desc',
+                'filter'  => [
                     'created_at' => [
-                        Constants::FILTER_SMALLER_THAN => '2022-10-25'
+                        Constants::FILTER_SMALLER_THAN => '2022-10-25',
                     ],
                 ],
             ],

@@ -32,6 +32,7 @@ use Netresearch\Sdk\CentralStation\Request\Protocols\Index as IndexRequest;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class Protocols extends AbstractApiEndpoint
@@ -70,7 +71,7 @@ class Protocols extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/people/<PERSON-ID>/protocols/<PROTOCOL-ID>
      *
-     * @return null|ProtocolContainer
+     * @return ProtocolContainer|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -91,7 +92,7 @@ class Protocols extends AbstractApiEndpoint
      *
      * @param CreateRequest $request The create request instance
      *
-     * @return null|ProtocolContainer
+     * @return ProtocolContainer|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

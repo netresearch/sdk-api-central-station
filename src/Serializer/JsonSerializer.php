@@ -91,7 +91,7 @@ class JsonSerializer
         // Remove all NULL values
         return array_filter(
             $data,
-            static fn($value): bool => $value !== null
+            static fn ($value): bool => $value !== null
         );
     }
 
@@ -99,8 +99,8 @@ class JsonSerializer
      * Decodes the JSON string into PHP objects.
      *
      * @param string                               $jsonResponse
-     * @param null|class-string<TEntity>           $className
-     * @param null|class-string<TEntityCollection> $collectionClassName
+     * @param class-string<TEntity>|null           $className
+     * @param class-string<TEntityCollection>|null $collectionClassName
      *
      * @return ($collectionClassName is class-string<TEntityCollection>
      *              ? TEntityCollection
@@ -111,8 +111,8 @@ class JsonSerializer
      */
     public function decode(
         string $jsonResponse,
-        string $className = null,
-        string $collectionClassName = null
+        ?string $className = null,
+        ?string $collectionClassName = null,
     ) {
         $extractor = new PropertyInfoExtractor(
             [
@@ -133,7 +133,7 @@ class JsonSerializer
         // Add handler for DateTime elements
         $decoder->addType(
             DateTime::class,
-            static fn($value): ?DateTime => $value ? new DateTime($value) : null
+            static fn ($value): ?DateTime => $value ? new DateTime($value) : null
         );
 
         $json = json_decode($jsonResponse, true, 512, JSON_THROW_ON_ERROR);

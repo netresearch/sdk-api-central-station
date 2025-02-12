@@ -19,6 +19,7 @@ use Netresearch\Sdk\CentralStation\Constants;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 interface SortRequestBuilderInterface extends RequestBuilderInterface
@@ -33,6 +34,6 @@ interface SortRequestBuilderInterface extends RequestBuilderInterface
      */
     public function setOrder(
         string $orderBy = Constants::ORDER_BY_NAME,
-        string $orderDirection = Constants::ORDER_DIRECTION_ASC
+        string $orderDirection = Constants::ORDER_DIRECTION_ASC,
     ): SortRequestBuilderInterface;
 }

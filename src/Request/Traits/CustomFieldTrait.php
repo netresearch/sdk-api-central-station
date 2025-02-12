@@ -38,6 +38,7 @@ trait CustomFieldTrait
     public function setCustomFieldFilter(string $name, int|string $value): CustomFieldRequestInterface
     {
         $this->customFieldFilter[$name] = $value;
+
         return $this;
     }
 

@@ -16,7 +16,7 @@ use Netresearch\Sdk\CentralStation\RequestBuilder\People\SearchRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class SearchRequestBuilderTest
+ * Class SearchRequestBuilderTest.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -28,6 +28,7 @@ class SearchRequestBuilderTest extends RequestBuilderTestCase
      * Tests creating a "search" request URL.
      *
      * @test
+     *
      * @throws RequestValidatorException
      */
     public function search(): void

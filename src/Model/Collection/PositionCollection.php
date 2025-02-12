@@ -29,7 +29,7 @@ class PositionCollection extends AbstractCollection
      *
      * @param int $positionId
      *
-     * @return null|Position
+     * @return Position|null
      */
     public function getById(int $positionId): ?Position
     {

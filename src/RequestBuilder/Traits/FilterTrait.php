@@ -37,7 +37,7 @@ trait FilterTrait
     public function addFilter(
         string $field,
         string $comparison,
-        int|string|DateTime $value
+        int|string|DateTime $value,
     ): FilterRequestBuilderInterface {
         if (!isset($this->data['filter'])) {
             $this->data['filter'] = [];

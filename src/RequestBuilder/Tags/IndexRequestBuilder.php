@@ -28,12 +28,10 @@ use Netresearch\Sdk\CentralStation\Validator\Tags\IndexValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
-class IndexRequestBuilder extends AbstractRequestBuilder implements
-    FilterRequestBuilderInterface,
-    PaginationRequestBuilderInterface,
-    SortRequestBuilderInterface
+class IndexRequestBuilder extends AbstractRequestBuilder implements FilterRequestBuilderInterface, PaginationRequestBuilderInterface, SortRequestBuilderInterface
 {
     use FilterTrait;
     use PaginationTrait;

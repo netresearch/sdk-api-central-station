@@ -17,7 +17,7 @@ use Netresearch\Sdk\CentralStation\RequestBuilder\CalendarEvents\IndexRequestBui
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class IndexRequestBuilderTest
+ * Class IndexRequestBuilderTest.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -29,6 +29,7 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
      * Tests creating an "index" request URL.
      *
      * @test
+     *
      * @throws RequestValidatorException
      */
     public function index(): void
@@ -59,49 +60,49 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
         );
     }
 
-//
-//    /**
-//     * @test
-//     */
-//    public function throwExceptionOnUnsupportedInclude(): void
-//    {
-//        $this->expectException(RequestValidatorException::class);
-//        $this->expectExceptionMessage('The provided include parameter "INDEX-INCLUDE" is not allowed');
-//
-//        $requestBuilder = new IndexRequestBuilder();
-//        $requestBuilder
-//            ->addInclude('INDEX-INCLUDE')
-//            ->create();
-//    }
-//
-//    /**
-//     * @test
-//     */
-//    public function throwExceptionOnUnsupportedFilter(): void
-//    {
-//        $this->expectException(RequestValidatorException::class);
-//        $this->expectExceptionMessage('The provided filter parameter "INDEX-FILTER" is not allowed');
-//
-//        $requestBuilder = new IndexRequestBuilder();
-//        $requestBuilder
-//            ->addInclude(Constants::INCLUDE_TAGS)
-//            ->addFilter('INDEX-FILTER', Constants::FILTER_EQUAL, '123')
-//            ->create();
-//    }
-//
-//    /**
-//     * @test
-//     */
-//    public function throwExceptionOnTagIdAndTagName(): void
-//    {
-//        $this->expectException(RequestValidatorException::class);
-//        $this->expectExceptionMessage('Please provide either the tag ID or the tag name');
-//
-//        $requestBuilder = new IndexRequestBuilder();
-//        $requestBuilder
-//            ->addInclude(Constants::INCLUDE_TAGS)
-//            ->addFilter('name', Constants::FILTER_EQUAL, '')
-//            ->setTagRestriction(123456, 'TAG-NAME')
-//            ->create();
-//    }
+    //
+    //    /**
+    //     * @test
+    //     */
+    //    public function throwExceptionOnUnsupportedInclude(): void
+    //    {
+    //        $this->expectException(RequestValidatorException::class);
+    //        $this->expectExceptionMessage('The provided include parameter "INDEX-INCLUDE" is not allowed');
+    //
+    //        $requestBuilder = new IndexRequestBuilder();
+    //        $requestBuilder
+    //            ->addInclude('INDEX-INCLUDE')
+    //            ->create();
+    //    }
+    //
+    //    /**
+    //     * @test
+    //     */
+    //    public function throwExceptionOnUnsupportedFilter(): void
+    //    {
+    //        $this->expectException(RequestValidatorException::class);
+    //        $this->expectExceptionMessage('The provided filter parameter "INDEX-FILTER" is not allowed');
+    //
+    //        $requestBuilder = new IndexRequestBuilder();
+    //        $requestBuilder
+    //            ->addInclude(Constants::INCLUDE_TAGS)
+    //            ->addFilter('INDEX-FILTER', Constants::FILTER_EQUAL, '123')
+    //            ->create();
+    //    }
+    //
+    //    /**
+    //     * @test
+    //     */
+    //    public function throwExceptionOnTagIdAndTagName(): void
+    //    {
+    //        $this->expectException(RequestValidatorException::class);
+    //        $this->expectExceptionMessage('Please provide either the tag ID or the tag name');
+    //
+    //        $requestBuilder = new IndexRequestBuilder();
+    //        $requestBuilder
+    //            ->addInclude(Constants::INCLUDE_TAGS)
+    //            ->addFilter('name', Constants::FILTER_EQUAL, '')
+    //            ->setTagRestriction(123456, 'TAG-NAME')
+    //            ->create();
+    //    }
 }

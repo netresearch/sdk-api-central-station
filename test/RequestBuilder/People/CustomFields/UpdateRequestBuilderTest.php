@@ -18,7 +18,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\People\CustomFieldsProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class UpdateRequestBuilderTest
+ * Class UpdateRequestBuilderTest.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -42,6 +42,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
      * Tests updating an existing address.
      *
      * @dataProvider updateRequestDataProvider
+     *
      * @test
      *
      * @param string $expectedJson
@@ -54,7 +55,6 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
         $requestBuilder = new UpdateRequestBuilder();
         $requestBuilder
             ->setContent('MY-CUSTOM-FIELD-CONTENT-UPDATED');
-
 
         $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);

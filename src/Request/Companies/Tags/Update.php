@@ -33,11 +33,12 @@ class Update implements RequestInterface
     public function setTag(Tag $tag): Update
     {
         $this->tag = $tag;
+
         return $this;
     }
 
     /**
-     * @return array<string, array<string, null|int|string>>
+     * @return array<string, array<string, int|string|null>>
      */
     public function jsonSerialize(): array
     {

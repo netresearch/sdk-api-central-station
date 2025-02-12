@@ -100,14 +100,14 @@ class CreateTest extends TestCase
         self::assertSame(
             [
                 'person' => [
-                    'name'                     => 'Mustermann',
-                    'first_name'               => 'Max',
-                    'gender'                   => Constants::GENDER_MALE,
-                    'title'                    => 'Dr. Dr.',
-                    'salutation'               => 'Herr',
-                    'country_code'             => 'de',
-                    'background'               => 'background',
-                    'positions_attributes'     => [
+                    'name'                 => 'Mustermann',
+                    'first_name'           => 'Max',
+                    'gender'               => Constants::GENDER_MALE,
+                    'title'                => 'Dr. Dr.',
+                    'salutation'           => 'Herr',
+                    'country_code'         => 'de',
+                    'background'           => 'background',
+                    'positions_attributes' => [
                         [
                             'id'               => null,
                             'person_id'        => null,
@@ -119,7 +119,7 @@ class CreateTest extends TestCase
                             'former'           => false,
                         ],
                     ],
-                    'tags_attributes'          => [
+                    'tags_attributes' => [
                         [
                             'name'            => 'TAG-1',
                             'attachable_id'   => null,
@@ -131,7 +131,7 @@ class CreateTest extends TestCase
                             'attachable_type' => null,
                         ],
                     ],
-                    'tels_attributes'          => [
+                    'tels_attributes' => [
                         [
                             'id'              => null,
                             'name'            => '12345',
@@ -140,7 +140,7 @@ class CreateTest extends TestCase
                             'attachable_type' => null,
                         ],
                     ],
-                    'emails_attributes'        => [
+                    'emails_attributes' => [
                         [
                             'id'              => null,
                             'name'            => 'max.mustermann@example.org',
@@ -149,8 +149,8 @@ class CreateTest extends TestCase
                             'attachable_type' => null,
                         ],
                     ],
-                    'homepages_attributes'     => null,
-                    'addrs_attributes'         => [
+                    'homepages_attributes' => null,
+                    'addrs_attributes'     => [
                         [
                             'id'           => null,
                             'street'       => 'Street 1',

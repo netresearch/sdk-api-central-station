@@ -34,6 +34,7 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class GroupCalendars extends AbstractApiEndpoint
@@ -74,7 +75,7 @@ class GroupCalendars extends AbstractApiEndpoint
      *
      * @param ShowRequest $request The show request instance
      *
-     * @return null|GroupCalendar
+     * @return GroupCalendar|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

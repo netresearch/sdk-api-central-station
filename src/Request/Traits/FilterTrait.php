@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\FilterRequestInterface;
 trait FilterTrait
 {
     /**
-     * @var null|string[][]
+     * @var string[][]|null
      */
     private ?array $filter = null;
 
@@ -46,6 +46,7 @@ trait FilterTrait
     public function setFilter(array $filter): FilterRequestInterface
     {
         $this->filter = $filter;
+
         return $this;
     }
 

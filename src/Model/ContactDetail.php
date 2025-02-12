@@ -49,7 +49,7 @@ class ContactDetail extends AbstractEntity
     /**
      * The clean name (value) of the contact detail.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $nameClean = null;
 
@@ -58,6 +58,7 @@ class ContactDetail extends AbstractEntity
      * (office, office_hq, mobile, fax, private, voip, skype, other).
      *
      * @var string
+     *
      * @see Constants::CONTACT_DETAILS_TYPE
      */
     public string $contactType;

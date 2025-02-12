@@ -24,7 +24,7 @@ use Psr\Http\Message\ResponseInterface;
 use function is_array;
 
 /**
- * Class ErrorPlugin
+ * Class ErrorPlugin.
  *
  * On request errors, throw an HTTP exception with a message extracted from response.
  *
@@ -36,24 +36,25 @@ final class ErrorPlugin implements Plugin
 {
     /**
      * HTTP response codes.
+     *
      * @var int
      */
-    private const HTTP_BAD_REQUEST            = 400;
+    private const HTTP_BAD_REQUEST = 400;
 
     /**
      * @var int
      */
-    private const HTTP_UNAUTHORIZED           = 401;
+    private const HTTP_UNAUTHORIZED = 401;
 
     /**
      * @var int
      */
-    private const HTTP_FORBIDDEN              = 403;
+    private const HTTP_FORBIDDEN = 403;
 
     /**
      * @var int
      */
-    private const HTTP_CONFLICT               = 409;
+    private const HTTP_CONFLICT = 409;
 
     /**
      * @var int
@@ -63,17 +64,17 @@ final class ErrorPlugin implements Plugin
     /**
      * @var int
      */
-    private const HTTP_UNPROCESSABLE_ENTITY   = 422;
+    private const HTTP_UNPROCESSABLE_ENTITY = 422;
 
     /**
      * @var int
      */
-    private const HTTP_INTERNAL_SERVER_ERROR  = 500;
+    private const HTTP_INTERNAL_SERVER_ERROR = 500;
 
     /**
      * @var int
      */
-    private const HTTP_INSUFFICIENT_STORAGE   = 507;
+    private const HTTP_INSUFFICIENT_STORAGE = 507;
 
     /**
      * Handles all 400 errors.
@@ -241,7 +242,7 @@ final class ErrorPlugin implements Plugin
      * @param callable         $next    Next middleware in the chain, the request is passed as the first argument
      * @param callable         $first   First middleware in the chain, used to restart a request
      *
-     * @return Promise Resolves a PSR-7 Response or fails with an Http\Client\Exception (The same as HttpAsyncClient).
+     * @return Promise resolves a PSR-7 Response or fails with an Http\Client\Exception (The same as HttpAsyncClient)
      */
     public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
     {

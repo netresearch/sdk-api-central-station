@@ -25,10 +25,10 @@ use Netresearch\Sdk\CentralStation\Validator\Companies\StatsValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
-class StatsRequestBuilder extends AbstractRequestBuilder implements
-    FilterRequestBuilderInterface
+class StatsRequestBuilder extends AbstractRequestBuilder implements FilterRequestBuilderInterface
 {
     use FilterTrait;
 

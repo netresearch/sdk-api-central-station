@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Test\Request\Companies\CustomFields;
 
-use Netresearch\Sdk\CentralStation\Request\CustomField;
 use Netresearch\Sdk\CentralStation\Request\Companies\CustomFields\Update;
+use Netresearch\Sdk\CentralStation\Request\CustomField;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -23,10 +23,10 @@ use Netresearch\Sdk\CentralStation\RequestBuilder\Traits\IncludesTrait;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
-class IndexRequestBuilder extends AbstractRequestBuilder implements
-    IncludesRequestBuilderInterface
+class IndexRequestBuilder extends AbstractRequestBuilder implements IncludesRequestBuilderInterface
 {
     use IncludesTrait;
 
@@ -40,7 +40,7 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
     public function create(): IndexRequest
     {
         // Validate the input
-//        IndexValidator::validate($this->data);
+        //        IndexValidator::validate($this->data);
 
         // Assign values to request
         $request = new IndexRequest();

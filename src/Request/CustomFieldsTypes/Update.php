@@ -24,23 +24,24 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 class Update implements RequestInterface
 {
     /**
-     * @var null|CustomFieldsType
+     * @var CustomFieldsType|null
      */
     private ?CustomFieldsType $customFieldsType = null;
 
     /**
-     * @param null|CustomFieldsType $customFieldsType
+     * @param CustomFieldsType|null $customFieldsType
      *
      * @return Update
      */
     public function setCustomFieldsType(?CustomFieldsType $customFieldsType): Update
     {
         $this->customFieldsType = $customFieldsType;
+
         return $this;
     }
 
     /**
-     * @return array<string, array<string, null|int|string|string[]>>
+     * @return array<string, array<string, int|string|string[]|null>>
      */
     public function jsonSerialize(): array
     {

@@ -35,7 +35,7 @@ class Api
     /**
      * Instance of the "people" API for implementing lazy loading.
      *
-     * @var null|People
+     * @var People|null
      */
     private ?People $peopleApi = null;
 
@@ -47,35 +47,35 @@ class Api
     /**
      * Instance of the "tags" API for implementing lazy loading.
      *
-     * @var null|Tags
+     * @var Tags|null
      */
     private ?Tags $tagsApi = null;
 
     /**
      * Instance of the "protocols" API for implementing lazy loading.
      *
-     * @var null|Protocols
+     * @var Protocols|null
      */
     private ?Protocols $protocolsApi = null;
 
     /**
      * Instance of the "custom_fields_types" API for implementing lazy loading.
      *
-     * @var null|CustomFieldsTypes
+     * @var CustomFieldsTypes|null
      */
     private ?CustomFieldsTypes $customFieldsTypesApi = null;
 
     /**
      * Instance of the "group_calendars" API for implementing lazy loading.
      *
-     * @var null|GroupCalendars
+     * @var GroupCalendars|null
      */
     private ?GroupCalendars $groupCalendarsApi = null;
 
     /**
      * Instance of the "cal_events" API for implementing lazy loading.
      *
-     * @var null|CalendarEvents
+     * @var CalendarEvents|null
      */
     private ?CalendarEvents $calendarEventsApi = null;
 
@@ -118,7 +118,7 @@ class Api
         RequestFactoryInterface $requestFactory,
         StreamFactoryInterface $streamFactory,
         JsonSerializer $jsonSerializer,
-        UrlBuilder $urlBuilder
+        UrlBuilder $urlBuilder,
     ) {
         $this->client         = $client;
         $this->requestFactory = $requestFactory;
@@ -130,11 +130,11 @@ class Api
     /**
      * Returns the "people" API by lazy loading.
      *
-     * @param null|int $personId A valid person ID
+     * @param int|null $personId A valid person ID
      *
      * @return People
      */
-    public function people(int $personId = null): People
+    public function people(?int $personId = null): People
     {
         $this->urlBuilder
             ->reset()
@@ -162,11 +162,11 @@ class Api
     /**
      * Returns the "companies" API by lazy loading.
      *
-     * @param null|int $companyId A valid company ID
+     * @param int|null $companyId A valid company ID
      *
      * @return Companies
      */
-    public function companies(int $companyId = null): Companies
+    public function companies(?int $companyId = null): Companies
     {
         $this->urlBuilder
             ->reset()
@@ -194,11 +194,11 @@ class Api
     /**
      * Returns the "tags" API by lazy loading.
      *
-     * @param null|int $tagId A valid tag ID
+     * @param int|null $tagId A valid tag ID
      *
      * @return Tags
      */
-    public function tags(int $tagId = null): Tags
+    public function tags(?int $tagId = null): Tags
     {
         $this->urlBuilder
             ->reset()
@@ -226,11 +226,11 @@ class Api
     /**
      * Returns the "protocols" API by lazy loading.
      *
-     * @param null|int $protocolId A valid protocol ID
+     * @param int|null $protocolId A valid protocol ID
      *
      * @return Protocols
      */
-    public function protocols(int $protocolId = null): Protocols
+    public function protocols(?int $protocolId = null): Protocols
     {
         $this->urlBuilder
             ->reset()
@@ -258,11 +258,11 @@ class Api
     /**
      * Returns the "customFieldsTypes" API by lazy loading.
      *
-     * @param null|int $customFieldsTypeId A valid custom fields type ID
+     * @param int|null $customFieldsTypeId A valid custom fields type ID
      *
      * @return CustomFieldsTypes
      */
-    public function customFieldsTypes(int $customFieldsTypeId = null): CustomFieldsTypes
+    public function customFieldsTypes(?int $customFieldsTypeId = null): CustomFieldsTypes
     {
         $this->urlBuilder
             ->reset()
@@ -290,11 +290,11 @@ class Api
     /**
      * Returns the "groupCalendars" API by lazy loading.
      *
-     * @param null|string $groupCalendarId A valid group calendar ID
+     * @param string|null $groupCalendarId A valid group calendar ID
      *
      * @return GroupCalendars
      */
-    public function groupCalendars(string $groupCalendarId = null): GroupCalendars
+    public function groupCalendars(?string $groupCalendarId = null): GroupCalendars
     {
         $this->urlBuilder
             ->reset()
@@ -322,11 +322,11 @@ class Api
     /**
      * Returns the "calendarEvents" API by lazy loading.
      *
-     * @param null|string $calendarEventId A valid calendar event ID
+     * @param string|null $calendarEventId A valid calendar event ID
      *
      * @return CalendarEvents
      */
-    public function calendarEvents(string $calendarEventId = null): CalendarEvents
+    public function calendarEvents(?string $calendarEventId = null): CalendarEvents
     {
         $this->urlBuilder
             ->reset()

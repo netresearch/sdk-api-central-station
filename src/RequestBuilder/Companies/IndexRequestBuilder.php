@@ -33,14 +33,10 @@ use Netresearch\Sdk\CentralStation\Validator\Companies\IndexValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
-class IndexRequestBuilder extends AbstractRequestBuilder implements
-    FilterRequestBuilderInterface,
-    IncludesRequestBuilderInterface,
-    PaginationRequestBuilderInterface,
-    SortRequestBuilderInterface,
-    CustomFieldRequestBuilderInterface
+class IndexRequestBuilder extends AbstractRequestBuilder implements FilterRequestBuilderInterface, IncludesRequestBuilderInterface, PaginationRequestBuilderInterface, SortRequestBuilderInterface, CustomFieldRequestBuilderInterface
 {
     use CustomFieldTrait;
     use FilterTrait;
@@ -51,14 +47,14 @@ class IndexRequestBuilder extends AbstractRequestBuilder implements
     /**
      * Sets the restriction to individual tags.
      *
-     * @param null|int    $tagId   The tag ID, returns all objects with the same name of the respective tag
-     * @param null|string $tagName The tag name, returns all objects that have the corresponding tag
+     * @param int|null    $tagId   The tag ID, returns all objects with the same name of the respective tag
+     * @param string|null $tagName The tag name, returns all objects that have the corresponding tag
      *
      * @return self
      */
     public function setTagRestriction(
         ?int $tagId = null,
-        ?string $tagName = null
+        ?string $tagName = null,
     ): IndexRequestBuilder {
         $this->data['tag'] = [
             'tagId'   => $tagId,

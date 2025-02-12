@@ -23,34 +23,36 @@ use Netresearch\Sdk\CentralStation\Request\PaginationRequestInterface;
 trait PaginationTrait
 {
     /**
-     * @var null|int
+     * @var int|null
      */
     private ?int $perPage = null;
 
     /**
-     * @var null|int
+     * @var int|null
      */
     private ?int $page = null;
 
     /**
-     * @param null|int $perPage
+     * @param int|null $perPage
      *
      * @return PaginationRequestInterface
      */
     public function setPerPage(?int $perPage): PaginationRequestInterface
     {
         $this->perPage = $perPage;
+
         return $this;
     }
 
     /**
-     * @param null|int $page
+     * @param int|null $page
      *
      * @return PaginationRequestInterface
      */
     public function setPage(?int $page): PaginationRequestInterface
     {
         $this->page = $page;
+
         return $this;
     }
 

@@ -25,23 +25,24 @@ class CalendarEventAttendee implements JsonSerializable
     /**
      * The ID of the person attached to the calendar event.
      *
-     * @var null|int
+     * @var int|null
      */
     private ?int $personId = null;
 
     /**
-     * @param null|int $personId
+     * @param int|null $personId
      *
      * @return CalendarEventAttendee
      */
     public function setPersonId(?int $personId): CalendarEventAttendee
     {
         $this->personId = $personId;
+
         return $this;
     }
 
     /**
-     * @return array<string, null|int>
+     * @return array<string, int|null>
      */
     public function jsonSerialize(): array
     {

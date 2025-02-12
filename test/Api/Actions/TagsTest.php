@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\TagsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
- * Class TagsTest
+ * Class TagsTest.
  *
  * Tests the mapping of the JSON response to the proper models.
  *
@@ -40,11 +40,12 @@ class TagsTest extends TestCase
      * @param int|null $tagId
      *
      * @return Tags
+     *
      * @throws ServiceException
      */
     private function getTagsApi(
         string $responseJsonFile = '',
-        int $tagId = null
+        ?int $tagId = null,
     ): Tags {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
@@ -69,6 +70,7 @@ class TagsTest extends TestCase
      * Tests "index" method.
      *
      * @dataProvider indexResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
@@ -149,9 +151,11 @@ class TagsTest extends TestCase
      * Tests "show" method.
      *
      * @dataProvider showResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException

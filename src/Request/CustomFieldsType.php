@@ -25,79 +25,83 @@ class CustomFieldsType implements JsonSerializable
     /**
      * The display position of the individual field type.
      *
-     * @var null|int
+     * @var int|null
      */
     private ?int $position = null;
 
     /**
      * The name of the custom field type.
      *
-     * @var null|string
+     * @var string|null
      */
     private ?string $name = null;
 
     /**
      * The category (one of Constants::CUSTOM_FIELDS_TYPE_CATEGORY_*).
      *
-     * @var null|string
+     * @var string|null
      */
     private ?string $category = null;
 
     /**
      * The type of the custom field (one of Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_*).
      *
-     * @var null|string
+     * @var string|null
      */
     private ?string $type = null;
 
     /**
      * The options for field type "select".
      *
-     * @var null|string[]
+     * @var string[]|null
      */
     private ?array $options = null;
 
     /**
-     * @param null|int $position
+     * @param int|null $position
      *
      * @return CustomFieldsType
      */
     public function setPosition(?int $position): CustomFieldsType
     {
         $this->position = $position;
+
         return $this;
     }
 
     /**
-     * @param null|string $name
+     * @param string|null $name
      *
      * @return CustomFieldsType
      */
     public function setName(?string $name): CustomFieldsType
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
-     * @param null|string $category
+     * @param string|null $category
      *
      * @return CustomFieldsType
      */
     public function setCategory(?string $category): CustomFieldsType
     {
         $this->category = $category;
+
         return $this;
     }
 
     /**
-     * @param null|string $type
+     * @param string|null $type
      *
      * @return CustomFieldsType
      */
     public function setType(?string $type): CustomFieldsType
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -109,11 +113,12 @@ class CustomFieldsType implements JsonSerializable
     public function setOptions(string ...$options): CustomFieldsType
     {
         $this->options = $options;
+
         return $this;
     }
 
     /**
-     * @return array<string, null|int|string|string[]>
+     * @return array<string, int|string|string[]|null>
      */
     public function jsonSerialize(): array
     {

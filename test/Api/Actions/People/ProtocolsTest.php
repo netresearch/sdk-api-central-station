@@ -27,7 +27,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\People\ProtocolsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
- * Class ProtocolsTest
+ * Class ProtocolsTest.
  *
  * Tests the mapping of the JSON response to the proper models.
  *
@@ -44,11 +44,12 @@ class ProtocolsTest extends TestCase
      * @param int|null $personId
      *
      * @return People
+     *
      * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null
+        ?int $personId = null,
     ): People {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
@@ -73,6 +74,7 @@ class ProtocolsTest extends TestCase
      * Tests "index" method.
      *
      * @dataProvider indexResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
@@ -173,9 +175,11 @@ class ProtocolsTest extends TestCase
      * Tests "show" method.
      *
      * @dataProvider showResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -183,7 +187,7 @@ class ProtocolsTest extends TestCase
     public function show(string $responseJsonFile): void
     {
         $peopleApi = $this->getPeopleApi($responseJsonFile, 123456);
-        $result  = $peopleApi->protocols()->show();
+        $result    = $peopleApi->protocols()->show();
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/protocols', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
@@ -237,9 +241,11 @@ class ProtocolsTest extends TestCase
      * Tests "create" method.
      *
      * @dataProvider createResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -300,7 +306,7 @@ class ProtocolsTest extends TestCase
     public function update(): void
     {
         $peopleApi = $this->getPeopleApi('', 123456);
-        $result  = $peopleApi->protocols(987654)->update(new Update());
+        $result    = $peopleApi->protocols(987654)->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/protocols/987654', $peopleApi);
         self::assertHttpMethod('PUT', $peopleApi);
@@ -316,7 +322,7 @@ class ProtocolsTest extends TestCase
     public function delete(): void
     {
         $peopleApi = $this->getPeopleApi('', 123456);
-        $result  = $peopleApi->protocols(987654)->delete();
+        $result    = $peopleApi->protocols(987654)->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/123456/protocols/987654', $peopleApi);
         self::assertHttpMethod('DELETE', $peopleApi);

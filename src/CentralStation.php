@@ -32,6 +32,7 @@ use Psr\Log\LoggerInterface;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class CentralStation
@@ -61,7 +62,7 @@ class CentralStation
     /**
      * Api instance for implementing lazy loading.
      *
-     * @var null|Api
+     * @var Api|null
      */
     private ?Api $api = null;
 
@@ -77,7 +78,7 @@ class CentralStation
         LoggerInterface $logger,
         string $webserviceUrl,
         string $apiKey,
-        array $classMap = []
+        array $classMap = [],
     ) {
         $this->logger = $logger;
         $this->apiKey = $apiKey;
@@ -130,7 +131,7 @@ class CentralStation
         if (!($this->api instanceof Api)) {
             try {
                 $requestFactory = Psr17FactoryDiscovery::findRequestFactory();
-                $streamFactory = Psr17FactoryDiscovery::findStreamFactory();
+                $streamFactory  = Psr17FactoryDiscovery::findStreamFactory();
             } catch (NotFoundException $exception) {
                 throw ServiceExceptionFactory::create($exception);
             }

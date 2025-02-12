@@ -29,7 +29,7 @@ class AddressCollection extends AbstractCollection
      *
      * @param string $type
      *
-     * @return null|Address
+     * @return Address|null
      */
     public function getByType(string $type): ?Address
     {

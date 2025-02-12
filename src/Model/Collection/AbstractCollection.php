@@ -33,7 +33,7 @@ use function count;
 abstract class AbstractCollection implements CollectionInterface, JsonSerializable
 {
     /**
-     * An array containing the elements of this collection
+     * An array containing the elements of this collection.
      *
      * @var TValue[]
      */
@@ -54,7 +54,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @param TKey $offset The offset to retrieve
      *
-     * @return null|TValue
+     * @return TValue|null
      */
     #[ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -139,9 +139,9 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
     /**
      * Return the key of the current element.
      *
-     * @return null|int|string
+     * @return int|string|null
      */
-    public function key(): null|int|string
+    public function key(): int|string|null
     {
         return key($this->elements);
     }
@@ -203,6 +203,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
     public function sort(callable $callback): self
     {
         uasort($this->elements, $callback);
+
         return $this;
     }
 
@@ -216,6 +217,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
     public function filter(callable $callback): self
     {
         $this->elements = array_filter($this->elements, $callback);
+
         return $this;
     }
 
@@ -224,16 +226,17 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @param int      $offset If the offset is non-negative, the sequence will start at that offset in the array. If
      *                         offset is negative, the sequence will start that far from the end of the array.
-     * @param null|int $length If length is given and is positive, then the sequence will have that many elements
+     * @param int|null $length If length is given and is positive, then the sequence will have that many elements
      *                         in it. If length is given and is negative, then the sequence will stop that many
      *                         elements from the end of the array. If it is omitted, then the sequence will have
      *                         everything from offset up until the end of the array.
      *
      * @return self<TKey, TValue>
      */
-    public function slice(int $offset, int $length = null): self
+    public function slice(int $offset, ?int $length = null): self
     {
         $this->elements = array_slice($this->elements, $offset, $length);
+
         return $this;
     }
 }

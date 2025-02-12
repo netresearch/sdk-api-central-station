@@ -62,14 +62,14 @@ class CustomField extends AbstractEntity
     /**
      * The value in decimal representation, if the type of the custom field is "decimal".
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $nameDecimal = null;
 
     /**
      * The value in ISO-8601 date representation, if the type of the custom field is "date".
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $nameDate = null;
 
@@ -83,14 +83,14 @@ class CustomField extends AbstractEntity
     /**
      * The name of the underlying custom fields type.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $customFieldsTypeName = null;
 
     /**
      * A custom fields type.
      *
-     * @var null|CustomFieldsType
+     * @var CustomFieldsType|null
      */
     public ?CustomFieldsType $customFieldsType = null;
 }

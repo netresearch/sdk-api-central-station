@@ -35,7 +35,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\PeopleProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
- * Class PeopleTest
+ * Class PeopleTest.
  *
  * Tests the mapping of the JSON response to the proper models.
  *
@@ -52,11 +52,12 @@ class PeopleTest extends TestCase
      * @param int|null $personId
      *
      * @return People
+     *
      * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null
+        ?int $personId = null,
     ): People {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
@@ -81,6 +82,7 @@ class PeopleTest extends TestCase
      * Tests "index" method.
      *
      * @dataProvider indexResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
@@ -200,9 +202,11 @@ class PeopleTest extends TestCase
      * Tests "show" method.
      *
      * @dataProvider showResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -262,9 +266,11 @@ class PeopleTest extends TestCase
      * Tests "create" method.
      *
      * @dataProvider createResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -342,9 +348,11 @@ class PeopleTest extends TestCase
      * Tests "stats" method.
      *
      * @dataProvider statsResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -397,9 +405,11 @@ class PeopleTest extends TestCase
      * Tests "search" method.
      *
      * @dataProvider searchResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException

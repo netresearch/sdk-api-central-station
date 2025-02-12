@@ -25,13 +25,13 @@ class ContactDetails extends AbstractCollection
     /**
      * Returns a PHP array representation of this collection.
      *
-     * @return array<int, array<string, null|int|string>>
+     * @return array<int, array<string, int|string|null>>
      */
     public function jsonSerialize(): array
     {
         return array_values(
             array_map(
-                static fn(ContactDetail $contactDetail): array => $contactDetail->jsonSerialize(),
+                static fn (ContactDetail $contactDetail): array => $contactDetail->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

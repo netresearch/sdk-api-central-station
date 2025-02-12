@@ -29,7 +29,7 @@ class ContactDetailCollection extends AbstractCollection
      *
      * @param string $contactType
      *
-     * @return null|ContactDetail
+     * @return ContactDetail|null
      */
     public function getByContactType(string $contactType): ?ContactDetail
     {

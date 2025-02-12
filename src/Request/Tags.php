@@ -25,13 +25,13 @@ class Tags extends AbstractCollection
     /**
      * Returns a PHP array representation of this collection.
      *
-     * @return array<int, array<string, null|int|string>>
+     * @return array<int, array<string, int|string|null>>
      */
     public function jsonSerialize(): array
     {
         return array_values(
             array_map(
-                static fn(Tag $tag): array => $tag->jsonSerialize(),
+                static fn (Tag $tag): array => $tag->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

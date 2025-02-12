@@ -60,6 +60,7 @@ class Merge implements RequestInterface
     public function setMergeIds(int ...$mergeIds): Merge
     {
         $this->mergeIds = $mergeIds;
+
         return $this;
     }
 

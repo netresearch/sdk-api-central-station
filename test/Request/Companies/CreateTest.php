@@ -14,12 +14,12 @@ namespace Netresearch\Sdk\CentralStation\Test\Request\Companies;
 use Netresearch\Sdk\CentralStation\Constants;
 use Netresearch\Sdk\CentralStation\Request\Address;
 use Netresearch\Sdk\CentralStation\Request\Addresses;
+use Netresearch\Sdk\CentralStation\Request\Companies\Create;
+use Netresearch\Sdk\CentralStation\Request\Company;
 use Netresearch\Sdk\CentralStation\Request\ContactDetail;
 use Netresearch\Sdk\CentralStation\Request\ContactDetails;
 use Netresearch\Sdk\CentralStation\Request\CustomField;
 use Netresearch\Sdk\CentralStation\Request\CustomFields;
-use Netresearch\Sdk\CentralStation\Request\Companies\Create;
-use Netresearch\Sdk\CentralStation\Request\Company;
 use Netresearch\Sdk\CentralStation\Request\Position;
 use Netresearch\Sdk\CentralStation\Request\Positions;
 use Netresearch\Sdk\CentralStation\Request\Tag;
@@ -95,9 +95,9 @@ class CreateTest extends TestCase
         self::assertSame(
             [
                 'company' => [
-                    'name'                     => 'ABC company',
-                    'background'               => 'background',
-                    'positions_attributes'     => [
+                    'name'                 => 'ABC company',
+                    'background'           => 'background',
+                    'positions_attributes' => [
                         [
                             'id'               => null,
                             'person_id'        => null,
@@ -109,7 +109,7 @@ class CreateTest extends TestCase
                             'former'           => false,
                         ],
                     ],
-                    'tags_attributes'          => [
+                    'tags_attributes' => [
                         [
                             'name'            => 'TAG-1',
                             'attachable_id'   => null,
@@ -121,7 +121,7 @@ class CreateTest extends TestCase
                             'attachable_type' => null,
                         ],
                     ],
-                    'tels_attributes'          => [
+                    'tels_attributes' => [
                         [
                             'id'              => null,
                             'name'            => '12345',
@@ -130,7 +130,7 @@ class CreateTest extends TestCase
                             'attachable_type' => null,
                         ],
                     ],
-                    'emails_attributes'        => [
+                    'emails_attributes' => [
                         [
                             'id'              => null,
                             'name'            => 'max.mustermann@example.org',
@@ -140,7 +140,7 @@ class CreateTest extends TestCase
                         ],
                     ],
                     'homepages_attributes' => null,
-                    'addrs_attributes'         => [
+                    'addrs_attributes'     => [
                         [
                             'id'           => null,
                             'street'       => 'Street 1',

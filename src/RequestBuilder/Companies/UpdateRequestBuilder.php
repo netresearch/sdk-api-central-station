@@ -14,10 +14,10 @@ namespace Netresearch\Sdk\CentralStation\RequestBuilder\Companies;
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
 use Netresearch\Sdk\CentralStation\Request\Address;
 use Netresearch\Sdk\CentralStation\Request\Addresses;
-use Netresearch\Sdk\CentralStation\Request\ContactDetail;
-use Netresearch\Sdk\CentralStation\Request\ContactDetails;
 use Netresearch\Sdk\CentralStation\Request\Companies\Update as UpdateRequest;
 use Netresearch\Sdk\CentralStation\Request\Company;
+use Netresearch\Sdk\CentralStation\Request\ContactDetail;
+use Netresearch\Sdk\CentralStation\Request\ContactDetails;
 use Netresearch\Sdk\CentralStation\Request\Position;
 use Netresearch\Sdk\CentralStation\Request\Positions;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
@@ -34,6 +34,7 @@ use function in_array;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class UpdateRequestBuilder extends AbstractRequestBuilder
@@ -62,6 +63,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setBackground(string $background): UpdateRequestBuilder
     {
         $this->data['company']['background'] = $background;
+
         return $this;
     }
 
@@ -77,7 +79,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function addPosition(
         string $companyName,
         string $position,
-        bool $primary = false
+        bool $primary = false,
     ): UpdateRequestBuilder {
         if (!isset($this->data['positions'])) {
             $this->data['positions'] = [];
@@ -115,16 +117,16 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * Adds a telephone number attribute.
      *
-     * @param null|int    $id          The ID of the record to update
-     * @param null|string $type        The type of the telephone number (use one of Constants::CONTACT_DETAILS_TYPE)
-     * @param null|string $phoneNumber The telephone number
+     * @param int|null    $id          The ID of the record to update
+     * @param string|null $type        The type of the telephone number (use one of Constants::CONTACT_DETAILS_TYPE)
+     * @param string|null $phoneNumber The telephone number
      *
      * @return UpdateRequestBuilder
      */
     public function addTelephone(
-        int $id = null,
-        string $type = null,
-        string $phoneNumber = null
+        ?int $id = null,
+        ?string $type = null,
+        ?string $phoneNumber = null,
     ): UpdateRequestBuilder {
         if (!isset($this->data['phoneNumbers'])) {
             $this->data['phoneNumbers'] = [];
@@ -142,16 +144,16 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * Adds an email address attribute.
      *
-     * @param null|int    $id           The ID of the record to update
-     * @param null|string $type         The type of the email address (use one of Constants::CONTACT_DETAILS_TYPE)
-     * @param null|string $emailAddress The email address
+     * @param int|null    $id           The ID of the record to update
+     * @param string|null $type         The type of the email address (use one of Constants::CONTACT_DETAILS_TYPE)
+     * @param string|null $emailAddress The email address
      *
      * @return UpdateRequestBuilder
      */
     public function addEmailAddress(
-        int $id = null,
-        string $type = null,
-        string $emailAddress = null
+        ?int $id = null,
+        ?string $type = null,
+        ?string $emailAddress = null,
     ): UpdateRequestBuilder {
         if (!isset($this->data['emailAddresses'])) {
             $this->data['emailAddresses'] = [];
@@ -169,16 +171,16 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * Adds a website attribute.
      *
-     * @param null|int    $id      The ID of the record to update
-     * @param null|string $type    The type of the website (use one of Constants::CONTACT_DETAILS_TYPE)
-     * @param null|string $website The website address
+     * @param int|null    $id      The ID of the record to update
+     * @param string|null $type    The type of the website (use one of Constants::CONTACT_DETAILS_TYPE)
+     * @param string|null $website The website address
      *
      * @return UpdateRequestBuilder
      */
     public function addWebsite(
-        int $id = null,
-        string $type = null,
-        string $website = null
+        ?int $id = null,
+        ?string $type = null,
+        ?string $website = null,
     ): UpdateRequestBuilder {
         if (!isset($this->data['websites'])) {
             $this->data['websites'] = [];
@@ -196,26 +198,26 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     /**
      * Adds an address attribute.
      *
-     * @param null|int    $id          The ID of the address to update
-     * @param null|string $type        The type of address (use one of Constants::ADDRESS_TYPE_*)
-     * @param null|string $street      The street name
-     * @param null|string $zip         The zip code
-     * @param null|string $city        The city name
-     * @param null|string $countryCode The two-letter country code
-     * @param null|string $stateCode   The two-letter state code
+     * @param int|null    $id          The ID of the address to update
+     * @param string|null $type        The type of address (use one of Constants::ADDRESS_TYPE_*)
+     * @param string|null $street      The street name
+     * @param string|null $zip         The zip code
+     * @param string|null $city        The city name
+     * @param string|null $countryCode The two-letter country code
+     * @param string|null $stateCode   The two-letter state code
      * @param bool        $primary     TRUE if the address is the primary one
      *
      * @return UpdateRequestBuilder
      */
     public function addAddress(
-        int $id = null,
-        string $type = null,
-        string $street = null,
-        string $zip = null,
-        string $city = null,
-        string $countryCode = null,
-        string $stateCode = null,
-        bool $primary = false
+        ?int $id = null,
+        ?string $type = null,
+        ?string $street = null,
+        ?string $zip = null,
+        ?string $city = null,
+        ?string $countryCode = null,
+        ?string $stateCode = null,
+        bool $primary = false,
     ): UpdateRequestBuilder {
         if (!isset($this->data['addresses'])) {
             $this->data['addresses'] = [];

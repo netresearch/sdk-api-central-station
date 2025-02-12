@@ -53,14 +53,14 @@ class Protocol extends AbstractEntity
     /**
      * The sketch of the note.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $name = null;
 
     /**
      * The content of the note.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $content = null;
 

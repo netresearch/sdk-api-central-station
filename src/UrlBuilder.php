@@ -43,6 +43,7 @@ class UrlBuilder
     public function reset(): UrlBuilder
     {
         $this->paths = [];
+
         return $this;
     }
 
@@ -56,6 +57,7 @@ class UrlBuilder
     public function setBase(string $baseUrl): UrlBuilder
     {
         $this->baseUrl = $baseUrl;
+
         return $this;
     }
 
@@ -69,6 +71,7 @@ class UrlBuilder
     public function addPath(string $path): UrlBuilder
     {
         $this->paths[] = $path;
+
         return $this;
     }
 
@@ -98,6 +101,7 @@ class UrlBuilder
     public function setParams(array $parameters): UrlBuilder
     {
         $this->parameters = $parameters;
+
         return $this;
     }
 }

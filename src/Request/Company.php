@@ -41,106 +41,115 @@ class Company implements JsonSerializable
     private ?CustomFields $customFields = null;
 
     /**
-     * @param null|string $name
+     * @param string|null $name
      *
      * @return Company
      */
     public function setName(?string $name): Company
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
-     * @param null|string $background
+     * @param string|null $background
      *
      * @return Company
      */
     public function setBackground(?string $background): Company
     {
         $this->background = $background;
+
         return $this;
     }
 
     /**
-     * @param null|Positions $positions
+     * @param Positions|null $positions
      *
      * @return Company
      */
     public function setPositions(?Positions $positions): Company
     {
         $this->positions = $positions;
+
         return $this;
     }
 
     /**
-     * @param null|Tags $tags
+     * @param Tags|null $tags
      *
      * @return Company
      */
     public function setTags(?Tags $tags): Company
     {
         $this->tags = $tags;
+
         return $this;
     }
 
     /**
-     * @param null|ContactDetails $phoneNumbers
+     * @param ContactDetails|null $phoneNumbers
      *
      * @return Company
      */
     public function setPhoneNumbers(?ContactDetails $phoneNumbers): Company
     {
         $this->phoneNumbers = $phoneNumbers;
+
         return $this;
     }
 
     /**
-     * @param null|ContactDetails $emailAddresses
+     * @param ContactDetails|null $emailAddresses
      *
      * @return Company
      */
     public function setEmailAddresses(?ContactDetails $emailAddresses): Company
     {
         $this->emailAddresses = $emailAddresses;
+
         return $this;
     }
 
     /**
-     * @param null|ContactDetails $homepages
+     * @param ContactDetails|null $homepages
      *
      * @return Company
      */
     public function setHomepages(?ContactDetails $homepages): Company
     {
         $this->homepages = $homepages;
+
         return $this;
     }
 
     /**
-     * @param null|Addresses $addresses
+     * @param Addresses|null $addresses
      *
      * @return Company
      */
     public function setAddresses(?Addresses $addresses): Company
     {
         $this->addresses = $addresses;
+
         return $this;
     }
 
     /**
-     * @param null|CustomFields $customFields
+     * @param CustomFields|null $customFields
      *
      * @return Company
      */
     public function setCustomFields(?CustomFields $customFields): Company
     {
         $this->customFields = $customFields;
+
         return $this;
     }
 
     /**
-     * @return array<string, null|string|array<int, array<string, null|bool|int|string>>>
+     * @return array<string, string|array<int, array<string, bool|int|string|null>>|null>
      */
     public function jsonSerialize(): array
     {

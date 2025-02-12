@@ -38,26 +38,26 @@ class IndexTest extends TestCase
             ->setOrderDirection('desc')
             ->setFilter([
                 'name' => [
-                    Constants::FILTER_LIKE => '%ABC company%'
+                    Constants::FILTER_LIKE => '%ABC company%',
                 ],
                 'created_at' => [
-                    Constants::FILTER_SMALLER_THAN => '2022-10-25'
-                ]
+                    Constants::FILTER_SMALLER_THAN => '2022-10-25',
+                ],
             ])
             ->setIncludes('addrs', 'tags')
             ->setTagName('TAG-NAME');
 
         self::assertSame(
             [
-                'perpage'  => 10,
-                'page'     => 2,
-                'order'    => 'name-desc',
-                'filter'   => [
+                'perpage' => 10,
+                'page'    => 2,
+                'order'   => 'name-desc',
+                'filter'  => [
                     'name' => [
-                        Constants::FILTER_LIKE => '%ABC company%'
+                        Constants::FILTER_LIKE => '%ABC company%',
                     ],
                     'created_at' => [
-                        Constants::FILTER_SMALLER_THAN => '2022-10-25'
+                        Constants::FILTER_SMALLER_THAN => '2022-10-25',
                     ],
                 ],
                 'includes' => 'addrs tags',

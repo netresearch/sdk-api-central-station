@@ -24,6 +24,7 @@ use Netresearch\Sdk\CentralStation\Validator\Companies\Tags\CreateValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class CreateRequestBuilder extends AbstractRequestBuilder
@@ -38,6 +39,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function setTagName(string $name): CreateRequestBuilder
     {
         $this->data['tag']['name'] = $name;
+
         return $this;
     }
 

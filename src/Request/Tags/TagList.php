@@ -32,18 +32,19 @@ class TagList implements PaginationRequestInterface, SortRequestInterface
     use SortTrait;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $attachableType = null;
 
     /**
-     * @param null|string $attachableType
+     * @param string|null $attachableType
      *
      * @return TagList
      */
     public function setAttachableType(?string $attachableType): TagList
     {
         $this->attachableType = $attachableType;
+
         return $this;
     }
 

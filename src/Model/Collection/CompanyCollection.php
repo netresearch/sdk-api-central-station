@@ -29,7 +29,7 @@ class CompanyCollection extends AbstractCollection
      *
      * @param int $companyId
      *
-     * @return null|Company
+     * @return Company|null
      */
     public function getById(int $companyId): ?Company
     {

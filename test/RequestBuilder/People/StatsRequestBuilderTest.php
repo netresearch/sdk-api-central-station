@@ -17,7 +17,7 @@ use Netresearch\Sdk\CentralStation\RequestBuilder\People\StatsRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class StatsRequestBuilderTest
+ * Class StatsRequestBuilderTest.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -29,6 +29,7 @@ class StatsRequestBuilderTest extends RequestBuilderTestCase
      * Tests creating "stats" request URL.
      *
      * @test
+     *
      * @throws RequestValidatorException
      */
     public function stats(): void

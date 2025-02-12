@@ -25,13 +25,13 @@ class Addresses extends AbstractCollection
     /**
      * Returns a PHP array representation of this collection.
      *
-     * @return array<int, array<string, null|bool|int|string>>
+     * @return array<int, array<string, bool|int|string|null>>
      */
     public function jsonSerialize(): array
     {
         return array_values(
             array_map(
-                static fn(Address $address): array => $address->jsonSerialize(),
+                static fn (Address $address): array => $address->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

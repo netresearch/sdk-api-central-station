@@ -11,16 +11,16 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Api\Actions\Companies\Addresses;
 use Netresearch\Sdk\CentralStation\Api\Actions\Companies\CustomFields;
 use Netresearch\Sdk\CentralStation\Api\Actions\Companies\Tags;
-use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
+use Netresearch\Sdk\CentralStation\Model\Company;
 use Netresearch\Sdk\CentralStation\Model\Container\Collection\CompanyContainerCollection;
 use Netresearch\Sdk\CentralStation\Model\Container\CompanyContainer;
-use Netresearch\Sdk\CentralStation\Model\Company;
 use Netresearch\Sdk\CentralStation\Model\Stats;
 use Netresearch\Sdk\CentralStation\Request\Companies\Create as CreateRequest;
 use Netresearch\Sdk\CentralStation\Request\Companies\Index as IndexRequest;
@@ -42,6 +42,7 @@ use Netresearch\Sdk\CentralStation\Request\Companies\Stats as StatsRequest;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class Companies extends AbstractApiEndpoint
@@ -71,11 +72,11 @@ class Companies extends AbstractApiEndpoint
     /**
      * Returns the "addrs" API used to process addresses related to a specific company.
      *
-     * @param null|int $addressId A valid address ID
+     * @param int|null $addressId A valid address ID
      *
-     * @return Companies\Addresses
+     * @return Addresses
      */
-    public function addresses(int $addressId = null): Addresses
+    public function addresses(?int $addressId = null): Addresses
     {
         $this->urlBuilder
             ->setParams([])
@@ -103,11 +104,11 @@ class Companies extends AbstractApiEndpoint
     /**
      * Returns the "custom_fields" API used to process custom fields related to a specific company.
      *
-     * @param null|int $customFieldId A valid custom field ID
+     * @param int|null $customFieldId A valid custom field ID
      *
-     * @return Companies\CustomFields
+     * @return CustomFields
      */
-    public function customFields(int $customFieldId = null): CustomFields
+    public function customFields(?int $customFieldId = null): CustomFields
     {
         $this->urlBuilder
             ->setParams([])
@@ -135,11 +136,11 @@ class Companies extends AbstractApiEndpoint
     /**
      * Returns the "tags" API used to process tags related to a specific company.
      *
-     * @param null|int $tagId A valid tag ID
+     * @param int|null $tagId A valid tag ID
      *
-     * @return Companies\Tags
+     * @return Tags
      */
-    public function tags(int $tagId = null): Tags
+    public function tags(?int $tagId = null): Tags
     {
         $this->urlBuilder
             ->setParams([])
@@ -193,7 +194,7 @@ class Companies extends AbstractApiEndpoint
      *
      * @param ShowRequest $request The show request instance
      *
-     * @return null|Company
+     * @return Company|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -218,7 +219,7 @@ class Companies extends AbstractApiEndpoint
      *
      * @param CreateRequest $request The create request instance
      *
-     * @return null|Company
+     * @return Company|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

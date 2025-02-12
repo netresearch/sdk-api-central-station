@@ -16,7 +16,7 @@ use Netresearch\Sdk\CentralStation\Serializer\JsonSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class TestCase
+ * Class TestCase.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -25,7 +25,7 @@ use PHPUnit\Framework\TestCase;
 class RequestBuilderTestCase extends TestCase
 {
     /**
-     * @var null|JsonSerializer
+     * @var JsonSerializer|null
      */
     protected ?JsonSerializer $serializer = null;
 

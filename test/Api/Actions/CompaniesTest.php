@@ -18,9 +18,9 @@ use Netresearch\Sdk\CentralStation\Exception\ServiceException;
 use Netresearch\Sdk\CentralStation\Model\Address;
 use Netresearch\Sdk\CentralStation\Model\Collection\AddressCollection;
 use Netresearch\Sdk\CentralStation\Model\Collection\TagCollection;
+use Netresearch\Sdk\CentralStation\Model\Company;
 use Netresearch\Sdk\CentralStation\Model\Container\Collection\CompanyContainerCollection;
 use Netresearch\Sdk\CentralStation\Model\Container\CompanyContainer;
-use Netresearch\Sdk\CentralStation\Model\Company;
 use Netresearch\Sdk\CentralStation\Model\Tag;
 use Netresearch\Sdk\CentralStation\Request\Companies\Create;
 use Netresearch\Sdk\CentralStation\Request\Companies\Index;
@@ -32,7 +32,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\CompaniesProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
- * Class CompaniesTest
+ * Class CompaniesTest.
  *
  * Tests the mapping of the JSON response to the proper models.
  *
@@ -49,11 +49,12 @@ class CompaniesTest extends TestCase
      * @param int|null $companyId
      *
      * @return Companies
+     *
      * @throws ServiceException
      */
     private function getCompaniesApi(
         string $responseJsonFile = '',
-        int $companyId = null
+        ?int $companyId = null,
     ): Companies {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
@@ -78,6 +79,7 @@ class CompaniesTest extends TestCase
      * Tests "index" method.
      *
      * @dataProvider indexResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
@@ -159,9 +161,11 @@ class CompaniesTest extends TestCase
      * Tests "show" method.
      *
      * @dataProvider showResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -217,9 +221,11 @@ class CompaniesTest extends TestCase
      * Tests "create" method.
      *
      * @dataProvider createResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -293,9 +299,11 @@ class CompaniesTest extends TestCase
      * Tests "stats" method.
      *
      * @dataProvider statsResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -327,9 +335,11 @@ class CompaniesTest extends TestCase
      * Tests "search" method.
      *
      * @dataProvider searchResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException

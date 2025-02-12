@@ -24,6 +24,7 @@ use Netresearch\Sdk\CentralStation\Validator\Addresses\CreateValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class CreateRequestBuilder extends AbstractRequestBuilder
@@ -32,38 +33,40 @@ class CreateRequestBuilder extends AbstractRequestBuilder
      * Sets the address.
      *
      * @param string      $street      The street name
-     * @param null|string $zip         The zip code
-     * @param null|string $city        The city name
-     * @param null|string $countryCode The two-letter country code
-     * @param null|string $stateCode   The two-letter state code
+     * @param string|null $zip         The zip code
+     * @param string|null $city        The city name
+     * @param string|null $countryCode The two-letter country code
+     * @param string|null $stateCode   The two-letter state code
      *
      * @return CreateRequestBuilder
      */
     public function setAddress(
         string $street,
-        string $zip = null,
-        string $city = null,
-        string $countryCode = null,
-        string $stateCode = null
+        ?string $zip = null,
+        ?string $city = null,
+        ?string $countryCode = null,
+        ?string $stateCode = null,
     ): CreateRequestBuilder {
-        $this->data['address']['street'] = $street;
-        $this->data['address']['zip'] = $zip;
-        $this->data['address']['city'] = $city;
+        $this->data['address']['street']      = $street;
+        $this->data['address']['zip']         = $zip;
+        $this->data['address']['city']        = $city;
         $this->data['address']['countryCode'] = $countryCode;
-        $this->data['address']['stateCode'] = $stateCode;
+        $this->data['address']['stateCode']   = $stateCode;
+
         return $this;
     }
 
     /**
      * Sets the address's type.
      *
-     * @param null|string $type The type of the address (use one of Constants::ADDRESS_TYPE_*)
+     * @param string|null $type The type of the address (use one of Constants::ADDRESS_TYPE_*)
      *
      * @return CreateRequestBuilder
      */
-    public function setType(string $type = null): CreateRequestBuilder
+    public function setType(?string $type = null): CreateRequestBuilder
     {
         $this->data['type'] = $type;
+
         return $this;
     }
 
@@ -77,6 +80,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function setPrimary(bool $primary): CreateRequestBuilder
     {
         $this->data['primary'] = $primary;
+
         return $this;
     }
 

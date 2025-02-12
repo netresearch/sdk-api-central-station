@@ -21,14 +21,14 @@ namespace Netresearch\Sdk\CentralStation\Request;
 interface SortRequestInterface extends RequestInterface
 {
     /**
-     * @param null|string $orderBy
+     * @param string|null $orderBy
      *
      * @return self
      */
     public function setOrderBy(?string $orderBy): SortRequestInterface;
 
     /**
-     * @param null|string $orderDirection
+     * @param string|null $orderDirection
      *
      * @return self
      */

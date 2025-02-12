@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\Api\Actions;
 
+use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Api\Actions\People\Addresses;
 use Netresearch\Sdk\CentralStation\Api\Actions\People\CustomFields;
 use Netresearch\Sdk\CentralStation\Api\Actions\People\Protocols;
 use Netresearch\Sdk\CentralStation\Api\Actions\People\Tags;
-use Netresearch\Sdk\CentralStation\Api\AbstractApiEndpoint;
 use Netresearch\Sdk\CentralStation\Exception\AuthenticationException;
 use Netresearch\Sdk\CentralStation\Exception\DetailedServiceException;
 use Netresearch\Sdk\CentralStation\Exception\ServiceException;
@@ -45,6 +45,7 @@ use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class People extends AbstractApiEndpoint
@@ -59,39 +60,39 @@ class People extends AbstractApiEndpoint
     /**
      * Instance of the "addrs" API for implementing lazy loading.
      *
-     * @var null|People\Addresses
+     * @var Addresses|null
      */
     private ?Addresses $addressesApi = null;
 
     /**
      * Instance of the "custom_fields" API for implementing lazy loading.
      *
-     * @var null|People\CustomFields
+     * @var CustomFields|null
      */
     private ?CustomFields $customFieldsApi = null;
 
     /**
      * Instance of the "protocols" API for implementing lazy loading.
      *
-     * @var null|People\Protocols
+     * @var Protocols|null
      */
     private ?Protocols $protocolsApi = null;
 
     /**
      * Instance of the "tags" API for implementing lazy loading.
      *
-     * @var null|People\Tags
+     * @var Tags|null
      */
     private ?Tags $tagsApi = null;
 
     /**
      * Returns the "addrs" API used to process addresses related to a specific person.
      *
-     * @param null|int $addressId A valid address ID
+     * @param int|null $addressId A valid address ID
      *
-     * @return People\Addresses
+     * @return Addresses
      */
-    public function addresses(int $addressId = null): Addresses
+    public function addresses(?int $addressId = null): Addresses
     {
         $this->urlBuilder
             ->setParams([])
@@ -119,11 +120,11 @@ class People extends AbstractApiEndpoint
     /**
      * Returns the "custom_fields" API used to process custom fields related to a specific person.
      *
-     * @param null|int $customFieldId A valid custom field ID
+     * @param int|null $customFieldId A valid custom field ID
      *
-     * @return People\CustomFields
+     * @return CustomFields
      */
-    public function customFields(int $customFieldId = null): CustomFields
+    public function customFields(?int $customFieldId = null): CustomFields
     {
         $this->urlBuilder
             ->setParams([])
@@ -151,11 +152,11 @@ class People extends AbstractApiEndpoint
     /**
      * Returns the "protocols" API used to process protocols related to a specific person.
      *
-     * @param null|int $protocolId A valid protocol ID
+     * @param int|null $protocolId A valid protocol ID
      *
-     * @return People\Protocols
+     * @return Protocols
      */
-    public function protocols(int $protocolId = null): Protocols
+    public function protocols(?int $protocolId = null): Protocols
     {
         $this->urlBuilder
             ->setParams([])
@@ -183,11 +184,11 @@ class People extends AbstractApiEndpoint
     /**
      * Returns the "tags" API used to process tags related to a specific person.
      *
-     * @param null|int $tagId A valid tag ID
+     * @param int|null $tagId A valid tag ID
      *
-     * @return People\Tags
+     * @return Tags
      */
-    public function tags(int $tagId = null): Tags
+    public function tags(?int $tagId = null): Tags
     {
         $this->urlBuilder
             ->setParams([])
@@ -241,7 +242,7 @@ class People extends AbstractApiEndpoint
      *
      * @param ShowRequest $request The show request instance
      *
-     * @return null|Person
+     * @return Person|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -266,7 +267,7 @@ class People extends AbstractApiEndpoint
      *
      * @param CreateRequest $request The create request instance
      *
-     * @return null|Person
+     * @return Person|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

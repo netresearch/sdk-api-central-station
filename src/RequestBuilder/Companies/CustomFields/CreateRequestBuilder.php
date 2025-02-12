@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\RequestBuilder\Companies\CustomFields;
 
 use Netresearch\Sdk\CentralStation\Exception\RequestValidatorException;
-use Netresearch\Sdk\CentralStation\Request\CustomField;
 use Netresearch\Sdk\CentralStation\Request\Companies\CustomFields\Create as CreateRequest;
+use Netresearch\Sdk\CentralStation\Request\CustomField;
 use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\CustomFields\CreateValidator;
@@ -24,6 +24,7 @@ use Netresearch\Sdk\CentralStation\Validator\CustomFields\CreateValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class CreateRequestBuilder extends AbstractRequestBuilder
@@ -38,6 +39,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function setContent(string $content): CreateRequestBuilder
     {
         $this->data['content'] = $content;
+
         return $this;
     }
 
@@ -51,6 +53,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function setCustomFieldsTypeId(int $customFieldsTypeId): CreateRequestBuilder
     {
         $this->data['customFieldsTypeId'] = $customFieldsTypeId;
+
         return $this;
     }
 

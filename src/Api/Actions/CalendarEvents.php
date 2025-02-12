@@ -34,6 +34,7 @@ use Netresearch\Sdk\CentralStation\Request\CalendarEvents\Show as ShowRequest;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class CalendarEvents extends AbstractApiEndpoint
@@ -74,7 +75,7 @@ class CalendarEvents extends AbstractApiEndpoint
      *
      * @param ShowRequest $request The show request instance
      *
-     * @return null|CalendarEvent
+     * @return CalendarEvent|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -97,7 +98,7 @@ class CalendarEvents extends AbstractApiEndpoint
      *
      * @param CreateRequest $request The create request instance
      *
-     * @return null|CalendarEvent
+     * @return CalendarEvent|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

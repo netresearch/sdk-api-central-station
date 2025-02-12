@@ -17,7 +17,7 @@ use Netresearch\Sdk\CentralStation\RequestBuilder\Tags\IndexRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class IndexRequestBuilderTest
+ * Class IndexRequestBuilderTest.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -29,6 +29,7 @@ class IndexRequestBuilderTest extends RequestBuilderTestCase
      * Tests creating an "index" request URL.
      *
      * @test
+     *
      * @throws RequestValidatorException
      */
     public function index(): void

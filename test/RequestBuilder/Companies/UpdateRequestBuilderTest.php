@@ -18,7 +18,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\CompaniesProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class UpdateRequestBuilderTest
+ * Class UpdateRequestBuilderTest.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -42,6 +42,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
      * Tests updating an existing person.
      *
      * @dataProvider updateRequestDataProvider
+     *
      * @test
      *
      * @param string $expectedJson
@@ -56,7 +57,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
             ->setCompany('DEF company')
             ->setBackground('background');
 
-        $request = $requestBuilder->create();
+        $request     = $requestBuilder->create();
         $requestJson = $this->serializer->encode($request);
 
         self::assertSameJson(

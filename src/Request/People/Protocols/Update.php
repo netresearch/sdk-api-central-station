@@ -24,23 +24,24 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 class Update implements RequestInterface
 {
     /**
-     * @var null|Protocol
+     * @var Protocol|null
      */
     private ?Protocol $protocol = null;
 
     /**
-     * @param null|Protocol $protocol
+     * @param Protocol|null $protocol
      *
      * @return Update
      */
     public function setProtocol(?Protocol $protocol): Update
     {
         $this->protocol = $protocol;
+
         return $this;
     }
 
     /**
-     * @return array<string, array<string, null|bool|string|int[]>>
+     * @return array<string, array<string, bool|string|int[]|null>>
      */
     public function jsonSerialize(): array
     {

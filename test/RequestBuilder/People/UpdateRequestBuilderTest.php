@@ -19,7 +19,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\PeopleProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class UpdateRequestBuilderTest
+ * Class UpdateRequestBuilderTest.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -43,6 +43,7 @@ class UpdateRequestBuilderTest extends RequestBuilderTestCase
      * Tests updating an existing person.
      *
      * @dataProvider updateRequestDataProvider
+     *
      * @test
      *
      * @param string $expectedJson

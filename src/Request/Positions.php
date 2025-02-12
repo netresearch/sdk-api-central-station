@@ -25,13 +25,13 @@ class Positions extends AbstractCollection
     /**
      * Returns a PHP array representation of this collection.
      *
-     * @return array<int, array<string, null|int|bool|string>>
+     * @return array<int, array<string, int|bool|string|null>>
      */
     public function jsonSerialize(): array
     {
         return array_values(
             array_map(
-                static fn(Position $position): array => $position->jsonSerialize(),
+                static fn (Position $position): array => $position->jsonSerialize(),
                 parent::jsonSerialize()
             )
         );

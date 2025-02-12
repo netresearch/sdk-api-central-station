@@ -25,6 +25,7 @@ use function in_array;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class UpdateRequestBuilder extends AbstractRequestBuilder
@@ -39,6 +40,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setPosition(int $position): UpdateRequestBuilder
     {
         $this->data['position'] = $position;
+
         return $this;
     }
 
@@ -52,32 +54,35 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setName(string $name): UpdateRequestBuilder
     {
         $this->data['name'] = $name;
+
         return $this;
     }
 
     /**
      * Sets the category.
      *
-     * @param string $category The category (one of Constants::CUSTOM_FIELDS_TYPE_CATEGORY_*).
+     * @param string $category the category (one of Constants::CUSTOM_FIELDS_TYPE_CATEGORY_*)
      *
      * @return UpdateRequestBuilder
      */
     public function setCategory(string $category): UpdateRequestBuilder
     {
         $this->data['category'] = $category;
+
         return $this;
     }
 
     /**
      * Sets the field type.
      *
-     * @param string $type The type of the custom field (one of Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_*).
+     * @param string $type the type of the custom field (one of Constants::CUSTOM_FIELDS_TYPE_FIELD_TYPE_*)
      *
      * @return UpdateRequestBuilder
      */
     public function setType(string $type): UpdateRequestBuilder
     {
         $this->data['type'] = $type;
+
         return $this;
     }
 

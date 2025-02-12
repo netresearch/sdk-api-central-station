@@ -26,7 +26,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\People\CustomFieldsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
- * Class CustomFieldsTest
+ * Class CustomFieldsTest.
  *
  * Tests the mapping of the JSON response to the proper models.
  *
@@ -43,11 +43,12 @@ class CustomFieldsTest extends TestCase
      * @param int|null $personId
      *
      * @return People
+     *
      * @throws ServiceException
      */
     private function getPeopleApi(
         string $responseJsonFile = '',
-        int $personId = null
+        ?int $personId = null,
     ): People {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
@@ -72,6 +73,7 @@ class CustomFieldsTest extends TestCase
      * Tests "index" method.
      *
      * @dataProvider indexResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
@@ -84,7 +86,7 @@ class CustomFieldsTest extends TestCase
     {
         $peopleApi = $this->getPeopleApi($responseJsonFile,
             12_345_678);
-        $result    = $peopleApi->customFields()->index(new Index());
+        $result = $peopleApi->customFields()->index(new Index());
 
         self::assertWebserviceUrl('https://www.example.org/people/12345678/custom_fields', $peopleApi);
         self::assertHttpMethod('GET', $peopleApi);
@@ -163,16 +165,18 @@ class CustomFieldsTest extends TestCase
      * Tests "show" method.
      *
      * @dataProvider showResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
     public function show(string $responseJsonFile): void
     {
-        $peopleApi   = $this->getPeopleApi($responseJsonFile,
+        $peopleApi = $this->getPeopleApi($responseJsonFile,
             12_345_678);
         $customField = $peopleApi->customFields(2000)->show(new Show());
 
@@ -200,9 +204,11 @@ class CustomFieldsTest extends TestCase
      * Tests "create" method.
      *
      * @dataProvider createResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -261,7 +267,7 @@ class CustomFieldsTest extends TestCase
     {
         $peopleApi = $this->getPeopleApi('',
             12_345_678);
-        $result    = $peopleApi->customFields(2002)->update(new Update());
+        $result = $peopleApi->customFields(2002)->update(new Update());
 
         self::assertWebserviceUrl('https://www.example.org/people/12345678/custom_fields/2002', $peopleApi);
         self::assertHttpMethod('PUT', $peopleApi);
@@ -278,7 +284,7 @@ class CustomFieldsTest extends TestCase
     {
         $peopleApi = $this->getPeopleApi('',
             12_345_678);
-        $result    = $peopleApi->customFields(2002)->delete();
+        $result = $peopleApi->customFields(2002)->delete();
 
         self::assertWebserviceUrl('https://www.example.org/people/12345678/custom_fields/2002', $peopleApi);
         self::assertHttpMethod('DELETE', $peopleApi);

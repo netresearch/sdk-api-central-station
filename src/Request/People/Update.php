@@ -24,23 +24,24 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
 class Update implements RequestInterface
 {
     /**
-     * @var null|Person
+     * @var Person|null
      */
     private ?Person $person = null;
 
     /**
-     * @param null|Person $person
+     * @param Person|null $person
      *
      * @return Update
      */
     public function setPerson(?Person $person): Update
     {
         $this->person = $person;
+
         return $this;
     }
 
     /**
-     * @return array<string, array<string, null|string|array<int, array<string, null|bool|int|string>>>>
+     * @return array<string, array<string, string|array<int, array<string, bool|int|string|null>>|null>>
      */
     public function jsonSerialize(): array
     {

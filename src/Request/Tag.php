@@ -23,55 +23,58 @@ use JsonSerializable;
 class Tag implements JsonSerializable
 {
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $name = null;
 
     /**
-     * @var null|int
+     * @var int|null
      */
     private ?int $attachableId = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $attachableType = null;
 
     /**
-     * @param null|string $name
+     * @param string|null $name
      *
      * @return Tag
      */
     public function setName(?string $name): Tag
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
-     * @param null|int $attachableId
+     * @param int|null $attachableId
      *
      * @return Tag
      */
     public function setAttachableId(?int $attachableId): Tag
     {
         $this->attachableId = $attachableId;
+
         return $this;
     }
 
     /**
-     * @param null|string $attachableType
+     * @param string|null $attachableType
      *
      * @return Tag
      */
     public function setAttachableType(?string $attachableType): Tag
     {
         $this->attachableType = $attachableType;
+
         return $this;
     }
 
     /**
-     * @return array<string, null|int|string>
+     * @return array<string, int|string|null>
      */
     public function jsonSerialize(): array
     {

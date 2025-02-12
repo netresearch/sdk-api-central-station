@@ -60,17 +60,17 @@ class Attachment
     /**
      * The attachment category ID.
      *
-     * @var null|int
+     * @var int|null
      */
     public ?int $attachmentCategoryId = null;
 
     /**
-     * @var null|User
+     * @var User|null
      */
     public ?User $user = null;
 
     /**
-     * @var null|AttachmentCategory
+     * @var AttachmentCategory|null
      */
     public ?AttachmentCategory $attachmentCategory = null;
 

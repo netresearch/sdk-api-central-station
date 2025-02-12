@@ -18,6 +18,7 @@ namespace Netresearch\Sdk\CentralStation\Exception;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class DetailedServiceException extends ServiceException

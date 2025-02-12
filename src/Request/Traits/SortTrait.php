@@ -23,34 +23,36 @@ use Netresearch\Sdk\CentralStation\Request\SortRequestInterface;
 trait SortTrait
 {
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $orderBy = null;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     private ?string $orderDirection = 'asc';
 
     /**
-     * @param null|string $orderBy
+     * @param string|null $orderBy
      *
      * @return SortRequestInterface
      */
     public function setOrderBy(?string $orderBy): SortRequestInterface
     {
         $this->orderBy = $orderBy;
+
         return $this;
     }
 
     /**
-     * @param null|string $orderDirection
+     * @param string|null $orderDirection
      *
      * @return SortRequestInterface
      */
     public function setOrderDirection(?string $orderDirection): SortRequestInterface
     {
         $this->orderDirection = $orderDirection;
+
         return $this;
     }
 

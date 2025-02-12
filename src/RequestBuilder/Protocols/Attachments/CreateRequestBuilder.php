@@ -23,6 +23,7 @@ use Netresearch\Sdk\CentralStation\Validator\Protocols\Attachments\CreateValidat
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class CreateRequestBuilder extends AbstractRequestBuilder
@@ -37,6 +38,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function setFilename(string $filename): CreateRequestBuilder
     {
         $this->data['attachment']['filename'] = $filename;
+
         return $this;
     }
 
@@ -50,6 +52,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function setContentType(string $contentType): CreateRequestBuilder
     {
         $this->data['attachment']['contentType'] = $contentType;
+
         return $this;
     }
 
@@ -63,40 +66,43 @@ class CreateRequestBuilder extends AbstractRequestBuilder
     public function setData(string $data): CreateRequestBuilder
     {
         $this->data['attachment']['data'] = $data;
+
         return $this;
     }
 
     /**
      * Sets the attachment's attachable info.
      *
-     * @param null|int    $id   The attachable ID
-     * @param null|string $type The attachable type
+     * @param int|null    $id   The attachable ID
+     * @param string|null $type The attachable type
      *
      * @return CreateRequestBuilder
      */
     public function setAttachable(
-        int $id = null,
-        string $type = null
+        ?int $id = null,
+        ?string $type = null,
     ): CreateRequestBuilder {
-        $this->data['attachment']['attachableId'] = $id;
+        $this->data['attachment']['attachableId']   = $id;
         $this->data['attachment']['attachableType'] = $type;
+
         return $this;
     }
 
     /**
      * Sets the attachment's category info.
      *
-     * @param null|int    $id   The category ID
-     * @param null|string $name The category name
+     * @param int|null    $id   The category ID
+     * @param string|null $name The category name
      *
      * @return CreateRequestBuilder
      */
     public function setAttachmentCategory(
-        int $id = null,
-        string $name = null
+        ?int $id = null,
+        ?string $name = null,
     ): CreateRequestBuilder {
-        $this->data['attachment']['attachmentCategoryId'] = $id;
+        $this->data['attachment']['attachmentCategoryId']   = $id;
         $this->data['attachment']['attachmentCategoryName'] = $name;
+
         return $this;
     }
 

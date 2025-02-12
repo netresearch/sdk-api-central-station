@@ -34,11 +34,11 @@ class StatsTest extends TestCase
         $request = new Stats();
         $request->setFilter([
             'first_name' => [
-                Constants::FILTER_EQUAL => 'Daniel'
+                Constants::FILTER_EQUAL => 'Daniel',
             ],
             'created_at' => [
-                Constants::FILTER_SMALLER_THAN => '2022-10-25'
-            ]
+                Constants::FILTER_SMALLER_THAN => '2022-10-25',
+            ],
         ]);
 
         self::assertSame(

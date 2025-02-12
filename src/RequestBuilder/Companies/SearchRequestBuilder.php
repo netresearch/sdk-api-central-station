@@ -27,11 +27,10 @@ use Netresearch\Sdk\CentralStation\Validator\Companies\SearchValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
-class SearchRequestBuilder extends AbstractRequestBuilder implements
-    IncludesRequestBuilderInterface,
-    PaginationRequestBuilderInterface
+class SearchRequestBuilder extends AbstractRequestBuilder implements IncludesRequestBuilderInterface, PaginationRequestBuilderInterface
 {
     use PaginationTrait;
     use IncludesTrait;
@@ -46,7 +45,7 @@ class SearchRequestBuilder extends AbstractRequestBuilder implements
      */
     public function addQuery(
         string $field,
-        string $value
+        string $value,
     ): SearchRequestBuilder {
         $this->data['search'][$field] = $value;
 

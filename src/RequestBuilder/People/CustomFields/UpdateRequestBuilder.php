@@ -23,6 +23,7 @@ use Netresearch\Sdk\CentralStation\Validator\CustomFields\UpdateValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class UpdateRequestBuilder extends AbstractRequestBuilder
@@ -37,6 +38,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setContent(string $content): UpdateRequestBuilder
     {
         $this->data['content'] = $content;
+
         return $this;
     }
 
@@ -50,6 +52,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setCustomFieldsTypeId(int $customFieldsTypeId): UpdateRequestBuilder
     {
         $this->data['customFieldsTypeId'] = $customFieldsTypeId;
+
         return $this;
     }
 

@@ -53,14 +53,14 @@ class CalendarEvent
     /**
      * ID of the linked object, for example, the person ID.
      *
-     * @var null|int
+     * @var int|null
      */
     public ?int $attachableId = null;
 
     /**
      * Type of linked object, e.g. Person.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $attachableType = null;
 
@@ -88,7 +88,7 @@ class CalendarEvent
     /**
      * The location of the calendar event.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $location = null;
 
@@ -153,7 +153,7 @@ class CalendarEvent
     public DateTime $updatedAt;
 
     /**
-     * @var null|User
+     * @var User|null
      */
     public ?User $user = null;
 
@@ -177,8 +177,8 @@ class CalendarEvent
      */
     public function __construct()
     {
-        $this->users = new UserCollection();
-        $this->people = new PersonCollection();
+        $this->users          = new UserCollection();
+        $this->people         = new PersonCollection();
         $this->eventAttendees = new CalendarEventAttendeeCollection();
     }
 }

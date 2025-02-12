@@ -69,7 +69,7 @@ class Address extends AbstractEntity
     /**
      * The state code (eg. NW, BY). Must match the county code.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $stateCode = null;
 
@@ -104,6 +104,7 @@ class Address extends AbstractEntity
      * Type of address: work_hq, work, invoice, delivery, private or other.
      *
      * @var string
+     *
      * @see Constants::ADDRESS_TYPE
      */
     public string $type;

@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Netresearch\Sdk\CentralStation\Test\Provider;
 
 /**
- * Class PeopleProvider
+ * Class PeopleProvider.
  *
  * @author Rico Sonntag <rico.sonntag@netresearch.de>
  * @link   https://www.netresearch.de/

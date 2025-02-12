@@ -27,6 +27,7 @@ use function in_array;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class UpdateRequestBuilder extends AbstractRequestBuilder
@@ -41,6 +42,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setName(string $name): UpdateRequestBuilder
     {
         $this->data['calendarEvent']['name'] = $name;
+
         return $this;
     }
 
@@ -54,6 +56,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setGroupCalendarId(string $groupCalendarId): UpdateRequestBuilder
     {
         $this->data['calendarEvent']['groupCalendarId'] = $groupCalendarId;
+
         return $this;
     }
 
@@ -67,6 +70,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setLocation(string $location): UpdateRequestBuilder
     {
         $this->data['calendarEvent']['location'] = $location;
+
         return $this;
     }
 
@@ -80,6 +84,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setDescription(string $description): UpdateRequestBuilder
     {
         $this->data['calendarEvent']['description'] = $description;
+
         return $this;
     }
 
@@ -93,6 +98,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setStatus(string $status): UpdateRequestBuilder
     {
         $this->data['calendarEvent']['status'] = $status;
+
         return $this;
     }
 
@@ -106,10 +112,11 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
      */
     public function setEventDate(
         DateTime $startsAt,
-        DateTime $endsAt
+        DateTime $endsAt,
     ): UpdateRequestBuilder {
         $this->data['calendarEvent']['startsAt'] = $startsAt;
-        $this->data['calendarEvent']['endsAt'] = $endsAt;
+        $this->data['calendarEvent']['endsAt']   = $endsAt;
+
         return $this;
     }
 
@@ -123,6 +130,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setEmailInvitations(bool $emailInvitations): UpdateRequestBuilder
     {
         $this->data['calendarEvent']['emailInvitations'] = $emailInvitations;
+
         return $this;
     }
 
@@ -136,23 +144,25 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function setAllDay(bool $allDay): UpdateRequestBuilder
     {
         $this->data['calendarEvent']['allDay'] = $allDay;
+
         return $this;
     }
 
     /**
      * Sets the attachable info.
      *
-     * @param null|int    $id   The attachable ID
-     * @param null|string $type The attachable type (use one of Constants::ATTACHABLE_TYPE)
+     * @param int|null    $id   The attachable ID
+     * @param string|null $type The attachable type (use one of Constants::ATTACHABLE_TYPE)
      *
      * @return UpdateRequestBuilder
      */
     public function setAttachable(
-        int $id = null,
-        string $type = null
+        ?int $id = null,
+        ?string $type = null,
     ): UpdateRequestBuilder {
-        $this->data['calendarEvent']['attachableId'] = $id;
+        $this->data['calendarEvent']['attachableId']   = $id;
         $this->data['calendarEvent']['attachableType'] = $type;
+
         return $this;
     }
 
@@ -186,7 +196,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
     public function create(): UpdateRequest
     {
         // Validate the input
-//        UpdateValidator::validate($this->data);
+        //        UpdateValidator::validate($this->data);
 
         $calendarEvent = new CalendarEvent();
 

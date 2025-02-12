@@ -32,7 +32,7 @@ use ReflectionException;
 use ReflectionObject;
 
 /**
- * Class TestCase
+ * Class TestCase.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -95,7 +95,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ->getMockBuilder(CentralStation::class)
             ->disableOriginalConstructor()
             ->onlyMethods([
-                'api'
+                'api',
             ])
             ->getMock();
 
@@ -153,7 +153,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             /** @var PluginClient $pluginClient */
             $pluginClient = $clientProperty->getValue($actual);
 
-            $reflection = new ReflectionObject($pluginClient);
+            $reflection     = new ReflectionObject($pluginClient);
             $clientProperty = $reflection->getProperty('client');
             $clientProperty->setAccessible(true);
 
@@ -177,14 +177,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
     public static function assertHttpHeaders(EndpointInterface $actual, string $message = ''): void
     {
         try {
-            $reflection = new ReflectionObject($actual);
+            $reflection     = new ReflectionObject($actual);
             $clientProperty = $reflection->getProperty('client');
             $clientProperty->setAccessible(true);
 
             /** @var PluginClient $pluginClient */
             $pluginClient = $clientProperty->getValue($actual);
 
-            $reflection = new ReflectionObject($pluginClient);
+            $reflection     = new ReflectionObject($pluginClient);
             $clientProperty = $reflection->getProperty('client');
             $clientProperty->setAccessible(true);
 
@@ -211,7 +211,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * Asserts that a variable is instance of or null.
      *
      * @param string $expected
-     * @param $actual
+     * @param        $actual
      * @param string $message
      */
     public static function assertIsNullOrInstanceOf(string $expected, mixed $actual, string $message = ''): void
@@ -229,7 +229,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Asserts that a variable is of type array or null.
      *
-     * @param $actual
+     * @param        $actual
      * @param string $message
      */
     public static function assertIsNullOrArray(mixed $actual, string $message = ''): void
@@ -247,7 +247,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Asserts that a variable is of type bool or null.
      *
-     * @param $actual
+     * @param        $actual
      * @param string $message
      */
     public static function assertIsNullOrBool(mixed $actual, string $message = ''): void
@@ -265,7 +265,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Asserts that a variable is of type int or null.
      *
-     * @param $actual
+     * @param        $actual
      * @param string $message
      */
     public static function assertIsNullOrInt(mixed $actual, string $message = ''): void
@@ -283,7 +283,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Asserts that a variable is of type float or null.
      *
-     * @param $actual
+     * @param        $actual
      * @param string $message
      */
     public static function assertIsNullOrFloat(mixed $actual, string $message = ''): void
@@ -301,7 +301,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Asserts that a variable is of type string or null.
      *
-     * @param $actual
+     * @param        $actual
      * @param string $message
      */
     public static function assertIsNullOrString(mixed $actual, string $message = ''): void

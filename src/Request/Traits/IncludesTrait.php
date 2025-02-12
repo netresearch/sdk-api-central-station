@@ -23,7 +23,7 @@ use Netresearch\Sdk\CentralStation\Request\IncludesRequestInterface;
 trait IncludesTrait
 {
     /**
-     * @var null|string[]
+     * @var string[]|null
      */
     private ?array $includes = null;
 
@@ -35,6 +35,7 @@ trait IncludesTrait
     public function setIncludes(string ...$includes): IncludesRequestInterface
     {
         $this->includes = $includes;
+
         return $this;
     }
 

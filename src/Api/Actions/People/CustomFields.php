@@ -34,6 +34,7 @@ use Netresearch\Sdk\CentralStation\Request\People\CustomFields\Show as ShowReque
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class CustomFields extends AbstractApiEndpoint
@@ -74,7 +75,7 @@ class CustomFields extends AbstractApiEndpoint
      *
      * @param ShowRequest $request The show request instance
      *
-     * @return null|CustomField
+     * @return CustomField|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -97,7 +98,7 @@ class CustomFields extends AbstractApiEndpoint
      *
      * @param CreateRequest $request The create request instance
      *
-     * @return null|CustomField
+     * @return CustomField|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

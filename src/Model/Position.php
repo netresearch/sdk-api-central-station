@@ -46,14 +46,14 @@ class Position extends AbstractEntity
     /**
      * Title of the item, e.g., Managing director, HR manager, etc.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $name = null;
 
     /**
      * Department in which the person works.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $department = null;
 

@@ -27,56 +27,56 @@ class CalendarEvent implements JsonSerializable
     /**
      * The ID of the record the contact detail belongs to.
      *
-     * @var null|int
+     * @var int|null
      */
     private ?int $attachableId = null;
 
     /**
      * The record type the contact detail belongs to. Must be either Person or Company.
      *
-     * @var null|string
+     * @var string|null
      */
     private ?string $attachableType = null;
 
     /**
      * The value of the contact detail according to the selected type.
      *
-     * @var null|string
+     * @var string|null
      */
     private ?string $name = null;
 
     /**
      * The group calendar ID.
      *
-     * @var null|string
+     * @var string|null
      */
     private ?string $groupCalendarId = null;
 
     /**
      * Description of the location. Can be an address, a meeting room id or left blank.
      *
-     * @var null|string
+     * @var string|null
      */
     private ?string $location = null;
 
     /**
      * Can be new, confirmed, tentative or canceled.
      *
-     * @var null|string
+     * @var string|null
      */
     private ?string $status = null;
 
     /**
      * Start time of the event.
      *
-     * @var null|DateTime
+     * @var DateTime|null
      */
     private ?DateTime $startsAt = null;
 
     /**
      * End time of the event.
      *
-     * @var null|DateTime
+     * @var DateTime|null
      */
     private ?DateTime $endsAt = null;
 
@@ -97,100 +97,108 @@ class CalendarEvent implements JsonSerializable
     /**
      * Details regarding the event, eg. agenda.
      *
-     * @var null|string
+     * @var string|null
      */
     private ?string $description = null;
 
     /**
-     * @var null|CalendarEventAttendees
+     * @var CalendarEventAttendees|null
      */
     private ?CalendarEventAttendees $calendarEventAttendees = null;
 
     /**
-     * @param null|int $attachableId
+     * @param int|null $attachableId
      *
      * @return CalendarEvent
      */
     public function setAttachableId(?int $attachableId): CalendarEvent
     {
         $this->attachableId = $attachableId;
+
         return $this;
     }
 
     /**
-     * @param null|string $attachableType
+     * @param string|null $attachableType
      *
      * @return CalendarEvent
      */
     public function setAttachableType(?string $attachableType): CalendarEvent
     {
         $this->attachableType = $attachableType;
+
         return $this;
     }
 
     /**
-     * @param null|string $name
+     * @param string|null $name
      *
      * @return CalendarEvent
      */
     public function setName(?string $name): CalendarEvent
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
-     * @param null|string $groupCalendarId
+     * @param string|null $groupCalendarId
      *
      * @return CalendarEvent
      */
     public function setGroupCalendarId(?string $groupCalendarId): CalendarEvent
     {
         $this->groupCalendarId = $groupCalendarId;
+
         return $this;
     }
 
     /**
-     * @param null|string $location
+     * @param string|null $location
      *
      * @return CalendarEvent
      */
     public function setLocation(?string $location): CalendarEvent
     {
         $this->location = $location;
+
         return $this;
     }
 
     /**
-     * @param null|string $status
+     * @param string|null $status
      *
      * @return CalendarEvent
      */
     public function setStatus(?string $status): CalendarEvent
     {
         $this->status = $status;
+
         return $this;
     }
 
     /**
-     * @param null|DateTime $startsAt
+     * @param DateTime|null $startsAt
      *
      * @return CalendarEvent
      */
     public function setStartsAt(?DateTime $startsAt): CalendarEvent
     {
         $this->startsAt = $startsAt;
+
         return $this;
     }
 
     /**
-     * @param null|DateTime $endsAt
+     * @param DateTime|null $endsAt
      *
      * @return CalendarEvent
      */
     public function setEndsAt(?DateTime $endsAt): CalendarEvent
     {
         $this->endsAt = $endsAt;
+
         return $this;
     }
 
@@ -202,6 +210,7 @@ class CalendarEvent implements JsonSerializable
     public function setAllDay(bool $allDay): CalendarEvent
     {
         $this->allDay = $allDay;
+
         return $this;
     }
 
@@ -213,33 +222,36 @@ class CalendarEvent implements JsonSerializable
     public function setEmailInvitations(bool $emailInvitations): CalendarEvent
     {
         $this->emailInvitations = $emailInvitations;
+
         return $this;
     }
 
     /**
-     * @param null|string $description
+     * @param string|null $description
      *
      * @return CalendarEvent
      */
     public function setDescription(?string $description): CalendarEvent
     {
         $this->description = $description;
+
         return $this;
     }
 
     /**
-     * @param null|CalendarEventAttendees $calendarEventAttendees
+     * @param CalendarEventAttendees|null $calendarEventAttendees
      *
      * @return CalendarEvent
      */
     public function setCalendarEventAttendees(?CalendarEventAttendees $calendarEventAttendees): CalendarEvent
     {
         $this->calendarEventAttendees = $calendarEventAttendees;
+
         return $this;
     }
 
     /**
-     * @return array<string, null|bool|int|string|array<int, array<string, null|int>>>
+     * @return array<string, bool|int|string|array<int, array<string, int|null>>|null>
      */
     public function jsonSerialize(): array
     {

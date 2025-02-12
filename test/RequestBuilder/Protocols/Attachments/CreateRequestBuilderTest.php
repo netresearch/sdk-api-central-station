@@ -18,7 +18,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\Protocols\AttachmentsProvider;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class CreateRequestBuilderTest
+ * Class CreateRequestBuilderTest.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -42,6 +42,7 @@ class CreateRequestBuilderTest extends RequestBuilderTestCase
      * Tests creating a new attachment.
      *
      * @dataProvider createRequestDataProvider
+     *
      * @test
      *
      * @param string $expectedJson

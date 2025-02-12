@@ -42,6 +42,7 @@ class TagCollection extends AbstractCollection
 
         return false;
     }
+
     /**
      * Returns TRUE if the tag collection contains one of the specified tag names.
      *

@@ -17,7 +17,7 @@ use Netresearch\Sdk\CentralStation\RequestBuilder\Companies\ShowRequestBuilder;
 use Netresearch\Sdk\CentralStation\Test\RequestBuilder\RequestBuilderTestCase;
 
 /**
- * Class ShowRequestBuilderTest
+ * Class ShowRequestBuilderTest.
  *
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
@@ -29,6 +29,7 @@ class ShowRequestBuilderTest extends RequestBuilderTestCase
      * Tests creating a "show" request URL.
      *
      * @test
+     *
      * @throws RequestValidatorException
      */
     public function show(): void

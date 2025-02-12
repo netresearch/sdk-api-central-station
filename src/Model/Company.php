@@ -47,7 +47,7 @@ class Company extends AbstractEntity
     /**
      * ID of the user which created the entry.
      *
-     * @var null|int
+     * @var int|null
      */
     public ?int $userId = null;
 
@@ -61,7 +61,7 @@ class Company extends AbstractEntity
     /**
      * Details about the company, e.g. history.
      *
-     * @var null|string
+     * @var string|null
      */
     public ?string $background = null;
 
@@ -119,12 +119,12 @@ class Company extends AbstractEntity
      */
     public function __construct()
     {
-        $this->tags = new TagCollection();
-        $this->positions = new PositionCollection();
-        $this->addresses = new AddressCollection();
+        $this->tags         = new TagCollection();
+        $this->positions    = new PositionCollection();
+        $this->addresses    = new AddressCollection();
         $this->phoneNumbers = new ContactDetailCollection();
-        $this->emails = new ContactDetailCollection();
-        $this->homepages = new ContactDetailCollection();
+        $this->emails       = new ContactDetailCollection();
+        $this->homepages    = new ContactDetailCollection();
         $this->customFields = new CustomFieldCollection();
     }
 }

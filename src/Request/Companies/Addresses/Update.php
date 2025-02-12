@@ -26,18 +26,19 @@ class Update implements RequestInterface
     private ?Address $address = null;
 
     /**
-     * @param null|Address $address
+     * @param Address|null $address
      *
      * @return Update
      */
     public function setAddress(?Address $address): Update
     {
         $this->address = $address;
+
         return $this;
     }
 
     /**
-     * @return array<string, array<string, null|bool|int|string>>
+     * @return array<string, array<string, bool|int|string|null>>
      */
     public function jsonSerialize(): array
     {

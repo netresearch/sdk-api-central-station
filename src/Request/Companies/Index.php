@@ -29,12 +29,7 @@ use Netresearch\Sdk\CentralStation\Request\Traits\SortTrait;
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
  */
-class Index implements
-    FilterRequestInterface,
-    IncludesRequestInterface,
-    PaginationRequestInterface,
-    SortRequestInterface,
-    CustomFieldRequestInterface
+class Index implements FilterRequestInterface, IncludesRequestInterface, PaginationRequestInterface, SortRequestInterface, CustomFieldRequestInterface
 {
     use CustomFieldTrait;
     use FilterTrait;
@@ -47,24 +42,26 @@ class Index implements
     private ?string $tagName = null;
 
     /**
-     * @param null|int $tagId
+     * @param int|null $tagId
      *
      * @return Index
      */
     public function setTagId(?int $tagId): Index
     {
         $this->tagId = $tagId;
+
         return $this;
     }
 
     /**
-     * @param null|string $tagName
+     * @param string|null $tagName
      *
      * @return Index
      */
     public function setTagName(?string $tagName): Index
     {
         $this->tagName = $tagName;
+
         return $this;
     }
 

@@ -36,6 +36,7 @@ use Throwable;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  *
  * @template TEntity
@@ -84,7 +85,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
         RequestFactoryInterface $requestFactory,
         StreamFactoryInterface $streamFactory,
         JsonSerializer $jsonSerializer,
-        UrlBuilder $urlBuilder
+        UrlBuilder $urlBuilder,
     ) {
         $this->client         = $client;
         $this->requestFactory = $requestFactory;
@@ -197,7 +198,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Returns a list of all entities.
      *
-     * @param null|RequestInterface           $request             The index request instance
+     * @param RequestInterface|null           $request             The index request instance
      * @param class-string<TEntity>           $className           The class name of the mapped response
      * @param class-string<TEntityCollection> $collectionClassName The collection class name of the
      *                                                             mapped response
@@ -211,7 +212,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     protected function findAllEntities(
         ?RequestInterface $request,
         string $className,
-        string $collectionClassName
+        string $collectionClassName,
     ) {
         $requestClosure = function () use ($request, $className, $collectionClassName): mixed {
             if ($request instanceof RequestInterface) {
@@ -230,10 +231,10 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     /**
      * Returns a single entity. The route must contain the ID of the entity to be processed.
      *
-     * @param null|RequestInterface $request   The show request instance
+     * @param RequestInterface|null $request   The show request instance
      * @param class-string<TEntity> $className The class name of the mapped response
      *
-     * @return null|TEntity
+     * @return TEntity|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -261,7 +262,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
      * @param RequestInterface      $request   The create request instance
      * @param class-string<TEntity> $className The class name of the mapped response
      *
-     * @return null|TEntity
+     * @return TEntity|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -295,7 +296,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     {
         // Each API endpoint returns different HTTP status codes (200, 204, ...),
         // so we need to check if it's at least one in the 200s range.
-        $requestClosure = fn(): bool => $this->httpPut($request)->getStatusCode() < 300;
+        $requestClosure = fn (): bool => $this->httpPut($request)->getStatusCode() < 300;
 
         return (bool) $this->execute($requestClosure);
     }
@@ -313,7 +314,7 @@ abstract class AbstractApiEndpoint implements EndpointInterface
     {
         // Each API endpoint returns different HTTP status codes (200, 204, ...),
         // so we need to check if it's at least one in the 200s range.
-        $requestClosure = fn(): bool => $this->httpDelete()->getStatusCode() < 300;
+        $requestClosure = fn (): bool => $this->httpDelete()->getStatusCode() < 300;
 
         return (bool) $this->execute($requestClosure);
     }

@@ -34,7 +34,7 @@ trait SortTrait
      */
     public function setOrder(
         string $orderBy = Constants::ORDER_BY_NAME,
-        string $orderDirection = Constants::ORDER_DIRECTION_ASC
+        string $orderDirection = Constants::ORDER_DIRECTION_ASC,
     ): SortRequestBuilderInterface {
         $this->data['order'] = [
             'orderBy'   => $orderBy,

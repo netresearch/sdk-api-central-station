@@ -25,7 +25,7 @@ use Netresearch\Sdk\CentralStation\Test\Provider\ProtocolsProvider;
 use Netresearch\Sdk\CentralStation\Test\TestCase;
 
 /**
- * Class ProtocolsTest
+ * Class ProtocolsTest.
  *
  * Tests the mapping of the JSON response to the proper models.
  *
@@ -42,11 +42,12 @@ class ProtocolsTest extends TestCase
      * @param int|null $protocolId
      *
      * @return Protocols
+     *
      * @throws ServiceException
      */
     private function getProtocolsApi(
         string $responseJsonFile = '',
-        int $protocolId = null
+        ?int $protocolId = null,
     ): Protocols {
         $serviceFactoryMock = $this->getServiceFactoryMock($responseJsonFile);
 
@@ -71,6 +72,7 @@ class ProtocolsTest extends TestCase
      * Tests "index" method.
      *
      * @dataProvider indexResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
@@ -82,7 +84,7 @@ class ProtocolsTest extends TestCase
     public function index(string $responseJsonFile): void
     {
         $protocolsApi = $this->getProtocolsApi($responseJsonFile);
-        $result  = $protocolsApi->index(new Index());
+        $result       = $protocolsApi->index(new Index());
 
         self::assertWebserviceUrl('https://www.example.org/protocols', $protocolsApi);
         self::assertHttpMethod('GET', $protocolsApi);
@@ -171,9 +173,11 @@ class ProtocolsTest extends TestCase
      * Tests "show" method.
      *
      * @dataProvider showResponseDataProvider
+     *
      * @test
      *
      * @param string $responseJsonFile
+     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -181,7 +185,7 @@ class ProtocolsTest extends TestCase
     public function show(string $responseJsonFile): void
     {
         $protocolsApi = $this->getProtocolsApi($responseJsonFile, 123456);
-        $result  = $protocolsApi->show();
+        $result       = $protocolsApi->show();
 
         self::assertWebserviceUrl('https://www.example.org/protocols/123456', $protocolsApi);
         self::assertHttpMethod('GET', $protocolsApi);

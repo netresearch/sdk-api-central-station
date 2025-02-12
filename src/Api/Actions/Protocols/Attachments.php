@@ -32,6 +32,7 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class Attachments extends AbstractApiEndpoint
@@ -71,7 +72,7 @@ class Attachments extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/protocols/<PROTOCOL-ID>/attachments/<ATTACHMENT-ID>
      *
-     * @return null|AttachmentContainer
+     * @return AttachmentContainer|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
@@ -92,7 +93,7 @@ class Attachments extends AbstractApiEndpoint
      *
      * @param CreateRequest $request The create request instance
      *
-     * @return null|AttachmentContainer
+     * @return AttachmentContainer|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

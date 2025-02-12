@@ -47,11 +47,11 @@ class UpdateTest extends TestCase
         self::assertSame(
             [
                 'protocol' => [
-                    'person_ids'   => [
+                    'person_ids' => [
                         123456,
                         987654,
                     ],
-                    'company_ids'  => [
+                    'company_ids' => [
                         1234,
                         4567,
                         7890,

@@ -22,6 +22,7 @@ use Netresearch\Sdk\CentralStation\Validator\People\MergeValidator;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de
+ *
  * @api
  */
 class MergeRequestBuilder extends AbstractRequestBuilder
@@ -34,7 +35,7 @@ class MergeRequestBuilder extends AbstractRequestBuilder
      * @return MergeRequestBuilder
      */
     public function setPersonId(
-        int $personId
+        int $personId,
     ): MergeRequestBuilder {
         $this->data['personId'] = $personId;
 
@@ -49,7 +50,7 @@ class MergeRequestBuilder extends AbstractRequestBuilder
      * @return MergeRequestBuilder
      */
     public function addPersonToMerge(
-        int $id
+        int $id,
     ): MergeRequestBuilder {
         $this->data['merged'][] = $id;
 
