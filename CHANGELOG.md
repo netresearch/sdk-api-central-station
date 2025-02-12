@@ -1,3 +1,51 @@
+# 2.0.0
+
+## MISC
+
+- 54a3bfa FX-724: Fix tests
+- 4b76cb8 FX-724: Fix grammar
+- 57f582f FX-724: Add helper methods to collections
+- 96ae41f FX-724: Search by name case insensitive
+- 7c34a28 FX-724: Allow setting id of position in order to create/update new/existing ones
+- 1df98c9 FX-724: Add helper methods to collection class
+- 973a7aa FX-724: Update dependency
+- cbb38b9 FX-724: Update README
+- 7b99219 FX-724: Fix return types
+- f40da76 FX-724: Extend person test
+- 03fdd28 FX-724: Update dependency, use PSR-18 client discovery
+- be5f583 FX-724: Apply rector rules
+- bb03440 FX-724: Apply phpcs
+- f01b04a FX-724: PHP >=8.1 && 
+- 2610dee FX-724: Add ReturnTypeWillChange
+- c6d8094 FX-724: Update rector configuration
+- 622ccdd FX-724: Fix test namespace
+- 796085a FX-724: Fix CS
+- c1d472e FX-724: Remove obsolete imports
+- aea4d07 FX-724: Fix interface definition
+- 67dff91 FX-724: Replace qualifier with import
+- d61c75b FX-724: Add missing properties type declaration
+- 1764778 FX-724: Use qualified reference
+- 1208ec0 FX-724: Fix interface definition
+- 7eb0068 FX-724: Drop unnecessary null assignment possibility
+- f993ce5 FX-724: Update method signature to match PHPDoc
+- 3631ab7 FX-724: Add ReturnTypeWillChange to be compatible with parent
+- ecfadb0 FX-724: Check for valid instance of variable
+- 0efd0d6 FX-724: Inline variable usage
+- c486a77 FX-724: Convert closure to arrow function
+- 88e595c FX-724: Update abstract collection
+- fee3992 FX-724: Update phpunit configuration
+- 67aec33 FX-724: Update rector configuration
+- 340a4f3 FX-724: Fix tests
+- 9761895 FX-724: Convert dataprovider methodes to static methods
+- 13e20fb FX-724: Add rector configuration
+- 9955d35 FX-724: Bump phpunit to v10
+- a4cd4f2 FX-724: Update .gitlab-ci.yml
+- 7a4ba10 FX-724: Upgrade PHP version to at least 8.0
+
+## Contributors
+
+- Rico Sonntag
+
 # 1.0.1
 
 ## MISC
