@@ -65,7 +65,12 @@ trait SortTrait
      */
     private function addSortToSerializedData(array $data): array
     {
-        if (!empty($this->orderBy) && !empty($this->orderDirection)) {
+        if (
+            ($this->orderBy !== null)
+            && ($this->orderBy !== '')
+            && ($this->orderDirection !== null)
+            && ($this->orderDirection !== '')
+        ) {
             $data['order'] = $this->orderBy . '-' . $this->orderDirection;
         }
 

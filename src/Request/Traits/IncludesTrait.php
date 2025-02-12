@@ -48,7 +48,7 @@ trait IncludesTrait
      */
     private function addIncludesToSerializedData(array $data): array
     {
-        if (!empty($this->includes)) {
+        if (($this->includes !== null) && ($this->includes !== [])) {
             $data['includes'] = implode(' ', $this->includes);
         }
 

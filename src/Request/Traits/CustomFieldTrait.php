@@ -25,7 +25,7 @@ trait CustomFieldTrait
     /**
      * @var array<array<string>|int|string>
      */
-    private array $customFieldFilter;
+    private array $customFieldFilter = [];
 
     /**
      * Sets a custom field filter.
@@ -51,7 +51,7 @@ trait CustomFieldTrait
      */
     private function addCustomFieldToSerializedData(array $data): array
     {
-        if (!empty($this->customFieldFilter)) {
+        if ($this->customFieldFilter !== []) {
             $data['custom_fields']['custom_field_type_name'] = key($this->customFieldFilter);
             $data['custom_fields']['value']                  = current($this->customFieldFilter);
         }

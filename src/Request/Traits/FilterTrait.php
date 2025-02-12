@@ -59,7 +59,7 @@ trait FilterTrait
      */
     private function addFilterToSerializedData(array $data): array
     {
-        if (!empty($this->filter)) {
+        if (($this->filter !== null) && ($this->filter !== [])) {
             $data['filter'] = $this->filter;
         }
 

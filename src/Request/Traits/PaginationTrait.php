@@ -65,11 +65,11 @@ trait PaginationTrait
      */
     private function addPaginationToSerializedData(array $data): array
     {
-        if (!empty($this->perPage)) {
+        if (($this->perPage !== null) && ($this->perPage !== 0)) {
             $data['perpage'] = $this->perPage;
         }
 
-        if (!empty($this->page)) {
+        if (($this->page !== null) && ($this->page !== 0)) {
             $data['page'] = $this->page;
         }
 
