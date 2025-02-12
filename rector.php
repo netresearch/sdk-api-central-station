@@ -1,19 +1,23 @@
 <?php
 
+/**
+ * This file is part of the package netresearch/sdk-api-universal-messenger.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 use Rector\CodingStyle\Rector\Catch_\CatchExceptionNameMatchingTypeRector;
-use Rector\CodingStyle\Rector\ClassMethod\UnSpreadOperatorRector;
 use Rector\Config\RectorConfig;
+use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPrivateMethodParameterRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
 use Rector\DeadCode\Rector\Property\RemoveUselessVarTagRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
-use Rector\Php80\Rector\FunctionLike\MixedTypeRector;
-use Rector\Php80\Rector\FunctionLike\UnionTypesRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
-use Rector\TypeDeclaration\Rector\ClassMethod\ArrayShapeFromConstantArrayReturnRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -22,7 +26,7 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->skip([
-        __DIR__ . '/vendor',
+        __DIR__ . '/.build',
     ]);
 
     $rectorConfig->phpstanConfig('phpstan.neon');
@@ -32,27 +36,25 @@ return static function (RectorConfig $rectorConfig): void {
 
     // Define what rule sets will be applied
     $rectorConfig->sets([
-        SetList::PSR_4,
-        SetList::EARLY_RETURN,
-        SetList::ACTION_INJECTION_TO_CONSTRUCTOR_INJECTION,
-        //SetList::NAMING,
-        SetList::TYPE_DECLARATION,
-        SetList::CODING_STYLE,
         SetList::CODE_QUALITY,
+        SetList::CODING_STYLE,
         SetList::DEAD_CODE,
+        SetList::EARLY_RETURN,
+        SetList::INSTANCEOF,
+        SetList::PRIVATIZATION,
+        SetList::STRICT_BOOLEANS,
+        SetList::TYPE_DECLARATION,
+
         LevelSetList::UP_TO_PHP_81,
     ]);
 
     // Skip some rules
     $rectorConfig->skip([
-        ClassPropertyAssignToConstructorPromotionRector::class,
-        MixedTypeRector::class,
-        UnionTypesRector::class,
-        ArrayShapeFromConstantArrayReturnRector::class,
         CatchExceptionNameMatchingTypeRector::class,
+        ClassPropertyAssignToConstructorPromotionRector::class,
         RemoveUselessParamTagRector::class,
         RemoveUselessReturnTagRector::class,
         RemoveUselessVarTagRector::class,
-        UnSpreadOperatorRector::class,
+        RemoveUnusedPrivateMethodParameterRector::class,
     ]);
 };

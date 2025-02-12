@@ -14,32 +14,47 @@
     "support": {
         "issues": "https://git.netresearch.de/futuresax/lib/sdk-api-central-station"
     },
+    "config": {
+        "bin-dir": ".build/bin",
+        "vendor-dir": ".build/vendor",
+        "discard-changes": true,
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "platform-check": false,
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
+    },
     "require": {
-        "php": "~8.1.0 || ~8.2.0",
+        "php": ">=8.1.0 <8.4.0",
         "ext-json": "*",
-        "psr/http-factory-implementation": "*",
-        "psr/http-client-implementation": "*",
-        "psr/http-message-implementation": "*",
-        "psr/http-factory": "^1.0.0",
-        "psr/http-client": "^1.0.0",
-        "psr/http-message": "^1.0.0",
-        "psr/log": "^1.0.0",
-        "php-http/discovery": "^1.18.0",
+        "magicsunday/jsonmapper": "^2.2.0",
+        "php-http/discovery": "^1.19.0",
         "php-http/httplug": "^2.4.0",
-        "php-http/message": "^1.15.0",
         "php-http/logger-plugin": "^1.3.0",
+        "php-http/message": "^1.16.0",
         "phpdocumentor/reflection-docblock": "^5.3.0",
-        "magicsunday/jsonmapper": "^2.2.0"
+        "psr/http-client": "^1.0.0",
+        "psr/http-client-implementation": "*",
+        "psr/http-factory": "^1.0.0",
+        "psr/http-factory-implementation": "*",
+        "psr/http-message": "^1.0.0 || ^2.0.0",
+        "psr/http-message-implementation": "*",
+        "psr/log": "^1.0.0 || ^2.0.0 || ^3.0.0"
     },
     "require-dev": {
-        "php-http/mock-client": "^1.5",
-        "php-http/message-factory": "^1.1",
-        "symfony/http-client": "^6.2",
+        "friendsofphp/php-cs-fixer": "^3.65",
         "nyholm/psr7": "^1.8",
-        "phpstan/phpstan": "^1.10",
+        "overtrue/phplint": "^9.0",
+        "php-http/mock-client": "^1.6",
+        "phpstan/phpstan": "^1.0",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpstan/phpstan-strict-rules": "^1.0",
+        "phpstan/phpstan-symfony": "^1.0",
         "phpunit/phpunit": "^10.0",
-        "squizlabs/php_codesniffer": "^3.7",
-        "rector/rector": "^0.16"
+        "rector/rector": "^1.0",
+        "symfony/http-client": "^6.0"
     },
     "autoload": {
         "psr-4": {
@@ -56,9 +71,37 @@
             "dev-master": "2.0.x-dev"
         }
     },
-    "config": {
-        "allow-plugins": {
-            "php-http/discovery": false
-        }
+    "scripts": {
+        "ci:cgl": [
+            "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix --diff --verbose --cache-file .build/.php-cs-fixer.cache"
+        ],
+        "ci:rector": [
+            "rector process --config rector.php"
+        ],
+        "ci:test:php:cgl": [
+            "@ci:cgl --dry-run"
+        ],
+        "ci:test:php:lint": [
+            "phplint"
+        ],
+        "ci:test:php:unit": [
+            "phpunit"
+        ],
+        "ci:test:php:phpstan": [
+            "phpstan analyze --memory-limit=-1"
+        ],
+        "ci:test:php:phpstan:baseline": [
+            "phpstan analyze --memory-limit=-1 --generate-baseline phpstan-baseline.neon --allow-empty-baseline"
+        ],
+        "ci:test:php:rector": [
+            "@ci:rector --dry-run"
+        ],
+        "ci:test": [
+            "@ci:test:php:lint",
+            "@ci:test:php:phpstan",
+            "@ci:test:php:rector",
+            "@ci:test:php:unit",
+            "@ci:test:php:cgl"
+        ]
     }
 }
