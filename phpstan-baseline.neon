@@ -1,2 +1,66 @@
 parameters:
-	ignoreErrors: []
+	ignoreErrors:
+		-
+			message: "#^Method Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\:\\:__construct\\(\\) has parameter \\$jsonSerializer with generic class Netresearch\\\\Sdk\\\\CentralStation\\\\Serializer\\\\JsonSerializer but does not specify its types\\: TEntity, TEntityCollection$#"
+			count: 1
+			path: src/Api.php
+
+		-
+			message: "#^Property Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\:\\:\\$serializer with generic class Netresearch\\\\Sdk\\\\CentralStation\\\\Serializer\\\\JsonSerializer does not specify its types\\: TEntity, TEntityCollection$#"
+			count: 1
+			path: src/Api.php
+
+		-
+			message: "#^Method Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\\\AbstractApiEndpoint\\:\\:__construct\\(\\) has parameter \\$jsonSerializer with generic class Netresearch\\\\Sdk\\\\CentralStation\\\\Serializer\\\\JsonSerializer but does not specify its types\\: TEntity, TEntityCollection$#"
+			count: 1
+			path: src/Api/AbstractApiEndpoint.php
+
+		-
+			message: "#^Property Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\\\AbstractApiEndpoint\\:\\:\\$serializer with generic class Netresearch\\\\Sdk\\\\CentralStation\\\\Serializer\\\\JsonSerializer does not specify its types\\: TEntity, TEntityCollection$#"
+			count: 1
+			path: src/Api/AbstractApiEndpoint.php
+
+		-
+			message: "#^Parameter \\#2 \\$className of method Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\\\AbstractApiEndpoint\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\CompanyContainer,Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\Collection\\\\CompanyContainerCollection\\>\\:\\:findEntity\\(\\) expects class\\-string\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\CompanyContainer\\>, string given\\.$#"
+			count: 1
+			path: src/Api/Actions/Companies.php
+
+		-
+			message: "#^Parameter \\#2 \\$className of method Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\\\AbstractApiEndpoint\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\PersonContainer,Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\Collection\\\\PersonContainerCollection\\>\\:\\:findEntity\\(\\) expects class\\-string\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\PersonContainer\\>, string given\\.$#"
+			count: 1
+			path: src/Api/Actions/People.php
+
+		-
+			message: "#^Property Netresearch\\\\Sdk\\\\CentralStation\\\\CentralStation\\:\\:\\$serializer with generic class Netresearch\\\\Sdk\\\\CentralStation\\\\Serializer\\\\JsonSerializer does not specify its types\\: TEntity, TEntityCollection$#"
+			count: 1
+			path: src/CentralStation.php
+
+		-
+			message: "#^Return type \\(array\\<int, array\\<string, bool\\|int\\|string\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Addresses\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Address\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Address\\>\\:\\:jsonSerialize\\(\\)$#"
+			count: 1
+			path: src/Request/Addresses.php
+
+		-
+			message: "#^Return type \\(array\\<int, array\\<string, int\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CalendarEventAttendees\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CalendarEventAttendee\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CalendarEventAttendee\\>\\:\\:jsonSerialize\\(\\)$#"
+			count: 1
+			path: src/Request/CalendarEventAttendees.php
+
+		-
+			message: "#^Return type \\(array\\<int, array\\<string, int\\|string\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\ContactDetails\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\ContactDetail\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\ContactDetail\\>\\:\\:jsonSerialize\\(\\)$#"
+			count: 1
+			path: src/Request/ContactDetails.php
+
+		-
+			message: "#^Return type \\(array\\<int, array\\<string, int\\|string\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CustomFields\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CustomField\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CustomField\\>\\:\\:jsonSerialize\\(\\)$#"
+			count: 1
+			path: src/Request/CustomFields.php
+
+		-
+			message: "#^Return type \\(array\\<int, array\\<string, bool\\|int\\|string\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Positions\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Position\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Position\\>\\:\\:jsonSerialize\\(\\)$#"
+			count: 1
+			path: src/Request/Positions.php
+
+		-
+			message: "#^Return type \\(array\\<int, array\\<string, int\\|string\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Tags\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Tag\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Tag\\>\\:\\:jsonSerialize\\(\\)$#"
+			count: 1
+			path: src/Request/Tags.php
