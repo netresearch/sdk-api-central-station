@@ -255,7 +255,7 @@ class People extends AbstractApiEndpoint
             PersonContainer::class
         );
 
-        return $result ? ($result->person ?? null) : null;
+        return ($result instanceof PersonContainer) ? ($result->person ?? null) : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class People extends AbstractApiEndpoint
             PersonContainer::class
         );
 
-        return $result ? ($result->person ?? null) : null;
+        return ($result instanceof PersonContainer) ? ($result->person ?? null) : null;
     }
 
     /**

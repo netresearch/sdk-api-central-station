@@ -82,7 +82,7 @@ class Addresses extends AbstractApiEndpoint
             AddressContainer::class
         );
 
-        return $result ? ($result->addr ?? null) : null;
+        return ($result instanceof AddressContainer) ? ($result->addr ?? null) : null;
     }
 
     /**
@@ -105,6 +105,6 @@ class Addresses extends AbstractApiEndpoint
             AddressContainer::class
         );
 
-        return $result ? ($result->addr ?? null) : null;
+        return ($result instanceof AddressContainer) ? ($result->addr ?? null) : null;
     }
 }

@@ -85,7 +85,7 @@ class Tags extends AbstractApiEndpoint
             TagContainer::class
         );
 
-        return $result ? ($result->tag ?? null) : null;
+        return ($result instanceof TagContainer) ? ($result->tag ?? null) : null;
     }
 
     /**

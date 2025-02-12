@@ -88,7 +88,7 @@ class GroupCalendars extends AbstractApiEndpoint
             GroupCalendarContainer::class
         );
 
-        return $result ? ($result->groupCalendar ?? null) : null;
+        return ($result instanceof GroupCalendarContainer) ? ($result->groupCalendar ?? null) : null;
     }
 
     /**

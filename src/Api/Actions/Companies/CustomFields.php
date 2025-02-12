@@ -88,7 +88,7 @@ class CustomFields extends AbstractApiEndpoint
             CustomFieldContainer::class
         );
 
-        return $result ? ($result->customField ?? null) : null;
+        return ($result instanceof CustomFieldContainer) ? ($result->customField ?? null) : null;
     }
 
     /**
@@ -111,6 +111,6 @@ class CustomFields extends AbstractApiEndpoint
             CustomFieldContainer::class
         );
 
-        return $result ? ($result->customField ?? null) : null;
+        return ($result instanceof CustomFieldContainer) ? ($result->customField ?? null) : null;
     }
 }

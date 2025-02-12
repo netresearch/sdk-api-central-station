@@ -88,7 +88,7 @@ class CalendarEvents extends AbstractApiEndpoint
             CalendarEventContainer::class
         );
 
-        return $result ? ($result->calendarEvent ?? null) : null;
+        return ($result instanceof CalendarEventContainer) ? ($result->calendarEvent ?? null) : null;
     }
 
     /**
@@ -111,6 +111,6 @@ class CalendarEvents extends AbstractApiEndpoint
             CalendarEventContainer::class
         );
 
-        return $result ? ($result->calendarEvent ?? null) : null;
+        return ($result instanceof CalendarEventContainer) ? ($result->calendarEvent ?? null) : null;
     }
 }

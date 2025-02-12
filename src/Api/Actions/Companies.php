@@ -207,7 +207,7 @@ class Companies extends AbstractApiEndpoint
             CompanyContainer::class
         );
 
-        return $result ? ($result->company ?? null) : null;
+        return ($result instanceof CompanyContainer) ? ($result->company ?? null) : null;
     }
 
     /**
@@ -232,7 +232,7 @@ class Companies extends AbstractApiEndpoint
             CompanyContainer::class
         );
 
-        return $result ? ($result->company ?? null) : null;
+        return ($result instanceof CompanyContainer) ? ($result->company ?? null) : null;
     }
 
     /**
