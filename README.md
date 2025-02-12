@@ -1,12 +1,13 @@
-[![pipeline status](https://git.netresearch.de/futuresax/lib/sdk-api-central-station/badges/master/pipeline.svg)](https://git.netresearch.de/futuresax/lib/sdk-api-central-station/-/commits/master)
-[![coverage report](https://git.netresearch.de/futuresax/lib/sdk-api-central-station/badges/master/coverage.svg)](https://git.netresearch.de/futuresax/lib/sdk-api-central-station/-/commits/master)
-[![Latest Release](https://git.netresearch.de/futuresax/lib/sdk-api-central-station/-/badges/release.svg)](https://git.netresearch.de/futuresax/lib/sdk-api-central-station/-/releases)
+[![Latest version](https://img.shields.io/github/v/release/netresearch/sdk-api-central-station?sort=semver)](https://github.com/netresearch/sdk-api-central-station/releases/latest)
+[![License](https://img.shields.io/github/license/netresearch/sdk-api-central-station)](https://github.com/netresearch/sdk-api-central-station/blob/main/LICENSE)
+[![CI](https://github.com/netresearch/sdk-api-central-station/actions/workflows/ci.yml/badge.svg)](https://github.com/netresearch/sdk-api-central-station/actions/workflows/ci.yml)
+
 
 # Central Station API
 The documentation for all request can be found at <https://42he.com/de/developer/crm>.
 
 The Central Station API SDK package offers an interface to the *Central Station* interface.
-The SDK implements only the endpoints and data structures required at the time of build.
+The SDK currently implements only the endpoints and data structures that were required at the time of development.
 
 ## Table of contents
 - [Requirements & Installation](doc/Requirements.md)
