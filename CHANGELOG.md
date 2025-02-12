@@ -1,3 +1,26 @@
+# 2.0.1
+
+## MISC
+
+- d18f869 Apply rector rules
+- 33c5ce2 Add phpstan baseline file
+- 51b0825 Fix AbstractCollection class
+- e682fa4 Fixed: Class extends generic class but does not specify its types: TKey, TValue
+- fd1ded9 Add phpstan configuration "treatPhpDocTypesAsCertain: false"
+- f09ffa1 Fixed: Class extends generic class but does not specify its types: TEntity, TEntityCollection
+- 594ec47 Fixed: Only booleans are allowed in &&, mixed given on the right side
+- 32f76f6 Use boolean value with ternary operator
+- 4009a5f Avoid usage of empty()
+- 97a9803 Use strict boolean comparison
+- 4644e26 Convert locally called static method to non-static method
+- 81283a7 Avoid usage of empty()
+- 82c1f17 Apply php-cs-fixer rules
+- 4e79224 Update dev tools
+
+## Contributors
+
+- Rico Sonntag
+
 # 2.0.0
 
 ## MISC
