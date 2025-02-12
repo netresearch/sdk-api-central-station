@@ -122,7 +122,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
 
         if (
             isset($this->data['protocol']['confidential'])
-            && $this->data['protocol']['confidential']
+            && ($this->data['protocol']['confidential'] === true)
         ) {
             $protocol->setConfidential($this->data['protocol']['confidential']);
         }
