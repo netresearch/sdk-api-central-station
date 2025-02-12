@@ -34,6 +34,8 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
  * @link    https://www.netresearch.de
  *
  * @api
+ *
+ * @extends AbstractApiEndpoint<AttachmentContainer, AttachmentContainerCollection>
  */
 class Attachments extends AbstractApiEndpoint
 {

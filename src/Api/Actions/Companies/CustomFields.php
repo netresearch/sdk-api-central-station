@@ -36,6 +36,8 @@ use Netresearch\Sdk\CentralStation\Request\Companies\CustomFields\Show as ShowRe
  * @link    https://www.netresearch.de
  *
  * @api
+ *
+ * @extends AbstractApiEndpoint<CustomFieldContainer, CustomFieldContainerCollection>
  */
 class CustomFields extends AbstractApiEndpoint
 {

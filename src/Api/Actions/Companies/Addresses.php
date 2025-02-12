@@ -34,6 +34,8 @@ use Netresearch\Sdk\CentralStation\Request\Companies\Addresses\Create as CreateR
  * @link    https://www.netresearch.de
  *
  * @api
+ *
+ * @extends AbstractApiEndpoint<AddressContainer, AddressContainerCollection>
  */
 class Addresses extends AbstractApiEndpoint
 {

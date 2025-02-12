@@ -34,6 +34,8 @@ use Netresearch\Sdk\CentralStation\Request\CustomFieldsTypes\Create as CreateReq
  * @link    https://www.netresearch.de
  *
  * @api
+ *
+ * @extends AbstractApiEndpoint<CustomFieldsTypeContainer, CustomFieldsTypeContainerCollection>
  */
 class CustomFieldsTypes extends AbstractApiEndpoint
 {

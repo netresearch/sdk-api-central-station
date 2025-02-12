@@ -35,6 +35,8 @@ use Netresearch\Sdk\CentralStation\Request\Tags\TagList as ListRequest;
  * @link    https://www.netresearch.de
  *
  * @api
+ *
+ * @extends AbstractApiEndpoint<TagContainer, TagContainerCollection>
  */
 class Tags extends AbstractApiEndpoint
 {

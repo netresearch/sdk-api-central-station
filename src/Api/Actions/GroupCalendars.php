@@ -36,6 +36,8 @@ use Netresearch\Sdk\CentralStation\Request\RequestInterface;
  * @link    https://www.netresearch.de
  *
  * @api
+ *
+ * @extends AbstractApiEndpoint<GroupCalendarContainer, GroupCalendarContainerCollection>
  */
 class GroupCalendars extends AbstractApiEndpoint
 {

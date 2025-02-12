@@ -47,6 +47,8 @@ use Netresearch\Sdk\CentralStation\Request\People\Stats as StatsRequest;
  * @link    https://www.netresearch.de
  *
  * @api
+ *
+ * @extends AbstractApiEndpoint<PersonContainer, PersonContainerCollection>
  */
 class People extends AbstractApiEndpoint
 {

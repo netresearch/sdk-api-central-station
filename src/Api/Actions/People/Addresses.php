@@ -34,6 +34,8 @@ use Netresearch\Sdk\CentralStation\Request\People\Addresses\Create as CreateRequ
  * @link    https://www.netresearch.de
  *
  * @api
+ *
+ * @extends AbstractApiEndpoint<AddressContainer, AddressContainerCollection>
  */
 class Addresses extends AbstractApiEndpoint
 {

@@ -44,6 +44,8 @@ use Netresearch\Sdk\CentralStation\Request\Companies\Stats as StatsRequest;
  * @link    https://www.netresearch.de
  *
  * @api
+ *
+ * @extends AbstractApiEndpoint<CompanyContainer, CompanyContainerCollection>
  */
 class Companies extends AbstractApiEndpoint
 {

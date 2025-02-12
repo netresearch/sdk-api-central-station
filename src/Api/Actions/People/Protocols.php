@@ -34,6 +34,8 @@ use Netresearch\Sdk\CentralStation\Request\Protocols\Index as IndexRequest;
  * @link    https://www.netresearch.de
  *
  * @api
+ *
+ * @extends AbstractApiEndpoint<ProtocolContainer, ProtocolContainerCollection>
  */
 class Protocols extends AbstractApiEndpoint
 {
