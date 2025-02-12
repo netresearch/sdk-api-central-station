@@ -53,7 +53,7 @@ class TagCollection extends AbstractCollection
     public function hasOneFromList(array $names): bool
     {
         foreach ($names as $name) {
-            if ($this->hasTag($name) === true) {
+            if ($this->hasTag($name)) {
                 return true;
             }
         }

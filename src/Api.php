@@ -141,7 +141,7 @@ class Api
             ->addPath('/' . People::PATH);
 
         // Add person ID if available
-        if ($personId) {
+        if (($personId !== null) && ($personId !== 0)) {
             $this->urlBuilder
                 ->addPath('/' . $personId);
         }
@@ -173,7 +173,7 @@ class Api
             ->addPath('/' . Companies::PATH);
 
         // Add company ID if available
-        if ($companyId) {
+        if (($companyId !== null) && ($companyId !== 0)) {
             $this->urlBuilder
                 ->addPath('/' . $companyId);
         }
@@ -205,7 +205,7 @@ class Api
             ->addPath('/' . Tags::PATH);
 
         // Add tag ID if available
-        if ($tagId) {
+        if (($tagId !== null) && ($tagId !== 0)) {
             $this->urlBuilder
                 ->addPath('/' . $tagId);
         }
@@ -237,7 +237,7 @@ class Api
             ->addPath('/' . Protocols::PATH);
 
         // Add protocol ID if available
-        if ($protocolId) {
+        if (($protocolId !== null) && ($protocolId !== 0)) {
             $this->urlBuilder
                 ->addPath('/' . $protocolId);
         }
@@ -269,7 +269,7 @@ class Api
             ->addPath('/' . CustomFieldsTypes::PATH);
 
         // Add custom field type ID if available
-        if ($customFieldsTypeId) {
+        if (($customFieldsTypeId !== null) && ($customFieldsTypeId !== 0)) {
             $this->urlBuilder
                 ->addPath('/' . $customFieldsTypeId);
         }
@@ -301,7 +301,7 @@ class Api
             ->addPath('/' . GroupCalendars::PATH);
 
         // Add group calendar type ID if available
-        if ($groupCalendarId) {
+        if (($groupCalendarId !== null) && ($groupCalendarId !== '')) {
             $this->urlBuilder
                 ->addPath('/' . $groupCalendarId);
         }
@@ -333,7 +333,7 @@ class Api
             ->addPath('/' . CalendarEvents::PATH);
 
         // Add calendar event type ID if available
-        if ($calendarEventId) {
+        if (($calendarEventId !== null) && ($calendarEventId !== '')) {
             $this->urlBuilder
                 ->addPath('/' . $calendarEventId);
         }

@@ -99,7 +99,7 @@ class People extends AbstractApiEndpoint
             ->addPath('/' . Addresses::PATH);
 
         // Add address ID if available
-        if ($addressId) {
+        if (($addressId !== null) && ($addressId !== 0)) {
             $this->urlBuilder
                 ->addPath('/' . $addressId);
         }
@@ -131,7 +131,7 @@ class People extends AbstractApiEndpoint
             ->addPath('/' . CustomFields::PATH);
 
         // Add custom field ID if available
-        if ($customFieldId) {
+        if (($customFieldId !== null) && ($customFieldId !== 0)) {
             $this->urlBuilder
                 ->addPath('/' . $customFieldId);
         }
@@ -163,7 +163,7 @@ class People extends AbstractApiEndpoint
             ->addPath('/' . Protocols::PATH);
 
         // Add protocol ID if available
-        if ($protocolId) {
+        if (($protocolId !== null) && ($protocolId !== 0)) {
             $this->urlBuilder
                 ->addPath('/' . $protocolId);
         }
@@ -195,7 +195,7 @@ class People extends AbstractApiEndpoint
             ->addPath('/' . Tags::PATH);
 
         // Add tag ID if available
-        if ($tagId) {
+        if (($tagId !== null) && ($tagId !== 0)) {
             $this->urlBuilder
                 ->addPath('/' . $tagId);
         }

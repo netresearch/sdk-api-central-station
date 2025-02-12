@@ -37,8 +37,14 @@ class Index implements FilterRequestInterface, IncludesRequestInterface, Paginat
     use PaginationTrait;
     use SortTrait;
 
+    /**
+     * @var int|null
+     */
     private ?int $tagId = null;
 
+    /**
+     * @var string|null
+     */
     private ?string $tagName = null;
 
     /**
@@ -77,11 +83,11 @@ class Index implements FilterRequestInterface, IncludesRequestInterface, Paginat
         $data = $this->addIncludesToSerializedData($data);
         $data = $this->addCustomFieldToSerializedData($data);
 
-        if (!empty($this->tagId)) {
+        if (($this->tagId !== null) && ($this->tagId !== 0)) {
             $data['tag_id'] = $this->tagId;
         }
 
-        if (!empty($this->tagName)) {
+        if (($this->tagName !== null) && ($this->tagName !== '')) {
             $data['tag_name'] = $this->tagName;
         }
 

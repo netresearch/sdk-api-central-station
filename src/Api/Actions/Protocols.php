@@ -64,7 +64,7 @@ class Protocols extends AbstractApiEndpoint
             ->addPath('/' . Attachments::PATH);
 
         // Add attachment ID if available
-        if ($attachmentId) {
+        if (($attachmentId !== null) && ($attachmentId !== '')) {
             $this->urlBuilder
                 ->addPath('/' . $attachmentId);
         }
