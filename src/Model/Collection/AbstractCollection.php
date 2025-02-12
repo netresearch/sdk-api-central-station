@@ -55,7 +55,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @return TValue|null
      */
-    public function offsetGet($offset): mixed
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->elements[$offset] ?? null;
     }
@@ -66,7 +66,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      * @param TKey   $offset The offset to assign the value to
      * @param TValue $value  The value to set
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->elements[$offset] = $value;
     }
@@ -76,7 +76,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @param TKey $offset The offset to unset
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->elements[$offset]);
     }
@@ -88,7 +88,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @return bool
      */
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         return array_key_exists($offset, $this->elements);
     }
@@ -108,7 +108,7 @@ abstract class AbstractCollection implements CollectionInterface, JsonSerializab
      *
      * @param TValue $value The value to append
      */
-    public function append($value): void
+    public function append(mixed $value): void
     {
         $this->elements[] = $value;
     }
