@@ -37,7 +37,7 @@ use Netresearch\Sdk\CentralStation\Request\CalendarEvents\Show as ShowRequest;
  *
  * @api
  *
- * @extends AbstractApiEndpoint<CalendarEvent, CalendarEventContainerCollection>
+ * @extends AbstractApiEndpoint<CalendarEventContainer, CalendarEventContainerCollection>
  */
 class CalendarEvents extends AbstractApiEndpoint
 {

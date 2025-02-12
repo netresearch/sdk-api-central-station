@@ -19,6 +19,8 @@ use Netresearch\Sdk\CentralStation\Model\Collection\AbstractCollection;
  * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license Netresearch https://www.netresearch.de
  * @link    https://www.netresearch.de/
+ *
+ * @extends AbstractCollection<int, ContactDetail>
  */
 class ContactDetails extends AbstractCollection
 {
