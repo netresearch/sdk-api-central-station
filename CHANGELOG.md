@@ -1,3 +1,13 @@
+# 2.0.2
+
+## MISC
+
+- fae4b3f Update README, remove gitlab CI configuration
+
+## Contributors
+
+- Rico Sonntag
+
 # 2.0.1
 
 ## MISC
