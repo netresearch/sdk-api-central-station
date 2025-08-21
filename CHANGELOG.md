@@ -1,3 +1,19 @@
+# 2.0.3
+
+## MISC
+
+- fa01add Add minor typee hint
+- dd4098c Fix "PHP Warning: Array to string conversion"
+- 3310abd Update dev tools and configuration
+- f83da48 Remove obsolete call to method "setAccessible"
+- f524eec Add renovate.json
+- 4adfd92 Add .github/dependabot.yml
+
+## Contributors
+
+- Rico Sonntag
+- renovate[bot]
+
 # 2.0.2
 
 ## MISC
