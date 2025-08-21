@@ -331,6 +331,7 @@ class People extends AbstractApiEndpoint
         $this->urlBuilder
             ->addPath('/stats');
 
+        /** @var Stats|null $result */
         $result = $this->findEntity(
             $request,
             Stats::class
