@@ -122,7 +122,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         try {
             $urlBuilderProperty = $reflection->getProperty('urlBuilder');
-            $urlBuilderProperty->setAccessible(true);
 
             /** @var UrlBuilder $urlBuilder */
             $urlBuilder = $urlBuilderProperty->getValue($actual);
@@ -148,14 +147,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         try {
             $clientProperty = $reflection->getProperty('client');
-            $clientProperty->setAccessible(true);
 
             /** @var PluginClient $pluginClient */
             $pluginClient = $clientProperty->getValue($actual);
 
             $reflection     = new ReflectionObject($pluginClient);
             $clientProperty = $reflection->getProperty('client');
-            $clientProperty->setAccessible(true);
 
             /** @var Client $mockClient */
             $mockClient = $clientProperty->getValue($pluginClient);
@@ -179,14 +176,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
         try {
             $reflection     = new ReflectionObject($actual);
             $clientProperty = $reflection->getProperty('client');
-            $clientProperty->setAccessible(true);
 
             /** @var PluginClient $pluginClient */
             $pluginClient = $clientProperty->getValue($actual);
 
             $reflection     = new ReflectionObject($pluginClient);
             $clientProperty = $reflection->getProperty('client');
-            $clientProperty->setAccessible(true);
 
             /** @var Client $mockClient */
             $mockClient = $clientProperty->getValue($pluginClient);
