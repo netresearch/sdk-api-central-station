@@ -21,7 +21,9 @@ use Netresearch\Sdk\CentralStation\Exception\DetailedErrorException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
+use function count;
 use function is_array;
+use function sprintf;
 
 /**
  * Class ErrorPlugin.
@@ -138,13 +140,22 @@ final class ErrorPlugin implements Plugin
             throw new ClientErrorException($response->getReasonPhrase(), $request, $response);
         }
 
-        $errorKey   = key($errorResponse);
-        $errorValue = current($errorResponse);
+        $errorKey       = key($errorResponse);
+        $errorValue     = current($errorResponse);
+        $messageContent = $errorValue;
+
+        if (is_array($errorValue)) {
+            if (count($errorValue) === count($errorValue, COUNT_RECURSIVE)) {
+                $messageContent = implode('" or "', $errorValue);
+            } else {
+                $messageContent = serialize($errorValue);
+            }
+        }
 
         $errorMessage = sprintf(
             'The entity "%s" failed with "%s".',
             $errorKey,
-            is_array($errorValue) ? implode('" or "', $errorValue) : $errorValue
+            $messageContent
         );
 
         throw new DetailedErrorException(
