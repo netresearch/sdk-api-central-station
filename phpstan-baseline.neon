@@ -1,66 +1,151 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\:\\:__construct\\(\\) has parameter \\$jsonSerializer with generic class Netresearch\\\\Sdk\\\\CentralStation\\\\Serializer\\\\JsonSerializer but does not specify its types\\: TEntity, TEntityCollection$#"
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Api\:\:__construct\(\) has parameter \$jsonSerializer with generic class Netresearch\\Sdk\\CentralStation\\Serializer\\JsonSerializer but does not specify its types\: TEntity, TEntityCollection$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/Api.php
 
 		-
-			message: "#^Property Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\:\\:\\$serializer with generic class Netresearch\\\\Sdk\\\\CentralStation\\\\Serializer\\\\JsonSerializer does not specify its types\\: TEntity, TEntityCollection$#"
+			message: '#^Property Netresearch\\Sdk\\CentralStation\\Api\:\:\$serializer with generic class Netresearch\\Sdk\\CentralStation\\Serializer\\JsonSerializer does not specify its types\: TEntity, TEntityCollection$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/Api.php
 
 		-
-			message: "#^Method Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\\\AbstractApiEndpoint\\:\\:__construct\\(\\) has parameter \\$jsonSerializer with generic class Netresearch\\\\Sdk\\\\CentralStation\\\\Serializer\\\\JsonSerializer but does not specify its types\\: TEntity, TEntityCollection$#"
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Api\\AbstractApiEndpoint\:\:__construct\(\) has parameter \$jsonSerializer with generic class Netresearch\\Sdk\\CentralStation\\Serializer\\JsonSerializer but does not specify its types\: TEntity, TEntityCollection$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/Api/AbstractApiEndpoint.php
 
 		-
-			message: "#^Property Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\\\AbstractApiEndpoint\\:\\:\\$serializer with generic class Netresearch\\\\Sdk\\\\CentralStation\\\\Serializer\\\\JsonSerializer does not specify its types\\: TEntity, TEntityCollection$#"
+			message: '#^Property Netresearch\\Sdk\\CentralStation\\Api\\AbstractApiEndpoint\:\:\$serializer with generic class Netresearch\\Sdk\\CentralStation\\Serializer\\JsonSerializer does not specify its types\: TEntity, TEntityCollection$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/Api/AbstractApiEndpoint.php
 
 		-
-			message: "#^Parameter \\#2 \\$className of method Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\\\AbstractApiEndpoint\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\CompanyContainer,Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\Collection\\\\CompanyContainerCollection\\>\\:\\:findEntity\\(\\) expects class\\-string\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\CompanyContainer\\>, string given\\.$#"
+			message: '#^PHPDoc tag @var with type Netresearch\\Sdk\\CentralStation\\Model\\Stats\|null is not subtype of type Netresearch\\Sdk\\CentralStation\\Model\\Container\\CompanyContainer\|null\.$#'
+			identifier: varTag.type
 			count: 1
 			path: src/Api/Actions/Companies.php
 
 		-
-			message: "#^Parameter \\#2 \\$className of method Netresearch\\\\Sdk\\\\CentralStation\\\\Api\\\\AbstractApiEndpoint\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\PersonContainer,Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\Collection\\\\PersonContainerCollection\\>\\:\\:findEntity\\(\\) expects class\\-string\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Container\\\\PersonContainer\\>, string given\\.$#"
+			message: '#^Parameter \#2 \$className of method Netresearch\\Sdk\\CentralStation\\Api\\AbstractApiEndpoint\<Netresearch\\Sdk\\CentralStation\\Model\\Container\\CompanyContainer,Netresearch\\Sdk\\CentralStation\\Model\\Container\\Collection\\CompanyContainerCollection\>\:\:findEntity\(\) expects class\-string\<Netresearch\\Sdk\\CentralStation\\Model\\Container\\CompanyContainer\>, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Api/Actions/Companies.php
+
+		-
+			message: '#^PHPDoc tag @var with type Netresearch\\Sdk\\CentralStation\\Model\\Stats\|null is not subtype of type Netresearch\\Sdk\\CentralStation\\Model\\Container\\PersonContainer\|null\.$#'
+			identifier: varTag.type
 			count: 1
 			path: src/Api/Actions/People.php
 
 		-
-			message: "#^Property Netresearch\\\\Sdk\\\\CentralStation\\\\CentralStation\\:\\:\\$serializer with generic class Netresearch\\\\Sdk\\\\CentralStation\\\\Serializer\\\\JsonSerializer does not specify its types\\: TEntity, TEntityCollection$#"
+			message: '#^Parameter \#2 \$className of method Netresearch\\Sdk\\CentralStation\\Api\\AbstractApiEndpoint\<Netresearch\\Sdk\\CentralStation\\Model\\Container\\PersonContainer,Netresearch\\Sdk\\CentralStation\\Model\\Container\\Collection\\PersonContainerCollection\>\:\:findEntity\(\) expects class\-string\<Netresearch\\Sdk\\CentralStation\\Model\\Container\\PersonContainer\>, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Api/Actions/People.php
+
+		-
+			message: '#^Property Netresearch\\Sdk\\CentralStation\\CentralStation\:\:\$serializer with generic class Netresearch\\Sdk\\CentralStation\\Serializer\\JsonSerializer does not specify its types\: TEntity, TEntityCollection$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/CentralStation.php
 
 		-
-			message: "#^Return type \\(array\\<int, array\\<string, bool\\|int\\|string\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Addresses\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Address\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Address\\>\\:\\:jsonSerialize\\(\\)$#"
+			message: '#^Return type \(array\<int, array\<string, bool\|int\|string\|null\>\>\) of method Netresearch\\Sdk\\CentralStation\\Request\\Addresses\:\:jsonSerialize\(\) should be compatible with return type \(array\<Netresearch\\Sdk\\CentralStation\\Request\\Address\>\) of method Netresearch\\Sdk\\CentralStation\\Model\\Collection\\AbstractCollection\<int,Netresearch\\Sdk\\CentralStation\\Request\\Address\>\:\:jsonSerialize\(\)$#'
+			identifier: method.childReturnType
 			count: 1
 			path: src/Request/Addresses.php
 
 		-
-			message: "#^Return type \\(array\\<int, array\\<string, int\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CalendarEventAttendees\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CalendarEventAttendee\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CalendarEventAttendee\\>\\:\\:jsonSerialize\\(\\)$#"
+			message: '#^Return type \(array\<int, array\<string, int\|null\>\>\) of method Netresearch\\Sdk\\CentralStation\\Request\\CalendarEventAttendees\:\:jsonSerialize\(\) should be compatible with return type \(array\<Netresearch\\Sdk\\CentralStation\\Request\\CalendarEventAttendee\>\) of method Netresearch\\Sdk\\CentralStation\\Model\\Collection\\AbstractCollection\<int,Netresearch\\Sdk\\CentralStation\\Request\\CalendarEventAttendee\>\:\:jsonSerialize\(\)$#'
+			identifier: method.childReturnType
 			count: 1
 			path: src/Request/CalendarEventAttendees.php
 
 		-
-			message: "#^Return type \\(array\\<int, array\\<string, int\\|string\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\ContactDetails\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\ContactDetail\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\ContactDetail\\>\\:\\:jsonSerialize\\(\\)$#"
+			message: '#^Return type \(array\<int, array\<string, int\|string\|null\>\>\) of method Netresearch\\Sdk\\CentralStation\\Request\\ContactDetails\:\:jsonSerialize\(\) should be compatible with return type \(array\<Netresearch\\Sdk\\CentralStation\\Request\\ContactDetail\>\) of method Netresearch\\Sdk\\CentralStation\\Model\\Collection\\AbstractCollection\<int,Netresearch\\Sdk\\CentralStation\\Request\\ContactDetail\>\:\:jsonSerialize\(\)$#'
+			identifier: method.childReturnType
 			count: 1
 			path: src/Request/ContactDetails.php
 
 		-
-			message: "#^Return type \\(array\\<int, array\\<string, int\\|string\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CustomFields\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CustomField\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\CustomField\\>\\:\\:jsonSerialize\\(\\)$#"
+			message: '#^Return type \(array\<int, array\<string, int\|string\|null\>\>\) of method Netresearch\\Sdk\\CentralStation\\Request\\CustomFields\:\:jsonSerialize\(\) should be compatible with return type \(array\<Netresearch\\Sdk\\CentralStation\\Request\\CustomField\>\) of method Netresearch\\Sdk\\CentralStation\\Model\\Collection\\AbstractCollection\<int,Netresearch\\Sdk\\CentralStation\\Request\\CustomField\>\:\:jsonSerialize\(\)$#'
+			identifier: method.childReturnType
 			count: 1
 			path: src/Request/CustomFields.php
 
 		-
-			message: "#^Return type \\(array\\<int, array\\<string, bool\\|int\\|string\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Positions\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Position\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Position\\>\\:\\:jsonSerialize\\(\\)$#"
+			message: '#^Return type \(array\<int, array\<string, bool\|int\|string\|null\>\>\) of method Netresearch\\Sdk\\CentralStation\\Request\\Positions\:\:jsonSerialize\(\) should be compatible with return type \(array\<Netresearch\\Sdk\\CentralStation\\Request\\Position\>\) of method Netresearch\\Sdk\\CentralStation\\Model\\Collection\\AbstractCollection\<int,Netresearch\\Sdk\\CentralStation\\Request\\Position\>\:\:jsonSerialize\(\)$#'
+			identifier: method.childReturnType
 			count: 1
 			path: src/Request/Positions.php
 
 		-
-			message: "#^Return type \\(array\\<int, array\\<string, int\\|string\\|null\\>\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Tags\\:\\:jsonSerialize\\(\\) should be compatible with return type \\(array\\<Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Tag\\>\\) of method Netresearch\\\\Sdk\\\\CentralStation\\\\Model\\\\Collection\\\\AbstractCollection\\<int,Netresearch\\\\Sdk\\\\CentralStation\\\\Request\\\\Tag\\>\\:\\:jsonSerialize\\(\\)$#"
+			message: '#^Return type \(array\<int, array\<string, int\|string\|null\>\>\) of method Netresearch\\Sdk\\CentralStation\\Request\\Tags\:\:jsonSerialize\(\) should be compatible with return type \(array\<Netresearch\\Sdk\\CentralStation\\Request\\Tag\>\) of method Netresearch\\Sdk\\CentralStation\\Model\\Collection\\AbstractCollection\<int,Netresearch\\Sdk\\CentralStation\\Request\\Tag\>\:\:jsonSerialize\(\)$#'
+			identifier: method.childReturnType
 			count: 1
 			path: src/Request/Tags.php
+
+		-
+			message: '#^Call to function array_filter\(\) requires parameter \#2 to be passed to avoid loose comparison semantics\.$#'
+			identifier: arrayFilter.strict
+			count: 1
+			path: src/UrlBuilder.php
+
+		-
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Validator\\Attachments\\IndexValidator\:\:validate\(\) has Netresearch\\Sdk\\CentralStation\\Exception\\RequestValidatorException in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: src/Validator/Attachments/IndexValidator.php
+
+		-
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Validator\\Companies\\UpdateValidator\:\:validate\(\) has Netresearch\\Sdk\\CentralStation\\Exception\\RequestValidatorException in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: src/Validator/Companies/UpdateValidator.php
+
+		-
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Validator\\CustomFields\\IndexValidator\:\:validate\(\) has Netresearch\\Sdk\\CentralStation\\Exception\\RequestValidatorException in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: src/Validator/CustomFields/IndexValidator.php
+
+		-
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Validator\\CustomFields\\ShowValidator\:\:validate\(\) has Netresearch\\Sdk\\CentralStation\\Exception\\RequestValidatorException in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: src/Validator/CustomFields/ShowValidator.php
+
+		-
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Validator\\People\\MergeValidator\:\:validate\(\) has Netresearch\\Sdk\\CentralStation\\Exception\\RequestValidatorException in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: src/Validator/People/MergeValidator.php
+
+		-
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Validator\\People\\UpdateValidator\:\:validate\(\) has Netresearch\\Sdk\\CentralStation\\Exception\\RequestValidatorException in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: src/Validator/People/UpdateValidator.php
+
+		-
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Validator\\Protocols\\Attachments\\CreateValidator\:\:validate\(\) has Netresearch\\Sdk\\CentralStation\\Exception\\RequestValidatorException in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: src/Validator/Protocols/Attachments/CreateValidator.php
+
+		-
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Validator\\Protocols\\IndexValidator\:\:validate\(\) has Netresearch\\Sdk\\CentralStation\\Exception\\RequestValidatorException in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: src/Validator/Protocols/IndexValidator.php
+
+		-
+			message: '#^Method Netresearch\\Sdk\\CentralStation\\Validator\\Tags\\IndexValidator\:\:validate\(\) has Netresearch\\Sdk\\CentralStation\\Exception\\RequestValidatorException in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: src/Validator/Tags/IndexValidator.php

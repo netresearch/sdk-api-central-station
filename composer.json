@@ -47,13 +47,13 @@
         "nyholm/psr7": "^1.8",
         "overtrue/phplint": "^9.0",
         "php-http/mock-client": "^1.6",
-        "phpstan/phpstan": "^1.0",
-        "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "phpstan/phpstan-strict-rules": "^1.0",
-        "phpstan/phpstan-symfony": "^1.0",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0",
         "phpunit/phpunit": "^10.0",
-        "rector/rector": "^1.0",
+        "rector/rector": "^2.0",
         "symfony/http-client": "^6.0"
     },
     "autoload": {
@@ -73,7 +73,7 @@
     },
     "scripts": {
         "ci:cgl": [
-            "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix --diff --verbose --cache-file .build/.php-cs-fixer.cache"
+            "php-cs-fixer fix --config .php-cs-fixer.dist.php --diff --verbose --cache-file .build/.php-cs-fixer.cache"
         ],
         "ci:rector": [
             "rector process --config rector.php"
@@ -82,19 +82,19 @@
             "@ci:cgl --dry-run"
         ],
         "ci:test:php:lint": [
-            "phplint"
-        ],
-        "ci:test:php:unit": [
-            "phpunit"
+            "phplint --configuration .phplint.yml"
         ],
         "ci:test:php:phpstan": [
-            "phpstan analyze --memory-limit=-1"
+            "phpstan analyze --configuration phpstan.neon --memory-limit=-1"
         ],
         "ci:test:php:phpstan:baseline": [
-            "phpstan analyze --memory-limit=-1 --generate-baseline phpstan-baseline.neon --allow-empty-baseline"
+            "phpstan analyze --configuration phpstan.neon --memory-limit=-1 --generate-baseline phpstan-baseline.neon --allow-empty-baseline"
         ],
         "ci:test:php:rector": [
             "@ci:rector --dry-run"
+        ],
+        "ci:test:php:unit": [
+            "phpunit"
         ],
         "ci:test": [
             "@ci:test:php:lint",
