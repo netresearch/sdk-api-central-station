@@ -71,7 +71,7 @@ class Protocols extends AbstractApiEndpoint
                 ->addPath('/' . $attachmentId);
         }
 
-        if (!($this->attachmentsApi instanceof Attachments)) {
+        if (!$this->attachmentsApi instanceof Attachments) {
             $this->attachmentsApi = new Attachments(
                 $this->client,
                 $this->requestFactory,

@@ -146,7 +146,7 @@ class Api
                 ->addPath('/' . $personId);
         }
 
-        if (!($this->peopleApi instanceof People)) {
+        if (!$this->peopleApi instanceof People) {
             $this->peopleApi = new People(
                 $this->client,
                 $this->requestFactory,
@@ -178,7 +178,7 @@ class Api
                 ->addPath('/' . $companyId);
         }
 
-        if (!($this->companiesApi instanceof Companies)) {
+        if (!$this->companiesApi instanceof Companies) {
             $this->companiesApi = new Companies(
                 $this->client,
                 $this->requestFactory,
@@ -210,7 +210,7 @@ class Api
                 ->addPath('/' . $tagId);
         }
 
-        if (!($this->tagsApi instanceof Tags)) {
+        if (!$this->tagsApi instanceof Tags) {
             $this->tagsApi = new Tags(
                 $this->client,
                 $this->requestFactory,
@@ -242,7 +242,7 @@ class Api
                 ->addPath('/' . $protocolId);
         }
 
-        if (!($this->protocolsApi instanceof Protocols)) {
+        if (!$this->protocolsApi instanceof Protocols) {
             $this->protocolsApi = new Protocols(
                 $this->client,
                 $this->requestFactory,
@@ -274,7 +274,7 @@ class Api
                 ->addPath('/' . $customFieldsTypeId);
         }
 
-        if (!($this->customFieldsTypesApi instanceof CustomFieldsTypes)) {
+        if (!$this->customFieldsTypesApi instanceof CustomFieldsTypes) {
             $this->customFieldsTypesApi = new CustomFieldsTypes(
                 $this->client,
                 $this->requestFactory,
@@ -306,7 +306,7 @@ class Api
                 ->addPath('/' . $groupCalendarId);
         }
 
-        if (!($this->groupCalendarsApi instanceof GroupCalendars)) {
+        if (!$this->groupCalendarsApi instanceof GroupCalendars) {
             $this->groupCalendarsApi = new GroupCalendars(
                 $this->client,
                 $this->requestFactory,
@@ -338,7 +338,7 @@ class Api
                 ->addPath('/' . $calendarEventId);
         }
 
-        if (!($this->calendarEventsApi instanceof CalendarEvents)) {
+        if (!$this->calendarEventsApi instanceof CalendarEvents) {
             $this->calendarEventsApi = new CalendarEvents(
                 $this->client,
                 $this->requestFactory,

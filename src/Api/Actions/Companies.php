@@ -90,7 +90,7 @@ class Companies extends AbstractApiEndpoint
                 ->addPath('/' . $addressId);
         }
 
-        if (!($this->addressesApi instanceof Addresses)) {
+        if (!$this->addressesApi instanceof Addresses) {
             $this->addressesApi = new Addresses(
                 $this->client,
                 $this->requestFactory,
@@ -122,7 +122,7 @@ class Companies extends AbstractApiEndpoint
                 ->addPath('/' . $customFieldId);
         }
 
-        if (!($this->customFieldsApi instanceof CustomFields)) {
+        if (!$this->customFieldsApi instanceof CustomFields) {
             $this->customFieldsApi = new CustomFields(
                 $this->client,
                 $this->requestFactory,
@@ -154,7 +154,7 @@ class Companies extends AbstractApiEndpoint
                 ->addPath('/' . $tagId);
         }
 
-        if (!($this->tagsApi instanceof Tags)) {
+        if (!$this->tagsApi instanceof Tags) {
             $this->tagsApi = new Tags(
                 $this->client,
                 $this->requestFactory,

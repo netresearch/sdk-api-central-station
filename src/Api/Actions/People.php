@@ -106,7 +106,7 @@ class People extends AbstractApiEndpoint
                 ->addPath('/' . $addressId);
         }
 
-        if (!($this->addressesApi instanceof Addresses)) {
+        if (!$this->addressesApi instanceof Addresses) {
             $this->addressesApi = new Addresses(
                 $this->client,
                 $this->requestFactory,
@@ -138,7 +138,7 @@ class People extends AbstractApiEndpoint
                 ->addPath('/' . $customFieldId);
         }
 
-        if (!($this->customFieldsApi instanceof CustomFields)) {
+        if (!$this->customFieldsApi instanceof CustomFields) {
             $this->customFieldsApi = new CustomFields(
                 $this->client,
                 $this->requestFactory,
@@ -170,7 +170,7 @@ class People extends AbstractApiEndpoint
                 ->addPath('/' . $protocolId);
         }
 
-        if (!($this->protocolsApi instanceof Protocols)) {
+        if (!$this->protocolsApi instanceof Protocols) {
             $this->protocolsApi = new Protocols(
                 $this->client,
                 $this->requestFactory,
@@ -202,7 +202,7 @@ class People extends AbstractApiEndpoint
                 ->addPath('/' . $tagId);
         }
 
-        if (!($this->tagsApi instanceof Tags)) {
+        if (!$this->tagsApi instanceof Tags) {
             $this->tagsApi = new Tags(
                 $this->client,
                 $this->requestFactory,
