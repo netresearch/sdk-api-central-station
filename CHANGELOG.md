@@ -1,3 +1,27 @@
+# 2.0.4
+
+## MISC
+
+- 62dc92b Trim e-mail addresses in the request builders (#35)
+- b173355 Allow symfony/http-client v7 in addition to v6 (#36)
+- fda9976 Update actions/cache action to v6.1.0 (#32)
+- be3d646 Bump the github-actions group across 1 directory with 3 updates (#33)
+- 01c3911 fix: apply rector 2.5.5 and php-cs-fixer to keep CI green
+- e98c94c Bump the github-actions group across 1 directory with 2 updates
+- 12ed410 fix: pin GitHub Actions to full-length commit SHAs
+- 3543f3f fix: SHA-pin GitHub Actions and add Dependabot for actions updates
+- 9da804f Update actions/cache action to v5
+- 62d724b fix: resolve CGL and PHPStan CI failures
+- 333c41c Revert "Merge pull request #16 from netresearch/renovate/phpunit-phpunit-13.x"
+- 1eb4cd6 Update dependency phpunit/phpunit to v13
+
+## Contributors
+
+- Rico Sonntag
+- Sebastian Mendel
+- dependabot[bot]
+- renovate[bot]
+
 # 2.0.3
 
 ## MISC
