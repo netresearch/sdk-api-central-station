@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Netresearch\Sdk\CentralStation\RequestBuilder;
 
+use function trim;
+
 /**
  * An abstract request builder providing common methods for all request builders.
  *
@@ -26,4 +28,16 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
      * @var array<string, mixed>
      */
     protected array $data = [];
+
+    /**
+     * Normalizes an e-mail address by trimming surrounding whitespace, so the
+     * stored value matches the (also trimmed) lookup key and a whitespace
+     * e-mail never creates a duplicate contact.
+     *
+     * @param string|null $emailAddress
+     */
+    protected function normalizeEmailAddress(?string $emailAddress): ?string
+    {
+        return $emailAddress === null ? null : trim($emailAddress);
+    }
 }
