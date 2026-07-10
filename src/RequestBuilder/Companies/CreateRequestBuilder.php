@@ -148,16 +148,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
      */
     public function addEmailAddress(string $type, string $emailAddress): CreateRequestBuilder
     {
-        $emailAddress = $this->normalizeEmailAddress($emailAddress);
-
-        if (!isset($this->data['emailAddresses'])) {
-            $this->data['emailAddresses'] = [];
-        }
-
-        $this->data['emailAddresses'][] = [
-            'type'         => $type,
-            'emailAddress' => $emailAddress,
-        ];
+        $this->addEmailAddressEntry(null, $type, $emailAddress);
 
         return $this;
     }
