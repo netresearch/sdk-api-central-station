@@ -22,7 +22,7 @@ use Netresearch\Sdk\CentralStation\Request\Position;
 use Netresearch\Sdk\CentralStation\Request\Positions;
 use Netresearch\Sdk\CentralStation\Request\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags;
-use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractUpdateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\People\UpdateValidator;
 
 use function in_array;
@@ -36,7 +36,7 @@ use function in_array;
  *
  * @api
  */
-class UpdateRequestBuilder extends AbstractRequestBuilder
+class UpdateRequestBuilder extends AbstractUpdateRequestBuilder
 {
     /**
      * Sets the person's data.
@@ -166,25 +166,6 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
             'type'        => $type,
             'phoneNumber' => $phoneNumber,
         ];
-
-        return $this;
-    }
-
-    /**
-     * Adds an email address attribute.
-     *
-     * @param int|null    $id           The ID of the record to update
-     * @param string|null $type         The type of the email address (use one of Constants::CONTACT_DETAILS_TYPE)
-     * @param string|null $emailAddress The email address
-     *
-     * @return UpdateRequestBuilder
-     */
-    public function addEmailAddress(
-        ?int $id = null,
-        ?string $type = null,
-        ?string $emailAddress = null,
-    ): UpdateRequestBuilder {
-        $this->addEmailAddressEntry($id, $type, $emailAddress);
 
         return $this;
     }

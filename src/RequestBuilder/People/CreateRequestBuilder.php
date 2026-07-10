@@ -24,7 +24,7 @@ use Netresearch\Sdk\CentralStation\Request\Position;
 use Netresearch\Sdk\CentralStation\Request\Positions;
 use Netresearch\Sdk\CentralStation\Request\Tag;
 use Netresearch\Sdk\CentralStation\Request\Tags;
-use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractRequestBuilder;
+use Netresearch\Sdk\CentralStation\RequestBuilder\AbstractCreateRequestBuilder;
 use Netresearch\Sdk\CentralStation\Validator\People\CreateValidator;
 
 use function in_array;
@@ -38,7 +38,7 @@ use function in_array;
  *
  * @api
  */
-class CreateRequestBuilder extends AbstractRequestBuilder
+class CreateRequestBuilder extends AbstractCreateRequestBuilder
 {
     /**
      * Sets the person's data.
@@ -160,21 +160,6 @@ class CreateRequestBuilder extends AbstractRequestBuilder
             'type'        => $type,
             'phoneNumber' => $phoneNumber,
         ];
-
-        return $this;
-    }
-
-    /**
-     * Adds an email address attribute.
-     *
-     * @param string $type         The type of the email address (use one of Constants::CONTACT_DETAILS_TYPE)
-     * @param string $emailAddress The email address
-     *
-     * @return CreateRequestBuilder
-     */
-    public function addEmailAddress(string $type, string $emailAddress): CreateRequestBuilder
-    {
-        $this->addEmailAddressEntry(null, $type, $emailAddress);
 
         return $this;
     }
