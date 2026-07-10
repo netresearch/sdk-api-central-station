@@ -155,6 +155,8 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
         ?string $type = null,
         ?string $emailAddress = null,
     ): UpdateRequestBuilder {
+        $emailAddress = $this->normalizeEmailAddress($emailAddress);
+
         if (!isset($this->data['emailAddresses'])) {
             $this->data['emailAddresses'] = [];
         }

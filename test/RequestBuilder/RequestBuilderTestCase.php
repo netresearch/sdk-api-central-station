@@ -57,4 +57,24 @@ class RequestBuilderTestCase extends TestCase
 
         self::assertSame($expectedJson, $actualJson);
     }
+
+    /**
+     * Asserts the first e-mail address of the built request has been trimmed.
+     *
+     * @param object $request The built request
+     * @param string $rootKey The serialized root key ("person" or "company")
+     *
+     * @throws JsonException
+     */
+    protected function assertAddedEmailIsTrimmed(object $request, string $rootKey): void
+    {
+        $data = json_decode(
+            $this->serializer->encode($request),
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
+
+        self::assertSame('trimmed@example.org', $data[$rootKey]['emails_attributes'][0]['name']);
+    }
 }
