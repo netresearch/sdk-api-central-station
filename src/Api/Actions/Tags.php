@@ -74,8 +74,6 @@ class Tags extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/tags/<TAG-ID>
      *
-     * @return Tag|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException

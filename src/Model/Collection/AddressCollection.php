@@ -28,8 +28,6 @@ class AddressCollection extends AbstractCollection
      * Returns the first address item matching the given address type.
      *
      * @param string $type
-     *
-     * @return Address|null
      */
     public function getByType(string $type): ?Address
     {

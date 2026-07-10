@@ -77,8 +77,6 @@ class CustomFields extends AbstractApiEndpoint
      *
      * @param ShowRequest $request The show request instance
      *
-     * @return CustomField|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -99,8 +97,6 @@ class CustomFields extends AbstractApiEndpoint
      * POST https://<BASE-URL>/api/companies/<COMPANY-ID>/custom_fields
      *
      * @param CreateRequest $request The create request instance
-     *
-     * @return CustomField|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

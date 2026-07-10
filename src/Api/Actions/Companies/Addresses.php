@@ -71,8 +71,6 @@ class Addresses extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/companies/<COMPANY-ID>/addrs/<ADDRESS-ID>
      *
-     * @return Address|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -93,8 +91,6 @@ class Addresses extends AbstractApiEndpoint
      * POST https://<BASE-URL>/api/companies/<COMPANY-ID>/addrs
      *
      * @param CreateRequest $request The create request instance
-     *
-     * @return Address|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

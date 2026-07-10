@@ -28,8 +28,6 @@ class CompanyCollection extends AbstractCollection
      * Returns the company from the collection matching the given company ID.
      *
      * @param int $companyId
-     *
-     * @return Company|null
      */
     public function getById(int $companyId): ?Company
     {

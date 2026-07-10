@@ -196,8 +196,6 @@ class Companies extends AbstractApiEndpoint
      *
      * @param ShowRequest $request The show request instance
      *
-     * @return Company|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -220,8 +218,6 @@ class Companies extends AbstractApiEndpoint
      * POST https://<BASE-URL>/api/companies
      *
      * @param CreateRequest $request The create request instance
-     *
-     * @return Company|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

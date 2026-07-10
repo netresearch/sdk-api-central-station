@@ -28,8 +28,6 @@ class ContactDetailCollection extends AbstractCollection
      * Returns the first contact detail item matching the given contact type.
      *
      * @param string $contactType
-     *
-     * @return ContactDetail|null
      */
     public function getByContactType(string $contactType): ?ContactDetail
     {

@@ -73,8 +73,6 @@ class Protocols extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/people/<PERSON-ID>/protocols/<PROTOCOL-ID>
      *
-     * @return ProtocolContainer|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -93,8 +91,6 @@ class Protocols extends AbstractApiEndpoint
      * POST https://<BASE-URL>/api/people/<PERSON-ID>/protocols
      *
      * @param CreateRequest $request The create request instance
-     *
-     * @return ProtocolContainer|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

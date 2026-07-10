@@ -244,8 +244,6 @@ class People extends AbstractApiEndpoint
      *
      * @param ShowRequest $request The show request instance
      *
-     * @return Person|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -268,8 +266,6 @@ class People extends AbstractApiEndpoint
      * POST https://<BASE-URL>/api/people
      *
      * @param CreateRequest $request The create request instance
-     *
-     * @return Person|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

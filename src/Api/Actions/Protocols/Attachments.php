@@ -74,8 +74,6 @@ class Attachments extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/protocols/<PROTOCOL-ID>/attachments/<ATTACHMENT-ID>
      *
-     * @return AttachmentContainer|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -94,8 +92,6 @@ class Attachments extends AbstractApiEndpoint
      * POST https://<BASE-URL>/api/protocols/<PROTOCOL-ID>/attachments
      *
      * @param CreateRequest $request The create request instance
-     *
-     * @return AttachmentContainer|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

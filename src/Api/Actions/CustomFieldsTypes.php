@@ -71,8 +71,6 @@ class CustomFieldsTypes extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/custom_fields_types/<CUSTOM-FIELDS-TYPE-ID>
      *
-     * @return CustomFieldsType|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -93,8 +91,6 @@ class CustomFieldsTypes extends AbstractApiEndpoint
      * POST https://<BASE-URL>/api/custom_fields_types
      *
      * @param CreateRequest $request The create request instance
-     *
-     * @return CustomFieldsType|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

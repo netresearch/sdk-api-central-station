@@ -28,8 +28,6 @@ class PositionCollection extends AbstractCollection
      * Returns the position from the collection matching the given position ID.
      *
      * @param int $positionId
-     *
-     * @return Position|null
      */
     public function getById(int $positionId): ?Position
     {

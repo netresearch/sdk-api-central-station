@@ -74,8 +74,6 @@ class Tags extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/people/<PERSON-ID>/tags/<TAG-ID>
      *
-     * @return Tag|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
@@ -96,8 +94,6 @@ class Tags extends AbstractApiEndpoint
      * POST https://<BASE-URL>/api/people/<PERSON-ID>/tags
      *
      * @param CreateRequest $request The create request instance
-     *
-     * @return Tag|null
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException

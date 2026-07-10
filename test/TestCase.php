@@ -45,8 +45,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @param string $responseData
      * @param int    $statusCode
-     *
-     * @return CentralStation|MockObject
      */
     public function getServiceFactoryMock(string $responseData = '', int $statusCode = 200): MockObject|CentralStation
     {

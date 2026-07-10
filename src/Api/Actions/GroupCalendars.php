@@ -77,8 +77,6 @@ class GroupCalendars extends AbstractApiEndpoint
      *
      * @param ShowRequest $request The show request instance
      *
-     * @return GroupCalendar|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException

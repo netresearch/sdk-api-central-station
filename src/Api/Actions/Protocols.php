@@ -111,8 +111,6 @@ class Protocols extends AbstractApiEndpoint
      *
      * GET https://<BASE-URL>/api/protocols/<PROTOCOL-ID>
      *
-     * @return ProtocolContainer|null
-     *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
