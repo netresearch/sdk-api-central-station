@@ -30,14 +30,24 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     protected array $data = [];
 
     /**
-     * Normalizes an e-mail address by trimming surrounding whitespace, so the
-     * stored value matches the (also trimmed) lookup key and a whitespace
-     * e-mail never creates a duplicate contact.
+     * Appends an e-mail address entry to the collected data. The address is
+     * trimmed so the stored value matches the (also trimmed) lookup key and a
+     * whitespace e-mail never creates a duplicate contact.
      *
-     * @param string|null $emailAddress
+     * @param int|null    $id           The ID of the record to update, or null when creating
+     * @param string|null $type         The type of the e-mail address (use one of Constants::CONTACT_DETAILS_TYPE)
+     * @param string|null $emailAddress The e-mail address
      */
-    protected function normalizeEmailAddress(?string $emailAddress): ?string
+    protected function addEmailAddressEntry(?int $id, ?string $type, ?string $emailAddress): void
     {
-        return $emailAddress === null ? null : trim($emailAddress);
+        if (!isset($this->data['emailAddresses'])) {
+            $this->data['emailAddresses'] = [];
+        }
+
+        $this->data['emailAddresses'][] = [
+            'id'           => $id,
+            'type'         => $type,
+            'emailAddress' => $emailAddress === null ? null : trim($emailAddress),
+        ];
     }
 }
