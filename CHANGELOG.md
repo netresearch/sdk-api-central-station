@@ -1,3 +1,13 @@
+# 2.0.6
+
+## MISC
+
+- b3bfab5 Skip RemoveReturnTagIncompatibleWithNativeTypeRector to keep generic @return
+
+## Contributors
+
+- Rico Sonntag
+
 # 2.0.5
 
 ## MISC
