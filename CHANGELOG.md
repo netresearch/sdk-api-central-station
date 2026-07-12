@@ -1,3 +1,13 @@
+# 2.0.5
+
+## MISC
+
+- 6296de2 Extract shared addEmailAddress into Create/Update base builders (#37)
+
+## Contributors
+
+- Rico Sonntag
+
 # 2.0.4
 
 ## MISC
