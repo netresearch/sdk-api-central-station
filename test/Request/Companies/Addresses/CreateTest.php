@@ -47,11 +47,45 @@ class CreateTest extends TestCase
         self::assertSame(
             [
                 'addr' => [
-                    'id'           => null,
                     'street'       => 'Mustergasse 1',
                     'zip'          => '01234',
                     'city'         => 'Musterstadt',
                     'state_code'   => 'SN',
+                    'country_code' => 'DE',
+                    'atype'        => 'private',
+                    'primary'      => true,
+                ],
+            ],
+            $request->jsonSerialize()
+        );
+    }
+
+    /**
+     * Tests that null-valued fields are omitted from the serialized request, so
+     * the API is not sent e.g. "state_code": null (which it rejects as invalid).
+     *
+     * @test
+     */
+    public function jsonSerializeOmitsNullValues(): void
+    {
+        $address = new Address();
+        $address
+            ->setStreet('Mustergasse 1')
+            ->setZip('01234')
+            ->setCity('Musterstadt')
+            ->setCountryCode('DE')
+            ->setPrimary(true)
+            ->setType(Constants::ADDRESS_TYPE_PRIVATE);
+
+        // "id" (on create) and "stateCode" are intentionally left null.
+        $request = new Create($address);
+
+        self::assertSame(
+            [
+                'addr' => [
+                    'street'       => 'Mustergasse 1',
+                    'zip'          => '01234',
+                    'city'         => 'Musterstadt',
                     'country_code' => 'DE',
                     'atype'        => 'private',
                     'primary'      => true,

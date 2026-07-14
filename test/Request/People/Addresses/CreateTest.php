@@ -47,7 +47,6 @@ class CreateTest extends TestCase
         self::assertSame(
             [
                 'addr' => [
-                    'id'           => null,
                     'street'       => 'Mustergasse 1',
                     'zip'          => '01234',
                     'city'         => 'Musterstadt',
