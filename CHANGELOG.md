@@ -1,3 +1,13 @@
+# 2.0.7
+
+## MISC
+
+- cb32c37 Omit null-valued fields from serialized address requests (#38)
+
+## Contributors
+
+- Rico Sonntag
+
 # 2.0.6
 
 ## MISC
