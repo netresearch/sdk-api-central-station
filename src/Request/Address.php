@@ -161,19 +161,25 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @return array<string, bool|int|string|null>
+     * @return array<string, bool|int|string>
      */
     public function jsonSerialize(): array
     {
-        return [
-            'id'           => $this->id,
-            'street'       => $this->street,
-            'zip'          => $this->zip,
-            'city'         => $this->city,
-            'state_code'   => $this->stateCode,
-            'country_code' => $this->countryCode,
-            'atype'        => $this->type,
-            'primary'      => $this->primary,
-        ];
+        // Omit null-valued fields so optional attributes (e.g. "state_code") are
+        // left out of the payload entirely instead of being sent as null, which
+        // the API rejects as invalid.
+        return array_filter(
+            [
+                'id'           => $this->id,
+                'street'       => $this->street,
+                'zip'          => $this->zip,
+                'city'         => $this->city,
+                'state_code'   => $this->stateCode,
+                'country_code' => $this->countryCode,
+                'atype'        => $this->type,
+                'primary'      => $this->primary,
+            ],
+            static fn (bool|int|string|null $value): bool => $value !== null
+        );
     }
 }

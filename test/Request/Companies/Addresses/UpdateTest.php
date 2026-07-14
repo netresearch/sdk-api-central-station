@@ -48,11 +48,9 @@ class UpdateTest extends TestCase
         self::assertSame(
             [
                 'addr' => [
-                    'id'           => null,
                     'street'       => 'Mustergasse 2',
                     'zip'          => '98765',
                     'city'         => 'Musterhausen',
-                    'state_code'   => null,
                     'country_code' => 'AT',
                     'atype'        => 'work',
                     'primary'      => false,

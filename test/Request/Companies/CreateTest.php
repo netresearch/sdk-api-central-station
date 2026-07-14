@@ -142,11 +142,8 @@ class CreateTest extends TestCase
                     'homepages_attributes' => null,
                     'addrs_attributes'     => [
                         [
-                            'id'           => null,
                             'street'       => 'Street 1',
-                            'zip'          => null,
                             'city'         => 'New York',
-                            'state_code'   => null,
                             'country_code' => 'US',
                             'atype'        => 'work_hq',
                             'primary'      => false,
