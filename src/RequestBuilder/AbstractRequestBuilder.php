@@ -40,9 +40,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
      */
     protected function addEmailAddressEntry(?int $id, ?string $type, ?string $emailAddress): void
     {
-        if (!isset($this->data['emailAddresses'])) {
-            $this->data['emailAddresses'] = [];
-        }
+        $this->data['emailAddresses'] ??= [];
 
         $this->data['emailAddresses'][] = [
             'id'           => $id,

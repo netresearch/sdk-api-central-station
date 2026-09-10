@@ -35,9 +35,7 @@ trait IncludesTrait
      */
     public function addInclude(string $include): IncludesRequestBuilderInterface
     {
-        if (!isset($this->data['includes'])) {
-            $this->data['includes'] = [];
-        }
+        $this->data['includes'] ??= [];
 
         if (!in_array($include, $this->data['includes'], true)) {
             $this->data['includes'][] = $include;

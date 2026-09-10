@@ -95,9 +95,7 @@ class UpdateRequestBuilder extends AbstractRequestBuilder
      */
     public function addOption(string $option): UpdateRequestBuilder
     {
-        if (!isset($this->data['options'])) {
-            $this->data['options'] = [];
-        }
+        $this->data['options'] ??= [];
 
         if (!in_array($option, $this->data['options'], true)) {
             $this->data['options'][] = $option;

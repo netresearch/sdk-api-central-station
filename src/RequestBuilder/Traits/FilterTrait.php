@@ -39,9 +39,7 @@ trait FilterTrait
         string $comparison,
         int|string|DateTime $value,
     ): FilterRequestBuilderInterface {
-        if (!isset($this->data['filter'])) {
-            $this->data['filter'] = [];
-        }
+        $this->data['filter'] ??= [];
 
         if ($value instanceof DateTime) {
             $value = $value->format('Y-m-d');

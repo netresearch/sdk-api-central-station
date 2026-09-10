@@ -109,9 +109,7 @@ class UpdateRequestBuilder extends AbstractUpdateRequestBuilder
         ?string $companyName = null,
         bool $primary = false,
     ): UpdateRequestBuilder {
-        if (!isset($this->data['positions'])) {
-            $this->data['positions'] = [];
-        }
+        $this->data['positions'] ??= [];
 
         $this->data['positions'][] = [
             'id'          => $id,
@@ -132,9 +130,7 @@ class UpdateRequestBuilder extends AbstractUpdateRequestBuilder
      */
     public function addTag(string $tagName): UpdateRequestBuilder
     {
-        if (!isset($this->data['tags'])) {
-            $this->data['tags'] = [];
-        }
+        $this->data['tags'] ??= [];
 
         if (!in_array($tagName, $this->data['tags'], true)) {
             $this->data['tags'][] = $tagName;
@@ -157,9 +153,7 @@ class UpdateRequestBuilder extends AbstractUpdateRequestBuilder
         ?string $type = null,
         ?string $phoneNumber = null,
     ): UpdateRequestBuilder {
-        if (!isset($this->data['phoneNumbers'])) {
-            $this->data['phoneNumbers'] = [];
-        }
+        $this->data['phoneNumbers'] ??= [];
 
         $this->data['phoneNumbers'][] = [
             'id'          => $id,
@@ -184,9 +178,7 @@ class UpdateRequestBuilder extends AbstractUpdateRequestBuilder
         ?string $type = null,
         ?string $website = null,
     ): UpdateRequestBuilder {
-        if (!isset($this->data['websites'])) {
-            $this->data['websites'] = [];
-        }
+        $this->data['websites'] ??= [];
 
         $this->data['websites'][] = [
             'id'      => $id,
@@ -221,9 +213,7 @@ class UpdateRequestBuilder extends AbstractUpdateRequestBuilder
         ?string $stateCode = null,
         bool $primary = false,
     ): UpdateRequestBuilder {
-        if (!isset($this->data['addresses'])) {
-            $this->data['addresses'] = [];
-        }
+        $this->data['addresses'] ??= [];
 
         $this->data['addresses'][] = [
             'id'          => $id,
