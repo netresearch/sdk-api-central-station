@@ -83,9 +83,7 @@ class CreateRequestBuilder extends AbstractCreateRequestBuilder
         string $position,
         bool $primary = false,
     ): CreateRequestBuilder {
-        if (!isset($this->data['positions'])) {
-            $this->data['positions'] = [];
-        }
+        $this->data['positions'] ??= [];
 
         $this->data['positions'][] = [
             'companyName' => $companyName,
@@ -105,9 +103,7 @@ class CreateRequestBuilder extends AbstractCreateRequestBuilder
      */
     public function addTag(string $tagName): CreateRequestBuilder
     {
-        if (!isset($this->data['tags'])) {
-            $this->data['tags'] = [];
-        }
+        $this->data['tags'] ??= [];
 
         if (!in_array($tagName, $this->data['tags'], true)) {
             $this->data['tags'][] = $tagName;
@@ -126,9 +122,7 @@ class CreateRequestBuilder extends AbstractCreateRequestBuilder
      */
     public function addTelephone(string $type, string $phoneNumber): CreateRequestBuilder
     {
-        if (!isset($this->data['phoneNumbers'])) {
-            $this->data['phoneNumbers'] = [];
-        }
+        $this->data['phoneNumbers'] ??= [];
 
         $this->data['phoneNumbers'][] = [
             'type'        => $type,
@@ -148,9 +142,7 @@ class CreateRequestBuilder extends AbstractCreateRequestBuilder
      */
     public function addWebsite(string $type, string $website): CreateRequestBuilder
     {
-        if (!isset($this->data['websites'])) {
-            $this->data['websites'] = [];
-        }
+        $this->data['websites'] ??= [];
 
         $this->data['websites'][] = [
             'type'    => $type,
@@ -182,9 +174,7 @@ class CreateRequestBuilder extends AbstractCreateRequestBuilder
         ?string $stateCode = null,
         bool $primary = false,
     ): CreateRequestBuilder {
-        if (!isset($this->data['addresses'])) {
-            $this->data['addresses'] = [];
-        }
+        $this->data['addresses'] ??= [];
 
         $this->data['addresses'][] = [
             'type'        => $type,
@@ -209,9 +199,7 @@ class CreateRequestBuilder extends AbstractCreateRequestBuilder
      */
     public function addCustomField(string $content, int $customFieldsTypeId): CreateRequestBuilder
     {
-        if (!isset($this->data['customFields'])) {
-            $this->data['customFields'] = [];
-        }
+        $this->data['customFields'] ??= [];
 
         $this->data['customFields'][] = [
             'content'            => $content,

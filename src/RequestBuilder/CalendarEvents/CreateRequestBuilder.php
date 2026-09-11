@@ -175,9 +175,7 @@ class CreateRequestBuilder extends AbstractRequestBuilder
      */
     public function addCalendarEventAttendee(int $personId): CreateRequestBuilder
     {
-        if (!isset($this->data['calendarEvent']['calendarEventAttendees'])) {
-            $this->data['calendarEvent']['calendarEventAttendees'] = [];
-        }
+        $this->data['calendarEvent']['calendarEventAttendees'] ??= [];
 
         if (!in_array($personId, $this->data['calendarEvent']['calendarEventAttendees'], true)) {
             $this->data['calendarEvent']['calendarEventAttendees'][] = $personId;
