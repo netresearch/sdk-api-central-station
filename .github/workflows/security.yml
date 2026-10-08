@@ -42,6 +42,8 @@ jobs:
 
   composer-audit:
     uses: netresearch/typo3-ci-workflows/.github/workflows/security.yml@main
+    with:
+      php-version: '8.3'
     permissions:
       contents: read
       security-events: write

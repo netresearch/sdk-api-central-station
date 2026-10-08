@@ -8,4 +8,6 @@
 # (a repo setting), so no codeql.yml here. Add a test workflow per repo as
 # needed and list it under intentional-drift.
 template: php-module
-intentional-drift: []
+intentional-drift:
+  - path: .github/workflows/security.yml
+    reason: composer.json requires php >=8.1.0 <8.4.0, which the shared Composer Audit default PHP version 8.5 does not satisfy
